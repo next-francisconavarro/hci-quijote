@@ -41,12 +41,12 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     const userName = agent.parameters.user;
     agent.add(`Excelente nombre, ${userName}`);
     return admin.database().ref('data').set({
-      	room: 'bibliot',
-    	apple: false,
-      	bread: false,
-      	sword: false,
-      	armor: false,
-      	userName: userName
+      room: 'bibliot',
+      apple: false,
+      bread: false,
+      sword: false,
+      armor: false,
+      userName: userName
     });
   }
 
