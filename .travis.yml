@@ -5,7 +5,7 @@ script:
   - echo "skipping tests"
   - cp -R node_modules functions/
   - cd functions
-  - npm install
+  - npm install --no-package-lock
 cache:
   npm: true
 #  directories:
