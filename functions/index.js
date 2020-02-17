@@ -5,7 +5,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');//nos permite leer y escribir en la BBDD
 const {WebhookClient} = require('dialogflow-fulfillment');
-const {Card, Suggestion} = require('dialogflow-fulfillment');
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault(),
@@ -31,9 +30,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   
   function recoverUserName(agent) {
     return admin.database().ref('data').once('value').then((snapShot)=>{
-    	const value = snapShot.child('userName').val();
-      	if(value !== null) {
-        	agent.add(`Que memoria la tuya, tu nombre es ${value}`);
+      const value = snapShot.child('userName').val();
+        if(value !== null) {
+          agent.add(`Que memoria la tuya, tu nombre es ${value}`);
         }
     });
   }

@@ -9,6 +9,7 @@ script:
   - cp -R node_modules functions/
   - cd functions
   - npm i
+  - npm run lint
   - cd ..
   - firebase deploy -m "build $TRAVIS_BUILD_NUMBER" --non-interactive --token "$FIREBASE_TOKEN"
 cache:
