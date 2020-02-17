@@ -3,12 +3,13 @@ node_js:
   - "10"
 script:
   - echo "skipping tests"
-  - cd functions
-  - npm install
+#  - cd functions
+#  - npm install
+  - cp -R node_modules functions/
 cache:
   npm: true
-  directories:
-    - ./functions/node_modules
+#  directories:
+#    - ./functions/node_modules
 deploy:
   provider: firebase
   token:
