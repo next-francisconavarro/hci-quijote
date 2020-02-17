@@ -33,7 +33,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     return admin.database().ref('data').once('value').then((snapShot)=>{
     	const value = snapShot.child('userName').val();
       	if(value !== null) {
-        	agent.add(`Que memoria la tuya!, tu nombre es ${value}`);
+        	agent.add(`Que memoria la tuya, tu nombre es ${value}`);
         }
     });
   }
