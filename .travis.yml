@@ -6,7 +6,6 @@ script:
   - cp -R node_modules functions/
   - cd functions
   - npm i
-  - cd ..
 cache:
   npm: true
   directories:
