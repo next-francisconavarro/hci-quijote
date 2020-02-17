@@ -8,7 +8,7 @@ script:
 cache:
   npm: true
   directories:
-    - functions/node_modules
+    - ./functions/node_modules
 deploy:
   provider: firebase
   token:
