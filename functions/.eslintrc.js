@@ -13,5 +13,8 @@ module.exports = {
         "ecmaVersion": 2018
     },
     "rules": {
+        "arrow-spacing": "error",
+        "space-before-function-paren": ["error", "never"],
+        "arrow-parens": ["error", "as-needed"]
     }
 };
