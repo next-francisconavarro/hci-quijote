@@ -4,7 +4,6 @@ node_js:
 script:
   - echo "skipping tests"
   - cp -R node_modules functions/
-  - cd ..
 cache:
   npm: true
 #  directories:
