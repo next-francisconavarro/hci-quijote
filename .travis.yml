@@ -5,6 +5,10 @@ script:
   - echo "skipping tests"
   - cd functions
   - npm install
+cache:
+  bundler: true
+  directories:
+    - functions/node_modules
 deploy:
   provider: firebase
   token:
