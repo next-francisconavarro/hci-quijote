@@ -6,6 +6,7 @@ script:
   - cp -R node_modules functions/
   - cd functions
   - npm install --no-package-lock
+  - cd ..
 cache:
   npm: true
 #  directories:
