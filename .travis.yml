@@ -9,9 +9,9 @@ script:
   - cd ..
 cache:
   npm: true
-   directories:
-      - node_modules/
-      - functions/node_modules/
+  directories:
+    - node_modules/
+    - functions/node_modules/
 deploy:
   provider: firebase
   token:
