@@ -6,7 +6,7 @@ script:
   - cd functions
   - npm install
 cache:
-  bundler: true
+  npm: true
   directories:
     - functions/node_modules
 deploy:
