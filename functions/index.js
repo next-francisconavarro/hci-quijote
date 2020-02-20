@@ -59,12 +59,25 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     });
   }
 
+  function recoverCurrentPlaceStep() {
+    return admin.database().ref(conv.user.storage.username).once('value').then(snapShot => {
+      const value = snapShot.child('room').val();
+        if(value !== null) {
+          return value;
+        }
+    });
+  }
+
   function Travel(agent) {
     const placeSelected = agent.parameters.place;
+    const currentPlace = recoverCurrentPlaceStep();
+    console.log('current place: ', currentPlace);
     return admin.database().ref('places').once('value').then(snapShot => {
       const value = snapShot.child(placeSelected).val();
         if(value !== null) {
-          agent.add(`Quieres viajar a ${placeSelected}, que esta a ${value.step} pasos.`);
+          if ((value.step - currentPlace.step) < 2 ) {
+            agent.add(`Quieres viajar a ${placeSelected}, que esta a ${value.step} pasos.`);
+          }
         }
     });
   }
