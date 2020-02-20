@@ -50,6 +50,11 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     });
   }
 
+  function Travel(agent) {
+    const placeSelected = agent.parameters.place;
+    agent.add(`Quieres viajar a la ${placeSelected}`);
+  }
+
   // // Uncomment and edit to make your own intent handler
   // // uncomment `intentMap.set('your intent name here', yourFunctionHandler);`
   // // below to get this function to be run when a Dialogflow intent is matched
@@ -85,5 +90,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   intentMap.set('Default Fallback Intent', fallback);
   intentMap.set('Recordar el nombre', recoverUserName);
   intentMap.set('Guardar mi nombre', saveUserName);
+  intentMap.set('viajar', Travel);
   agent.handleRequest(intentMap);
 });
