@@ -85,12 +85,12 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
       const value = snapShot.child(userAccount).val();
       console.log('value: ', value);
       if(value !== null) {
-        travel(value.room, agent.parameters.place);
+        travel(agent, value.room, agent.parameters.place);
       }
     });
   }
 
-  function travel(currentPlace, SelectedPlace) {
+  function travel(agent, currentPlace, SelectedPlace) {
     const stepToGo = currentPlace[Object.keys(currentPlace)[0]].step;
     console.log('current place: ', stepToGo, SelectedPlace);
     return admin.database().ref('places').once('value').then(snapShot => {
