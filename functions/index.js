@@ -91,12 +91,13 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
 
   function travel(currentPlace, SelectedPlace) {
-    console.log('current place: ', currentPlace, SelectedPlace);
+    const stepToGo = currentPlace[Object.keys(currentPlace)[0]].step;
+    console.log('current place: ', stepToGo, SelectedPlace);
     return admin.database().ref('places').once('value').then(snapShot => {
       const value = snapShot.child(SelectedPlace).val();
       console.log('selected place: ', value);
       if(value !== null) {
-        agent.add(`Quieres viajar a ${SelectedPlace}, que esta a ${value.step} pasos. y estas en el paso ${currentPlace[Object.keys(currentPlace)[0]].step}`);
+        agent.add(`Quieres viajar a ${SelectedPlace}, que esta a ${value.step} pasos. y estas en el paso ${stepToGo}`);
       }
     });
   }
