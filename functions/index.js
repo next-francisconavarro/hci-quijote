@@ -78,6 +78,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
 
   function updateUser(userId, newData) {
+    console.log('new data: ', newData);
     return admin.database().ref('users').update({
       [userId]: newData
      });
@@ -93,11 +94,14 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
       const value = snapShot.child(SelectedPlace).val();
       if(value !== null) {
         const distance = calculateTravelCoeficient(userData.room[placeName], value);
+        console.log('value: ', value);
         const newPlace = {};
         newPlace[`${SelectedPlace}`] = value;
         userData.room = newPlace;
         userData.hungry = userData.hungry - distance;
+        console.log('user Data inside: ', userData);
         updateUser(userId, userData);
+        console.log('1');
         return agent.add(`estas en ${placeName}, Quieres viajar a ${SelectedPlace}, y esta a una distancia de ${distance}`);
       } else {
         return agent.add(`Nadie ha oido hablar de ese lugar nunca!`);
