@@ -86,7 +86,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
       const value = snapShot.child(SelectedPlace).val();
       console.log('selected place: ', value);
       if(value !== null) {
-        agent.add(`Quieres viajar a ${SelectedPlace}, que esta a ${value.step} pasos. y estas en el paso ${stepToGo}`);
+        //agent.add(`Quieres viajar a ${SelectedPlace}, que esta a ${value.step} pasos. y estas en el paso ${stepToGo}`);
+        console.log('response create!!');
       }
     }).catch(function(e) {
       console.log("oh no!", e);
