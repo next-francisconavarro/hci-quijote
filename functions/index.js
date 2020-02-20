@@ -29,7 +29,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
   
   function recoverUserName(agent) {
-    return admin.database().ref('data').once('value').then(snapShot => {
+    return admin.database().ref('data').once(conv.user.storage.username).then(snapShot => {
       const value = snapShot.child('userName').val();
         if(value !== null) {
           agent.add(`Que memoria la tuya, tu nombre es ${value}`);
@@ -39,13 +39,22 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   
   function saveUserName(agent) {
     const userName = agent.parameters.user;
+    conv.user.storage.username = userName;
     agent.add(`Excelente nombre, ${userName}`);
     return admin.database().ref(userName).set({
       room: 'biblioteca',
+      placesKnown: [],
       apple: false,
       bread: false,
       sword: false,
       armor: false,
+      mainDoorKey: false,
+      candle: false,
+      mushroom: false,
+      vine: false,
+      hammer: false,
+      stone: false,
+      rake: false,
       userName: userName
     });
   }
