@@ -94,9 +94,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     console.log('current place: ', currentPlace, SelectedPlace);
     return admin.database().ref('places').once('value').then(snapShot => {
       const value = snapShot.child(SelectedPlace).val();
-        if(value !== null) {
-          agent.add(`Quieres viajar a ${SelectedPlace}, que esta a ${value.step} pasos. y estas en el paso ${currentPlace.step}`);
-        }
+      if(value !== null) {
+        agent.add(`Quieres viajar a ${SelectedPlace}, que esta a ${value.step} pasos. y estas en el paso ${currentPlace[Object.keys(currentPlace)[0]].step}`);
+      }
     });
   }
 
