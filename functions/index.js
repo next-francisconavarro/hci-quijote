@@ -93,7 +93,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
       const value = snapShot.child(SelectedPlace).val();
       if(value !== null) {
         const distance = calculateTravelCoeficient(userData.room[placeName], value);
-        updateUser(userId, userData.hungry - distance, { [selectedPlace]: value });
+        const newPlace = {};
+        newPlace[selectedPlace] = value;
+        updateUser(userId, userData.hungry - distance, newPlace);
         return agent.add(`estas en ${placeName}, Quieres viajar a ${SelectedPlace}, y esta a una distancia de ${distance}`);
       } else {
         return agent.add(`Nadie ha oido hablar de ese lugar nunca!`);
