@@ -77,9 +77,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     });
   }
 
-  function reduceHungry(name, newHungry) {
+  function updateUser(userId, newHungry, rewRoom) {
     return admin.database().ref('users').update({
-      [name]: { hungry: newHungry }
+      [userId]: { hungry: newHungry, room: rewRoom }
      });
   }
 
@@ -87,13 +87,13 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     return (Math.abs(origin.branch - destiny.branch) * 2) + (Math.abs(origin.step - destiny.step)) * 2;
   }
 
-  function travel(userData, SelectedPlace) {
+  function travel(userData, SelectedPlace, userId) {
     const placeName = Object.keys(userData.room)[0];
     return admin.database().ref('places').once('value').then(snapShot => {
       const value = snapShot.child(SelectedPlace).val();
       if(value !== null) {
         const distance = calculateTravelCoeficient(userData.room[placeName], value);
-        reduceHungry(userData.userName, userData.hungry - distance);
+        updateUser(userId, userData.hungry - distance, { [selectedPlace]: value });
         return agent.add(`estas en ${placeName}, Quieres viajar a ${SelectedPlace}, y esta a una distancia de ${distance}`);
       } else {
         return agent.add(`Nadie ha oido hablar de ese lugar nunca!`);
@@ -106,7 +106,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     return admin.database().ref('users').once('value').then(snapShot => {
       const value = snapShot.child(userAccount).val();
       if(value !== null) {
-        return travel(value, agent.parameters.place);
+        return travel(value, agent.parameters.place, userAccount);
       }
     });
   }
