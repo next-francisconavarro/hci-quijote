@@ -40,8 +40,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   function saveUserName(agent) {
     const userName = agent.parameters.user;
     agent.add(`Excelente nombre, ${userName}`);
-    return admin.database().ref('data').set({
-      room: 'bibliot',
+    return admin.database().ref(userName).set({
+      room: 'biblioteca',
       apple: false,
       bread: false,
       sword: false,
@@ -52,7 +52,12 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
   function Travel(agent) {
     const placeSelected = agent.parameters.place;
-    agent.add(`Quieres viajar a la ${placeSelected}`);
+    return admin.database().ref('places').once('value').then(snapShot => {
+      const value = snapShot.child(placeSelected).val();
+        if(value !== null) {
+          agent.add(`Quieres viajar a ${placeSelected}, que esta a ${value.step} pasos.`);
+        }
+    });
   }
 
   // // Uncomment and edit to make your own intent handler
