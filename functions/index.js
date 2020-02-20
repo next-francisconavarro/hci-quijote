@@ -18,9 +18,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
  
-  function welcomeResponse(agent, request) {
+  function welcomeResponse(agent) {
     console.log('datos del agent: ',agent);
-    console.log('datos del request: ',request);
+    console.log('datos del request: ',JSON.stringify(request.body.originalDetectIntentRequest.payload.data));
     agent.add(`Hola aventurero!, no sé si eres un valiente o un inconsciente al saludarme, pero en fin, ya lo descubriremos si estas dispuesto a embarcarte en esta aventura. ¿Quieres comenzar la gesta para convertirte en un ingenioso hidalgo?`);
   }
  
@@ -38,8 +38,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     });
   }
   
-  function saveUserName(agent, request) {
-    console.log('request que llega: ',request);
+  function saveUserName(agent) {
     const userName = agent.parameters.user;
     agent.add(`Excelente nombre, ${userName}`);
     return admin.database().ref('users').ref(request.body.personEmail).set({
@@ -72,9 +71,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     });
   }
 
-  function Travel(agent, request) {
+  function Travel(agent) {
     const placeSelected = agent.parameters.place;
-    const currentPlace = recoverCurrentPlaceStep(request); // {step: 0, branch: 0}
+    const currentPlace = recoverCurrentPlaceStep(request.body); // {step: 0, branch: 0}
     console.log('current place: ', currentPlace);
     return admin.database().ref('places').once('value').then(snapShot => {
       const value = snapShot.child(placeSelected).val();
