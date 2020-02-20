@@ -77,9 +77,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     });
   }
 
-  function updateUser(userId, newHungry, rewRoom) {
+  function updateUser(userId, newData) {
     return admin.database().ref('users').update({
-      [userId]: { hungry: newHungry, room: rewRoom }
+      [userId]: newData
      });
   }
 
@@ -95,7 +95,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         const distance = calculateTravelCoeficient(userData.room[placeName], value);
         const newPlace = {};
         newPlace[`${SelectedPlace}`] = value;
-        updateUser(userId, userData.hungry - distance, newPlace);
+        userData.room = newPlace;
+        userData.hungry = userData.hungry - distance;
+        updateUser(userId, userData);
         return agent.add(`estas en ${placeName}, Quieres viajar a ${SelectedPlace}, y esta a una distancia de ${distance}`);
       } else {
         return agent.add(`Nadie ha oido hablar de ese lugar nunca!`);
