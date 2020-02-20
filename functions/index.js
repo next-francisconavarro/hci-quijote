@@ -5,7 +5,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');//nos permite leer y escribir en la BBDD
 const {WebhookClient} = require('dialogflow-fulfillment');
-let recoverCurrentPlaceStep;
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault(),
@@ -80,11 +79,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
   function travel(currentPlace, SelectedPlace) {
     const stepToGo = currentPlace[Object.keys(currentPlace)[0]].step;
-    console.log('current place: ', stepToGo, SelectedPlace);
     return admin.database().ref('places').once('value').then(snapShot => {
-      console.log('selected place: ', 'none');
       const value = snapShot.child(SelectedPlace).val();
-      console.log('selected place: ', value);
       if(value !== null) {
         return agent.add(`Quieres viajar a ${SelectedPlace}, que esta a ${value.step} pasos. y estas en el paso ${stepToGo}`);
       }
@@ -93,10 +89,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
   function recoverCurrentPlaceStep(agent) {
     const userAccount = getUserId();
-    console.log('usser account: ', userAccount);
     return admin.database().ref('users').once('value').then(snapShot => {
       const value = snapShot.child(userAccount).val();
-      console.log('value: ', value);
       if(value !== null) {
         return travel(value.room, agent.parameters.place);
       }
