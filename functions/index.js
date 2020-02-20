@@ -15,13 +15,24 @@ process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
  
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
   const agent = new WebhookClient({ request, response });
-  console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
-  console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
+  //console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
+  //console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
  
   function welcomeResponse(agent) {
     console.log('datos del agent: ',agent);
-    console.log('datos del request: ',JSON.stringify(request.body.originalDetectIntentRequest.payload.data.data.personEmail));
+    console.log('request user: ',JSON.stringify(request.body.originalDetectIntentRequest.payload.data.data.personEmail));
+    console.log('request date: ',JSON.stringify(request.body.originalDetectIntentRequest.payload.data.created));
     agent.add(`Hola aventurero!, no sé si eres un valiente o un inconsciente al saludarme, pero en fin, ya lo descubriremos si estas dispuesto a embarcarte en esta aventura. ¿Quieres comenzar la gesta para convertirte en un ingenioso hidalgo?`);
+  }
+
+  function getUserId() {
+    const userMail = JSON.stringify(request.body.originalDetectIntentRequest.payload.data.data.personEmail);
+    return userMail.split('@')[0].split('.').join('');
+  }
+
+  function getValidDomain() {
+    const userMail = JSON.stringify(request.body.originalDetectIntentRequest.payload.data.data.personEmail);
+    return userMail.split('@')[1].split('.')[0];
   }
  
   function fallback(agent) {
@@ -30,18 +41,20 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
   
   function recoverUserName(agent) {
-    return admin.database().ref('data').once(conv.user.storage.username).then(snapShot => {
-      const value = snapShot.child('userName').val();
+    const userAccount = getUserId();
+    return admin.database().ref('users').once('value').then(snapShot => {
+      const value = snapShot.child(userAccount).val();
         if(value !== null) {
-          agent.add(`Que memoria la tuya, tu nombre es ${value}`);
+          agent.add(`Que memoria la tuya, tu nombre es ${value.userName}`);
         }
     });
   }
   
   function saveUserName(agent) {
     const userName = agent.parameters.user;
+    const userAccount = getUserId();
     agent.add(`Excelente nombre, ${userName}`);
-    return admin.database().ref('users').ref(request.body.personEmail).set({
+    return admin.database().ref('users').ref(userAccount).set({
       room: { 'biblioteca': { step: 0, branch: 0 }},
       placesKnown: [],
       stairsReviewed: false,
@@ -62,23 +75,24 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     });
   }
 
-  function recoverCurrentPlaceStep(user) {
+  function recoverCurrentPlaceStep() {
+    const userAccount = getUserId();
     return admin.database().ref('users').once('value').then(snapShot => {
-      const value = snapShot.child(user).val();
+      const value = snapShot.child(userAccount).val();
         if(value !== null) {
           return value.room;
         }
     });
   }
 
-  function Travel(agent) {
+  function travel(agent) {
     const placeSelected = agent.parameters.place;
-    const currentPlace = recoverCurrentPlaceStep(request.body); // {step: 0, branch: 0}
+    const currentStep = recoverCurrentPlaceStep(); // {step: 0, branch: 0}
     console.log('current place: ', currentPlace);
     return admin.database().ref('places').once('value').then(snapShot => {
       const value = snapShot.child(placeSelected).val();
         if(value !== null) {
-          agent.add(`Quieres viajar a ${placeSelected}, que esta a ${value.step} pasos.`);
+          agent.add(`Quieres viajar a ${placeSelected}, que esta a ${value.step} pasos. y estas en el paso ${currentStep.step}`);
         }
     });
   }
@@ -118,6 +132,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   intentMap.set('Default Fallback Intent', fallback);
   intentMap.set('Recordar el nombre', recoverUserName);
   intentMap.set('Guardar mi nombre', saveUserName);
-  intentMap.set('viajar', Travel);
+  intentMap.set('viajar', travel);
   agent.handleRequest(intentMap);
 });
