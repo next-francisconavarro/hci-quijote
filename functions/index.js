@@ -77,12 +77,17 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     });
   }
 
-  function travel(currentPlace, SelectedPlace) {
-    const stepToGo = currentPlace[Object.keys(currentPlace)[0]].step;
+  function calculateTravelCoeficient(origin, destiny) {
+    return (Math.abs(origin.branch - destiny.branch) * 2) + (Math.abs(origin.step - destiny.step));
+  }
+
+  function travel(userData, SelectedPlace) {
+    const placeName = Object.keys(userData.room)[0];
     return admin.database().ref('places').once('value').then(snapShot => {
       const value = snapShot.child(SelectedPlace).val();
       if(value !== null) {
-        return agent.add(`Quieres viajar a ${SelectedPlace}, que esta a ${value.step} pasos. y estas en el paso ${stepToGo}`);
+        const distance = calculateTravelCoeficient(userData.room[placeName], value);
+        return agent.add(`estas en ${placeName}, Quieres viajar a ${SelectedPlace}, y esta a una distancia de ${distance} (${stepToGo} - ${value.step})`);
       }
     });
   }
@@ -92,7 +97,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     return admin.database().ref('users').once('value').then(snapShot => {
       const value = snapShot.child(userAccount).val();
       if(value !== null) {
-        return travel(value.room, agent.parameters.place);
+        return travel(value, agent.parameters.place);
       }
     });
   }
