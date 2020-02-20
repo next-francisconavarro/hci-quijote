@@ -89,6 +89,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         const distance = calculateTravelCoeficient(userData.room[placeName], value);
         return agent.add(`estas en ${placeName}, Quieres viajar a ${SelectedPlace}, y esta a una distancia de ${distance}`);
       }
+    }).catch((e) => {
+      agent.add(`Nadie ha oido hablar de ese lugar nunca!`);
     });
   }
 
