@@ -80,20 +80,22 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
   function recoverCurrentPlaceStep(agent) {
     const userAccount = getUserId();
+    console.log('usser account: ', userAccount);
     return admin.database().ref('users').once('value').then(snapShot => {
       const value = snapShot.child(userAccount).val();
-        if(value !== null) {
-          travel(value.room,agent.parameters.place);
-        }
+      console.log('value: ', value);
+      if(value !== null) {
+        travel(value.room, agent.parameters.place);
+      }
     });
   }
 
-  function travel(currentStep, placeSelected) {
-    console.log('current place: ', currentStep);
+  function travel(currentPlace, SelectedPlace) {
+    console.log('current place: ', currentPlace, SelectedPlace);
     return admin.database().ref('places').once('value').then(snapShot => {
-      const value = snapShot.child(placeSelected).val();
+      const value = snapShot.child(SelectedPlace).val();
         if(value !== null) {
-          agent.add(`Quieres viajar a ${placeSelected}, que esta a ${value.step} pasos. y estas en el paso ${currentStep.step}`);
+          agent.add(`Quieres viajar a ${SelectedPlace}, que esta a ${value.step} pasos. y estas en el paso ${currentPlace.step}`);
         }
     });
   }
