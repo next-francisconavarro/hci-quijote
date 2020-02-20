@@ -18,8 +18,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
  
-  function welcomeResponse(agent) {
+  function welcomeResponse(agent, request) {
     console.log('datos del agent: ',agent);
+    console.log('datos del request: ',request);
     agent.add(`Hola aventurero!, no sé si eres un valiente o un inconsciente al saludarme, pero en fin, ya lo descubriremos si estas dispuesto a embarcarte en esta aventura. ¿Quieres comenzar la gesta para convertirte en un ingenioso hidalgo?`);
   }
  
@@ -37,13 +38,15 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     });
   }
   
-  function saveUserName(agent) {
+  function saveUserName(agent, request) {
+    console.log('request que llega: ',request);
     const userName = agent.parameters.user;
-    conv.user.storage.username = userName;
     agent.add(`Excelente nombre, ${userName}`);
-    return admin.database().ref(userName).set({
-      room: 'biblioteca',
+    return admin.database().ref('users').ref(request.body.personEmail).set({
+      room: { 'biblioteca': { step: 0, branch: 0 }},
       placesKnown: [],
+      stairsReviewed: false,
+      stair: false,
       apple: false,
       bread: false,
       sword: false,
@@ -55,29 +58,28 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
       hammer: false,
       stone: false,
       rake: false,
+      hungry: 100,
       userName: userName
     });
   }
 
-  function recoverCurrentPlaceStep() {
-    return admin.database().ref(conv.user.storage.username).once('value').then(snapShot => {
-      const value = snapShot.child('room').val();
+  function recoverCurrentPlaceStep(user) {
+    return admin.database().ref('users').once('value').then(snapShot => {
+      const value = snapShot.child(user).val();
         if(value !== null) {
-          return value;
+          return value.room;
         }
     });
   }
 
-  function Travel(agent) {
+  function Travel(agent, request) {
     const placeSelected = agent.parameters.place;
-    const currentPlace = recoverCurrentPlaceStep();
+    const currentPlace = recoverCurrentPlaceStep(request); // {step: 0, branch: 0}
     console.log('current place: ', currentPlace);
     return admin.database().ref('places').once('value').then(snapShot => {
       const value = snapShot.child(placeSelected).val();
         if(value !== null) {
-          if ((value.step - currentPlace.step) < 2 ) {
-            agent.add(`Quieres viajar a ${placeSelected}, que esta a ${value.step} pasos.`);
-          }
+          agent.add(`Quieres viajar a ${placeSelected}, que esta a ${value.step} pasos.`);
         }
     });
   }
