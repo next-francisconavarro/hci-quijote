@@ -20,7 +20,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
  
   function welcomeResponse(agent) {
     console.log('datos del agent: ',agent);
-    console.log('datos del request: ',JSON.stringify(request.body.originalDetectIntentRequest.payload.data));
+    console.log('datos del request: ',JSON.stringify(request.body.originalDetectIntentRequest.payload.data.data.personEmail));
     agent.add(`Hola aventurero!, no sé si eres un valiente o un inconsciente al saludarme, pero en fin, ya lo descubriremos si estas dispuesto a embarcarte en esta aventura. ¿Quieres comenzar la gesta para convertirte en un ingenioso hidalgo?`);
   }
  
