@@ -78,27 +78,24 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     });
   }
 
-  recoverCurrentPlaceStep = new promise( (resolve,rejected) => {
+  function recoverCurrentPlaceStep(agent) {
     const userAccount = getUserId();
     return admin.database().ref('users').once('value').then(snapShot => {
       const value = snapShot.child(userAccount).val();
         if(value !== null) {
-          resolve( value.room );
+          travel(travel.room,agent.parameters.place);
         }
     });
-  });
+  }
 
-  function travel(agent) {
-    const placeSelected = agent.parameters.place;
-    recoverCurrentPlaceStep.then((currentStep) => {; // {step: 0, branch: 0}
-      console.log('current place: ', currentStep);
-      return admin.database().ref('places').once('value').then(snapShot => {
-        const value = snapShot.child(placeSelected).val();
-          if(value !== null) {
-            agent.add(`Quieres viajar a ${placeSelected}, que esta a ${value.step} pasos. y estas en el paso ${currentStep.step}`);
-          }
-      });
-    })
+  function travel(currentStep, placeSelected) {
+    console.log('current place: ', currentStep);
+    return admin.database().ref('places').once('value').then(snapShot => {
+      const value = snapShot.child(placeSelected).val();
+        if(value !== null) {
+          agent.add(`Quieres viajar a ${placeSelected}, que esta a ${value.step} pasos. y estas en el paso ${currentStep.step}`);
+        }
+    });
   }
 
   // // Uncomment and edit to make your own intent handler
@@ -136,6 +133,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   intentMap.set('Default Fallback Intent', fallback);
   intentMap.set('Recordar el nombre', recoverUserName);
   intentMap.set('Guardar mi nombre', saveUserName);
-  intentMap.set('viajar', travel);
+  intentMap.set('viajar', recoverCurrentPlaceStep);
   agent.handleRequest(intentMap);
 });
