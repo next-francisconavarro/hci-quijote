@@ -54,24 +54,26 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     const userName = agent.parameters.user;
     const userAccount = getUserId();
     agent.add(`Excelente nombre, ${userName}`);
-    return admin.database().ref('users').ref(userAccount).set({
-      room: { 'biblioteca': { step: 0, branch: 0 }},
-      placesKnown: [],
-      stairsReviewed: false,
-      stair: false,
-      apple: false,
-      bread: false,
-      sword: false,
-      armor: false,
-      mainDoorKey: false,
-      candle: false,
-      mushroom: false,
-      vine: false,
-      hammer: false,
-      stone: false,
-      rake: false,
-      hungry: 100,
-      userName: userName
+    return admin.database().ref('users').set({
+     [userAccount]: {
+        room: { 'biblioteca': { step: 0, branch: 0 }},
+        placesKnown: [],
+        stairsReviewed: false,
+        stair: false,
+        apple: false,
+        bread: false,
+        sword: false,
+        armor: false,
+        mainDoorKey: false,
+        candle: false,
+        mushroom: false,
+        vine: false,
+        hammer: false,
+        stone: false,
+        rake: false,
+        hungry: 100,
+        userName: userName
+      } 
     });
   }
 
