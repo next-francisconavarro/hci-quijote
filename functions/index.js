@@ -83,7 +83,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     return admin.database().ref('users').once('value').then(snapShot => {
       const value = snapShot.child(userAccount).val();
         if(value !== null) {
-          travel(travel.room,agent.parameters.place);
+          travel(value.room,agent.parameters.place);
         }
     });
   }
