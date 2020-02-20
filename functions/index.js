@@ -78,6 +78,21 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     });
   }
 
+  function travel(agent, currentPlace, SelectedPlace) {
+    const stepToGo = currentPlace[Object.keys(currentPlace)[0]].step;
+    console.log('current place: ', stepToGo, SelectedPlace);
+    return admin.database().ref('places').once('value').then(snapShot => {
+      console.log('selected place: ', 'none');
+      const value = snapShot.child(SelectedPlace).val();
+      console.log('selected place: ', value);
+      if(value !== null) {
+        agent.add(`Quieres viajar a ${SelectedPlace}, que esta a ${value.step} pasos. y estas en el paso ${stepToGo}`);
+      }
+    }).catch(function(e) {
+      console.log("oh no!", e);
+    });
+  }
+
   function recoverCurrentPlaceStep(agent) {
     const userAccount = getUserId();
     console.log('usser account: ', userAccount);
@@ -86,18 +101,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
       console.log('value: ', value);
       if(value !== null) {
         travel(agent, value.room, agent.parameters.place);
-      }
-    });
-  }
-
-  function travel(agent, currentPlace, SelectedPlace) {
-    const stepToGo = currentPlace[Object.keys(currentPlace)[0]].step;
-    console.log('current place: ', stepToGo, SelectedPlace);
-    return admin.database().ref('places').once('value').then(snapShot => {
-      const value = snapShot.child(SelectedPlace).val();
-      console.log('selected place: ', value);
-      if(value !== null) {
-        agent.add(`Quieres viajar a ${SelectedPlace}, que esta a ${value.step} pasos. y estas en el paso ${stepToGo}`);
       }
     });
   }
