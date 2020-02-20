@@ -90,7 +90,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   function travel(agent) {
     const placeSelected = agent.parameters.place;
     const currentStep = recoverCurrentPlaceStep(); // {step: 0, branch: 0}
-    console.log('current place: ', currentPlace);
+    console.log('current place: ', currentStep);
     return admin.database().ref('places').once('value').then(snapShot => {
       const value = snapShot.child(placeSelected).val();
         if(value !== null) {
