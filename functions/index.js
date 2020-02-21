@@ -78,8 +78,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
 
   function updateUser(userId, newData) {
-    if (newData.hungry > 10) {
-      agent.add(`El hambre empieza a hacer mella, uno es un hidalgo caballero, pero aun asi necesita comer.`);
+    if (newData.hungry < 10) {
+      return agent.add(`El hambre empieza a hacer mella, uno es un hidalgo caballero, pero aun asi necesita comer.`);
     }
     return admin.database().ref('users').update({
       [userId]: newData
