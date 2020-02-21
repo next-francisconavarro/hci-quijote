@@ -78,6 +78,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   }
 
   function updateUser(userId, newData) {
+    if (newData.hungry > 10) {
+      agent.add(`El hambre empieza  ahacer mella, uno es un hidalgo caballero, pero aun asi necesita comer.`);
+    }
     return admin.database().ref('users').update({
       [userId]: newData
      });
@@ -98,9 +101,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         Object.assign( userData, { placesKnown: Object.assign(userData.placesKnown, { [`${SelectedPlace}`]: true }), room: newPlace, hungry: userData.hungry - distance });
         updateUser(userId, userData);
         return agent.add(`estas en ${placeName}, Quieres viajar a ${SelectedPlace}, y esta a una distancia de ${distance}`);
-      } else {
-        return agent.add(`Nadie ha oido hablar de ese lugar nunca!`);
       }
+    }).catch((e) => {
+      return agent.add(`Nadie ha oido hablar de ese lugar nunca!`);
     });
   }
 
