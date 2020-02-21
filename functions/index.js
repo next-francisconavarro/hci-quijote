@@ -30,10 +30,10 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     return userMail.split('@')[0].split('.').join('');
   }
 
-  function getValidDomain() {
+  /*function getValidDomain() {
     const userMail = JSON.stringify(request.body.originalDetectIntentRequest.payload.data.data.personEmail);
     return userMail.split('@')[1].split('.')[0];
-  }
+  }*/
  
   function fallback(agent) {
     agent.add(`I didn't understand`);
@@ -57,7 +57,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     return admin.database().ref('users').set({
      [userAccount]: {
         room: { 'biblioteca': { step: 0, branch: 0 }},
-        placesKnown: { 'biblioteca': true },
+        placesKnown:{ 'biblioteca': true },
         stairsReviewed: false,
         stair: false,
         apple: false,
@@ -100,7 +100,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         updateUser(userId, userData);
         return agent.add(`Has llegado a ${SelectedPlace} desde ${placeName}, has recorrido una distancia de ${distance} ${conHambre}`);
       }
-    }).catch((e) => {
+    }).catch( e => {
+      console.log('error: ', e);
       return agent.add(`Nadie ha oido hablar de ese lugar nunca!`);
     });
   }
