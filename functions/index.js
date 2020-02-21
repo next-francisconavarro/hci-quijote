@@ -57,7 +57,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     return admin.database().ref('users').set({
      [userAccount]: {
         room: { 'biblioteca': { step: 0, branch: 0 }},
-        placesKnown: ['biblioteca'],
+        placesKnown: { 'biblioteca': true },
         stairsReviewed: false,
         stair: false,
         apple: false,
@@ -97,6 +97,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         newPlace[`${SelectedPlace}`] = value;
         userData.room = newPlace;
         userData.hungry = userData.hungry - distance;
+        Object.assign( userData.placesKnown, { [`${SelectedPlace}`]: true });
         userData.placesKnown.push(SelectedPlace);
         updateUser(userId, userData);
         return agent.add(`estas en ${placeName}, Quieres viajar a ${SelectedPlace}, y esta a una distancia de ${distance}`);
