@@ -29,5 +29,10 @@ Una vez que tienes arrancada la función, para conseguir el token
 
 ## Configuración de distintas ramas en Dialogflow
 
-Se accede al proyecto en la consola https://dialogflow.cloud.google.com/  y se pulsa en la rueda de configuración. Hay que habilitar `BETA FEATURES`
+Se accede al proyecto en la consola https://dialogflow.cloud.google.com/  y se pulsa en la rueda de configuración. Hay que habilitar `BETA FEATURES`.
+Al hacerlo se habilita la pestaña `Enviroments` y se puede publicar una nueva versión apuntando a una url de firebase concreta. Luego cuando probamos en el assistant https://dialogflow.cloud.google.com/#/assistant_preview arriba a la derecha podemos elegir `Change version`, para seleccionar una concreta, con lo que apuntaría a una funcion concreta de dialogflow.
 
+
+
+
+          Functions: Configure and deploy Cloud Functions
