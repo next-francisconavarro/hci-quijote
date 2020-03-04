@@ -4,8 +4,8 @@ node_js:
 before_install:
   - npm install -g firebase-tools
 script:
-  - npm test
   - npm i
+  - npm test
   - cp -R node_modules functions/
   - cd functions
   - npm i
