@@ -2,6 +2,7 @@
   "name": "functions",
   "description": "Cloud Functions for Firebase",
   "scripts": {
+    "test": "jest --coverage --config=test.config.json",
     "serve": "firebase serve --only functions",
     "shell": "firebase functions:shell",
     "start": "npm run shell",
@@ -12,11 +13,17 @@
     "node": "8"
   },
   "dependencies": {
+    "actions-on-google": "^2.2.0",
+    "babel-register": "^6.26.0",
+    "dialogflow": "^0.6.0",
+    "dialogflow-fulfillment": "^0.5.0",
+    "express": "^4.17.1",
     "firebase-admin": "^8.6.0",
     "firebase-functions": "^3.3.0",
-    "actions-on-google": "^2.2.0",
-    "dialogflow": "^0.6.0",
-    "dialogflow-fulfillment": "^0.5.0"
+    "jest": "^25.1.0",
+    "mock-require": "^3.0.3",
+    "sinon": "^9.0.0",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "firebase-functions-test": "^0.1.6"
