@@ -4,13 +4,13 @@
  
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');//nos permite leer y escribir en la BBDD
-const {WebhookClient} = require('dialogflow-fulfillment');
+const {WebhookClient} = require('./fulfillment');
 
 admin.initializeApp({
   credential: admin.credential.applicationDefault(),
   databaseURL: 'ws://quijote-hci-next.firebaseio.com/',
 });
- 
+
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
  
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
@@ -19,8 +19,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   //console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
  
   function welcomeResponse(agent) {
-    console.log('datos del agent: ',agent);
-    console.log('request payload: ',JSON.stringify(request.body.originalDetectIntentRequest.payload));
+    console.log('request payload: ', JSON.stringify(request.body.originalDetectIntentRequest.payload));
     console.log('request user: ',JSON.stringify(request.body.originalDetectIntentRequest.payload.data.data.personEmail));
     console.log('request date: ',JSON.stringify(request.body.originalDetectIntentRequest.payload.data.created));
     agent.add(`Hola aventurero!, no sé si eres un valiente o un inconsciente al saludarme, pero en fin, ya lo descubriremos si estas dispuesto a embarcarte en esta aventura. ¿Quieres comenzar la gesta para convertirte en un ingenioso hidalgo?`);
