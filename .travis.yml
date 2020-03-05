@@ -11,6 +11,7 @@ script:
   - npm i
   - npm run lint
   - cd ..
+  - sh firebaseDeploy.sh
   - if: branch = develop
     firebase deploy -m "build $TRAVIS_BUILD_NUMBER" --non-interactive --token "$FIREBASE_TOKEN"
 cache:
