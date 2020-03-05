@@ -1,0 +1,12 @@
+{
+  "name": "quijote-project",
+  "jest": {
+    "verbose": true,
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/.node/",
+      "/tests/",
+      "/tests/utils"
+    ]
+  }
+}

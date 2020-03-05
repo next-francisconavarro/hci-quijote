@@ -21,7 +21,7 @@ const inventoryIntent = require('./intents/inventory');
 const rememberVisitedIntent = require('./intents/rememberVisited');
 
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
- 
+
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
   const agent = new WebhookClient({ request, response });
   //console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
