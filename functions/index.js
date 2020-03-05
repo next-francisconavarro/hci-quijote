@@ -3,7 +3,7 @@
 'use strict';
  
 const functions = require('firebase-functions');
-const {WebhookClient, admin} = require('./firebase.initializers');//nos permite leer y escribir en la BBDD
+const {WebhookClient} = require('./firebase.initializers');//nos permite leer y escribir en la BBDD
 
 // Intent modules
 const welcomeIntent = require('./intents/welcome');
