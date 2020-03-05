@@ -2,7 +2,7 @@ const placesDao = require('../dao/places');
 const usersDao = require('../dao/users');
 
 function rememberVisited(agent, request) {
-    const userAccount = getUserId(request);
+    const userAccount = usersDao.getUserId(request);
     //TODO: Implementar y usar getUserById en vez de getUsers con child
     return usersDao.getUsers().then(snapShot => {
         const value = snapShot.child(userAccount).val();

@@ -1,4 +1,4 @@
-const admin = require('firebase-admin');
+const usersDao = require('../dao/users');
 
 function getObjectsByUserId(userAccount) {
     // TODO: Implementar y hacer uso de getUserById en vez de getUsers con child
@@ -12,6 +12,9 @@ function getObjectsByUserId(userAccount) {
 }
 
 function deleteObjectByUserId(userId, object) {
+    if(!userId || !object) {
+        console.error("Se requiere usuario y objeto a borrar");
+    }
     // TODO: Implementar query delete object by user id
     return null;
 }

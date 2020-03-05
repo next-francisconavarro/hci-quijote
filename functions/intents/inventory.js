@@ -2,7 +2,7 @@ const usersDao = require('../dao/users');
 const objectsDao = require('../dao/objects');
 
 function showInventory(agent, request) {
-    const userAccount = getUserId(request);
+    const userAccount = usersDao.getUserId(request);
     //TODO: Implementar y usar getUserById en vez de getUsers con child
     return usersDao.getUsers().then(snapShot => {
         const value = snapShot.child(userAccount).val();

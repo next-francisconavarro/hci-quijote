@@ -11,6 +11,9 @@ function getUsers() {
 }
 
 function getUserById(userId) {
+    if(!userId) {
+        console.error("Se requiere identificador de usuario");
+    }
     // TODO: Implementar query por user id
     return null;
 }
