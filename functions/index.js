@@ -3,13 +3,7 @@
 'use strict';
  
 const functions = require('firebase-functions');
-const admin = require('firebase-admin');//nos permite leer y escribir en la BBDD
-const {WebhookClient} = require('./fulfillment');
-
-admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
-  databaseURL: 'ws://quijote-hci-next.firebaseio.com/',
-});
+const {WebhookClient, admin} = require('./firebase.initializers');//nos permite leer y escribir en la BBDD
 
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
  
@@ -49,7 +43,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
         }
     });
   }
-  
+
   function saveUserName(agent) {
     const userName = agent.parameters.user;
     const userAccount = getUserId();
