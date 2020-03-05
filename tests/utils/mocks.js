@@ -1,5 +1,3 @@
-const sinon = require('sinon');
-
 const WebhookMock = class {
   constructor({ request, response }) {
     this.req = request;
@@ -16,7 +14,7 @@ const WebhookMock = class {
 
   handleRequest(intentMap) {
     const intentFn = intentMap.get(this.intent);
-    this.res.json(intentFn(this));
+    intentFn(this);
     this.res.json(this.output);
     this.res.send(200);
   }
