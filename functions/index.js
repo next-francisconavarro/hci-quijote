@@ -3,13 +3,7 @@
 'use strict';
  
 const functions = require('firebase-functions');
-const admin = require('firebase-admin'); //nos permite leer y escribir en la BBDD
-const {WebhookClient} = require('dialogflow-fulfillment');
-
-admin.initializeApp({
-  credential: admin.credential.applicationDefault(),
-  databaseURL: 'ws://quijote-hci-next.firebaseio.com/',
-});
+const {WebhookClient, admin} = require('./firebase.initializers');//nos permite leer y escribir en la BBDD
 
 // Intent modules
 const welcomeIntent = require('./intents/welcome');
