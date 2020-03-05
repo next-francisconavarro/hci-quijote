@@ -8,7 +8,7 @@ test("assistant does not crash", () => {
           user: 'Foo Bar'
         }
       })
-      .then((response) => {
+      .then(response => {
         expect(response.status).toBe(200);
         expect(response.body.join('')).toMatch('Hola aventurero');
       });
