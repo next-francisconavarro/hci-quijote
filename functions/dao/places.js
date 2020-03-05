@@ -1,4 +1,4 @@
-const {admin} = require('./firebase.initializers');
+const {admin} = require('../firebase.initializers');
 
 function getPlaces() {
     return admin.database().ref('places').once('value');

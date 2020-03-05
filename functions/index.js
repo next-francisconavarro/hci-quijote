@@ -53,13 +53,13 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
   // Run the proper function handler based on the matched Dialogflow intent name
   let intentMap = new Map();
-  intentMap.set('Default Welcome Intent', welcomeIntent.welcomeResponse(agent));
-  intentMap.set('Default Fallback Intent', fallbackIntent.fallback(agent));
-  intentMap.set('Recordar el nombre', rememberUserIntent.recoverUserName(agent, request));
-  intentMap.set('Guardar mi nombre', saveUserIntent.saveUser(agent, request));
-  intentMap.set('viajar', travelIntent.recoverCurrentPlaceStep(agent, request));
-  intentMap.set('Inventario', inventoryIntent.showInventory(agent, request));
-  intentMap.set('Tirar', leaveObjectIntent.leaveObject(agent, request));
-  intentMap.set('Recordar visitados', rememberVisitedIntent.rememberVisited(agent, request));
+  intentMap.set('Default Welcome Intent', welcomeIntent.welcomeResponse(request));
+  intentMap.set('Default Fallback Intent', fallbackIntent.fallback);
+  intentMap.set('Recordar el nombre', rememberUserIntent.recoverUserName);
+  intentMap.set('Guardar mi nombre', saveUserIntent.saveUser(request));
+  intentMap.set('viajar', travelIntent.recoverCurrentPlaceStep);
+  intentMap.set('Inventario', inventoryIntent.showInventory);
+  intentMap.set('Tirar', leaveObjectIntent.leaveObject);
+  intentMap.set('Recordar visitados', rememberVisitedIntent.rememberVisited);
   agent.handleRequest(intentMap);
 });
