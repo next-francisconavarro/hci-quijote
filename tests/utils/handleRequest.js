@@ -8,6 +8,10 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(myFirebaseFunctions.dialogflowFirebaseFulfillment);
 
+beforeEach(() => {
+  jest.spyOn(console, 'warn').mockImplementation(() => {});
+});
+
 module.exports = (payload) => request(app)
   .post('/')
   .send(payload)
