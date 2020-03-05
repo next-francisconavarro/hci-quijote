@@ -19,7 +19,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   //console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
  
   function welcomeResponse(agent) {
-    console.log('datos del agent: ',agent);
     console.log('request payload: ', JSON.stringify(request.body.originalDetectIntentRequest.payload));
     console.log('request user: ',JSON.stringify(request.body.originalDetectIntentRequest.payload.data.data.personEmail));
     console.log('request date: ',JSON.stringify(request.body.originalDetectIntentRequest.payload.data.created));
