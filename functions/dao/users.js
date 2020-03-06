@@ -12,10 +12,12 @@ function getUsers() {
 
 function getUserById(userId) {
     if(!userId) {
-        console.error("Se requiere identificador de usuario");
+        throw new Error("Se requiere identificador de usuario");
     }
-    // TODO: Implementar query por user id
-    return null;
+    // TODO: sacar directamente por ID
+    return getUsers().then(snapShot => {
+        return snapShot.child(userId).val();
+    });
 }
 
 function addUser(userAccount, username) {
