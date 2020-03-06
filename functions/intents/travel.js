@@ -2,11 +2,20 @@ const contextDao = require('../dao/context');
 const placesDao = require('../dao/places');
 const usersDao = require('../dao/users');
 
-function calculateTravelCoeficient(origin, destiny) {
-    return (Math.abs(origin.branch - destiny.branch) * 2) + (Math.abs(origin.step - destiny.step)) * 2;
+function recoverCurrentPlaceStep(request) {
+    return agent => {
+        const userAccount = contextDao.getUserId(request);
+        return usersDao.getUsers().then(snapShot => {
+            const value = snapShot.child(userAccount).val();
+            if(value !== null) {
+                return travel(agent, value, userAccount);
+            }
+        });
+    }
 }
 
-function travel(agent, userData, selectedPlace, userId) {
+function travel(agent, userData, userId) {
+    const selectedPlace = agent.parameters.place;
     const placeName = Object.keys(userData.room)[0];
     // TODO: Implementar y hacer uso de getPlacesById en vez de getPlaces con child
     return placesDao.getPlaces().then(snapShot => {
@@ -26,14 +35,8 @@ function travel(agent, userData, selectedPlace, userId) {
     });
 }
 
-function recoverCurrentPlaceStep(agent, request) {
-    const userAccount = contextDao.getUserId(request);
-    return usersDao.getUsers().then(snapShot => {
-        const value = snapShot.child(userAccount).val();
-        if(value !== null) {
-            return travel(agent, value, agent. parameters.place, userAccount);
-        }
-    });
+function calculateTravelCoeficient(origin, destiny) {
+    return (Math.abs(origin.branch - destiny.branch) * 2) + (Math.abs(origin.step - destiny.step)) * 2;
 }
 
 module.exports = { recoverCurrentPlaceStep };

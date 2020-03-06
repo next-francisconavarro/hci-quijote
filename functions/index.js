@@ -55,11 +55,11 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   let intentMap = new Map();
   intentMap.set('Default Welcome Intent', welcomeIntent.welcomeResponse(request));
   intentMap.set('Default Fallback Intent', fallbackIntent.fallback);
-  intentMap.set('Recordar el nombre', rememberUserIntent.recoverUserName);
+  intentMap.set('Recordar el nombre', rememberUserIntent.recoverUserName(request));
   intentMap.set('Guardar mi nombre', saveUserIntent.saveUser(request));
   intentMap.set('viajar', travelIntent.recoverCurrentPlaceStep);
-  intentMap.set('Inventario', inventoryIntent.showInventory);
+  intentMap.set('Inventario', inventoryIntent.showInventory(request));
   intentMap.set('Tirar', leaveObjectIntent.leaveObject);
-  intentMap.set('Recordar visitados', rememberVisitedIntent.rememberVisited);
+  intentMap.set('Recordar visitados', rememberVisitedIntent.rememberVisited(request));
   agent.handleRequest(intentMap);
 });

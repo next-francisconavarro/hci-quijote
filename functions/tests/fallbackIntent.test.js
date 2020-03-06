@@ -1,12 +1,12 @@
 const handleRequest = require('./utils/handleRequest');
 
-test('Welcome intent assistant does not crash', () => {
+test('Fallback intent assistant does not crash', () => {
 
     return handleRequest({
-        intent: 'Default Welcome Intent'
+        intent: 'Default Fallback Intent'
       })
       .then(response => {
         expect(response.status).toBe(200);
-        expect(response.body.join('')).toMatch('Hola aventurero');
+        expect(response.body.join('')).toMatch('No te entiendo');
       });
 });

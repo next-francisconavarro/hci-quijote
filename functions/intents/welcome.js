@@ -1,5 +1,5 @@
 function welcomeResponse(request) {
-    return function(agent) {
+    return agent => {
         console.log('datos del agent: ',agent);
         console.log('request payload: ',JSON.stringify(request.body.originalDetectIntentRequest.payload));
         console.log('request user: ',JSON.stringify(request.body.originalDetectIntentRequest.payload.data.data.personEmail));
