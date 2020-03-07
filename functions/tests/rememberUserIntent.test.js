@@ -1,11 +1,16 @@
 const handleRequest = require('./utils/handleRequest');
+const usersDao = require('../dao/users.js')
+
+beforeEach(() => {
+  jest.spyOn(usersDao, 'getUserById')
+    .mockImplementation(() =>  Promise.resolve( { userName:'victorman' } ));
+});
 
 test("Remember user intent assistant response does not crash", () => {
-
     return handleRequest({
         intent: 'Recordar el nombre',
         payload: {
-          user: 'victorman'
+          user: 'victormanuelpueblanext'
         }
       })
       .then(response => {

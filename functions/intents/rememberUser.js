@@ -4,11 +4,10 @@ const usersDao = require('../dao/users');
 function recoverUserName(request) {
     return agent => {
         const userAccount = contextDao.getUserId(request);
-        return usersDao.getUsers().then(snapShot => {
-            const value = snapShot.child(userAccount).val();
-            if(value !== null) {
-                agent.add(`Que memoria la tuya, tu nombre es ${value.userName}`);
-            }
+        return usersDao.getUserById(userAccount).then(user => {
+          if (user !== null) {
+                agent.add(`Que memoria la tuya, tu nombre es ${user.userName}`);
+          }
         });
     }
 }

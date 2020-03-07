@@ -5,28 +5,25 @@ const usersDao = require('../dao/users');
 function recoverCurrentPlaceStep(request) {
     return agent => {
         const userAccount = contextDao.getUserId(request);
-        return usersDao.getUsers().then(snapShot => {
-            const value = snapShot.child(userAccount).val();
-            if(value !== null) {
-                return travel(agent, value, userAccount);
+        return usersDao.getUserById(userAccount).then(user => {
+            if(user !== null) {
+                return travel(agent, userAccount, user);
             }
         });
     }
 }
 
-function travel(agent, userData, userId) {
+function travel(agent, userId, user) {
     const selectedPlace = agent.parameters.place;
-    const placeName = Object.keys(userData.room)[0];
-    // TODO: Implementar y hacer uso de getPlacesById en vez de getPlaces con child
-    return placesDao.getPlaces().then(snapShot => {
-        const value = snapShot.child(selectedPlace).val();
-        if(value !== null) {
-            const distance = calculateTravelCoeficient(userData.room[placeName], value);
+    const placeName = Object.keys(user.room)[0];
+    return placesDao.getPlaceById(selectedPlace).then(place => {
+        if(place !== null) {
+            const distance = calculateTravelCoeficient(user.room[placeName], place);
             const newPlace = {};
-            const conHambre = userData.hungry - distance < 10 ? ' y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.' : '';
-            newPlace[`${selectedPlace}`] = value;
-            Object.assign( userData, { placesKnown: Object.assign(userData.placesKnown, { [`${selectedPlace}`]: true }), room: newPlace, hungry: userData.hungry - distance });
-            usersDao.updateUser(userId, userData);
+            const conHambre = user.hungry - distance < 10 ? ' y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.' : '';
+            newPlace[`${selectedPlace}`] = place;
+            Object.assign( user, { placesKnown: Object.assign(user.placesKnown, { [`${selectedPlace}`]: true }), room: newPlace, hungry: user.hungry - distance });
+            usersDao.updateUser(userId, user);
             return agent.add(`Has llegado a ${selectedPlace} desde ${placeName}, has recorrido una distancia de ${distance} ${conHambre}`);
         }
     }).catch( e => {

@@ -9,7 +9,6 @@ beforeEach(() => {
 });
 
 test('Inventory empty', () => {
-
   objectsDao.getObjectsByUserId.mockImplementation(() =>  Promise.resolve([]));
 
     return handleRequest({
@@ -25,7 +24,7 @@ test('Inventory empty', () => {
 });
 
 test('Inventory with objects', () => {
-
+  
   objectsDao.getObjectsByUserId.mockImplementation(() =>  Promise.resolve(['llave', 'patata']));
 
   return handleRequest({
