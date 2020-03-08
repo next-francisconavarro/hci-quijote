@@ -4,7 +4,7 @@ const usersDao = require('../dao/users');
 
 function recoverCurrentPlaceStep(request) {
     return agent => {
-      console.log("recoverCurrentPlaceStep -> " + agent.parameters);
+      console.log("recoverCurrentPlaceStep -> " + JSON.stringify(agent.parameters));
       const userAccount = contextDao.getUserId(request);
       return usersDao.getUserById(userAccount).then(user => {
           if(user !== null) {
