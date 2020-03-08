@@ -12,7 +12,6 @@ const rememberUserIntent = require('./intents/rememberUser');
 const saveUserIntent = require('./intents/saveUser');
 const travelIntent = require('./intents/travel');
 const inventoryIntent = require('./intents/inventory');
-const leaveObjectIntent = require('./intents/leaveObject');
 const rememberVisitedIntent = require('./intents/rememberVisited');
 const actionsIntent = require('./intents/actions');
 
