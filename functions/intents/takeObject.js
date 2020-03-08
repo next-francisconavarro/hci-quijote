@@ -10,7 +10,7 @@ function takeObject(agent, request) {
   console.log(`takeObject -> Cuenta de usuario: ${userAccount}`);
   return usersDao.getUserById(userAccount).then(user => {
       if(user) {
-        return objectsDao.takeObject(userAccount, user, object).then(result => {
+        return objectsDao.addObject(userAccount, user, object).then(result => {
           console.log(`takeObject -> Resultado desde takeObject: ${result}`);
           return agent.add(`Has ${action} ${object}`);
         });
