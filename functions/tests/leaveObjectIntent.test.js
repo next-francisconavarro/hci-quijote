@@ -14,15 +14,16 @@ test('Leave object that i do have', () => {
     .mockImplementation(() =>  Promise.resolve(true));
 
   return handleRequest({
-      intent: 'Tirar',
+      intent: 'Acciones',
       payload: {
         user: 'victorman',
+        action: 'tirado',
         object: 'cosita'
       }
     })
     .then(response => {
       expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('Con sumo pesar dejas caer tu cosita y se pierde en el infinito ante tus ojos');
+      expect(response.body.join('')).toMatch('Has tirado cosita');
     });
 })
 
@@ -37,9 +38,10 @@ test('Leave object that i do not have', () => {
       .mockImplementation(() =>  Promise.reject('Object not found'));
 
     return handleRequest({
-        intent: 'Tirar',
+        intent: 'Acciones',
         payload: {
           user: 'victorman',
+          action: 'tirado',
           object: 'cosita'
         }
       })

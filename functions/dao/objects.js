@@ -45,5 +45,24 @@ function deleteObjectByUser(userId, user, object) {
   });
 }
 
+function takeObject(userId, user, object) {
+  if(!userId) {
+      throw new Error("Se requiere identificador de usuario");
+  } else if(!user) {
+      throw new Error("Se requiere usuario");
+  } else if(!object) {
+      throw new Error("Se requiere objeto a borrar");
+  }
 
-module.exports = { getObjectsByUserId, deleteObjectByUser };
+  let objects;
+  if(user.objects && user.objects.length) {
+    objects = user.objects.push(object);
+  } else {
+    objects = [object];
+  }
+
+  Object.assign( user, { objects: objects});
+  return usersDao.updateUser(userId, user);
+}
+
+module.exports = { getObjectsByUserId, deleteObjectByUser, takeObject };

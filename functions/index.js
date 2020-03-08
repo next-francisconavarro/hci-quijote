@@ -14,6 +14,7 @@ const travelIntent = require('./intents/travel');
 const inventoryIntent = require('./intents/inventory');
 const leaveObjectIntent = require('./intents/leaveObject');
 const rememberVisitedIntent = require('./intents/rememberVisited');
+const actionsIntent = require('./intents/actions');
 
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
 
@@ -59,7 +60,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   intentMap.set('Guardar mi nombre', saveUserIntent.saveUser(request));
   intentMap.set('viajar', travelIntent.recoverCurrentPlaceStep(request));
   intentMap.set('Inventario', inventoryIntent.showInventory(request));
-  intentMap.set('Tirar', leaveObjectIntent.leaveObject(request));
   intentMap.set('Recordar visitados', rememberVisitedIntent.rememberVisited(request));
+  intentMap.set('Acciones', actionsIntent.execute(request))
   agent.handleRequest(intentMap);
 });
