@@ -1,6 +1,6 @@
 function getUserId(request) {
     const userMail = request.body.originalDetectIntentRequest.payload.data.data.personEmail;
-    return userMail.replace('.|@.*', '');
+    return userMail.split('@')[0].split('.').join(''); // userMail.replace('.|@.*', '');
 }
 
 /*function getValidDomain() {
