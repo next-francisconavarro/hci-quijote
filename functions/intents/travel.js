@@ -14,6 +14,7 @@ function recoverCurrentPlaceStep(request) {
 }
 
 function travel(agent, userId, user) {
+  console.log(agent);
     const selectedPlace = agent.parameters.place;
     const placeName = Object.keys(user.room)[0];
     return placesDao.getPlaceById(selectedPlace).then(place => {
