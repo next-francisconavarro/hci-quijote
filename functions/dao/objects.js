@@ -1,23 +1,39 @@
 const usersDao = require('../dao/users');
 
-function getObjectsByUserId(userAccount) {
-    // TODO: Implementar y hacer uso de getUserById en vez de getUsers con child
-    return usersDao.getUsers().then(snapShot => {
-        const value = snapShot.child(userAccount).val();
-        if(value !== null) {
-            // TODO: Query a bbdd de objetos del usuario
-            return ["llave", "patata"];
-        }
-    });
+function getObjectsByUserId(userId) {
+  if(!userId) {
+    throw new Error("Se requiere usuario a consultar");
+  }
+
+  return usersDao.getUserById(userId).then(user => {
+      if(user) {
+          return user.objects;
+      }
+  });
 }
 
-function deleteObjectByUserId(userId, object) {
-    if(!userId || !object) {
-        console.error("Se requiere usuario y objeto a borrar");
+function getObjectByObjectId(user, object) {
+  if(!user || !object) {
+    throw new Error("Se requiere usuario y objeto a consultar");
+  }
+  
+  return user.objects.find(element => element == object);
+}
+
+function deleteObjectByUser(userId, user, object) {
+  let deleted = false;
+    if(!userId || !user || !object) {
+        throw new Error("Se requiere identificador de usuario, usuario y objeto a borrar");
     }
-    // TODO: Implementar query delete object by user id
-    return null;
+
+    if(getObjectByObjectId(user, object)) {
+      Object.assign( user, { objects: user.objects.filter(item => item !== object)});
+      usersDao.updateUser(userId, user);
+      deleted = true;
+    }
+
+    return deleted;
 }
 
 
-module.exports = { getObjectsByUserId, deleteObjectByUserId };
+module.exports = { getObjectsByUserId, deleteObjectByUser };

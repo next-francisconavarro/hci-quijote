@@ -21,27 +21,20 @@ function getUserById(userId) {
 }
 
 function addUser(userAccount, username) {
-    return admin.database().ref('users').set({
-        [userAccount]: {
-        room: { 'biblioteca': { step: 0, branch: 0 }},
-        placesKnown:{ 'biblioteca': true },
-        stairsReviewed: false,
-        stair: false,
-        apple: false,
-        bread: false,
-        sword: false,
-        armor: false,
-        mainDoorKey: false,
-        candle: false,
-        mushroom: false,
-        vine: false,
-        hammer: false,
-        stone: false,
-        rake: false,
-        hungry: 100,
-        userName: username
-        } 
-    });
+  if(!userAccount || !username) {
+      throw new Error("Se requiere identificador y nombre de usuario");
+  }
+  
+  return admin.database().ref('users').set({
+      [userAccount]: {
+      room: { 'biblioteca': { step: 0, branch: 0 }},
+      placesKnown:{ 'biblioteca': true },
+      stairsReviewed: false,
+      objects: [], // Inicialmente no tiene objetos en el inventario
+      hungry: 100,
+      userName: username
+      } 
+  });
 }
 
 module.exports = { updateUser, addUser, getUsers, getUserById };

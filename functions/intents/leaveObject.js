@@ -1,16 +1,17 @@
+const contextDao = require('../dao/context');
 const usersDao = require('../dao/users');
 const objectsDao = require('../dao/objects');
 
 function leaveObject(request) {
-    agent => {
+    return agent => {
         const object = agent.parameters.object;
-        const userAccount = usersDao.getUserId(request);
-        //TODO: Implementar y usar getUserById en vez de getUsers con child
-        return usersDao.getUsers().then(snapShot => {
-            const value = snapShot.child(userAccount).val();
-            if(value !== null) {
-                objectsDao.deleteObjectByUserId(userAccount, object);
-                agent.add(`Con sumo pesar dejas caer tu ${object} y se pierde en el infinito ante tus ojos`);
+        const userAccount = contextDao.getUserId(request);
+        return usersDao.getUserById(userAccount).then(user => {
+            if(user) {
+              objectsDao.deleteObjectByUser(userAccount, user, object).then(result => {
+                let message = result?`Con sumo pesar dejas caer tu ${object} y se pierde en el infinito ante tus ojos`:`No dispones del objeto ${object} del que deseas deshacerte`;
+                agent.add(message);
+              });
             }
         });
     }

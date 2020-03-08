@@ -5,8 +5,8 @@ function recoverUserName(request) {
     return agent => {
         const userAccount = contextDao.getUserId(request);
         return usersDao.getUserById(userAccount).then(user => {
-          if (user !== null) {
-                agent.add(`Que memoria la tuya, tu nombre es ${user.userName}`);
+          if (user) {
+            agent.add(`Que memoria la tuya, tu nombre es ${user.userName}`);
           }
         });
     }

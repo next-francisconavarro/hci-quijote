@@ -17,10 +17,10 @@ function travel(agent, userId, user) {
     const selectedPlace = agent.parameters.place;
     const placeName = Object.keys(user.room)[0];
     return placesDao.getPlaceById(selectedPlace).then(place => {
-        if(place !== null) {
-            const distance = calculateTravelCoeficient(user.room[placeName], place);
+        if(place) {
+            const distance = calculateTravelCoeficient(user.room[placeName], place[selectedPlace]);
             const newPlace = {};
-            const conHambre = user.hungry - distance < 10 ? ' y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.' : '';
+            const conHambre = user.hungry - distance < 10 ? 'y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.' : '';
             newPlace[`${selectedPlace}`] = place;
             Object.assign( user, { placesKnown: Object.assign(user.placesKnown, { [`${selectedPlace}`]: true }), room: newPlace, hungry: user.hungry - distance });
             usersDao.updateUser(userId, user);
