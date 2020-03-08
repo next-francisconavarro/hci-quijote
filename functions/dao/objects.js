@@ -22,8 +22,12 @@ function getObjectByObjectId(user, object) {
 
 function deleteObjectByUser(userId, user, object) {
   let deleted = false;
-    if(!userId || !user || !object) {
-        throw new Error("Se requiere identificador de usuario, usuario y objeto a borrar");
+    if(!userId) {
+        throw new Error("Se requiere identificador de usuario");
+    } else if(!user) {
+        throw new Error("Se requiere usuario");
+    } else if(!object) {
+        throw new Error("Se requiere objeto a borrar");
     }
 
     if(getObjectByObjectId(user, object)) {
