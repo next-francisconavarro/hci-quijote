@@ -4,17 +4,17 @@ const usersDao = require('../dao/users');
 
 function recoverCurrentPlaceStep(request) {
     return agent => {
-        const userAccount = contextDao.getUserId(request);
-        return usersDao.getUserById(userAccount).then(user => {
-            if(user !== null) {
-                return travel(agent, userAccount, user);
-            }
-        });
+      console.log("recoverCurrentPlaceStep -> " + agent.parameters);
+      const userAccount = contextDao.getUserId(request);
+      return usersDao.getUserById(userAccount).then(user => {
+          if(user !== null) {
+              return travel(agent, userAccount, user);
+          }
+      });
     }
 }
 
 function travel(agent, userId, user) {
-  console.log(agent);
     const selectedPlace = agent.parameters.place;
     const placeName = Object.keys(user.room)[0];
     return placesDao.getPlaceById(selectedPlace).then(place => {

@@ -21,7 +21,11 @@ function getObjectByObjectId(user, object) {
     throw new Error("Se requiere objeto a consultar");
   }
   
-  return user.objects.find(element => element == object);
+  if(user.objects) {
+    return user.objects.find(element => element == object);
+  } else {
+    return null;
+  }
 }
 
 function deleteObjectByUser(userId, user, object) {

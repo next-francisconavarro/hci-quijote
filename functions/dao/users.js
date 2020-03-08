@@ -22,7 +22,9 @@ function getUserById(userId) {
 
 function addUser(userAccount, username) {
   if(!userAccount || !username) {
-      throw new Error("Se requiere identificador y nombre de usuario");
+      throw new Error("Se requiere identificador");
+  } else if(!username) {
+    throw new Error("Se requiere nombre de usuario");
   }
   
   return admin.database().ref('users').set({
