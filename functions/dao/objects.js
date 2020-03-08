@@ -13,6 +13,7 @@ function getObjectsByUserId(userId) {
 }
 
 function getObjectByObjectId(user, object) {
+  let found = null;
   if(!user) {
     throw new Error("Se requiere usuario");
   }
@@ -21,11 +22,13 @@ function getObjectByObjectId(user, object) {
     throw new Error("Se requiere objeto a consultar");
   }
   
-  if(user.objects) {
-    return user.objects.find(element => element == object);
-  } else {
-    return null;
+  console.log("getObjectByObjectId -> " + user.objects);
+
+  if(user.objects && user.objects.length) {
+    found = user.objects.find(element => element == object);
   }
+
+  return found;
 }
 
 function deleteObjectByUser(userId, user, object) {
