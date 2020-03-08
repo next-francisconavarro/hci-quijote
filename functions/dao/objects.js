@@ -56,7 +56,8 @@ function takeObject(userId, user, object) {
 
   let objects;
   if(user.objects && user.objects.length) {
-    objects = user.objects.push(object);
+    let objects = user.objects;
+    objects.push(object);
   } else {
     objects = [object];
   }
