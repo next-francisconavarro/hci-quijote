@@ -32,22 +32,23 @@ function getObjectByObjectId(user, object) {
 }
 
 function deleteObjectByUser(userId, user, object) {
-  let deleted = false;
-    if(!userId) {
-        throw new Error("Se requiere identificador de usuario");
-    } else if(!user) {
-        throw new Error("Se requiere usuario");
-    } else if(!object) {
-        throw new Error("Se requiere objeto a borrar");
-    }
+  if(!userId) {
+      throw new Error("Se requiere identificador de usuario");
+  } else if(!user) {
+      throw new Error("Se requiere usuario");
+  } else if(!object) {
+      throw new Error("Se requiere objeto a borrar");
+  }
 
-    if(getObjectByObjectId(user, object)) {
+  return getObjectByObjectId(user, object).then(object => {
+    let deleted = false;
+    if(object) {
       Object.assign( user, { objects: user.objects.filter(item => item !== object)});
       usersDao.updateUser(userId, user);
       deleted = true;
     }
-
     return deleted;
+  })
 }
 
 
