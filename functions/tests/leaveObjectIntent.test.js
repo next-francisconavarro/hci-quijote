@@ -30,12 +30,11 @@ test('Leave object that i do not have', () => {
     jest.spyOn(usersDao, 'getUserById')
       .mockImplementation(() =>  Promise.resolve( 
       { 
-        userName: 'victorman',
-        objects:[]
+        userName: 'victorman'
       } ));
 
     jest.spyOn(objectsDao, 'deleteObjectByUser')
-      .mockImplementation(() =>  Promise.resolve(false));
+      .mockImplementation(() =>  Promise.reject('Object not found'));
 
     return handleRequest({
         intent: 'Tirar',

@@ -13,7 +13,6 @@ function getObjectsByUserId(userId) {
 }
 
 function getObjectByObjectId(user, object) {
-  let found = null;
   if(!user) {
     throw new Error("Se requiere usuario");
   }
@@ -22,13 +21,13 @@ function getObjectByObjectId(user, object) {
     throw new Error("Se requiere objeto a consultar");
   }
   
-  console.log("getObjectByObjectId -> " + user.objects);
+  console.log("getObjectByObjectId -> Objetos disponibles: " + user.objects);
 
   if(user.objects && user.objects.length) {
-    found = user.objects.find(element => element == object);
+    return user.objects.find(element => element == object);
+  } else {
+    return Promise.reject("Object not found");
   }
-
-  return found;
 }
 
 function deleteObjectByUser(userId, user, object) {
@@ -41,14 +40,12 @@ function deleteObjectByUser(userId, user, object) {
   }
 
   return getObjectByObjectId(user, object).then(object => {
-    let deleted = false;
-    if(object) {
-      Object.assign( user, { objects: user.objects.filter(item => item !== object)});
-      usersDao.updateUser(userId, user);
-      deleted = true;
-    }
-    return deleted;
-  })
+    Object.assign( user, { objects: user.objects.filter(item => item !== object)});
+    return usersDao.updateUser(userId, user);
+  }).catch(e => {
+    console.log('error: ', e);
+    return e
+  });
 }
 
 

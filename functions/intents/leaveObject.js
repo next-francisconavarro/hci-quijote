@@ -12,8 +12,10 @@ function leaveObject(request) {
           if(user) {
             return objectsDao.deleteObjectByUser(userAccount, user, object).then(result => {
               console.log("leaveObject -> Resultado desde deleteObjectByUser: " + result);
-              let message = result?`Con sumo pesar dejas caer tu ${object} y se pierde en el infinito ante tus ojos`:`No dispones del objeto ${object} del que deseas deshacerte`;
-              agent.add(message);
+              return agent.add(`Con sumo pesar dejas caer tu ${object} y se pierde en el infinito ante tus ojos`);
+            }).catch(e => {
+              console.log('error: ', e);
+              return agent.add(`No dispones del objeto ${object} del que deseas deshacerte`);
             });
           }
       });

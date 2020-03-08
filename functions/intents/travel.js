@@ -7,7 +7,7 @@ function recoverCurrentPlaceStep(request) {
       console.log("recoverCurrentPlaceStep -> " + JSON.stringify(agent.parameters));
       const userAccount = contextDao.getUserId(request);
       return usersDao.getUserById(userAccount).then(user => {
-          if(user !== null) {
+          if(user) {
               return travel(agent, userAccount, user);
           }
       });
