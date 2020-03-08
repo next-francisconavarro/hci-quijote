@@ -45,7 +45,7 @@ function deleteObjectByUser(userId, user, object) {
   });
 }
 
-function takeObject(userId, user, object) {
+function addObject(userId, user, object) {
   if(!userId) {
       throw new Error("Se requiere identificador de usuario");
   } else if(!user) {
@@ -56,7 +56,7 @@ function takeObject(userId, user, object) {
 
   let objects;
   if(user.objects && user.objects.length) {
-    let objects = user.objects;
+    objects = user.objects;
     objects.push(object);
   } else {
     objects = [object];
@@ -66,4 +66,4 @@ function takeObject(userId, user, object) {
   return usersDao.updateUser(userId, user);
 }
 
-module.exports = { getObjectsByUserId, deleteObjectByUser, takeObject };
+module.exports = { getObjectsByUserId, deleteObjectByUser, addObject };
