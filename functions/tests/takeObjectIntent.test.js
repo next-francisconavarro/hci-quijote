@@ -9,7 +9,7 @@ test('Take an object action', () => {
       userName: 'victorman'
     } ));
 
-  jest.spyOn(objectsDao, 'takeObject')
+  jest.spyOn(objectsDao, 'addObject')
     .mockImplementation(() => Promise.resolve());
 
   return handleRequest({
