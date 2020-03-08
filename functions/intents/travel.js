@@ -20,11 +20,11 @@ function travel(agent, userId, user) {
         if(place) {
             const distance = calculateTravelCoeficient(user.room[placeName], place[selectedPlace]);
             const newPlace = {};
-            const conHambre = user.hungry - distance < 10 ? 'y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.' : '';
+            const withHungry = user.hungry - distance < 10 ? 'y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.' : '';
             newPlace[`${selectedPlace}`] = place;
             Object.assign( user, { placesKnown: Object.assign(user.placesKnown, { [`${selectedPlace}`]: true }), room: newPlace, hungry: user.hungry - distance });
             usersDao.updateUser(userId, user);
-            return agent.add(`Has llegado a ${selectedPlace} desde ${placeName}, has recorrido una distancia de ${distance} ${conHambre}`);
+            return agent.add(`Has llegado a ${selectedPlace} desde ${placeName}, has recorrido una distancia de ${distance} ${withHungry}`);
         }
     }).catch( e => {
         console.log('error: ', e);
