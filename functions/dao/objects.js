@@ -42,9 +42,6 @@ function deleteObjectByUser(userId, user, object) {
   return getObjectByObjectId(user, object).then(object => {
     Object.assign( user, { objects: user.objects.filter(item => item !== object)});
     return usersDao.updateUser(userId, user);
-  }).catch(e => {
-    console.log('error: ', e);
-    return e
   });
 }
 
