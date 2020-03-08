@@ -13,8 +13,12 @@ function getObjectsByUserId(userId) {
 }
 
 function getObjectByObjectId(user, object) {
-  if(!user || !object) {
-    throw new Error("Se requiere usuario y objeto a consultar");
+  if(!user) {
+    throw new Error("Se requiere usuario");
+  }
+
+  if(!object) {
+    throw new Error("Se requiere objeto a consultar");
   }
   
   return user.objects.find(element => element == object);
