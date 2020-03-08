@@ -2,7 +2,7 @@ const usersDao = require('../dao/users');
 
 function getObjectsByUserId(userId) {
   if(!userId) {
-    throw new Error("Se requiere usuario a consultar");
+    throw new Error('Se requiere usuario a consultar');
   }
 
   return usersDao.getUserById(userId).then(user => {
@@ -14,29 +14,30 @@ function getObjectsByUserId(userId) {
 
 function getObjectByObjectId(user, object) {
   if(!user) {
-    throw new Error("Se requiere usuario");
+    throw new Error('Se requiere usuario');
   }
 
   if(!object) {
-    throw new Error("Se requiere objeto a consultar");
+    throw new Error('Se requiere objeto a consultar');
   }
   
-  console.log("getObjectByObjectId -> Objetos disponibles: " + user.objects);
+  console.log(`getObjectByObjectId -> Objetos disponibles: ${user.objects}`);
 
+  let objectFound;
   if(user.objects && user.objects.length) {
-    return user.objects.find(element => element == object);
-  } else {
-    return Promise.reject("Object not found");
+    objectFound = user.objects.find(element => element == object);
   }
+
+  return objectFound?Promise.resolve(object):Promise.reject('Object not found');
 }
 
 function deleteObjectByUser(userId, user, object) {
   if(!userId) {
-      throw new Error("Se requiere identificador de usuario");
+      throw new Error('Se requiere identificador de usuario');
   } else if(!user) {
-      throw new Error("Se requiere usuario");
+      throw new Error('Se requiere usuario');
   } else if(!object) {
-      throw new Error("Se requiere objeto a borrar");
+      throw new Error('Se requiere objeto a borrar');
   }
 
   return getObjectByObjectId(user, object).then(object => {
@@ -47,11 +48,11 @@ function deleteObjectByUser(userId, user, object) {
 
 function addObject(userId, user, object) {
   if(!userId) {
-      throw new Error("Se requiere identificador de usuario");
+      throw new Error('Se requiere identificador de usuario');
   } else if(!user) {
-      throw new Error("Se requiere usuario");
+      throw new Error('Se requiere usuario');
   } else if(!object) {
-      throw new Error("Se requiere objeto a borrar");
+      throw new Error('Se requiere objeto a borrar');
   }
 
   let objects;

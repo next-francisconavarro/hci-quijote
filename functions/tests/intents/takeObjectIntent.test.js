@@ -1,6 +1,6 @@
-const handleRequest = require('./utils/handleRequest');
-const usersDao = require('../dao/users');
-const objectsDao = require('../dao/objects');
+const handleRequest = require('../utils/handleRequest');
+const usersDao = require('../../dao/users');
+const objectsDao = require('../../dao/objects');
 
 test('Take an object action', () => {
   jest.spyOn(usersDao, 'getUserById')

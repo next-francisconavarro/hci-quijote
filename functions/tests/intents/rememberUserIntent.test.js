@@ -1,5 +1,5 @@
-const handleRequest = require('./utils/handleRequest');
-const usersDao = require('../dao/users.js')
+const handleRequest = require('../utils/handleRequest');
+const usersDao = require('../../dao/users.js');
 
 beforeEach(() => {
   jest.spyOn(usersDao, 'getUserById')

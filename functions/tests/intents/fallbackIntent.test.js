@@ -1,4 +1,4 @@
-const handleRequest = require('./utils/handleRequest');
+const handleRequest = require('../utils/handleRequest');
 
 test('Fallback intent assistant does not crash', () => {
 

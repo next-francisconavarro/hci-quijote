@@ -12,7 +12,7 @@ function getUsers() {
 
 function getUserById(userId) {
     if(!userId) {
-        throw new Error("Se requiere identificador de usuario");
+        throw new Error('Se requiere identificador de usuario');
     }
     // TODO: sacar directamente por ID
     return getUsers().then(snapShot => {
@@ -22,19 +22,19 @@ function getUserById(userId) {
 
 function addUser(userAccount, username) {
   if(!userAccount || !username) {
-      throw new Error("Se requiere identificador");
+      throw new Error('Se requiere identificador');
   } else if(!username) {
-    throw new Error("Se requiere nombre de usuario");
+    throw new Error('Se requiere nombre de usuario');
   }
   
   return admin.database().ref('users').set({
       [userAccount]: {
-      room: { 'biblioteca': { step: 0, branch: 0 }},
-      placesKnown:{ 'biblioteca': true },
-      stairsReviewed: false,
-      objects: [], // Inicialmente no tiene objetos en el inventario
-      hungry: 100,
-      userName: username
+        room: { 'biblioteca': { step: 0, branch: 0 }},
+        placesKnown:{ 'biblioteca': true },
+        stairsReviewed: false,
+        objects: [], // Inicialmente no tiene objetos en el inventario
+        hungry: 100,
+        userName: username
       } 
   });
 }

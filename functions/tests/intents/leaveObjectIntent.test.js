@@ -1,6 +1,6 @@
-const handleRequest = require('./utils/handleRequest');
-const usersDao = require('../dao/users');
-const objectsDao = require('../dao/objects');
+const handleRequest = require('../utils/handleRequest');
+const usersDao = require('../../dao/users');
+const objectsDao = require('../../dao/objects');
 
 test('Leave object that i do have', () => {
   jest.spyOn(usersDao, 'getUserById')

@@ -1,5 +1,5 @@
 function getUserId(request) {
-    console.log("getUserId -> Request body: " + JSON.stringify(request.body));
+    console.log(`getUserId -> Request body: ${JSON.stringify(request.body)}`);
     const userMail = request.body.originalDetectIntentRequest.payload.data.data.personEmail;
     return userMail.split('@')[0].split('.').join(''); // userMail.replace('.|@.*', '');
 }

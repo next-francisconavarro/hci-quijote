@@ -1,4 +1,4 @@
-const handleRequest = require('./utils/handleRequest');
+const handleRequest = require('../utils/handleRequest');
 
 test('Welcome intent assistant does not crash', () => {
 

@@ -4,7 +4,7 @@ const usersDao = require('../dao/users');
 
 function recoverCurrentPlaceStep(request) {
     return agent => {
-      console.log("recoverCurrentPlaceStep -> " + JSON.stringify(agent.parameters));
+      console.log(`recoverCurrentPlaceStep -> ${JSON.stringify(agent.parameters)}`);
       const userAccount = contextDao.getUserId(request);
       return usersDao.getUserById(userAccount).then(user => {
           if(user) {
@@ -28,8 +28,8 @@ function travel(agent, userId, user) {
           return agent.add(`Has llegado a ${selectedPlace} desde ${placeName}, has recorrido una distancia de ${distance} ${withHungry}`);
       }
   }).catch( e => {
-      console.log('error: ', e);
-      return agent.add(`Nadie ha oido hablar de ese lugar nunca!`);
+      console.log(`error: ${e}`);
+      return agent.add('Nadie ha oido hablar de ese lugar nunca!');
   });
 }
 

@@ -6,7 +6,7 @@ function getPlaces() {
 
 function getPlaceById(placeId) {
   if(!placeId) {
-    throw new Error("Se requiere identificador de lugar");
+    throw new Error('Se requiere identificador de lugar');
   }
   // TODO: sacar directamente por ID
   return getPlaces().then(snapShot => {
