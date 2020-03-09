@@ -12,7 +12,6 @@ function getUserById(userId) {
     if(!userId) {
         throw new Error('Se requiere identificador de usuario');
     }
-    // TODO: sacar directamente por ID
     return admin.database().ref(`users/${userId}`).once('value');
 }
 
