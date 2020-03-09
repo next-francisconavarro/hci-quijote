@@ -1,9 +1,7 @@
 const {admin} = require('../firebase.initializers');
 
 function updateUser(userId, newData) {
-    return admin.database().ref(`users`).update({
-        [userId]: newData
-    });
+  return admin.database().ref(`users/${userId}`).update(newData);
 }
 
 function getUsers() {
@@ -14,7 +12,9 @@ function getUserById(userId) {
     if(!userId) {
         throw new Error('Se requiere identificador de usuario');
     }
-    return admin.database().ref(`users/${userId}`).once('value');
+    return admin.database().ref(`users/${userId}`).once('value').then(snapshot => {
+      return snapshot.val() || {};
+    });
 }
 
 function addUser(userAccount, username) {
