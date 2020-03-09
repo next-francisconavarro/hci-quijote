@@ -56,19 +56,26 @@ function addObject(userId, user, object) {
   }
 
   let objects;
+  let toTake = false;
   if(user.objects && user.objects.length) {
     objects = user.objects;
-    if(objects.includes(object)) {
-      throw new Error('Object repeated');
-    } else {
+    if(!objects.includes(object)) {
+      toTake = true;
+      console.log('addObject -> Object accepted');
       objects.push(object);
     }
   } else {
+    toTake = true;
     objects = [object];
   }
 
-  Object.assign( user, { objects: objects});
-  return usersDao.updateUser(userId, user);
+  if(toTake) {
+    Object.assign( user, { objects: objects});
+    return usersDao.updateUser(userId, user);
+  } else {
+    console.log('addObject -> Object repeated');
+    throw new Error('Object repeated');
+  }
 }
 
 module.exports = { getObjectsByUserId, deleteObjectByUser, addObject };
