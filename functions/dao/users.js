@@ -1,7 +1,9 @@
 const {admin} = require('../firebase.initializers');
 
 function updateUser(userId, newData) {
-    return admin.database().ref(`users/${userId}`).update(newData);
+    return admin.database().ref(`users`).update({
+        [userId]: newData
+    });
 }
 
 function getUsers() {
