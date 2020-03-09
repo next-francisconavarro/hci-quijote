@@ -19,6 +19,7 @@ function travel(agent, userId, user) {
   const placeName = Object.keys(user.room)[0];
   return placesDao.getPlaceById(selectedPlace).then(place => {
       if(place) {
+          console.log(`travel -> Selected place: ${JSON.stringify(place)}`)
           const distance = calculateTravelCoeficient(user.room[placeName], place[selectedPlace]);
           const newPlace = {};
           const withHungry = user.hungry - distance < 10 ? 'y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.' : '';
@@ -34,6 +35,7 @@ function travel(agent, userId, user) {
 }
 
 function calculateTravelCoeficient(origin, destiny) {
+    console.log(`calculateTravelCoeficient -> origin: ${JSON.stringify(origin)} - destiny: ${JSON.stringify(destiny)}`);
     return (Math.abs(origin.branch - destiny.branch) * 2) + (Math.abs(origin.step - destiny.step)) * 2;
 }
 

@@ -13,6 +13,9 @@ function takeObject(agent, request) {
         return objectsDao.addObject(userAccount, user, object).then(result => {
           console.log(`takeObject -> Resultado desde takeObject: ${result}`);
           return agent.add(`Has ${action} ${object}`);
+        }).catch(e => {
+          console.log(`takeObject error -> ${e}`);
+          return agent.add(`Ya tienes el objeto ${object} en tu inventario`)
         });
       }
   });

@@ -15,7 +15,7 @@ function leaveObject(agent, request) {
             // `Con sumo pesar dejas caer tu ${object} y se pierde en el infinito ante tus ojos`
             return agent.add(`Has ${action} ${object}`);
           }).catch(e => {
-            console.log(`error: ${e}`);
+            console.log(`leaveObject error -> ${e}`);
             return agent.add(`No dispones del objeto ${object} del que deseas deshacerte`);
           });
         }

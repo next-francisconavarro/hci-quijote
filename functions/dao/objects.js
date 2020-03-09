@@ -58,7 +58,11 @@ function addObject(userId, user, object) {
   let objects;
   if(user.objects && user.objects.length) {
     objects = user.objects;
-    objects.push(object);
+    if(objects.includes(object)) {
+      throw new Error('Object repeated');
+    } else {
+      objects.push(object);
+    }
   } else {
     objects = [object];
   }
