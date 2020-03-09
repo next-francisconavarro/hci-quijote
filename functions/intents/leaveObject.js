@@ -5,7 +5,7 @@ const objectsDao = require('../dao/objects');
 function leaveObject(agent, request) {
     console.log('leaveObject -> Agent Parameters: ' + JSON.stringify(agent.parameters));
     const action = agent.parameters.action;
-    const object = agent.parameters.object;
+    const object = agent.parameters.object[0];
     const userAccount = contextDao.getUserId(request);
     console.log('leaveObject -> Cuenta de usuario: ' + userAccount);
     return usersDao.getUserById(userAccount).then(user => {

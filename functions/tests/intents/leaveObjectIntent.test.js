@@ -18,7 +18,7 @@ test('Leave object that i do have', () => {
       payload: {
         user: 'victorman',
         action: 'tirado',
-        object: 'cosita'
+        object: ['cosita']
       }
     })
     .then(response => {
@@ -42,7 +42,7 @@ test('Leave object that i do not have', () => {
         payload: {
           user: 'victorman',
           action: 'tirado',
-          object: 'cosita'
+          object: ['cosita']
         }
       })
       .then(response => {
