@@ -20,7 +20,7 @@ function travel(agent, userId, user) {
   return placesDao.getPlaceById(selectedPlace).then(place => {
       if(place) {
           console.log(`travel -> Selected place: ${JSON.stringify(place)}`)
-          const distance = calculateTravelCoeficient(user.room[placeName], place[selectedPlace]);
+          const distance = calculateTravelCoeficient(user.room[placeName], place);
           const newPlace = {};
           const withHungry = user.hungry - distance < 10 ? 'y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.' : '';
           newPlace[`${selectedPlace}`] = place;

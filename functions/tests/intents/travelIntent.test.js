@@ -5,9 +5,8 @@ const placesDao = require('../../dao/places.js');
 beforeEach(() => {
   jest.spyOn(placesDao, 'getPlaceById')
   .mockImplementation(() =>  Promise.resolve(
-  {
-    'alcoba':{ branch: 1, step: 3 }
-  }));
+    { branch: 1, step: 3 }
+  ));
 
   jest.spyOn(placesDao, 'getPlaces')
     .mockImplementation(() =>  Promise.resolve(
@@ -19,14 +18,14 @@ beforeEach(() => {
 })
 
 test('Travel intent without hungry advice', () => {
-  jest.spyOn(usersDao, 'getUserById')
-    .mockImplementation(() =>  Promise.resolve( 
-    { 
-      userName: 'victorman',
-      hungry: 20,
-      room: {'acantilado': { branch: 1, step: 2}},
-      placesKnown: ['acantilado', 'alcoba']
-    } ));
+    jest.spyOn(usersDao, 'getUserById')
+      .mockImplementation(() =>  Promise.resolve( 
+      { 
+        userName: 'victorman',
+        hungry: 20,
+        room: { acantilado: { branch: 1, step: 2}},
+        placesKnown: ['acantilado', 'alcoba']
+      } ));
 
     return handleRequest({
         intent: 'viajar',

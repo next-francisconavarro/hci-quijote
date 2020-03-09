@@ -17,7 +17,7 @@ test('Take a new object action', () => {
       payload: {
         user: 'victorman',
         action: 'cogido',
-        object: 'cosita'
+        object: ['cosita']
       }
     })
     .then(response => {
@@ -42,7 +42,7 @@ test('Take repeated object action', () => {
       payload: {
         user: 'victorman',
         action: 'cogido',
-        object: 'cosita'
+        object: ['cosita']
       }
     })
     .then(response => {
