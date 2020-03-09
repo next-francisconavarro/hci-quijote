@@ -1,7 +1,13 @@
-function getUserId(request) {
-    console.log(`getUserId -> Request body: ${JSON.stringify(request.body)}`);
-    const userMail = request.body.originalDetectIntentRequest.payload.data.data.personEmail;
-    return userMail.split('@')[0].split('.').join(''); // userMail.replace('.|@.*', '');
+const NO_USER = 'nouser';
+
+function getUserId({ body = {} }) {
+    console.log(`getUserId -> Request body: ${JSON.stringify(body)}`);
+    const userMail = body.originalDetectIntentRequest &&
+      body.originalDetectIntentRequest.payload &&
+      body.originalDetectIntentRequest.payload.data &&
+      body.originalDetectIntentRequest.payload.data.data &&
+      body.originalDetectIntentRequest.payload.data.data.personEmail || NO_USER;
+    return userMail.replace(/\.|@.*/g, '');
 }
 
 /*function getValidDomain() {
