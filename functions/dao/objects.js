@@ -59,9 +59,9 @@ function addObject(userId, user, object) {
   let toTake = false;
   if(user.objects && user.objects.length) {
     objects = user.objects;
+    console.log(`addObject -> ${objects} includes ${object}? ${object.includes(object)}`);
     if(!objects.includes(object)) {
       toTake = true;
-      console.log('addObject -> Object accepted');
       objects.push(object);
     }
   } else {
@@ -70,6 +70,7 @@ function addObject(userId, user, object) {
   }
 
   if(toTake) {
+    console.log('addObject -> Object accepted');
     Object.assign( user, { objects: objects});
     return usersDao.updateUser(userId, user);
   } else {
