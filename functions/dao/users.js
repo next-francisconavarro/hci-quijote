@@ -1,9 +1,7 @@
 const {admin} = require('../firebase.initializers');
 
 function updateUser(userId, newData) {
-    return admin.database().ref('users').update({
-        [userId]: newData
-    });
+    return admin.database().ref(`users/${userId}`).update(newData);
 }
 
 function getUsers() {
@@ -15,27 +13,23 @@ function getUserById(userId) {
         throw new Error('Se requiere identificador de usuario');
     }
     // TODO: sacar directamente por ID
-    return getUsers().then(snapShot => {
-        return snapShot.child(userId).val();
-    });
+    return admin.database().ref(`users/${userId}`).once('value');
 }
 
 function addUser(userAccount, username) {
-  if(!userAccount || !username) {
+  if(!userAccount) {
       throw new Error('Se requiere identificador');
   } else if(!username) {
     throw new Error('Se requiere nombre de usuario');
   }
   
-  return admin.database().ref('users').set({
-      [userAccount]: {
+  return admin.database().ref(`users/${userAccount}`).set({
         room: { 'biblioteca': { step: 0, branch: 0 }},
         placesKnown:{ 'biblioteca': true },
         stairsReviewed: false,
         objects: [], // Inicialmente no tiene objetos en el inventario
         hungry: 100,
-        userName: username
-      } 
+        userName: username 
   });
 }
 
