@@ -75,7 +75,7 @@ function addObject(userId, user, object) {
     return usersDao.updateUser(userId, user);
   } else {
     console.log('addObject -> Object repeated');
-    throw new Error('Object repeated');
+    Promise.reject('Object repeated');
   }
 }
 
