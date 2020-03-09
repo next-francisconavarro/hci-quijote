@@ -8,9 +8,8 @@ function getPlaceById(placeId) {
   if(!placeId) {
     throw new Error('Se requiere identificador de lugar');
   }
-  // TODO: sacar directamente por ID
-  return getPlaces().then(snapShot => {
-      return snapShot.child(placeId).val();
+  return admin.database().ref(`places/${placeId}`).once('value').then(snapshot => {
+    return snapshot.val() || {};
   });
 }
 

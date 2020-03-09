@@ -26,7 +26,7 @@ function addUser(userAccount, username) {
   
   return admin.database().ref(`users/${userAccount}`).set({
         room: { 'biblioteca': { step: 0, branch: 0 }},
-        placesKnown:{ 'biblioteca': true },
+        placesKnown: ['biblioteca'],
         stairsReviewed: false,
         objects: [], // Inicialmente no tiene objetos en el inventario
         hungry: 100,
