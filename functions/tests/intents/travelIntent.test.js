@@ -60,3 +60,25 @@ test('Travel intent with hungry advice', () => {
       expect(response.body.join('')).toMatch('Has llegado a alcoba desde acantilado, has recorrido una distancia de 2 y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.');
     });
 })
+
+test('Travel intent no need to trip. Now on desired place', () => {
+  jest.spyOn(usersDao, 'getUserById')
+    .mockImplementation(() =>  Promise.resolve( 
+    { 
+      userName: 'victorman',
+      hungry: 20,
+      room: { acantilado: { branch: 1, step: 2}},
+      placesKnown: ['acantilado', 'alcoba']
+    } ));
+
+  return handleRequest({
+      intent: 'viajar',
+      payload: {
+        place: 'acantilado'
+      }
+    })
+    .then(response => {
+      expect(response.status).toBe(200);
+      expect(response.body.join('')).toMatch('¡Ya estás en este lugar!');
+    });
+})

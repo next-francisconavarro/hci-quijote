@@ -17,21 +17,25 @@ function recoverCurrentPlaceStep(request) {
 function travel(agent, userId, user) {
   const selectedPlace = agent.parameters.place;
   const placeName = Object.keys(user.room)[0];
-  return placesDao.getPlaceById(selectedPlace).then(place => {
-      if(place) {
-          console.log(`travel -> Selected place: ${JSON.stringify(place)}`)
-          const distance = calculateTravelCoeficient(user.room[placeName], place);
-          const newPlace = {};
-          const withHungry = user.hungry - distance < 10 ? 'y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.' : '';
-          newPlace[`${selectedPlace}`] = place;
-          Object.assign( user, { placesKnown: Object.assign(user.placesKnown, { [`${selectedPlace}`]: true }), room: newPlace, hungry: user.hungry - distance });
-          usersDao.updateUser(userId, user);
-          return agent.add(`Has llegado a ${selectedPlace} desde ${placeName}, has recorrido una distancia de ${distance} ${withHungry}`);
-      }
-  }).catch( e => {
-      console.log(`error: ${e}`);
-      return agent.add('Nadie ha oido hablar de ese lugar nunca!');
-  });
+  if(placeName == selectedPlace) {
+    return agent.add('¡Ya estás en este lugar!');
+  } else {
+    return placesDao.getPlaceById(selectedPlace).then(place => {
+        if(place) {
+            console.log(`travel -> Selected place: ${JSON.stringify(place)}`)
+            const distance = calculateTravelCoeficient(user.room[placeName], place);
+            const newPlace = {};
+            const withHungry = user.hungry - distance < 10 ? 'y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.' : '';
+            newPlace[`${selectedPlace}`] = place;
+            Object.assign( user, { placesKnown: Object.assign(user.placesKnown, { [`${selectedPlace}`]: true }), room: newPlace, hungry: user.hungry - distance });
+            usersDao.updateUser(userId, user);
+            return agent.add(`Has llegado a ${selectedPlace} desde ${placeName}, has recorrido una distancia de ${distance} ${withHungry}`);
+        }
+    }).catch( e => {
+        console.log(`error: ${e}`);
+        return agent.add('Nadie ha oido hablar de ese lugar nunca!');
+    });
+  }
 }
 
 function calculateTravelCoeficient(origin, destiny) {
