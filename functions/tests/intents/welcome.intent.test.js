@@ -1,6 +1,6 @@
-const handleRequest = require('./utils/handleRequest');
+const handleRequest = require('../utils/handleRequest');
 
-test('assistant does not crash', () => {
+test('Welcome intent assistant does not crash', () => {
 
     return handleRequest({
         intent: 'Default Welcome Intent'
