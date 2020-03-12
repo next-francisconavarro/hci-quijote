@@ -17,13 +17,13 @@ test('Leave object that i do have', () => {
       intent: 'Acciones',
       payload: {
         user: 'victorman',
-        action: 'tirado',
+        action: 'tirar',
         object: ['cosita']
       }
     })
     .then(response => {
       expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('Has tirado cosita');
+      expect(response.body.join('')).toMatch('Has dejado cosita');
     });
 })
 
@@ -41,7 +41,7 @@ test('Leave object that i do not have', () => {
         intent: 'Acciones',
         payload: {
           user: 'victorman',
-          action: 'tirado',
+          action: 'tirar',
           object: ['cosita']
         }
       })
