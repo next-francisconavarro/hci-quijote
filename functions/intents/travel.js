@@ -25,7 +25,8 @@ function travel(agent, userId, user) {
             console.log(`travel -> Selected place: ${JSON.stringify(place)}`)
             const distance = calculateTravelCoeficient(user.room[placeName], place);
             const newPlace = {};
-            const withHungry = user.hungry - distance < 10 ? 'y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.' : '';
+            const withHungry = user.hungry - distance < 10 ? ', y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.' : '';
+            const distanceText = distance > 4 ? ', Ha sido un largo viaje' : '';
             newPlace[`${selectedPlace}`] = place;
             
             let updatedPlaces = user.placesKnown;
@@ -35,7 +36,7 @@ function travel(agent, userId, user) {
 
             Object.assign( user, { placesKnown: Object.assign(user.placesKnown, updatedPlaces), room: newPlace, hungry: user.hungry - distance });
             usersDao.updateUser(userId, user);
-            return agent.add(`Has llegado a ${selectedPlace} desde ${placeName}, has recorrido una distancia de ${distance} ${withHungry}`);
+            return agent.add(`Has llegado a ${selectedPlace} desde ${placeName}, has recorrido una distancia de ${distance} ${distanceText} ${withHungry}`);
         }
     }).catch( e => {
         console.log(`error: ${e}`);
