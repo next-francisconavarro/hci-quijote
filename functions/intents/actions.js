@@ -7,9 +7,9 @@ function execute(request) {
     const action = agent.parameters.action;
 
     switch(action) {
-      case 'cogido': console.log('execute -> Take action execution');
+      case 'coger': console.log('execute -> Take action execution');
         return takeAction.takeObject(agent, request);
-      case 'tirado': console.log('execute -> Leave action execution');
+      case 'tirar': console.log('execute -> Leave action execution');
         return leaveAction.leaveObject(agent, request);
     }
   }
