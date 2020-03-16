@@ -1,5 +1,5 @@
 const {admin} = require('../firebase.initializers');
-const placesList = require('places.json');
+const placesList = require('./places.json');
 
 function getPlaces() {
     return admin.database().ref('places').once('value');
