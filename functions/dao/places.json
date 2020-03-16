@@ -242,7 +242,7 @@
             { 
               "action": "llamar",
               "object": "puerta",
-              "successResponse": "El posadero abre la puerta entre gruñidos. Se da media vuelta mientras se rasca el trasero, dudas si entrar a lo que parece el recibidor.",
+              "successResponse": "El posadero abre la puerta entre gruñidos. Se da media vuelta mientras se rasca el trasero, dudas si entrar a lo que parece el recibidor."
             }
           ]
         },
@@ -417,7 +417,7 @@
           "actions": [
             { 
               "action": "descansar",
-              "successResponse": "perfecto, ahora podras eguir tu camino brioso",
+              "successResponse": "perfecto, ahora podras eguir tu camino brioso"
             }
           ]
         },
