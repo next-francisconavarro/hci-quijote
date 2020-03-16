@@ -16,7 +16,7 @@ test('Take a new object action', () => {
       intent: 'Acciones',
       payload: {
         user: 'victorman',
-        action: 'cogido',
+        action: 'coger',
         object: ['cosita']
       }
     })
@@ -41,7 +41,7 @@ test('Take repeated object action', () => {
       intent: 'Acciones',
       payload: {
         user: 'victorman',
-        action: 'cogido',
+        action: 'coger',
         object: ['cosita']
       }
     })
