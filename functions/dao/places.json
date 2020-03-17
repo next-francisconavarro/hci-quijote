@@ -1,0 +1,467 @@
+{
+    "places":{
+        "biblioteca": { 
+          "step": 0, 
+          "branch": 0,
+          "description": "Los libros polvorientos destacan en una estanteria situada hacia la izquierda. De todos ellos hay un libro que te llama especialmente la atención.",
+          "actions": [
+            {   
+              "action": "leer",
+              "object": "libro",
+              "successResponse": "Lees en voz alta para espantar el miedo que te recorre el cuerpo. Con cada palabra, todo a tu alrededor vibra cada vez más, hasta que aparece ante ti una ventana eterea, circular, a traves de la cual se puede observar una habitacion"
+            }
+          ]
+        },
+        "habitacion": { 
+          "step": 1, 
+          "branch": 0,
+          "description": "La habitacion es austera como corresponde a la de un hidalgo manchego del siglo XVI. Una escalera conecta tu habitacion con el piso inferior y si miras atrás, todavia puedes ver el portal a la biblioteca.",
+          "actions": []
+        },
+        "zaguan": { 
+          "step": 2,
+          "branch": 0,
+          "description": "Estas en el zaguan. Una amplia escalera te facilitara el acceso al piso superior y delante de ti, tienes las puertas que te llevan al comedor, la cocina y la puerta de salida",
+          "actions": []
+        },
+        "cocina": { 
+          "step": 3, 
+          "branch": 0,
+          "description": "En la antigua y acogedora cocina, desnuda de todo lo que pueda recordar olorosas comidas, queda una triste alacena y, al fondo, una despensa",
+          "actions": [
+            {   
+              "action": "abrir",
+              "object": "alacena",
+              "requirementStatus": ["armorDressed"],
+              "successResponse": "Una rata salta, te intenta morder, pero gracias a la armadura lo unico que consigue es romperse los dientes.",
+              "failResponse": "La rata salta sobre tu hidalgo rostro perjudicando tus globos aculares, ya no estas en condiciones que continuar con un hidalga azaña"
+            },
+            {   
+              "action": "examinar",
+              "object": "alacena",
+              "requirementStatus": ["alacenaOpen"],
+              "successResponse": "Sobre una de las repisas encuentras una llave que parece ser de utilidad",
+              "failResponse": "convendria abrirla para poder examinarla mejor"
+            },
+            { 
+              "action": "coger", 
+              "object": "llave",
+              "successResponse": "Guardala bien, nunca se sabe" ,
+              "successObject": "mainDoorKey"
+            }
+          ],
+          "genericFailResponse": "eso no se puede hacer aqui."
+        },
+        "despensa": { 
+          "step": 4,
+          "branch": 0,
+          "description": "La tenue luz que penetra por la puerta permite vislumbrar un baul, cuya superficie cubierta por el polvo de los siglos encubre recuerdos de tus antepasados.",
+          "actions": [
+            { 
+              "action": "abrir",
+              "object": "baul",
+              "successResponse": "Entre las muchas antigüallas, destaca una armadura vieja y ajada",
+              "successStatus": "baulOpen"
+            },
+            { 
+              "action": "coger",
+              "object": "armadura",
+              "requirementStatus": ["baulOpen"], 
+              "successResponse": "Claro que coges la armadura, alguna vez viste un valiente hidalgo sin una?",
+              "successObject": "armor",
+              "failResponse": "vaya!, ademas de hidalgo eres adivino!, ya sabes que hay algo en el baul sin nisiquiera haberlo abierto!!!"
+            },
+            { 
+              "action": "poner",
+              "object": "armadura",
+              "requirementObject": ["armor"], 
+              "successResponse": "Mejor llevarla puesta que cargar con ella en el zurrón, asi pareces más hidalgo",
+              "successStatus": "armorDressed",
+              "failResponse": "intentas ponerte algo que nisiquiera tienes?, me temo lo peor de tu aventura..."
+            }
+          ]
+        },
+        "comedor": { 
+          "step": 3, 
+          "branch": 0,
+          "description": "Te encuentras en el comedor de tu casa, rústico y sencillo, gobernado por una mesa de madera. Algo cuelga de la pared. También puedes observar que hay un currusco de pan sobre la mesa.",
+          "actions": [
+            { 
+              "action": "examinar",
+              "object": "pared",
+              "successResponse": "Una espada y un escudo cuelgan de la pared." 
+            },
+            { 
+              "action": "coger",
+              "object": "espada",
+              "successResponse": "Una espada claro!!, valiente hidalgo serias sin tener una!!" 
+            },
+            { 
+              "action": "coger",
+              "object": "currusco",
+              "successResponse": "Siempre es interesante tener algo de comer cuando tienes hambre, muy inteligente." 
+            }
+          ]
+        },
+        "portalon": { 
+          "step": 3, 
+          "branch": 0,
+          "description": "El portalon de tu casa, iluminado por la luz de un candelabro, te abrira las puertas de tu nueva vida.",
+          "actions": [
+            { 
+              "action": "abrir",
+              "object": "puerta",
+              "requirementObject": ["mainDoorKey"],
+              "successResponse": "La puerta se abre con un estruendoso chirrido, se ve que nadie la ha usado en mucho tiempo. Más adelante ya divisas argamasilla, tu gran y amado pueblo!",
+              "failResponse": "La puerta esta cerrada a cal y canto, seguro que en alguna parte anda la llave."
+            }
+          ]
+        },
+        "argamasillla": { 
+          "step": 4, 
+          "branch": 0,
+          "description": "Argamasilla de Alba, tu pueblo. Sus solitarias calles y piedras estan mudas ante ti. A la izquierda alcanzas a ver el arco de salida del pueblo, a tu derecha las calles y frente a ti....¿Que dirá ese bando que hay en el muro?",
+          "actions": [
+            { 
+              "action": "leer",
+              "object": "bando",
+              "successResponse": "Si caballero te quieres armar, las armas tendras que velar, en una posada de este lugar, desde la cual la luna veras" 
+            }
+          ]
+        },
+        "arco": { 
+          "step": 5, 
+          "branch": 0,
+          "description": "Ya llegas al arco. Una arboleda esta ahi, hacia el este, esperandote siempre con su sombra acogedora y secreta.",
+          "actions": []
+        },
+        "arboleda": { 
+          "step": 6, 
+          "branch": 0,
+          "description": "¿arboleda?, ¿selva?, las mayores sorpresas pueden esperarte en estos lugares. detrás de ti dejas el arco de entrada al pueblo mientras que más adelante en el camino ves emerger un arbol muy peculiar, ¿sera posible que haya un manzano en estos parajes?.",
+          "actions": [
+            {   
+              "action": "examinar",
+              "object": "suelo",
+              "successResponse": "El suelo es fertil y plagado de níscalos con un aspecto suculento" 
+            },
+            {   
+              "action": "coger",
+              "object": "niscalo",
+              "requirementStatus": "forestFloorChecked",
+              "successResponse": "Perfecto, tener comida siempre te salva de algun que otro apuro.",
+              "failResponse": "que quieres coger que?" 
+            }
+          ]
+        },
+        "manzano": { 
+          "step": 7, 
+          "branch": 0,
+          "description": "Algo insolito en estos parajes, ¡un manzano!, que frutos tan sabrosos, una lastima que no los tengas a tu alcance. Podrias intentar coger una manzana o continuar hacia ese pinar que divisas más adelante.",
+          "actions": [
+            {   
+              "action": "golpear",
+              "object": "manzano",
+              "successResponse": "Una manzana cae al suelo",
+              "successStatus": "appleTree"
+            },
+            { 
+              "action": "coger",
+              "object": "manzana",
+              "requirementStatus": ["appleTree"], 
+              "successResponse": "¡Esto viene de maravilla cuando el hambre arrecia!" 
+            }
+          ]
+        },
+        "pinar": { 
+          "step": 8, 
+          "branch": 0,
+          "description": "Continuas caminando por la arboleda. Estas contento por que, de momento, tu aventura se te esta antojando un agradable paseo. Grandes bosques y arboledas, olor a pinos, un sol gentil...y el suelo esta lleno de flores.",
+          "actions": [
+            { 
+              "action": "examinar",
+              "object": "suelo",
+              "successResponse": "El suelo esta cubierto de hermosas flores, amanitas Phalloides quizas?" 
+            },
+            { 
+              "action": "coger",
+              "object": "amanita",
+              "successResponse": "Una flor?, si, por que no?, tu eres el valiente hidalgo y tambien un hombre sensible." 
+            }
+          ]
+        },
+        "muro": { 
+          "step": 9, 
+          "branch": 1,
+          "description": "Estas en un camino bloqueado por un enorme muro de piedra.",
+          "actions": [
+            { 
+              "action": "dejar",
+              "object": "pedrusco",
+              "requirementObject": "pedrusco",
+              "successResponse": "Colocas el pedruco en la base del muro.",
+              "successStatus": "rockLaying"
+            },
+            { 
+              "action": "subir",
+              "object": "pedrusco",
+              "requirementStatus": "rockLaying",
+              "successResponse": "Al subir al pedrusco, ya no parece tan imposible escalar el muro.",
+              "successStatus": "overTheRock",
+              "failResponse": "Que te quieres subir a que?"
+            },
+            { 
+              "action": "escalar",
+              "object": "muro",
+              "requirementStatus": "overTheRock",
+              "successResponse": "El suelo esta cubierto de hermosas flores, amanitas Phalloides quizas?",
+              "successStatus": "wallClimbing",
+              "failResponse": "El muro es demasiado alto, pero tu como gallardo hidalgo que eres decides intentar escalarlo, mala suerte que te resbalas y mueres al caer desde lo alto."
+            }
+          ]
+        },
+        "callejon": { 
+          "step": 10, 
+          "branch": 1,
+          "requiredStatus": "wallClimbing",
+          "description": "Al cruzar el muro, el camino se acaba, solo puedes ver una botella en el suelo. Tu unica opcion es dar media vuelta. ",
+          "actions": [
+            { 
+              "action": "coger",
+              "object": "botella",
+              "successResponse": "Quieres recoger una botella?, vaya, un hidalgo valiente y ecologico, lo tienes todo!." ,
+              "succesObject": "bottle"
+            }
+          ]
+        },
+        "posada": { 
+          "step": 9, 
+          "branch": 0,
+          "description": "Te encuentras ante la inponente puerta de una suntuosa posada... mentira, la puerta se cae a cachos y la posada luce de dudosa categoria cuanto menos. Antes de disponerte a llamar a esta puerta, te percatas de que a tu izquierda hay un pequeño camino, casi oculto por la maleza, que parece conducir hasta uno de los muros limitrofes con la posada.",
+          "actions": [
+            { 
+              "action": "llamar",
+              "object": "puerta",
+              "successResponse": "El posadero abre la puerta entre gruñidos. Se da media vuelta mientras se rasca el trasero, dudas si entrar a lo que parece el recibidor."
+            }
+          ]
+        },
+        "recepcion": { 
+          "step": 10, 
+          "branch": 0,
+          "description": "Estas en el recibidor de la posada. ¿Cuanta gente habra pasado aqui la noche?, al fondo ves unas escaleras, tampoco hace falta ser un genio para deducir que subiendolas llegarias a las habitaciones.",
+          "actions": []
+        },
+        "escalera": { 
+          "step": 11, 
+          "branch": 0,
+          "description": "Un candelabro en una de las paredes ilumina el descansillo de la escalera. Parece tan viejo como todo lo demás. Quizas seria mejor ir directamente al rellano que hay arriba.",
+          "actions": [
+            { 
+              "action": "examinar",
+              "object": "candelabro",
+              "successResponse": "Una de las velas parece suelta",
+              "successStatus": "candleChecked"
+            },
+            { 
+              "action": "coger",
+              "object": "vela",
+              "requirementStatus": ["candleChecked"], 
+              "successResponse": "Si, mejor la guardamos, nunca se sabe cuando un poco de luz puede iluminar las ideas."
+            }
+          ]
+        },
+        "rellano": { 
+          "step": 12, 
+          "branch": 0,
+          "description": "Estas en el primer rellano. Dos puertas, a izquierda y derecha, visibles gracias a la luz de la antorcha, te abriran el paso a la bodega y dormitorio respectivamente. ¿una bodega dices?, si, no se de que te extraña",
+          "actions": []
+        },
+        "bodega": { 
+          "step": 13, 
+          "branch": 0,
+          "description": "La estancia esta llena de odres, Huele a vino rancio y a queso picado, o era al revés?",
+          "actions": [
+            { 
+              "action": "abrir",
+              "object": "odres",
+              "requirementObject": ["hammer"],
+              "successResponse": "Golpeas un odre y comienza a verter un vino de dudosa calidad.",
+              "successStatus": "obreAbierto",
+              "failResponse": "El corcho esta atascado, seguramente por que lleva siglos sin abrirse, necesitaras algo contundente con lo que abrirlo."
+            },
+            { 
+              "action": "coger",
+              "object": "vino",
+              "requirementObject": ["bottle"],
+              "requirementStatus": ["obreAbierto"],
+              "successResponse": "En serio quieres ese vino?, bueno...no sere yo quien te discuta.",
+              "successObject": "wineBottle"
+            }
+          ]
+        },
+        "dormitorio": { 
+          "step": 13, 
+          "branch": 1,
+          "description": "Bonito dormitorio este. Una cama que hasta parece limpia domina la habitacion. ¿pero que es eso que hay debajo, parece un martillo? ",
+          "actions": [
+            { 
+              "action": "coger",
+              "object": "martillo",
+              "successResponse": "Nos vendra bien guardarlo por si queremos hacer algo de bricomania.",
+              "successObject": "hammer"
+            }
+          ]
+        },
+        "calles": { 
+          "step": 5, 
+          "branch": 1,
+          "description": "Otra calle, calles y mas calles. uAlguien se ha dejado un rastrillo apoyado en la pared y, al fondo, puedes ver como termina el pueblo y se abren los maravillosos campos.",
+          "actions": [
+            { 
+              "action": "coger",
+              "object": "rastrillo",
+              "successResponse": "Un rastrillo??, si bueno, por que no?, si no sale bien lo de hidalgo siempre puedes ser granjero"
+            }
+          ]
+        },
+        "campos": { 
+          "step": 6, 
+          "branch": 1,
+          "description": "Ante ti se extienden los bellos campos de la mancha, como me gusta ese olor a trigo que inunda el aire. Mas adelante en el camino ves la puerta destartalada de una venta, pero un camino oscuro llama tu atencion a la izquierda. En un cartel ya casi deshecho por el paso del tiempo adivinas a leer 'peligro de acantilado, no pasar'",
+          "actions": []
+        },
+        "acantilado": { 
+          "step": 6, 
+          "branch": 2,
+          "description": "Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta.",
+          "actions": [
+            { 
+              "action": "colocar",
+              "object": "escalon",
+              "requirementObject": "escalon",
+              "successResponse": "Dejas el tablon y este hace de puente. Ahora puedes llegar al bosque que hay en frente sin problemas.",
+              "successStatus": "stairPlaced"
+            },
+            { 
+              "action": "saltar",
+              "object": "acantilado",
+              "successResponse": "demasiada fe tenias en tus habilidades. Por desgracia, no llegas al otro lado y ahora eres un hidalgo estrellado."
+            }
+          ]
+        },
+        "bosque": { 
+          "step": 6, 
+          "branch": 2,
+          "requirementStatus": "stairPlaced",
+          "description": "Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daria media vuelta y me iria.",
+          "actions": [
+            { 
+              "action": "coger",
+              "object": "pedrusco",
+              "successResponse": "Un pedrusco si, como no.",
+              "successObject": "pedrusco"
+            }
+          ]
+        },
+        "venta": { 
+          "step": 8, 
+          "branch": 1,
+          "description": "Te encuentras de bruces con la puerta de la venta que te llevara al recibidor, no es por criticar pero tiene aspecto de venirse abajo mas pronto que tarde. A tu izquierda ves un pequeño camino que te lleva a los prados aledaños.",
+          "actions": []
+        },
+        "recibidor": { 
+          "step": 9, 
+          "branch": 1,
+          "description": "Ves dos puertas ante ti, una te lleva al salon y por la otra llegas a un pequeño distribuidor con dos puertas y una mesilla.",
+          "actions": []
+        },
+        "salon": { 
+          "step": 10, 
+          "branch": 1,
+          "description": "Que salón tan solitario y vacio, desde luego aqui no saben como darle un toque hogareño a una estancia. Solo hay una gran mesa vacia y un pequeño cesto en una esquina.",
+          "actions": [
+            { 
+              "action": "examinar",
+              "object": "cesto",
+              "successResponse": "Dentro del cesto solo hay chatarra. Un alambre y poco mas",
+              "successStatus": "cestoChecked"
+            },
+            { 
+              "action": "coger",
+              "object": "alambre",
+              "requirementStatus": ["cestoChecked"],
+              "successResponse": "Nos vendra bien guardarlo por si queremos hacer algo de bricomania.",
+              "successObject": "alambre"
+            }
+          ]
+        },
+        "distribuidor": { 
+          "step": 10, 
+          "branch": 1,
+          "description": "Este distrubidor te permite acceder a dos estancias, a la izquierda una alcoba, y a la derecha una puerta cerrada que podrias abrir, si no fuera por que la cerradura esta atascada.",
+          "actions": [
+            { 
+              "action": "arreglar",
+              "object": "cerradura",
+              "requirementObject": "alambre",
+              "successResponse": "Gracias a tus habilidades como antiguo lazarillo, consigues arreglar la cerradura usando solo un alambre, ahora puedes abrirla y acceder a un confortable patio.",
+              "successStatus": "PatioOpen"
+            }
+          ]
+        },
+        "alcoba": { 
+          "step": 11, 
+          "branch": 1,
+          "description": "un dormitorio sin mas. Una cama, un suelo....poco mas. Para descansar es suficiente supongo.",
+          "actions": [
+            { 
+              "action": "descansar",
+              "successResponse": "perfecto, ahora podras eguir tu camino brioso"
+            }
+          ]
+        },
+        "patio": { 
+          "step": 11, 
+          "branch": 1,
+          "requiredStatus": "patioOpen",
+          "description": "Al traspasar la puerto, accedes a un sorprendentemente acogedor patio, de no ser por que esta lleno de gallinas que alborotan a tu alrededor. En una esquina disponen de un indispensable poco decorado con una estatuilla. Un momento....Todo buen caballero debe velar sus armas por lo menos una vez en su vida, y esa estatuilla es un testigo ideal.",
+          "actions": [
+            { 
+              "action": "velar",
+              "object": "armas",
+              "requirementObject": "armor",
+              "successResponse": "Perfecto!, ahora si ya eres todo un caballero!",
+              "successStatus": "knight"
+            }
+          ]
+        },
+        "prados": { 
+          "step": 6, 
+          "branch": 2,
+          "description": "Unos extensos prados, que solo destacan por un nutrido rebaño de ovejas, que pastan apacibles pero bloquean el paso.",
+          "actions": [
+            { 
+              "action": "atacar",
+              "object": "ovejas",
+              "requirementObject": "sword",
+              "successResponse": "Se apartan a tu paso, permitiendo continuar tu camino a lo que parece ser una imponente cancela."
+            }
+          ]
+        },
+        "cancela": { 
+          "step": 7, 
+          "branch": 2,
+          "description": "Una gran cancela custodiada por dos soldados. Más allá se extienden los dominios del gran reino de castilla, donde valientes hidalgos ponen a prueba su destreza y conocen a sus amadas doncellas. Yo intentaria cruzarla.",
+          "actions": [
+            { 
+              "action": "cruzar",
+              "object": "cancela",
+              "requirementObject": ["sword", "armor"],
+              "requirementStatus": ["knight"],
+              "successResponse": "Cruzas la puerta y es como atravesar la entrada a otro mundo, prados verdes hasta donde alcanza la vista, regados de pequeños bosques y riachuelos, animados por el bello cantar de las aves mas distinguidas... huele a felicidad y opulencia, y como si el destino te sonriese, una bella doncella esta intentando arreglar su carruaje averiado junto a sus monjes acompañantes. Es la oportunidad ideal para demostrar tu valia ante una bella dama!!. continuara..."
+            }
+          ]
+        }
+    }
+}

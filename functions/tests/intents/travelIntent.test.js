@@ -12,7 +12,8 @@ beforeEach(() => {
     .mockImplementation(() =>  Promise.resolve(
     {
       'alcoba':{ branch: 1, step: 3 },
-      'acantilado':{ branch: 1, step: 2 }
+      'acantilado':{ branch: 1, step: 2 },
+      'bosque':{ branch: 2, step: 6 }
     }));
   jest.spyOn(usersDao, 'updateUser').mockImplementation(() => Promise.resolve({}));
 })
@@ -58,6 +59,27 @@ test('Travel intent with hungry advice', () => {
     .then(response => {
       expect(response.status).toBe(200);
       expect(response.body.join('')).toMatch('Has llegado a alcoba desde acantilado, has recorrido una distancia de 2 y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.');
+    });
+})
+test('Travel intent with long distance advice', () => {
+  jest.spyOn(usersDao, 'getUserById')
+    .mockImplementation(() =>  Promise.resolve( 
+    { 
+      userName: 'victorman',
+      hungry: 20,
+      room: {'acantilado': { branch: 3, step: 4}},
+      placesKnown: ['acantilado', 'bosque']
+    } ));
+
+  return handleRequest({
+      intent: 'viajar',
+      payload: {
+        place: 'bosque'
+      }
+    })
+    .then(response => {
+      expect(response.status).toBe(200);
+      expect(response.body.join('')).toMatch('Has llegado a bosque desde acantilado, has recorrido una distancia de 6. Ha sido un largo viaje');
     });
 })
 
