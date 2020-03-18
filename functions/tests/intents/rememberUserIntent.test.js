@@ -3,7 +3,7 @@ const usersDao = require('../../dao/users.js');
 
 beforeEach(() => {
   jest.spyOn(usersDao, 'getUserById')
-    .mockImplementation(() =>  Promise.resolve( { userName:'victorman' } ));
+    .mockImplementation(() =>  Promise.resolve( { userName:'victorman', coordinates: {} } ));
 });
 
 test("Remember user intent assistant response does not crash", () => {
