@@ -7,12 +7,9 @@ function recoverUserName(request) {
         const userAccount = contextDao.getUserId(request);
         return usersDao.getUserById(userAccount).then(user => {
           if (user) {
-            agent.add(`Que memoria la tuya, tu nombre es ${user.userName}.`);
-            if (isNight(user)) {
-              agent.add('Parece que es de noche.');
-            } else {
-              agent.add('Hace un día estupendo.');
-            }
+            agent.add(`Que memoria la tuya, tu nombre es ${user.userName}.
+              ${isNight(user) ? 'Parece que es de noche.' : 'Hace un día estupendo.'}
+            `);
           }
         });
     }
