@@ -32,25 +32,24 @@
             {   
               "action": "abrir",
               "object": "alacena",
-              "requirementStatus": ["armorDressed"],
+              "requirementStatus": ["poner_armadura"],
               "successResponse": "Una rata salta, te intenta morder, pero gracias a la armadura lo unico que consigue es romperse los dientes.",
               "failResponse": "La rata salta sobre tu hidalgo rostro perjudicando tus globos aculares, ya no estas en condiciones que continuar con un hidalga azaña"
             },
             {   
               "action": "examinar",
               "object": "alacena",
-              "requirementStatus": ["alacenaOpen"],
+              "requirementStatus": ["abrir_alacena"],
               "successResponse": "Sobre una de las repisas encuentras una llave que parece ser de utilidad",
               "failResponse": "convendria abrirla para poder examinarla mejor"
             },
             { 
               "action": "coger", 
               "object": "llave",
-              "successResponse": "Guardala bien, nunca se sabe" ,
-              "successObject": "mainDoorKey"
+              "successResponse": "Guardala bien, nunca se sabe"
             }
           ],
-          "genericFailResponse": "eso no se puede hacer aqui."
+          "genericFailResponse": "Eso no se puede hacer aqui"
         },
         "despensa": { 
           "step": 4,
@@ -60,23 +59,20 @@
             { 
               "action": "abrir",
               "object": "baul",
-              "successResponse": "Entre las muchas antigüallas, destaca una armadura vieja y ajada",
-              "successStatus": "baulOpen"
+              "successResponse": "Entre las muchas antigüallas, destaca una armadura vieja y ajada"
             },
             { 
               "action": "coger",
               "object": "armadura",
-              "requirementStatus": ["baulOpen"], 
+              "requirementStatus": ["abrir_baul"], 
               "successResponse": "Claro que coges la armadura, alguna vez viste un valiente hidalgo sin una?",
-              "successObject": "armor",
               "failResponse": "vaya!, ademas de hidalgo eres adivino!, ya sabes que hay algo en el baul sin nisiquiera haberlo abierto!!!"
             },
             { 
               "action": "poner",
               "object": "armadura",
-              "requirementObject": ["armor"], 
+              "requirementObject": ["armadura"], 
               "successResponse": "Mejor llevarla puesta que cargar con ella en el zurrón, asi pareces más hidalgo",
-              "successStatus": "armorDressed",
               "failResponse": "intentas ponerte algo que nisiquiera tienes?, me temo lo peor de tu aventura..."
             }
           ]
@@ -111,7 +107,7 @@
             { 
               "action": "abrir",
               "object": "puerta",
-              "requirementObject": ["mainDoorKey"],
+              "requirementObject": ["coger_llave"],
               "successResponse": "La puerta se abre con un estruendoso chirrido, se ve que nadie la ha usado en mucho tiempo. Más adelante ya divisas argamasilla, tu gran y amado pueblo!",
               "failResponse": "La puerta esta cerrada a cal y canto, seguro que en alguna parte anda la llave."
             }
@@ -148,9 +144,9 @@
             {   
               "action": "coger",
               "object": "niscalo",
-              "requirementStatus": "forestFloorChecked",
+              "requirementStatus": ["examinar_suelo"],
               "successResponse": "Perfecto, tener comida siempre te salva de algun que otro apuro.",
-              "failResponse": "que quieres coger que?" 
+              "failResponse": "¿que quieres coger que?" 
             }
           ]
         },
@@ -162,13 +158,12 @@
             {   
               "action": "golpear",
               "object": "manzano",
-              "successResponse": "Una manzana cae al suelo",
-              "successStatus": "appleTree"
+              "successResponse": "Una manzana cae al suelo"
             },
             { 
               "action": "coger",
               "object": "manzana",
-              "requirementStatus": ["appleTree"], 
+              "requirementStatus": ["golpear_manzano"], 
               "successResponse": "¡Esto viene de maravilla cuando el hambre arrecia!" 
             }
           ]
@@ -198,24 +193,21 @@
             { 
               "action": "dejar",
               "object": "pedrusco",
-              "requirementObject": "pedrusco",
-              "successResponse": "Colocas el pedruco en la base del muro.",
-              "successStatus": "rockLaying"
+              "requirementObject": ["pedrusco"],
+              "successResponse": "Colocas el pedruco en la base del muro."
             },
             { 
               "action": "subir",
               "object": "pedrusco",
-              "requirementStatus": "rockLaying",
+              "requirementStatus": ["dejar_pedrusco"],
               "successResponse": "Al subir al pedrusco, ya no parece tan imposible escalar el muro.",
-              "successStatus": "overTheRock",
               "failResponse": "Que te quieres subir a que?"
             },
             { 
               "action": "escalar",
               "object": "muro",
-              "requirementStatus": "overTheRock",
+              "requirementStatus": ["subir_pedrusco"],
               "successResponse": "El suelo esta cubierto de hermosas flores, amanitas Phalloides quizas?",
-              "successStatus": "wallClimbing",
               "failResponse": "El muro es demasiado alto, pero tu como gallardo hidalgo que eres decides intentar escalarlo, mala suerte que te resbalas y mueres al caer desde lo alto."
             }
           ]
@@ -223,14 +215,13 @@
         "callejon": { 
           "step": 10, 
           "branch": 1,
-          "requiredStatus": "wallClimbing",
+          "requiredStatus": ["escalar_muro"],
           "description": "Al cruzar el muro, el camino se acaba, solo puedes ver una botella en el suelo. Tu unica opcion es dar media vuelta. ",
           "actions": [
             { 
               "action": "coger",
               "object": "botella",
-              "successResponse": "Quieres recoger una botella?, vaya, un hidalgo valiente y ecologico, lo tienes todo!." ,
-              "succesObject": "bottle"
+              "successResponse": "Quieres recoger una botella?, vaya, un hidalgo valiente y ecologico, lo tienes todo!."
             }
           ]
         },
@@ -260,13 +251,12 @@
             { 
               "action": "examinar",
               "object": "candelabro",
-              "successResponse": "Una de las velas parece suelta",
-              "successStatus": "candleChecked"
+              "successResponse": "Una de las velas parece suelta"
             },
             { 
               "action": "coger",
               "object": "vela",
-              "requirementStatus": ["candleChecked"], 
+              "requirementStatus": ["examinar_candelabro"], 
               "successResponse": "Si, mejor la guardamos, nunca se sabe cuando un poco de luz puede iluminar las ideas."
             }
           ]
@@ -284,19 +274,17 @@
           "actions": [
             { 
               "action": "abrir",
-              "object": "odres",
-              "requirementObject": ["hammer"],
+              "object": "odre",
+              "requirementObject": ["martillo"],
               "successResponse": "Golpeas un odre y comienza a verter un vino de dudosa calidad.",
-              "successStatus": "obreAbierto",
               "failResponse": "El corcho esta atascado, seguramente por que lleva siglos sin abrirse, necesitaras algo contundente con lo que abrirlo."
             },
             { 
               "action": "coger",
               "object": "vino",
-              "requirementObject": ["bottle"],
-              "requirementStatus": ["obreAbierto"],
-              "successResponse": "En serio quieres ese vino?, bueno...no sere yo quien te discuta.",
-              "successObject": "wineBottle"
+              "requirementObject": ["botella"],
+              "requirementStatus": ["abrir_odre"],
+              "successResponse": "En serio quieres ese vino?, bueno...no sere yo quien te discuta."
             }
           ]
         },
@@ -308,8 +296,7 @@
             { 
               "action": "coger",
               "object": "martillo",
-              "successResponse": "Nos vendra bien guardarlo por si queremos hacer algo de bricomania.",
-              "successObject": "hammer"
+              "successResponse": "Nos vendra bien guardarlo por si queremos hacer algo de bricomania."
             }
           ]
         },
@@ -339,9 +326,8 @@
             { 
               "action": "colocar",
               "object": "escalon",
-              "requirementObject": "escalon",
-              "successResponse": "Dejas el tablon y este hace de puente. Ahora puedes llegar al bosque que hay en frente sin problemas.",
-              "successStatus": "stairPlaced"
+              "requirementObject": ["escalon"],
+              "successResponse": "Dejas el tablon y este hace de puente. Ahora puedes llegar al bosque que hay en frente sin problemas."
             },
             { 
               "action": "saltar",
@@ -353,14 +339,13 @@
         "bosque": { 
           "step": 6, 
           "branch": 2,
-          "requirementStatus": "stairPlaced",
+          "requirementStatus": ["colocar_escalon"],
           "description": "Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daria media vuelta y me iria.",
           "actions": [
             { 
               "action": "coger",
               "object": "pedrusco",
-              "successResponse": "Un pedrusco si, como no.",
-              "successObject": "pedrusco"
+              "successResponse": "Un pedrusco, sí, como no."
             }
           ]
         },
@@ -384,15 +369,13 @@
             { 
               "action": "examinar",
               "object": "cesto",
-              "successResponse": "Dentro del cesto solo hay chatarra. Un alambre y poco mas",
-              "successStatus": "cestoChecked"
+              "successResponse": "Dentro del cesto solo hay chatarra. Un alambre y poco mas"
             },
             { 
               "action": "coger",
               "object": "alambre",
-              "requirementStatus": ["cestoChecked"],
-              "successResponse": "Nos vendra bien guardarlo por si queremos hacer algo de bricomania.",
-              "successObject": "alambre"
+              "requirementStatus": ["examinar_cesto"],
+              "successResponse": "Nos vendra bien guardarlo por si queremos hacer algo de bricomania."
             }
           ]
         },
@@ -404,9 +387,8 @@
             { 
               "action": "arreglar",
               "object": "cerradura",
-              "requirementObject": "alambre",
-              "successResponse": "Gracias a tus habilidades como antiguo lazarillo, consigues arreglar la cerradura usando solo un alambre, ahora puedes abrirla y acceder a un confortable patio.",
-              "successStatus": "PatioOpen"
+              "requirementObject": ["alambre"],
+              "successResponse": "Gracias a tus habilidades como antiguo lazarillo, consigues arreglar la cerradura usando solo un alambre, ahora puedes abrirla y acceder a un confortable patio."
             }
           ]
         },
@@ -424,15 +406,14 @@
         "patio": { 
           "step": 11, 
           "branch": 1,
-          "requiredStatus": "patioOpen",
+          "requiredStatus": "arreglar_cerradura",
           "description": "Al traspasar la puerto, accedes a un sorprendentemente acogedor patio, de no ser por que esta lleno de gallinas que alborotan a tu alrededor. En una esquina disponen de un indispensable poco decorado con una estatuilla. Un momento....Todo buen caballero debe velar sus armas por lo menos una vez en su vida, y esa estatuilla es un testigo ideal.",
           "actions": [
             { 
               "action": "velar",
               "object": "armas",
-              "requirementObject": "armor",
-              "successResponse": "Perfecto!, ahora si ya eres todo un caballero!",
-              "successStatus": "knight"
+              "requirementObject": ["armadura"],
+              "successResponse": "Perfecto!, ahora si ya eres todo un caballero!"
             }
           ]
         },
@@ -444,7 +425,7 @@
             { 
               "action": "atacar",
               "object": "ovejas",
-              "requirementObject": "sword",
+              "requirementObject": ["espada"],
               "successResponse": "Se apartan a tu paso, permitiendo continuar tu camino a lo que parece ser una imponente cancela."
             }
           ]
@@ -457,8 +438,8 @@
             { 
               "action": "cruzar",
               "object": "cancela",
-              "requirementObject": ["sword", "armor"],
-              "requirementStatus": ["knight"],
+              "requirementObject": ["espada", "armadura"],
+              "requirementStatus": ["velar_armas"],
               "successResponse": "Cruzas la puerta y es como atravesar la entrada a otro mundo, prados verdes hasta donde alcanza la vista, regados de pequeños bosques y riachuelos, animados por el bello cantar de las aves mas distinguidas... huele a felicidad y opulencia, y como si el destino te sonriese, una bella doncella esta intentando arreglar su carruaje averiado junto a sus monjes acompañantes. Es la oportunidad ideal para demostrar tu valia ante una bella dama!!. continuara..."
             }
           ]

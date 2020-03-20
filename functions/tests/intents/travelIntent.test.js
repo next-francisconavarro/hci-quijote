@@ -61,6 +61,7 @@ test('Travel intent with hungry advice', () => {
       expect(response.body.join('')).toMatch('Has llegado a alcoba desde acantilado, has recorrido una distancia de 2 y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.');
     });
 })
+
 test('Travel intent with long distance advice', () => {
   jest.spyOn(usersDao, 'getUserById')
     .mockImplementation(() =>  Promise.resolve( 
