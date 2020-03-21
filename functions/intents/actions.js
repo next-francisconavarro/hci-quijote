@@ -45,7 +45,7 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
 
   let message;
   if(!allowedAction) {
-    console.log('contextActionsTreatment -> forbidden allowed!')
+    console.log('contextActionsTreatment -> forbidden action!')
     message = place.genericFailResponse;
   } else if(!requirementsOk) {
     console.log('contextActionsTreatment -> requirements not met')
@@ -57,7 +57,7 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
           .then(() => agent.add(currentAction.successResponse))
           .catch(e => {
             console.log(`Error: ${e}`);
-            return agent.add(`Ya tienes el objeto ${object} en tu inventario`);
+            agent.add(`Ya tienes el objeto ${object} en tu inventario`);
           });
       default:
         console.log('contextActionsTreatment -> Updating action state');
@@ -65,11 +65,11 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
           .then(() => agent.add(currentAction.successResponse))
           .catch(e => {
             console.log(`Error: ${e}`);
-            return agent.add(`Ya has hecho eso`);
+            agent.add(`Ya has hecho eso`);
           });
     }
   }
-  return agent.add(message);
+  agent.add(message);
 }
 
 function everyWhereActionsTreatment(agent, userAccount, user, action, object) {
@@ -77,10 +77,10 @@ function everyWhereActionsTreatment(agent, userAccount, user, action, object) {
     case 'tirar': console.log('everyWhereActionsTreatment -> Leave action execution');
       return objectsDao.deleteObjectByUser(userAccount, user, object).then(result => {
         console.log(`leaveObject -> Resultado desde deleteObjectByUser: ${result}`);
-        return agent.add(`Has dejado ${object} en el suelo`);
+        agent.add(`Has dejado ${object} en el suelo`);
       }).catch(e => {
         console.log(`leaveObject error -> ${e}`);
-        return agent.add(`No dispones del objeto ${object} del que deseas deshacerte`);
+        agent.add(`No dispones del objeto ${object} del que deseas deshacerte`);
       });
     default:
       console.log('everyWhereActionsTreatment -> Action not supported');

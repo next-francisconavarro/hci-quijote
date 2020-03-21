@@ -106,7 +106,7 @@
             { 
               "action": "abrir",
               "object": "puerta",
-              "requirementObject": ["coger_llave"],
+              "requirementObject": ["llave"],
               "successResponse": "La puerta se abre con un estruendoso chirrido, se ve que nadie la ha usado en mucho tiempo. Más adelante ya divisas argamasilla, tu gran y amado pueblo!",
               "failResponse": "La puerta esta cerrada a cal y canto, seguro que en alguna parte anda la llave."
             }
