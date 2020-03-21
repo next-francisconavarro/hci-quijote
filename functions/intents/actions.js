@@ -34,7 +34,9 @@ function execute(request) {
 }
 
 function contextActionsTreatment(agent,userAccount,user,place,action,object) {
+  console.log(`contextActionsTreatment -> Searching action: ${action} and object: ${object} on list: ${place.actions}`)
   let currentAction = place.actions.find(actionObj => actionObj.action == action && actionObj.object == object);
+  console.log(`contextActionsTreatment -> currentAction: ${JSON.stringify(currentAction)}`);
   let allowedAction = currentAction !== undefined;
   let requirementsOk;
 
@@ -52,6 +54,7 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
     console.log('contextActionsTreatment -> requirements not met')
     message = currentAction.failResponse;
   } else {
+    console.log('contextActionsTreatment -> requirements are met')
     switch(action) {
       case 'coger': console.log('contextActionsTreatment -> Take action execution');
         return objectsDao.addObject(userAccount, user, object)
