@@ -10,7 +10,9 @@ function getPlaceById(placeId) {
     throw new Error('Se requiere identificador de lugar');
   }
 
-  return placesList[placeId];
+  const place = placesList[placeId];
+  console.log(`getPlaceById -> ${placeId} => ${place}`)
+  return place;
 }
 
 module.exports = { getPlaces, getPlaceById };
