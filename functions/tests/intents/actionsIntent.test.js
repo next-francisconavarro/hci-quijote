@@ -26,7 +26,8 @@ test('Actions intent execution. Requirements not met', () => {
               object: 'alacena',
               requirementStatus: ['poner_armadura'],
               successResponse: 'Una rata salta, te intenta morder, pero gracias a la armadura lo unico que consigue es romperse los dientes.',
-              failResponse: 'La rata salta sobre tu hidalgo rostro perjudicando tus globos aculares, ya no estas en condiciones que continuar con un hidalga azaña'
+              failResponse: 'La rata salta sobre tu hidalgo rostro perjudicando tus globos aculares, ya no estas en condiciones que continuar con un hidalga azaña',
+              death:true
             }
           ],
           genericFailResponse: 'Eso no se puede hacer aqui'
@@ -43,7 +44,7 @@ test('Actions intent execution. Requirements not met', () => {
     })
     .then(response => {
       expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('La rata salta sobre tu hidalgo rostro perjudicando tus globos aculares, ya no estas en condiciones que continuar con un hidalga azaña');
+      expect(response.body.join('')).toMatch('La rata salta sobre tu hidalgo rostro perjudicando tus globos aculares, ya no estas en condiciones que continuar con un hidalga azaña\nFIN DE LA PARTIDA');
     });
 })
 

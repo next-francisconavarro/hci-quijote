@@ -47,12 +47,14 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
   }
 
   let message;
+  let death = false;
   if(!allowedAction) {
     console.log('contextActionsTreatment -> forbidden action!')
     message = genericFailResponse;
   } else if(!requirementsOk) {
     console.log('contextActionsTreatment -> requirements not met')
     message = currentAction.failResponse;
+    death = currentAction.death;
   } else {
     console.log('contextActionsTreatment -> requirements are met')
     switch(action) {
@@ -73,7 +75,13 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
           });
     }
   }
+
   agent.add(message);
+
+  if(death) {
+    agent.add('¡¡FIN DE LA PARTIDA!!');
+    usersDao.addUser(userAccount, agent.parameters.user); // Reset de partida
+  }  
 }
 
 function everyWhereActionsTreatment(agent, userAccount, user, action, object) {
