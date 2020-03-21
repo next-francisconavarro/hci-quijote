@@ -79,7 +79,7 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
   agent.add(message);
 
   if(death) {
-    agent.add('¡¡FIN DE LA PARTIDA!!');
+    agent.add('\n¡¡FIN DE LA PARTIDA!!');
     usersDao.addUser(userAccount, agent.parameters.user); // Reset de partida
   }  
 }

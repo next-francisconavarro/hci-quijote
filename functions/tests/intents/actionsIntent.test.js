@@ -44,7 +44,7 @@ test('Actions intent execution. Requirements not met', () => {
     })
     .then(response => {
       expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('La rata salta sobre tu hidalgo rostro perjudicando tus globos aculares, ya no estas en condiciones que continuar con un hidalga azaña\nFIN DE LA PARTIDA');
+      expect(response.body.join('')).toMatch('La rata salta sobre tu hidalgo rostro perjudicando tus globos aculares, ya no estas en condiciones que continuar con un hidalga azaña\n¡¡FIN DE LA PARTIDA!!');
     });
 })
 
