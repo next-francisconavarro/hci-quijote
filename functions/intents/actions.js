@@ -79,9 +79,9 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
   agent.add(message);
 
   if(death) {
-    console.log('contextActionsTreatment -> ¡Death!')
-    agent.add('\n¡¡FIN DE LA PARTIDA!!');
-    return usersDao.addUser(userAccount, user.userName); // Reset de partida
+    console.log('contextActionsTreatment -> ¡Death!');
+    return usersDao.addUser(userAccount, user.userName)
+      .then(() => agent.add('\n¡¡FIN DE LA PARTIDA!!')); // Reset de partida
   }  
 }
 
