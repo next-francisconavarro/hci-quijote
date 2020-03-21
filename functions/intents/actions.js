@@ -13,11 +13,13 @@ function execute(request) {
     const action = agent.parameters.action;
     const object = agent.parameters.object;
     const userAccount = contextDao.getUserId(request);
-    console.log(`takeObject -> Cuenta de usuario: ${userAccount}`);
+    console.log(`execute -> Cuenta de usuario: ${userAccount}, action: ${action}, object: ${object}`);
 
     return usersDao.getUserById(userAccount).then(user => {
       const placeName = Object.keys(user.room)[0];
+      console.log(`execute -> current place object: ${placeName}`);
       return placesDao.getPlaceById(placeName).then(currentPlace => {
+        console.log(`execute -> current place value: ${currentPlace}`);
         if(currentPlace) {
           if(everyWhereActions.includes(action)) {
             return everyWhereActionsTreatment(agent, userAccount, user, action, object);
@@ -36,18 +38,21 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
   let requirementsOk;
 
   if(allowedAction) {
+    console.log('contextActionsTreatment -> action allowed!')
     requirementsOk = arrayUtils.isSubset(currentAction.requirementObject, user.objects) &&
       arrayUtils.isSubset(currentAction.requirementStatus, user.states);
   }
 
   let message;
   if(!allowedAction) {
+    console.log('contextActionsTreatment -> forbidden allowed!')
     message = place.genericFailResponse;
   } else if(!requirementsOk) {
+    console.log('contextActionsTreatment -> requirements not met')
     message = currentAction.failResponse;
   } else {
     switch(action) {
-      case 'coger': console.log('execute -> Take action execution');
+      case 'coger': console.log('contextActionsTreatment -> Take action execution');
         return objectsDao.addObject(userAccount, user, object)
           .then(() => agent.add(currentAction.successResponse))
           .catch(e => {
@@ -55,6 +60,7 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
             return agent.add(`Ya tienes el objeto ${object} en tu inventario`);
           });
       default:
+        console.log('contextActionsTreatment -> Updating action state');
         return statesDao.addStatus(userAccount, user, action + '_' + object)
           .then(() => agent.add(currentAction.successResponse))
           .catch(e => {
@@ -68,7 +74,7 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
 
 function everyWhereActionsTreatment(agent, userAccount, user, action, object) {
   switch(action) {
-    case 'tirar': console.log('execute -> Leave action execution');
+    case 'tirar': console.log('everyWhereActionsTreatment -> Leave action execution');
       return objectsDao.deleteObjectByUser(userAccount, user, object).then(result => {
         console.log(`leaveObject -> Resultado desde deleteObjectByUser: ${result}`);
         return agent.add(`Has dejado ${object} en el suelo`);
@@ -76,6 +82,9 @@ function everyWhereActionsTreatment(agent, userAccount, user, action, object) {
         console.log(`leaveObject error -> ${e}`);
         return agent.add(`No dispones del objeto ${object} del que deseas deshacerte`);
       });
+    default:
+      console.log('everyWhereActionsTreatment -> Action not supported');
+      agent.add('Eso no se puede hacer aqui');
   }
 }
 
