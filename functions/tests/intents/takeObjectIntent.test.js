@@ -19,7 +19,6 @@ test('Actions take new object intent execution', () => {
   jest.spyOn(placesDao, 'getPlaceById')
     .mockImplementation(() =>  Promise.resolve( 
       {
-        cocina: { 
           step: 3, 
           branch: 0,
           description: 'En la antigua y acogedora cocina, desnuda de todo lo que pueda recordar olorosas comidas, queda una triste alacena y, al fondo, una despensa',
@@ -32,7 +31,7 @@ test('Actions take new object intent execution', () => {
           ],
           genericFailResponse: 'Eso no se puede hacer aqui'
         }
-      }));
+      ));
 
   return handleRequest({
       intent: 'Acciones',
@@ -63,7 +62,6 @@ test('Actions take same object intent execution', () => {
   jest.spyOn(placesDao, 'getPlaceById')
     .mockImplementation(() =>  Promise.resolve( 
       {
-        cocina: { 
           step: 3, 
           branch: 0,
           description: 'En la antigua y acogedora cocina, desnuda de todo lo que pueda recordar olorosas comidas, queda una triste alacena y, al fondo, una despensa',
@@ -76,7 +74,7 @@ test('Actions take same object intent execution', () => {
           ],
           genericFailResponse: 'Eso no se puede hacer aqui'
         }
-      }));
+      ));
 
   return handleRequest({
       intent: 'Acciones',

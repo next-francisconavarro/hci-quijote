@@ -16,8 +16,7 @@ test('Actions intent execution. Requirements not met', () => {
 
   jest.spyOn(placesDao, 'getPlaceById')
     .mockImplementation(() =>  Promise.resolve( 
-      {
-        cocina: { 
+      { 
           step: 3, 
           branch: 0,
           description: 'En la antigua y acogedora cocina, desnuda de todo lo que pueda recordar olorosas comidas, queda una triste alacena y, al fondo, una despensa',
@@ -32,7 +31,7 @@ test('Actions intent execution. Requirements not met', () => {
           ],
           genericFailResponse: 'Eso no se puede hacer aqui'
         }
-      }));
+      ));
 
   return handleRequest({
       intent: 'Acciones',
@@ -64,8 +63,7 @@ test('Actions intent execution. Requirements are met', () => {
 
   jest.spyOn(placesDao, 'getPlaceById')
     .mockImplementation(() =>  Promise.resolve( 
-      {
-        cocina: { 
+      { 
           step: 3, 
           branch: 0,
           description: 'En la antigua y acogedora cocina, desnuda de todo lo que pueda recordar olorosas comidas, queda una triste alacena y, al fondo, una despensa',
@@ -80,7 +78,7 @@ test('Actions intent execution. Requirements are met', () => {
           ],
           genericFailResponse: 'Eso no se puede hacer aqui'
         }
-      }));
+      ));
 
   return handleRequest({
       intent: 'Acciones',
@@ -113,7 +111,6 @@ test('Actions intent execution. Fail due to repeated action', () => {
   jest.spyOn(placesDao, 'getPlaceById')
     .mockImplementation(() =>  Promise.resolve( 
       {
-        cocina: { 
           step: 3, 
           branch: 0,
           description: 'En la antigua y acogedora cocina, desnuda de todo lo que pueda recordar olorosas comidas, queda una triste alacena y, al fondo, una despensa',
@@ -128,7 +125,7 @@ test('Actions intent execution. Fail due to repeated action', () => {
           ],
           genericFailResponse: 'Eso no se puede hacer aqui'
         }
-      }));
+      ));
 
   return handleRequest({
       intent: 'Acciones',
@@ -159,7 +156,6 @@ test('Actions intent Forbidden action and object', () => {
   jest.spyOn(placesDao, 'getPlaceById')
     .mockImplementation(() =>  Promise.resolve( 
       {
-        cocina: { 
           step: 3, 
           branch: 0,
           description: 'En la antigua y acogedora cocina, desnuda de todo lo que pueda recordar olorosas comidas, queda una triste alacena y, al fondo, una despensa',
@@ -172,7 +168,7 @@ test('Actions intent Forbidden action and object', () => {
           ],
           genericFailResponse: 'Eso no se puede hacer aqui'
         }
-      }));
+      ));
 
   return handleRequest({
       intent: 'Acciones',
@@ -203,7 +199,6 @@ test('Actions intent Forbidden object execution', () => {
   jest.spyOn(placesDao, 'getPlaceById')
     .mockImplementation(() =>  Promise.resolve( 
       {
-        cocina: { 
           step: 3, 
           branch: 0,
           description: 'En la antigua y acogedora cocina, desnuda de todo lo que pueda recordar olorosas comidas, queda una triste alacena y, al fondo, una despensa',
@@ -216,7 +211,7 @@ test('Actions intent Forbidden object execution', () => {
           ],
           genericFailResponse: 'Eso no se puede hacer aqui'
         }
-      }));
+      ));
 
   return handleRequest({
       intent: 'Acciones',
@@ -247,7 +242,6 @@ test('Actions intent Forbidden action execution', () => {
   jest.spyOn(placesDao, 'getPlaceById')
     .mockImplementation(() =>  Promise.resolve( 
       {
-        cocina: { 
           step: 3, 
           branch: 0,
           description: 'En la antigua y acogedora cocina, desnuda de todo lo que pueda recordar olorosas comidas, queda una triste alacena y, al fondo, una despensa',
@@ -260,7 +254,7 @@ test('Actions intent Forbidden action execution', () => {
           ],
           genericFailResponse: 'Eso no se puede hacer aqui'
         }
-      }));
+      ));
 
   return handleRequest({
       intent: 'Acciones',

@@ -17,14 +17,14 @@ function execute(request) {
 
     return usersDao.getUserById(userAccount).then(user => {
       const placeName = Object.keys(user.room)[0];
-      console.log(`execute -> current place object: ${placeName}`);
+      console.log(`execute -> current place name: ${placeName}`);
       return placesDao.getPlaceById(placeName).then(currentPlace => {
-        console.log(`execute -> current place value: ${currentPlace}`);
+        console.log(`execute -> current place value: ${JSON.stringify(currentPlace)}`);
         if(currentPlace) {
           if(everyWhereActions.includes(action)) {
             return everyWhereActionsTreatment(agent, userAccount, user, action, object);
           } else {
-            return contextActionsTreatment(agent, userAccount, user, currentPlace[placeName], action, object);
+            return contextActionsTreatment(agent, userAccount, user, currentPlace, action, object);
           }
         }
       });

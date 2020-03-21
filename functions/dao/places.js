@@ -11,7 +11,7 @@ function getPlaceById(placeId) {
   }
 
   const place = placesList[placeId];
-  console.log(`getPlaceById -> ${placeId} => ${place}`)
+  console.log(`getPlaceById -> ${placeId} => ${JSON.stringify(place)}`)
   return Promise.resolve(place);
 }
 

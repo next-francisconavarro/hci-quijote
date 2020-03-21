@@ -19,7 +19,6 @@ test('Leave object that i do have', () => {
     jest.spyOn(placesDao, 'getPlaceById')
     .mockImplementation(() =>  Promise.resolve( 
       {
-        cocina: { 
           step: 3, 
           branch: 0,
           description: 'En la antigua y acogedora cocina, desnuda de todo lo que pueda recordar olorosas comidas, queda una triste alacena y, al fondo, una despensa',
@@ -32,7 +31,7 @@ test('Leave object that i do have', () => {
           ],
           genericFailResponse: 'Eso no se puede hacer aqui'
         }
-      }));
+      ));
 
   return handleRequest({
       intent: 'Acciones',
