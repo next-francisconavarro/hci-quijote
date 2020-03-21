@@ -1,7 +1,8 @@
 const objectsDao = require('../dao/objects');
 const placesDao = require('../dao/places');
 const usersDao = require('../dao/users');
-const contextDao = require('../dao/context')
+const statesDao = require('../dao/states');
+const contextDao = require('../dao/context');
 const arrayUtils = require('../utilities/arrayUtils');
 
 const everyWhereActions = ['tirar'];
@@ -54,7 +55,12 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
             return agent.add(`Ya tienes el objeto ${object} en tu inventario`);
           });
       default:
-        message = currentAction.successResponse;
+        return statesDao.addStatus(userAccount, user, action + '_' + object)
+          .then(() => agent.add(currentAction.successResponse))
+          .catch(e => {
+            console.log(`Error: ${e}`);
+            return agent.add(`Ya has hecho eso`);
+          });
     }
   }
   return agent.add(message);
