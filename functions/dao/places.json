@@ -1,5 +1,4 @@
 {
-    "places":{
         "biblioteca": { 
           "step": 0, 
           "branch": 0,
@@ -444,5 +443,4 @@
             }
           ]
         }
-    }
 }
