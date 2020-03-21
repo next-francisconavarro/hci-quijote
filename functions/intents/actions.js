@@ -6,6 +6,7 @@ const contextDao = require('../dao/context');
 const arrayUtils = require('../utilities/arrayUtils');
 
 const everyWhereActions = ['tirar'];
+const genericFailResponse = 'Eso no se puede hacer aqui';
 
 function execute(request) {
   return agent => {
@@ -46,7 +47,7 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
   let message;
   if(!allowedAction) {
     console.log('contextActionsTreatment -> forbidden action!')
-    message = place.genericFailResponse;
+    message = genericFailResponse;
   } else if(!requirementsOk) {
     console.log('contextActionsTreatment -> requirements not met')
     message = currentAction.failResponse;
@@ -84,7 +85,7 @@ function everyWhereActionsTreatment(agent, userAccount, user, action, object) {
       });
     default:
       console.log('everyWhereActionsTreatment -> Action not supported');
-      agent.add('Eso no se puede hacer aqui');
+      agent.add(genericFailResponse);
   }
 }
 
