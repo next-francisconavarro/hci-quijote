@@ -12,7 +12,7 @@ function getPlaceById(placeId) {
 
   const place = placesList[placeId];
   console.log(`getPlaceById -> ${placeId} => ${place}`)
-  return place;
+  return Promise.resolve(place);
 }
 
 module.exports = { getPlaces, getPlaceById };
