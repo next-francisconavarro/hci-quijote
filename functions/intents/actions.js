@@ -76,13 +76,13 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
     }
   }
 
-  agent.add(message);
-
   if(death) {
     console.log('contextActionsTreatment -> ¡Death!');
-    agent.add('\n¡¡FIN DE LA PARTIDA!!');
+    agent.add(message + '\n¡¡FIN DE LA PARTIDA!!');
     const coordinates = { lat: 39.5137458, lng: -3.0046506};
     return usersDao.addUser(userAccount, user.userName, coordinates); // Reset de partida
+  } else {
+    agent.add(message);
   }  
 }
 
