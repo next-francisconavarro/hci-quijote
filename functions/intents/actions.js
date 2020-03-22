@@ -81,7 +81,8 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
   if(death) {
     console.log('contextActionsTreatment -> ¡Death!');
     agent.add('\n¡¡FIN DE LA PARTIDA!!');
-    return usersDao.addUser(userAccount, user.userName); // Reset de partida
+    const coordinates = { lat: 39.5137458, lng: -3.0046506};
+    return usersDao.addUser(userAccount, user.userName, coordinates); // Reset de partida
   }  
 }
 
