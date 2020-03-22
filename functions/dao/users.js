@@ -17,7 +17,7 @@ function getUserById(userId) {
     });
 }
 
-function addUser(userAccount, username) {
+function addUser(userAccount, username, coordinates) {
   if(!userAccount) {
       throw new Error('Se requiere identificador');
   } else if(!username) {
@@ -29,7 +29,8 @@ function addUser(userAccount, username) {
         placesKnown: ['biblioteca'],
         objects: [], // Inicialmente no tiene objetos en el inventario
         hungry: 100,
-        userName: username 
+        userName: username,
+        coordinates
   });
 }
 
