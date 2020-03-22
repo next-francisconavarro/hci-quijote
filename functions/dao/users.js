@@ -17,7 +17,7 @@ function getUserById(userId) {
     });
 }
 
-function addUser(userAccount, username) {
+function addUser(userAccount, username, coordinates) {
   if(!userAccount) {
       throw new Error('Se requiere identificador');
   } else if(!username) {
@@ -30,7 +30,8 @@ function addUser(userAccount, username) {
         objects: [], // Inicialmente no tiene objetos en el inventario
         states: [], // Inicialmente no tiene estados realizados
         hungry: 100,
-        userName: username 
+        userName: username,
+        coordinates
   });
 }
 

@@ -13,6 +13,7 @@ app.use(myFirebaseFunctions.dialogflowFirebaseFulfillment);
 
 beforeEach(() => {
   jest.spyOn(console, 'warn').mockImplementation(() => {});
+  jest.spyOn(console, 'log').mockImplementation(() => {});
   jest.spyOn(admin.database(), 'ref').mockImplementation(() => ({
       set: jest.fn().mockImplementation(() => Promise.resolve()),
       once: jest.fn()

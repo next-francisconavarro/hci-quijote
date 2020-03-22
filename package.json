@@ -15,7 +15,7 @@
   "dependencies": {
     "actions-on-google": "^2.2.0",
     "babel-register": "^6.26.0",
-    "dialogflow": "^0.6.0",
+    "dialogflow": "^4.0.3",
     "dialogflow-fulfillment": "^0.5.0",
     "eslint": "^6.8.0",
     "express": "^4.17.1",
@@ -23,6 +23,7 @@
     "firebase-functions": "^3.3.0",
     "jest": "^25.1.0",
     "mock-require": "^3.0.3",
+    "moment": "^2.24.0",
     "sinon": "^9.0.0",
     "supertest": "^4.0.2"
   },
