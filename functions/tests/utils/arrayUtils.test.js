@@ -1,4 +1,4 @@
-const arrayUtils = require('../../utilities/arrayUtils');
+const arrayUtils = require('../../utils/arrayUtils');
 
 test('Empty Array is subset of any array', () => {
   expect(arrayUtils.isSubset([], ['one','two','three'])).toBe(true);

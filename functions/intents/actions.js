@@ -3,7 +3,7 @@ const placesDao = require('../dao/places');
 const usersDao = require('../dao/users');
 const statesDao = require('../dao/states');
 const contextDao = require('../dao/context');
-const arrayUtils = require('../utilities/arrayUtils');
+const arrayUtils = require('../utils/arrayUtils');
 
 const everyWhereActions = ['tirar'];
 const genericFailResponse = 'Eso no se puede hacer aqui';
@@ -80,9 +80,8 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
 
   if(death) {
     console.log('contextActionsTreatment -> ¡Death!');
-    return usersDao.addUser(userAccount, user.userName)
-      .then(() => agent.add('\n¡¡FIN DE LA PARTIDA!!'))
-      .catch(e => console.log(`Error: ${e}`)); // Reset de partida
+    agent.add('\n¡¡FIN DE LA PARTIDA!!');
+    return usersDao.addUser(userAccount, user.userName); // Reset de partida
   }  
 }
 

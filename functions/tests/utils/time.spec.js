@@ -1,4 +1,4 @@
-const time = require('./time');
+const time = require('../../utils/time');
 
 const coordinates = { lat: 39.5137458, lng: -3.0046506};
 const now = Date.now();
