@@ -10,7 +10,7 @@ function getPlaceById(placeId) {
     throw new Error('Se requiere identificador de lugar');
   }
 
-  return placesList[placeId];
+  return Promise.resolve(placesList[placeId]);
 }
 
 module.exports = { getPlaces, getPlaceById };
