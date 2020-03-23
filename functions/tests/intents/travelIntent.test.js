@@ -5,15 +5,15 @@ const placesDao = require('../../dao/places.js');
 beforeEach(() => {
   jest.spyOn(placesDao, 'getPlaceById')
   .mockImplementation(() =>  Promise.resolve(
-    { branch: 1, step: 3 }
+    { description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', branch: 1, step: 3 }
   ));
 
   jest.spyOn(placesDao, 'getPlaces')
     .mockImplementation(() =>  Promise.resolve(
     {
-      'alcoba':{ branch: 1, step: 3 },
-      'acantilado':{ branch: 1, step: 2 },
-      'bosque':{ branch: 2, step: 6 }
+      'alcoba':{ description: 'un dormitorio sin mas. Una cama, un suelo... poco mas. Para descansar es suficiente supongo', branch: 1, step: 3 },
+      'acantilado':{ description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', branch: 1, step: 2 },
+      'bosque':{ description:'Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daria media vuelta y me iria', branch: 2, step: 6 }
     }));
   jest.spyOn(usersDao, 'updateUser').mockImplementation(() => Promise.resolve({}));
 })
@@ -36,7 +36,7 @@ test('Travel intent without hungry advice', () => {
       })
       .then(response => {
         expect(response.status).toBe(200);
-        expect(response.body.join('')).toMatch('Has llegado a alcoba desde acantilado, has recorrido una distancia de 2');
+        expect(response.body.join('')).toMatch('Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta');
       });
 })
 
@@ -58,7 +58,7 @@ test('Travel intent with hungry advice', () => {
     })
     .then(response => {
       expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('Has llegado a alcoba desde acantilado, has recorrido una distancia de 2 y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.');
+      expect(response.body.join('')).toMatch('Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.');
     });
 })
 
@@ -80,7 +80,7 @@ test('Travel intent with long distance advice', () => {
     })
     .then(response => {
       expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('Has llegado a bosque desde acantilado, has recorrido una distancia de 6. Ha sido un largo viaje');
+      expect(response.body.join('')).toMatch('Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta. Ha sido un largo viaje');
     });
 })
 

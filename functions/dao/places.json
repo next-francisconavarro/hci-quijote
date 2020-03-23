@@ -395,7 +395,7 @@
         "alcoba": { 
           "step": 11, 
           "branch": 1,
-          "description": "un dormitorio sin mas. Una cama, un suelo....poco mas. Para descansar es suficiente supongo",
+          "description": "un dormitorio sin mas. Una cama, un suelo... poco mas. Para descansar es suficiente supongo",
           "actions": [
             { 
               "action": "descansar",

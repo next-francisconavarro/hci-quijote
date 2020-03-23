@@ -2,7 +2,7 @@ const {admin} = require('../firebase.initializers');
 const placesList = require('./places.json');
 
 function getPlaces() {
-    return admin.database().ref('places').once('value');
+    return placesList;
 }
 
 function getPlaceById(placeId) {

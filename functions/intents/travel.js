@@ -36,7 +36,7 @@ function travel(agent, userId, user) {
 
             Object.assign( user, { placesKnown: Object.assign(user.placesKnown, updatedPlaces), room: newPlace, hungry: user.hungry - distance });
             usersDao.updateUser(userId, user);
-            return agent.add(`Has llegado a ${selectedPlace} desde ${placeName}, has recorrido una distancia de ${distance}${distanceText}${withHungry}`);
+            return agent.add(`${place.description}${distanceText}${withHungry}`);
         }
     }).catch( e => {
         console.log(`error: ${e}`);
