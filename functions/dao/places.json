@@ -14,10 +14,10 @@
         "habitación": { 
           "step": 1, 
           "branch": 0,
-          "description": "La habitación es austera como corresponde a la de un hidalgo manchego del siglo XVI. Una escalera conecta tu habitación con el piso inferior y si miras atrás, todavia puedes ver el portal a la biblioteca",
+          "description": "La habitación es austera como corresponde a la de un hidalgo manchego del siglo XVI. Una escalera conecta tu habitación con el piso inferior y si miras atrás, todavía puedes ver el portal a la biblioteca",
           "actions": []
         },
-        "zaguan": { 
+        "zaguán": { 
           "step": 2,
           "branch": 0,
           "description": "Estas en el zaguán. Una amplia escalera te facilitará el acceso al piso superior y delante de ti, tienes las puertas que te llevan al comedor, la cocina y la puerta de salida",
@@ -98,7 +98,7 @@
             }
           ]
         },
-        "portalon": { 
+        "portalón": { 
           "step": 3, 
           "branch": 0,
           "description": "El portalón de tu casa, iluminado por la luz de un candelabro, te abrirá las puertas de tu nueva vida",
@@ -212,7 +212,7 @@
             }
           ]
         },
-        "callejon": { 
+        "callejón": { 
           "step": 10, 
           "branch": 1,
           "requiredStatus": ["escalar_muro"],
@@ -237,7 +237,7 @@
             }
           ]
         },
-        "recepcion": { 
+        "recepción": { 
           "step": 10, 
           "branch": 0,
           "description": "Estas en el recibidor de la posada. ¿Cuanta gente habrá pasado aqui la noche?, al fondo ves unas escaleras, tampoco hace falta ser un genio para deducir que subiendolas llegarías a las habitaciones",
@@ -362,7 +362,7 @@
           "description": "Ves dos puertas ante ti, una te lleva al salon y por la otra llegas a un pequeño distribuidor con dos puertas y una mesilla",
           "actions": []
         },
-        "salon": { 
+        "salón": { 
           "step": 10, 
           "branch": 1,
           "description": "Que salón tan solitario y vacio. Desde luego aqui no saben como darle un toque hogareño a una estancia. Solo hay una gran mesa vacía y un pequeño cesto en una esquina",
