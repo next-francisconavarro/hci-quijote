@@ -12,8 +12,8 @@ beforeEach(() => {
     .mockImplementation(() =>  Promise.resolve(
     {
       'alcoba':{ description: 'un dormitorio sin mas. Una cama, un suelo... poco mas. Para descansar es suficiente supongo', branch: 1, step: 3 },
-      'acantilado':{ description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', branch: 1, step: 2 },
-      'bosque':{ description:'Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daria media vuelta y me iria', branch: 2, step: 6 }
+      'acantilado':{ description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', requirementStatus: ["colocar_escalón"], branch: 1, step: 2 },
+      'bosque':{ description:'Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daria media vuelta y me iria', requirementStatus: ["colocar_escalón"], branch: 2, step: 6 }
     }));
   jest.spyOn(usersDao, 'updateUser').mockImplementation(() => Promise.resolve({}));
 })
@@ -25,7 +25,7 @@ test('Travel intent without hungry advice', () => {
         userName: 'victorman',
         hungry: 20,
         room: { acantilado: { branch: 1, step: 2}},
-        status: ["colocar_escalon"],
+        states: ["colocar_escalon"],
         placesKnown: ['acantilado', 'alcoba']
       } ));
 
@@ -48,7 +48,7 @@ test('Travel intent with hungry advice', () => {
       userName: 'victorman',
       hungry: 5,
       room: {'acantilado': { branch: 1, step: 2}},
-      status: ["colocar_escalon"],
+      states: ["colocar_escalon"],
       placesKnown: ['acantilado', 'alcoba']
     } ));
 
@@ -71,7 +71,7 @@ test('Travel intent with long distance advice', () => {
       userName: 'victorman',
       hungry: 20,
       room: {'acantilado': { branch: 3, step: 4}},
-      status: ["colocar_escalon"],
+      states: ["colocar_escalon"],
       placesKnown: ['acantilado', 'bosque']
     } ));
 

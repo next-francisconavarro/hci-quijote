@@ -16,7 +16,7 @@ function recoverCurrentPlaceStep(request) {
 }
 
 function checkPlaceRequirements(placeRequirement, userStatusList) {
-    return !arrayUtils.isSubset(placeRequirement, userStatusList);
+    return arrayUtils.isSubset(placeRequirement, userStatusList);
 }
 
 function travel(agent, userId, user) {
