@@ -15,11 +15,8 @@ function recoverCurrentPlaceStep(request) {
     }
 }
 
-function checkPlaceRequirements(userStatusList, placeRequirement) {
-  if(placeRequirement) {
-    return arrayUtils.isSubset(placeRequirement, userStatusList)
-  }
-  else return false;
+function checkPlaceRequirements(placeRequirement, userStatusList) {
+    return !arrayUtils.isSubset(placeRequirement, userStatusList);
 }
 
 function travel(agent, userId, user) {
@@ -42,7 +39,7 @@ function travel(agent, userId, user) {
               updatedPlaces.push(selectedPlace);
             }
             
-            if (checkPlaceRequirements(user.status, place.requirementStatus)) {
+            if (checkPlaceRequirements(place.requirementStatus, user.states)) {
               Object.assign( user, { placesKnown: Object.assign(user.placesKnown, updatedPlaces), room: newPlace, hungry: user.hungry - distance });
               usersDao.updateUser(userId, user);
               return agent.add(`${place.description}${distanceText}${withHungry}`);
