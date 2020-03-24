@@ -142,7 +142,7 @@
             },
             {   
               "action": "coger",
-              "object": "niscalo",
+              "object": "níscalo",
               "requirementStatus": ["examinar_suelo"],
               "successResponse": "Perfecto, tener comida siempre te salva de algún que otro apuro",
               "failResponse": "¿Que quieres coger qué?"
@@ -240,7 +240,7 @@
         "recepción": { 
           "step": 10, 
           "branch": 0,
-          "description": "Estas en el recibidor de la posada. ¿Cuanta gente habrá pasado aqui la noche?, al fondo ves unas escaleras, tampoco hace falta ser un genio para deducir que subiendolas llegarías a las habitaciones",
+          "description": "Estás en el recibidor de la posada. ¿Cuánta gente habrá pasado aqui la noche?, al fondo ves unas escaleras, tampoco hace falta ser un genio para deducir que subiendolas llegarías a las habitaciones",
           "actions": []
         },
         "escalera": { 
@@ -340,7 +340,7 @@
         "bosque": { 
           "step": 6, 
           "branch": 2,
-          "requirementStatus": ["colocar_escalon"],
+          "requirementStatus": ["colocar_escalón"],
           "description": "Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daría media vuelta y me iría",
           "actions": [
             { 
@@ -441,7 +441,8 @@
               "object": "cancela",
               "requirementObject": ["espada", "armadura"],
               "requirementStatus": ["velar_armas"],
-              "successResponse": "Cruzas la puerta y es como atravesar la entrada a otro mundo. Prados verdes hasta donde alcanza la vista, regados de pequeños bosques y riachuelos, animados por el bello cantar de las aves más distinguidas... huele a felicidad y opulencia, y como si el destino te sonriese, una bella doncella está intentando arreglar su carruaje averiado junto a sus monjes acompañantes. ¡¡Es la oportunidad ideal para demostrar tu valía ante una bella dama!! CONTINUARÁ..."
+              "successResponse": "Cruzas la puerta y es como atravesar la entrada a otro mundo. Prados verdes hasta donde alcanza la vista, regados de pequeños bosques y riachuelos, animados por el bello cantar de las aves más distinguidas... huele a felicidad y opulencia, y como si el destino te sonriese, una bella doncella está intentando arreglar su carruaje averiado junto a sus monjes acompañantes. ¡¡Es la oportunidad ideal para demostrar tu valía ante una bella dama!! CONTINUARÁ...",
+              "end":true
             }
           ]
         }
