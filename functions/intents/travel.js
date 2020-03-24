@@ -1,6 +1,7 @@
 const contextDao = require('../dao/context');
 const placesDao = require('../dao/places');
 const usersDao = require('../dao/users');
+const arrayUtils = require('../utils/arrayUtils');
 
 function recoverCurrentPlaceStep(request) {
     return agent => {
@@ -12,6 +13,13 @@ function recoverCurrentPlaceStep(request) {
           }
       });
     }
+}
+
+function checkPlaceRequirements(userStatusList, placeRequirement) {
+  if(placeRequirement) {
+    return arrayUtils.isSubset(placeRequirement, userStatusList)
+  }
+  else return false;
 }
 
 function travel(agent, userId, user) {
@@ -33,10 +41,14 @@ function travel(agent, userId, user) {
             if(!updatedPlaces.includes(selectedPlace)) {
               updatedPlaces.push(selectedPlace);
             }
-
-            Object.assign( user, { placesKnown: Object.assign(user.placesKnown, updatedPlaces), room: newPlace, hungry: user.hungry - distance });
-            usersDao.updateUser(userId, user);
-            return agent.add(`${place.description}${distanceText}${withHungry}`);
+            
+            if (checkPlaceRequirements(user.status, place.requirementStatus)) {
+              Object.assign( user, { placesKnown: Object.assign(user.placesKnown, updatedPlaces), room: newPlace, hungry: user.hungry - distance });
+              usersDao.updateUser(userId, user);
+              return agent.add(`${place.description}${distanceText}${withHungry}`);
+            } else {
+              return agent.add(`no puedes ir a ${selectedPlace}, hay cosas que debes hacer antes.`);
+            }
         }
     }).catch( e => {
         console.log(`error: ${e}`);

@@ -5,7 +5,7 @@ const placesDao = require('../../dao/places.js');
 beforeEach(() => {
   jest.spyOn(placesDao, 'getPlaceById')
   .mockImplementation(() =>  Promise.resolve(
-    { description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', branch: 1, step: 3 }
+    { description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', requirementStatus: ["colocar_escalon"], branch: 1, step: 3 }
   ));
 
   jest.spyOn(placesDao, 'getPlaces')
@@ -25,6 +25,7 @@ test('Travel intent without hungry advice', () => {
         userName: 'victorman',
         hungry: 20,
         room: { acantilado: { branch: 1, step: 2}},
+        status: ["colocar_escalon"],
         placesKnown: ['acantilado', 'alcoba']
       } ));
 
@@ -47,6 +48,7 @@ test('Travel intent with hungry advice', () => {
       userName: 'victorman',
       hungry: 5,
       room: {'acantilado': { branch: 1, step: 2}},
+      status: ["colocar_escalon"],
       placesKnown: ['acantilado', 'alcoba']
     } ));
 
@@ -69,6 +71,7 @@ test('Travel intent with long distance advice', () => {
       userName: 'victorman',
       hungry: 20,
       room: {'acantilado': { branch: 3, step: 4}},
+      status: ["colocar_escalon"],
       placesKnown: ['acantilado', 'bosque']
     } ));
 
@@ -103,5 +106,27 @@ test('Travel intent no need to trip. Now on desired place', () => {
     .then(response => {
       expect(response.status).toBe(200);
       expect(response.body.join('')).toMatch('¡Ya estás en este lugar!');
+    });
+})
+
+test('Can´t travel to this place because dont have needed place requirement status', () => {
+  jest.spyOn(usersDao, 'getUserById')
+    .mockImplementation(() =>  Promise.resolve( 
+    { 
+      userName: 'victorman',
+      hungry: 20,
+      room: { acantilado: { branch: 1, step: 2}},
+      placesKnown: ['acantilado', 'alcoba']
+    } ));
+
+  return handleRequest({
+      intent: 'viajar',
+      payload: {
+        place: 'bosque'
+      }
+    })
+    .then(response => {
+      expect(response.status).toBe(200);
+      expect(response.body.join('')).toMatch('no puedes ir a bosque, hay cosas que debes hacer antes.');
     });
 })
