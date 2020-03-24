@@ -340,7 +340,7 @@
         "bosque": { 
           "step": 6, 
           "branch": 2,
-          "requirementStatus": ["colocar_escalón"],
+          "requiredStatus": ["colocar_escalón"],
           "description": "Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daría media vuelta y me iría",
           "actions": [
             { 
@@ -407,7 +407,7 @@
         "patio": { 
           "step": 11, 
           "branch": 1,
-          "requiredStatus": "arreglar_cerradura",
+          "requiredStatus": ["arreglar_cerradura"],
           "description": "Al traspasar la puerta, accedes a un sorprendentemente acogedor patio, de no ser por que está lleno de gallinas que alborotan a tu alrededor. En una esquina disponen de un indispensable poco decorado con una estatuilla. Un momento... todo buen caballero debe velar sus armas por lo menos una vez en su vida, y esa estatuilla es un testigo ideal",
           "actions": [
             { 

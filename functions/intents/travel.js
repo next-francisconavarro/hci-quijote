@@ -39,7 +39,7 @@ function travel(agent, userId, user) {
               updatedPlaces.push(selectedPlace);
             }
             
-            if (checkPlaceRequirements(place.requirementStatus, user.states)) {
+            if (checkPlaceRequirements(place.requiredStatus, user.states)) {
               Object.assign( user, { placesKnown: Object.assign(user.placesKnown, updatedPlaces), room: newPlace, hungry: user.hungry - distance });
               usersDao.updateUser(userId, user);
               return agent.add(`${place.description}${distanceText}${withHungry}`);
