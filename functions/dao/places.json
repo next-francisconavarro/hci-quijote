@@ -163,7 +163,8 @@
               "action": "coger",
               "object": "manzana",
               "requirementStatus": ["golpear_manzano"], 
-              "successResponse": "¡Esto viene de maravilla cuando el hambre arrecia!" 
+              "successResponse": "¡Esto viene de maravilla cuando el hambre arrecia!",
+              "failResponse": "No las alcanzas, deberias buscar una forma de hacer que caigan del arbol"
             }
           ]
         },
@@ -193,7 +194,8 @@
               "action": "dejar",
               "object": "pedrusco",
               "requirementObject": ["pedrusco"],
-              "successResponse": "Colocas el pedruco en la base del muro"
+              "successResponse": "Colocas el pedruco en la base del muro",
+              "failResponse": "¿Que pedrusco?"
             },
             { 
               "action": "subir",
@@ -257,7 +259,8 @@
               "action": "coger",
               "object": "vela",
               "requirementStatus": ["examinar_candelabro"], 
-              "successResponse": "Sí, mejor la guardamos, nunca se sabe cuando un poco de luz puede iluminar las ideas"
+              "successResponse": "Sí, mejor la guardamos, nunca se sabe cuando un poco de luz puede iluminar las ideas",
+              "failResponse": "¿que vela?"
             }
           ]
         },
@@ -284,7 +287,8 @@
               "object": "vino",
               "requirementObject": ["botella"],
               "requirementStatus": ["abrir_odre"],
-              "successResponse": "¿En serio quieres ese vino?, bueno... no seré yo quien te lo discuta"
+              "successResponse": "¿En serio quieres ese vino?, bueno... no seré yo quien te lo discuta",
+              "failResponse": "Para guardar el vino no basta con poner las dos manos. Necesitas dos cosas, primero abrir el odre, y segundo, algún recipiente donde guardarlo."
             }
           ]
         },
@@ -327,7 +331,8 @@
               "action": "colocar",
               "object": "escalón",
               "requirementObject": ["escalón"],
-              "successResponse": "Dejas el tablón y este hace de puente. Ahora puedes llegar al bosque que hay en frente sin problemas"
+              "successResponse": "Dejas el tablón y este hace de puente. Ahora puedes llegar al bosque que hay en frente sin problemas",
+              "failResponse": "¿Que quieres colocar un escalón?, ¿Qué escalón?, ay madre, ahora me diras que los molinos son gigantes..."
             },
             { 
               "action": "saltar",
@@ -347,7 +352,7 @@
             { 
               "action": "coger",
               "object": "pedrusco",
-              "successResponse": "Un pedrusco, sí, como no"
+              "successResponse": "Un pedrusco, sí, como no, llevatelo. Llevate todo lo que te encuentres en el suelo."
             }
           ]
         },
@@ -377,7 +382,8 @@
               "action": "coger",
               "object": "alambre",
               "requirementStatus": ["examinar_cesto"],
-              "successResponse": "Nos vendrá bien guardarlo por si queremos hacer algo de bricomanía"
+              "successResponse": "Nos vendrá bien guardarlo por si queremos hacer algo de bricomanía",
+              "failResponse": "deberias examinar el cesto para ver que hay antes de meter la mano a lo loco. Solo dios sabe lo que puedes sacar de ahi."
             }
           ]
         },
@@ -390,7 +396,8 @@
               "action": "arreglar",
               "object": "cerradura",
               "requirementObject": ["alambre"],
-              "successResponse": "Gracias a tus habilidades como antiguo lazarillo, consigues arreglar la cerradura usando solo un alambre. Ahora puedes abrirla y acceder a un confortable patio"
+              "successResponse": "Gracias a tus habilidades como antiguo lazarillo, consigues arreglar la cerradura usando solo un alambre. Ahora puedes abrirla y acceder a un confortable patio",
+              "failResponse": "¿y con que quieres arreglarla?, ¿con una mirada seductora?, deberias buscar algo que quepa por la cerradura para poder arreglarla."
             }
           ]
         },
@@ -416,7 +423,8 @@
               "action": "velar",
               "object": "armas",
               "requirementObject": ["armadura"],
-              "successResponse": "¡Perfecto!, ¡ahora ya sí que eres todo un caballero!"
+              "successResponse": "¡Perfecto!, ¡ahora ya sí que eres todo un caballero!, haces cosas raras de vez en cuando pero... un caballero al fin y al cabo",
+              "failResponse": "¿Como vas a velar las armas si niquiera tienes una armadura?, eso es de primero de valeroso hidalgo."
             }
           ]
         },
@@ -429,7 +437,8 @@
               "action": "atacar",
               "object": "ovejas",
               "requirementObject": ["espada"],
-              "successResponse": "Se apartan a tu paso, permitiendo continuar tu camino a lo que parece ser una imponente cancela"
+              "successResponse": "Se apartan a tu paso, permitiendo continuar tu camino a lo que parece ser una imponente cancela",
+              "failResponse": "Por más aspavientos que hagas no servira de nada, no impones tanto como para inquietarlas a no se que tengas algo contundente que las asuste."
             }
           ]
         },
@@ -444,6 +453,7 @@
               "requirementObject": ["espada", "armadura"],
               "requirementStatus": ["velar_armas"],
               "successResponse": "Cruzas la puerta y es como atravesar la entrada a otro mundo. Prados verdes hasta donde alcanza la vista, regados de pequeños bosques y riachuelos, animados por el bello cantar de las aves más distinguidas... huele a felicidad y opulencia, y como si el destino te sonriese, una bella doncella está intentando arreglar su carruaje averiado junto a sus monjes acompañantes. ¡¡Es la oportunidad ideal para demostrar tu valía ante una bella dama!! CONTINUARÁ...",
+              "failResponse": "Los soldados te echan a empujones entre sonoras risas. No tienes todo lo necesario para ser un caballero decian.",
               "end":true
             }
           ]
