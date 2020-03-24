@@ -5,7 +5,7 @@ const placesDao = require('../../dao/places.js');
 beforeEach(() => {
   jest.spyOn(placesDao, 'getPlaceById')
   .mockImplementation(() =>  Promise.resolve(
-    { description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', requiredStatus: ["colocar_escalon"], branch: 1, step: 3 }
+    { description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', requiredStatus: ["colocar_escalon"], failDescription: "no puedes llegar, necesitas hacer algo antes" , branch: 1, step: 3 }
   ));
 
   jest.spyOn(placesDao, 'getPlaces')
@@ -127,6 +127,6 @@ test('Can´t travel to this place because dont have needed place required status
     })
     .then(response => {
       expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('no puedes ir a bosque, hay cosas que debes hacer antes.');
+      expect(response.body.join('')).toMatch('no puedes llegar, necesitas hacer algo antes');
     });
 })

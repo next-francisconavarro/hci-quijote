@@ -342,6 +342,7 @@
           "branch": 2,
           "requiredStatus": ["colocar_escalón"],
           "description": "Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daría media vuelta y me iría",
+          "failDescription": "No puedes llegar al bosque, antes debes cruzar un acantilado que tiene pinta que no podras cruzar de un salto.",
           "actions": [
             { 
               "action": "coger",
@@ -409,6 +410,7 @@
           "branch": 1,
           "requiredStatus": ["arreglar_cerradura"],
           "description": "Al traspasar la puerta, accedes a un sorprendentemente acogedor patio, de no ser por que está lleno de gallinas que alborotan a tu alrededor. En una esquina disponen de un indispensable poco decorado con una estatuilla. Un momento... todo buen caballero debe velar sus armas por lo menos una vez en su vida, y esa estatuilla es un testigo ideal",
+          "failDescription": "Estaria bien poder visitar el patio, pero una puerta rota te lo impide",
           "actions": [
             { 
               "action": "velar",

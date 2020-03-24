@@ -44,7 +44,7 @@ function travel(agent, userId, user) {
               usersDao.updateUser(userId, user);
               return agent.add(`${place.description}${distanceText}${withHungry}`);
             } else {
-              return agent.add(`no puedes ir a ${selectedPlace}, hay cosas que debes hacer antes.`);
+              return agent.add(place.failDescription);
             }
         }
     }).catch( e => {
