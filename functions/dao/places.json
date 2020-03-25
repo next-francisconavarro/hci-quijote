@@ -53,7 +53,7 @@
         "despensa": { 
           "step": 4,
           "branch": 0,
-          "description": "La tenue luz que penetra por la puerta permite vislumbrar un baúl, cuya superficie cubierta por el polvo de los siglos encubre recuerdos de tus antepasados",
+          "description": "La ténue luz que penetra por la puerta permite vislumbrar un baúl, cuya superficie cubierta por el polvo de los siglos encubre recuerdos de tus antepasados",
           "actions": [
             { 
               "action": "abrir",
@@ -164,7 +164,7 @@
               "object": "manzana",
               "requirementStatus": ["golpear_manzano"], 
               "successResponse": "¡Esto viene de maravilla cuando el hambre arrecia!",
-              "failResponse": "No las alcanzas, deberias buscar una forma de hacer que caigan del arbol"
+              "failResponse": "No las alcanzas, deberías buscar una forma de hacer que caigan del árbol"
             }
           ]
         },
@@ -191,7 +191,7 @@
           "description": "Estás en un camino bloqueado por un enorme muro de piedra",
           "actions": [
             { 
-              "action": "dejar",
+              "action": "colocar",
               "object": "pedrusco",
               "requirementObject": ["pedrusco"],
               "successResponse": "Colocas el pedruco en la base del muro",
@@ -217,13 +217,13 @@
         "callejón": { 
           "step": 10, 
           "branch": 1,
-          "requiredStatus": ["escalar_muro"],
+          "requirementStatus": ["escalar_muro"],
           "description": "Al cruzar el muro, el camino se acaba, solo puedes ver una botella en el suelo. Tu única opción es dar media vuelta. ",
           "actions": [
             { 
               "action": "coger",
               "object": "botella",
-              "successResponse": "¿Quieres recoger una botella?, vaya, un hidalgo valiente y ecológico, lo tienes todo!"
+              "successResponse": "¿Quieres recoger una botella?, vaya, un hidalgo valiente y ecológico, ¡lo tienes todo!"
             }
           ]
         },
@@ -260,7 +260,7 @@
               "object": "vela",
               "requirementStatus": ["examinar_candelabro"], 
               "successResponse": "Sí, mejor la guardamos, nunca se sabe cuando un poco de luz puede iluminar las ideas",
-              "failResponse": "¿que vela?"
+              "failResponse": "¿Qué vela?"
             }
           ]
         },
@@ -312,7 +312,7 @@
             { 
               "action": "coger",
               "object": "rastrillo",
-              "successResponse": "¿Un rastrillo??, sí bueno, ¿por qué no?, si no sale bien lo de hidalgo siempre puedes ser granjero"
+              "successResponse": "¿Un rastrillo?, sí bueno, ¿por qué no?, si no sale bien lo de hidalgo siempre puedes ser granjero"
             }
           ]
         },
@@ -332,7 +332,7 @@
               "object": "escalón",
               "requirementObject": ["escalón"],
               "successResponse": "Dejas el tablón y este hace de puente. Ahora puedes llegar al bosque que hay en frente sin problemas",
-              "failResponse": "¿Que quieres colocar un escalón?, ¿Qué escalón?, ay madre, ahora me diras que los molinos son gigantes..."
+              "failResponse": "¿Que quieres colocar un escalón?, ¿Qué escalón?, ¡ay madre!, ahora me dirás que los molinos son gigantes..."
             },
             { 
               "action": "saltar",
@@ -345,14 +345,14 @@
         "bosque": { 
           "step": 6, 
           "branch": 2,
-          "requiredStatus": ["colocar_escalón"],
+          "requirementStatus": ["colocar_escalón"],
           "description": "Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daría media vuelta y me iría",
-          "failDescription": "No puedes llegar al bosque, antes debes cruzar un acantilado que tiene pinta que no podras cruzar de un salto.",
+          "failDescription": "No puedes llegar al bosque, antes debes cruzar un acantilado que tiene pinta que no podrás cruzar de un salto",
           "actions": [
             { 
               "action": "coger",
               "object": "pedrusco",
-              "successResponse": "Un pedrusco, sí, como no, llevatelo. Llevate todo lo que te encuentres en el suelo."
+              "successResponse": "Un pedrusco, sí, como no, llévatelo. Llevate todo lo que te encuentres en el suelo"
             }
           ]
         },
@@ -371,7 +371,7 @@
         "salón": { 
           "step": 10, 
           "branch": 1,
-          "description": "Que salón tan solitario y vacio. Desde luego aqui no saben como darle un toque hogareño a una estancia. Solo hay una gran mesa vacía y un pequeño cesto en una esquina",
+          "description": "Que salón tan solitario y vacío. Desde luego aqui no saben como darle un toque hogareño a una estancia. Solo hay una gran mesa vacía y un pequeño cesto en una esquina",
           "actions": [
             { 
               "action": "examinar",
@@ -383,7 +383,7 @@
               "object": "alambre",
               "requirementStatus": ["examinar_cesto"],
               "successResponse": "Nos vendrá bien guardarlo por si queremos hacer algo de bricomanía",
-              "failResponse": "deberias examinar el cesto para ver que hay antes de meter la mano a lo loco. Solo dios sabe lo que puedes sacar de ahi."
+              "failResponse": "Deberías examinar el cesto para ver que hay antes de meter la mano a lo loco. Solo dios sabe lo que puedes sacar de ahí."
             }
           ]
         },
@@ -397,14 +397,14 @@
               "object": "cerradura",
               "requirementObject": ["alambre"],
               "successResponse": "Gracias a tus habilidades como antiguo lazarillo, consigues arreglar la cerradura usando solo un alambre. Ahora puedes abrirla y acceder a un confortable patio",
-              "failResponse": "¿y con que quieres arreglarla?, ¿con una mirada seductora?, deberias buscar algo que quepa por la cerradura para poder arreglarla."
+              "failResponse": "¿Y con qué quieres arreglarla?, ¿con una mirada seductora?, deberías buscar algo que quepa por la cerradura para poder arreglarla"
             }
           ]
         },
         "alcoba": { 
           "step": 11, 
           "branch": 1,
-          "description": "un dormitorio sin más. Una cama, un suelo... poco más. Para descansar es suficiente supongo",
+          "description": "Un dormitorio sin más. Una cama, un suelo... poco más. Para descansar es suficiente supongo",
           "actions": [
             { 
               "action": "descansar",
@@ -415,7 +415,7 @@
         "patio": { 
           "step": 11, 
           "branch": 1,
-          "requiredStatus": ["arreglar_cerradura"],
+          "requirementStatus": ["arreglar_cerradura"],
           "description": "Al traspasar la puerta, accedes a un sorprendentemente acogedor patio, de no ser por que está lleno de gallinas que alborotan a tu alrededor. En una esquina disponen de un indispensable poco decorado con una estatuilla. Un momento... todo buen caballero debe velar sus armas por lo menos una vez en su vida, y esa estatuilla es un testigo ideal",
           "failDescription": "Estaria bien poder visitar el patio, pero una puerta rota te lo impide",
           "actions": [
@@ -424,7 +424,7 @@
               "object": "armas",
               "requirementObject": ["armadura"],
               "successResponse": "¡Perfecto!, ¡ahora ya sí que eres todo un caballero!, haces cosas raras de vez en cuando pero... un caballero al fin y al cabo",
-              "failResponse": "¿Como vas a velar las armas si niquiera tienes una armadura?, eso es de primero de valeroso hidalgo."
+              "failResponse": "¿Cómo vas a velar las armas si niquiera tienes una armadura?, eso es de primero de valeroso hidalgo"
             }
           ]
         },
@@ -438,7 +438,7 @@
               "object": "ovejas",
               "requirementObject": ["espada"],
               "successResponse": "Se apartan a tu paso, permitiendo continuar tu camino a lo que parece ser una imponente cancela",
-              "failResponse": "Por más aspavientos que hagas no servira de nada, no impones tanto como para inquietarlas a no se que tengas algo contundente que las asuste."
+              "failResponse": "Por más aspavientos que hagas no servirá de nada, no impones tanto como para inquietarlas a no ser que tengas algo contundente que las asuste"
             }
           ]
         },
@@ -453,7 +453,7 @@
               "requirementObject": ["espada", "armadura"],
               "requirementStatus": ["velar_armas"],
               "successResponse": "Cruzas la puerta y es como atravesar la entrada a otro mundo. Prados verdes hasta donde alcanza la vista, regados de pequeños bosques y riachuelos, animados por el bello cantar de las aves más distinguidas... huele a felicidad y opulencia, y como si el destino te sonriese, una bella doncella está intentando arreglar su carruaje averiado junto a sus monjes acompañantes. ¡¡Es la oportunidad ideal para demostrar tu valía ante una bella dama!! CONTINUARÁ...",
-              "failResponse": "Los soldados te echan a empujones entre sonoras risas. No tienes todo lo necesario para ser un caballero decian.",
+              "failResponse": "Los soldados te echan a empujones entre sonoras risas. No tienes todo lo necesario para ser un caballero decían",
               "end":true
             }
           ]
