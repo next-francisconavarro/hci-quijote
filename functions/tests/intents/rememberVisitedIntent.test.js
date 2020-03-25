@@ -18,7 +18,7 @@ test('No visited places yet', () => {
       })
       .then(response => {
         expect(response.status).toBe(200);
-        expect(response.body.join('')).toMatch('No has visitado aún a ningún sitio. ¡Acabas de empezar!');
+        expect(response.body.join('')).toMatch('No has visitado aún ningún sitio. ¡Acabas de empezar!');
       });
 })
 
