@@ -34,7 +34,7 @@
               "requirementStatus": ["poner_armadura"],
               "successResponse": "Una rata salta, te intenta morder, pero gracias a la armadura lo único que consigue es romperse los dientes",
               "failResponse": "La rata salta sobre tu hidalgo rostro perjudicando tus globos oculares, ya no estás en condiciones de continuar con tu hidalga azaña",
-              "death":true
+              "endReason":"death"
             },
             {   
               "action": "examinar",
@@ -210,7 +210,7 @@
               "requirementStatus": ["subir_pedrusco"],
               "successResponse": "El suelo esta cubierto de hermosas flores, amanitas Phalloides quizás?",
               "failResponse": "El muro es demasiado alto, pero tú como gallardo hidalgo que eres decides intentar escalarlo. Mala suerte que te resbalas y mueres al caer desde lo alto",
-              "death":true
+              "endReason":"death"
             }
           ]
         },
@@ -218,7 +218,8 @@
           "step": 10, 
           "branch": 1,
           "requirementStatus": ["escalar_muro"],
-          "description": "Al cruzar el muro, el camino se acaba, solo puedes ver una botella en el suelo. Tu única opción es dar media vuelta. ",
+          "description": "Al cruzar el muro, el camino se acaba, solo puedes ver una botella en el suelo. Tu única opción es dar media vuelta",
+          "failResponse": "Te pones de puntillas y apenas alcanzas a ver por encima del muro que bloquea tu paso",
           "actions": [
             { 
               "action": "coger",
@@ -288,7 +289,7 @@
               "requirementObject": ["botella"],
               "requirementStatus": ["abrir_odre"],
               "successResponse": "¿En serio quieres ese vino?, bueno... no seré yo quien te lo discuta",
-              "failResponse": "Para guardar el vino no basta con poner las dos manos. Necesitas dos cosas, primero abrir el odre, y segundo, algún recipiente donde guardarlo."
+              "failResponse": "Para guardar el vino no basta con poner las dos manos. Necesitas dos cosas, primero abrir el odre, y segundo, algún recipiente donde guardarlo"
             }
           ]
         },
@@ -338,7 +339,7 @@
               "action": "saltar",
               "object": "acantilado",
               "successResponse": "Demasiada fe tenías en tus habilidades. Por desgracia, no llegas al otro lado y ahora eres un hidalgo estrellado",
-              "death":true
+              "endReason":"death"
             }
           ]
         },
@@ -347,7 +348,7 @@
           "branch": 2,
           "requirementStatus": ["colocar_escalón"],
           "description": "Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daría media vuelta y me iría",
-          "failDescription": "No puedes llegar al bosque, antes debes cruzar un acantilado que tiene pinta que no podrás cruzar de un salto",
+          "failResponse": "No puedes llegar al bosque, antes debes cruzar un acantilado que tiene pinta que no podrás cruzar de un salto",
           "actions": [
             { 
               "action": "coger",
@@ -383,7 +384,7 @@
               "object": "alambre",
               "requirementStatus": ["examinar_cesto"],
               "successResponse": "Nos vendrá bien guardarlo por si queremos hacer algo de bricomanía",
-              "failResponse": "Deberías examinar el cesto para ver que hay antes de meter la mano a lo loco. Solo dios sabe lo que puedes sacar de ahí."
+              "failResponse": "Deberías examinar el cesto para ver que hay antes de meter la mano a lo loco. Solo dios sabe lo que puedes sacar de ahí"
             }
           ]
         },
@@ -417,7 +418,7 @@
           "branch": 1,
           "requirementStatus": ["arreglar_cerradura"],
           "description": "Al traspasar la puerta, accedes a un sorprendentemente acogedor patio, de no ser por que está lleno de gallinas que alborotan a tu alrededor. En una esquina disponen de un indispensable poco decorado con una estatuilla. Un momento... todo buen caballero debe velar sus armas por lo menos una vez en su vida, y esa estatuilla es un testigo ideal",
-          "failDescription": "Estaria bien poder visitar el patio, pero una puerta rota te lo impide",
+          "failResponse": "Estaría bien poder visitar el patio, pero una puerta rota te lo impide",
           "actions": [
             { 
               "action": "velar",
@@ -452,9 +453,9 @@
               "object": "cancela",
               "requirementObject": ["espada", "armadura"],
               "requirementStatus": ["velar_armas"],
-              "successResponse": "Cruzas la puerta y es como atravesar la entrada a otro mundo. Prados verdes hasta donde alcanza la vista, regados de pequeños bosques y riachuelos, animados por el bello cantar de las aves más distinguidas... huele a felicidad y opulencia, y como si el destino te sonriese, una bella doncella está intentando arreglar su carruaje averiado junto a sus monjes acompañantes. ¡¡Es la oportunidad ideal para demostrar tu valía ante una bella dama!! CONTINUARÁ...",
+              "successResponse": "Cruzas la puerta y es como atravesar la entrada a otro mundo. Prados verdes hasta donde alcanza la vista, regados de pequeños bosques y riachuelos, animados por el bello cantar de las aves más distinguidas... huele a felicidad y opulencia, y como si el destino te sonriese, una bella doncella está intentando arreglar su carruaje averiado junto a sus monjes acompañantes. ¡¡Es la oportunidad ideal para demostrar tu valía ante una bella dama!!",
               "failResponse": "Los soldados te echan a empujones entre sonoras risas. No tienes todo lo necesario para ser un caballero decían",
-              "end":true
+              "endReason":"end"
             }
           ]
         }

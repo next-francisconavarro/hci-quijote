@@ -5,15 +5,32 @@ const placesDao = require('../../dao/places.js');
 beforeEach(() => {
   jest.spyOn(placesDao, 'getPlaceById')
   .mockImplementation(() =>  Promise.resolve(
-    { description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', requirementStatus: ["colocar_escalon"], failDescription: "no puedes llegar, necesitas hacer algo antes" , branch: 1, step: 3 }
+    { description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', 
+      requirementStatus: ["colocar_escalón"], 
+      failResponse: "No puedes llegar, necesitas hacer algo antes" , 
+      branch: 1, 
+      step: 3 
+    }
   ));
 
   jest.spyOn(placesDao, 'getPlaces')
     .mockImplementation(() =>  Promise.resolve(
     {
-      'alcoba':{ description: 'un dormitorio sin mas. Una cama, un suelo... poco mas. Para descansar es suficiente supongo', branch: 1, step: 3 },
-      'acantilado':{ description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', branch: 1, step: 2 },
-      'bosque':{ description:'Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daria media vuelta y me iria', requirementStatus: ["colocar_escalón"], branch: 2, step: 6 }
+      'alcoba':{ 
+        description: 'un dormitorio sin mas. Una cama, un suelo... poco mas. Para descansar es suficiente supongo', 
+        branch: 1, 
+        step: 3 },
+      'acantilado':{ 
+        description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', 
+        branch: 1, 
+        step: 2 
+      },
+      'bosque':{ 
+        description:'Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daria media vuelta y me iria', 
+        requirementStatus: ["colocar_escalón"], 
+        branch: 2, 
+        step: 6 
+      }
     }));
   jest.spyOn(usersDao, 'updateUser').mockImplementation(() => Promise.resolve({}));
 })
@@ -25,7 +42,7 @@ test('Travel intent without hungry advice', () => {
         userName: 'victorman',
         hungry: 20,
         room: { acantilado: { branch: 1, step: 2}},
-        states: ["colocar_escalon"],
+        states: ["colocar_escalón"],
         placesKnown: ['acantilado', 'alcoba']
       } ));
 
@@ -48,7 +65,7 @@ test('Travel intent with hungry advice', () => {
       userName: 'victorman',
       hungry: 5,
       room: {'acantilado': { branch: 1, step: 2}},
-      states: ["colocar_escalon"],
+      states: ["colocar_escalón"],
       placesKnown: ['acantilado', 'alcoba']
     } ));
 
@@ -71,7 +88,7 @@ test('Travel intent with long distance advice', () => {
       userName: 'victorman',
       hungry: 20,
       room: {'acantilado': { branch: 3, step: 4}},
-      states: ["colocar_escalon"],
+      states: ["colocar_escalón"],
       placesKnown: ['acantilado', 'bosque']
     } ));
 
@@ -127,6 +144,29 @@ test('Can´t travel to this place because dont have needed place required status
     })
     .then(response => {
       expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('no puedes llegar, necesitas hacer algo antes');
+      expect(response.body.join('')).toMatch('No puedes llegar, necesitas hacer algo antes');
+    });
+})
+
+test('Travel intent. Death by hungry', () => {
+  jest.spyOn(usersDao, 'getUserById')
+    .mockImplementation(() =>  Promise.resolve( 
+    { 
+      userName: 'victorman',
+      hungry: 2,
+      room: { alcoba: { branch: 1, step: 2}},
+      states: ["colocar_escalón"],
+      placesKnown: ['acantilado', 'bosque']
+    } ));
+
+  return handleRequest({
+      intent: 'viajar',
+      payload: {
+        place: 'acantilado'
+      }
+    })
+    .then(response => {
+      expect(response.status).toBe(200);
+      expect(response.body.join('')).toMatch('Te encuentras muy débil para seguir caminando. Te detienes y te sientes como una pluma. Tu vista se nubla y caes desmayado en el suelo. Los cuervos, lobos y delincuentes harán el trabajo sucio. Limpiar tus restos');
     });
 })

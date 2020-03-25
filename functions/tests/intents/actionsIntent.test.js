@@ -26,8 +26,8 @@ test('Actions intent execution. Requirements not met', () => {
               object: 'alacena',
               requirementStatus: ['poner_armadura'],
               successResponse: 'Una rata salta, te intenta morder, pero gracias a la armadura lo unico que consigue es romperse los dientes.',
-              failResponse: 'La rata salta sobre tu hidalgo rostro perjudicando tus globos aculares, ya no estas en condiciones que continuar con un hidalga azaña',
-              death:true
+              failResponse: 'La rata salta sobre tu hidalgo rostro perjudicando tus globos oculares, ya no estás en condiciones de continuar con un hidalga azaña',
+              endReason:'death'
             }
           ],
           genericFailResponse: 'Eso no se puede hacer aqui'
@@ -44,7 +44,7 @@ test('Actions intent execution. Requirements not met', () => {
     })
     .then(response => {
       expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('La rata salta sobre tu hidalgo rostro perjudicando tus globos aculares, ya no estas en condiciones que continuar con un hidalga azaña\n¡¡FIN DE LA PARTIDA!!');
+      expect(response.body.join('')).toMatch('La rata salta sobre tu hidalgo rostro perjudicando tus globos oculares, ya no estás en condiciones de continuar con un hidalga azaña\n¡¡FIN DE LA PARTIDA!!');
     });
 })
 
@@ -74,7 +74,7 @@ test('Actions intent execution. Requirements are met', () => {
               object: 'alacena',
               requirementStatus: ['poner_armadura'],
               successResponse: 'Una rata salta, te intenta morder, pero gracias a la armadura lo unico que consigue es romperse los dientes.',
-              failResponse: 'La rata salta sobre tu hidalgo rostro perjudicando tus globos aculares, ya no estas en condiciones que continuar con un hidalga azaña'
+              failResponse: 'La rata salta sobre tu hidalgo rostro perjudicando tus globos oculares, ya no estás en condiciones de continuar con un hidalga azaña'
             }
           ],
           genericFailResponse: 'Eso no se puede hacer aqui'
