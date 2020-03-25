@@ -1,6 +1,8 @@
 const contextDao = require('../dao/context');
 const placesDao = require('../dao/places');
 const usersDao = require('../dao/users');
+const arrayUtils = require('../utils/arrayUtils');
+const gameOperations = require('../business/gameOperations');
 
 function recoverCurrentPlaceStep(request) {
     return agent => {
@@ -14,6 +16,10 @@ function recoverCurrentPlaceStep(request) {
     }
 }
 
+function checkPlaceRequirements(placeRequirement, userStatusList) {
+    return arrayUtils.isSubset(placeRequirement, userStatusList);
+}
+
 function travel(agent, userId, user) {
   const selectedPlace = agent.parameters.place;
   const placeName = Object.keys(user.room)[0];
@@ -25,7 +31,8 @@ function travel(agent, userId, user) {
             console.log(`travel -> Selected place: ${JSON.stringify(place)}`)
             const distance = calculateTravelCoeficient(user.room[placeName], place);
             const newPlace = {};
-            const withHungry = user.hungry - distance < 10 ? ' y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.' : '';
+            const currentHungry = user.hungry - distance;
+            const withHungry = currentHungry < 10 ? ' y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.' : '';
             const distanceText = distance > 4 ? '. Ha sido un largo viaje' : '';
             newPlace[`${selectedPlace}`] = place;
             
@@ -33,10 +40,19 @@ function travel(agent, userId, user) {
             if(!updatedPlaces.includes(selectedPlace)) {
               updatedPlaces.push(selectedPlace);
             }
-
-            Object.assign( user, { placesKnown: Object.assign(user.placesKnown, updatedPlaces), room: newPlace, hungry: user.hungry - distance });
-            usersDao.updateUser(userId, user);
-            return agent.add(`Has llegado a ${selectedPlace} desde ${placeName}, has recorrido una distancia de ${distance}${distanceText}${withHungry}`);
+            
+            if (checkPlaceRequirements(place.requirementStatus, user.states)) {
+              if(currentHungry > 0) {
+                Object.assign( user, { placesKnown: Object.assign(user.placesKnown, updatedPlaces), room: newPlace, hungry: currentHungry });
+                usersDao.updateUser(userId, user);
+                return agent.add(`${place.description}${distanceText}${withHungry}`);
+              } else {
+                return gameOperations.reset(agent, userId, user.userName, 
+                  'Te encuentras muy débil para seguir caminando. Te detienes y te sientes como una pluma. Tu vista se nubla y caes desmayado en el suelo. Los cuervos, lobos y delincuentes harán el trabajo sucio. Limpiar tus restos', 'hungry');
+              }
+            } else {
+              return agent.add(place.failResponse);
+            }
         }
     }).catch( e => {
         console.log(`error: ${e}`);

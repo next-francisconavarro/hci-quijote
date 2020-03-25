@@ -4,6 +4,7 @@ const usersDao = require('../dao/users');
 const statesDao = require('../dao/states');
 const contextDao = require('../dao/context');
 const arrayUtils = require('../utils/arrayUtils');
+const gameOperations = require('../business/gameOperations');
 
 const everyWhereActions = ['tirar'];
 const genericFailResponse = 'Eso no se puede hacer aqui';
@@ -47,14 +48,15 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
   }
 
   let message;
-  let death = false;
+  let endReason;
+
   if(!allowedAction) {
     console.log('contextActionsTreatment -> forbidden action!')
     message = genericFailResponse;
   } else if(!requirementsOk) {
     console.log('contextActionsTreatment -> requirements not met')
     message = currentAction.failResponse;
-    death = currentAction.death;
+    endReason = currentAction.endReason;
   } else {
     console.log('contextActionsTreatment -> requirements are met')
     switch(action) {
@@ -75,15 +77,12 @@ function contextActionsTreatment(agent,userAccount,user,place,action,object) {
           });
     }
   }
-
-  if(death) {
-    console.log('contextActionsTreatment -> ¡Death!');
-    agent.add(message + '\n¡¡FIN DE LA PARTIDA!!');
-    const coordinates = { lat: 39.5137458, lng: -3.0046506};
-    return usersDao.addUser(userAccount, user.userName, coordinates); // Reset de partida
+  
+  if(endReason) {
+    return gameOperations.reset(agent, userAccount, user.userName, message, endReason);
   } else {
     agent.add(message);
-  }  
+  }
 }
 
 function everyWhereActionsTreatment(agent, userAccount, user, action, object) {

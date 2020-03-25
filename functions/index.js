@@ -9,7 +9,7 @@ const {WebhookClient} = require('./firebase.initializers');//nos permite leer y 
 const welcomeIntent = require('./intents/welcome');
 const fallbackIntent = require('./intents/fallback');
 const rememberUserIntent = require('./intents/rememberUser');
-const saveUserIntent = require('./intents/saveUser');
+const beginIntent = require('./intents/begin');
 const travelIntent = require('./intents/travel');
 const inventoryIntent = require('./intents/inventory');
 const rememberVisitedIntent = require('./intents/rememberVisited');
@@ -58,8 +58,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   intentMap.set('Default Welcome Intent', welcomeIntent.welcomeResponse(request));
   intentMap.set('Default Fallback Intent', fallbackIntent.fallback);
   intentMap.set('Recordar el nombre', rememberUserIntent.recoverUserName(request));
-  intentMap.set('Guardar mi nombre', saveUserIntent.saveUser(request));
-  intentMap.set('viajar', travelIntent.recoverCurrentPlaceStep(request));
+  intentMap.set('Guardar mi nombre', beginIntent.beginAdventure(request));
+  intentMap.set('Viajar', travelIntent.recoverCurrentPlaceStep(request));
   intentMap.set('Inventario', inventoryIntent.showInventory(request));
   intentMap.set('Recordar visitados', rememberVisitedIntent.rememberVisited(request));
   intentMap.set('Acciones', actionsIntent.execute(request))
