@@ -5,7 +5,7 @@ const placesDao = require('../../dao/places.js');
 beforeEach(() => {
   jest.spyOn(placesDao, 'getPlaceById')
   .mockImplementation(() =>  Promise.resolve(
-    { description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', requiredStatus: ["colocar_escalon"], failDescription: "no puedes llegar, necesitas hacer algo antes" , branch: 1, step: 3 }
+    { description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', requirementStatus: ["colocar_escalon"], failDescription: "no puedes llegar, necesitas hacer algo antes" , branch: 1, step: 3 }
   ));
 
   jest.spyOn(placesDao, 'getPlaces')
@@ -13,7 +13,7 @@ beforeEach(() => {
     {
       'alcoba':{ description: 'un dormitorio sin mas. Una cama, un suelo... poco mas. Para descansar es suficiente supongo', branch: 1, step: 3 },
       'acantilado':{ description: 'Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta', branch: 1, step: 2 },
-      'bosque':{ description:'Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daria media vuelta y me iria', requiredStatus: ["colocar_escalón"], branch: 2, step: 6 }
+      'bosque':{ description:'Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daria media vuelta y me iria', requirementStatus: ["colocar_escalón"], branch: 2, step: 6 }
     }));
   jest.spyOn(usersDao, 'updateUser').mockImplementation(() => Promise.resolve({}));
 })
