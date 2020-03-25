@@ -47,7 +47,7 @@ test('Travel intent without hungry advice', () => {
       } ));
 
     return handleRequest({
-        intent: 'viajar',
+        intent: 'Viajar',
         payload: {
           place: 'alcoba'
         }
@@ -70,7 +70,7 @@ test('Travel intent with hungry advice', () => {
     } ));
 
   return handleRequest({
-      intent: 'viajar',
+      intent: 'Viajar',
       payload: {
         place: 'alcoba'
       }
@@ -93,7 +93,7 @@ test('Travel intent with long distance advice', () => {
     } ));
 
   return handleRequest({
-      intent: 'viajar',
+      intent: 'Viajar',
       payload: {
         place: 'bosque'
       }
@@ -115,7 +115,7 @@ test('Travel intent no need to trip. Now on desired place', () => {
     } ));
 
   return handleRequest({
-      intent: 'viajar',
+      intent: 'Viajar',
       payload: {
         place: 'acantilado'
       }
@@ -137,7 +137,7 @@ test('Can´t travel to this place because dont have needed place required status
     } ));
 
   return handleRequest({
-      intent: 'viajar',
+      intent: 'Viajar',
       payload: {
         place: 'bosque'
       }
@@ -160,7 +160,7 @@ test('Travel intent. Death by hungry', () => {
     } ));
 
   return handleRequest({
-      intent: 'viajar',
+      intent: 'Viajar',
       payload: {
         place: 'acantilado'
       }
