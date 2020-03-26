@@ -6,7 +6,7 @@ function welcomeResponse({ body = {} }) {
         console.log('datos del agent: ', agent);
         console.log('request payload data: ', JSON.stringify(payload));
         console.log('request user: ', JSON.stringify(contextDao.getUserId(body)));
-        console.log('request date: ', JSON.stringify(payload.event_time));
+        console.log('request date: ', payload.event_time);
 
         // TODO: Conseguir que pida los permisos 
         // app.askForPermission('para localizarte', app.SupportedPermissions.DEVICE_PRECISE_LOCATION);
