@@ -14,7 +14,7 @@ function getUserId({ body = {} }) {
     }
     
     return payload.data.event &&
-      payload.data.event.user  || NO_USER;
+      payload.data.event.user || NO_USER;
 }
 
 /*function getValidDomain() {
