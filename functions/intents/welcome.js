@@ -1,6 +1,8 @@
 const emptyPayload = {
   data: {
-    personEmail: 'nouser'
+    event: {
+      user : 'nouser'
+    }
   }
 };
 
