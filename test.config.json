@@ -8,5 +8,12 @@
       "/tests/",
       "/tests/utils"
     ]
-  }
+  },
+  "reporters": [
+    "default",
+    ["./node_modules/jest-html-reporter", {
+        "pageTitle": "Quijote's Test Reports",
+        "includeFailureMsg":true
+    }]
+]
 }

@@ -28,6 +28,7 @@ function addUser(userAccount, username, coordinates) {
         room: { 'biblioteca': { step: 0, branch: 0 }},
         placesKnown: ['biblioteca'],
         objects: [], // Inicialmente no tiene objetos en el inventario
+        states: [], // Inicialmente no tiene estados realizados
         hungry: 100,
         userName: username,
         coordinates

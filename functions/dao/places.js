@@ -2,7 +2,7 @@ const {admin} = require('../firebase.initializers');
 const placesList = require('./places.json');
 
 function getPlaces() {
-    return admin.database().ref('places').once('value');
+    return placesList;
 }
 
 function getPlaceById(placeId) {
@@ -10,7 +10,7 @@ function getPlaceById(placeId) {
     throw new Error('Se requiere identificador de lugar');
   }
 
-  return placesList[placeId];
+  return Promise.resolve(placesList[placeId]);
 }
 
 module.exports = { getPlaces, getPlaceById };

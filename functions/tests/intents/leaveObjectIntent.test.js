@@ -1,17 +1,37 @@
 const handleRequest = require('../utils/handleRequest');
 const usersDao = require('../../dao/users');
 const objectsDao = require('../../dao/objects');
+const placesDao = require('../../dao/places');
 
+/* LEAVE OBJECTS ACTION TESTS */
 test('Leave object that i do have', () => {
   jest.spyOn(usersDao, 'getUserById')
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
-      objects:['cosita']
+      objects:['cosita'],
+      room: { 'cocina': { 'branch': 0, 'step': 3 } }
     } ));
 
   jest.spyOn(objectsDao, 'deleteObjectByUser')
     .mockImplementation(() =>  Promise.resolve(true));
+
+    jest.spyOn(placesDao, 'getPlaceById')
+    .mockImplementation(() =>  Promise.resolve( 
+      {
+          step: 3, 
+          branch: 0,
+          description: 'En la antigua y acogedora cocina, desnuda de todo lo que pueda recordar olorosas comidas, queda una triste alacena y, al fondo, una despensa',
+          actions: [
+            {   
+              action: 'coger',
+              object: 'llave',
+              successResponse: 'Guardala bien, nunca se sabe'
+            }
+          ],
+          genericFailResponse: 'Eso no se puede hacer aqui'
+        }
+      ));
 
   return handleRequest({
       intent: 'Acciones',
@@ -23,7 +43,7 @@ test('Leave object that i do have', () => {
     })
     .then(response => {
       expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('Has dejado cosita');
+      expect(response.body.join('')).toMatch('Has dejado cosita en el suelo');
     });
 })
 
@@ -31,7 +51,8 @@ test('Leave object that i do not have', () => {
     jest.spyOn(usersDao, 'getUserById')
       .mockImplementation(() =>  Promise.resolve( 
       { 
-        userName: 'victorman'
+        userName: 'victorman',
+        room: { 'cocina': { 'branch': 0, 'step': 3 } }
       } ));
 
     jest.spyOn(objectsDao, 'deleteObjectByUser')
@@ -50,3 +71,4 @@ test('Leave object that i do not have', () => {
         expect(response.body.join('')).toMatch('No dispones del objeto cosita del que deseas deshacerte');
       });
 })
+
