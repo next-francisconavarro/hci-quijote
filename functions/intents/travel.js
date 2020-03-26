@@ -24,9 +24,12 @@ function checkPlaceRequirements(placeRequirement, userStatusList) {
 }
 
 function travel(agent, userId, user) {
+  const noWhereMessage = 'Nadie ha oido hablar de ese lugar nunca!';
   const selectedPlace = agent.parameters.place;
   const placeName = Object.keys(user.room)[0];
-  if(placeName == selectedPlace) {
+  if(!selectedPlace) {
+    return agent.add(noWhereMessage);
+  } else if(placeName == selectedPlace) {
     return agent.add('¡Ya estás en este lugar!');
   } else {
     return placesDao.getPlaceById(selectedPlace).then(place => {
@@ -58,9 +61,9 @@ function travel(agent, userId, user) {
               return agent.add(place.failResponse);
             }
         }
-    }).catch( e => {
-        console.log(`error: ${e}`);
-        return agent.add('Nadie ha oido hablar de ese lugar nunca!');
+    }).catch(e => {
+      console.log(`Error: ${e}`);
+      agent.add(noWhereMessage);
     });
   }
 }
