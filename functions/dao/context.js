@@ -5,7 +5,7 @@ function getUserId({ body = {} }) {
 
   console.log(`getUserId -> Request payload data: ${JSON.stringify(payload)}`);
 
-  const userMail = body.originalDetectIntentRequest && payload &&
+  const userMail = payload &&
     payload.data &&
     payload.data.data &&
     payload.data.data.personEmail;
@@ -14,7 +14,8 @@ function getUserId({ body = {} }) {
     return userMail.replace(/\.|@.*/g, '');
   }
   
-  return payload.data && 
+  return payload && 
+    payload.data && 
     payload.data.event &&
     payload.data.event.user || NO_USER;
 }
