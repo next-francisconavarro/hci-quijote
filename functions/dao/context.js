@@ -6,13 +6,13 @@ function getUserId({ body = {} }) {
       body.originalDetectIntentRequest.payload &&
       body.originalDetectIntentRequest.payload.data &&
       body.originalDetectIntentRequest.payload.data.data &&
-      body.originalDetectIntentRequest.payload.data.data.personEmail || NO_USER;
+      body.originalDetectIntentRequest.payload.data.data.personEmail;
     
     if (userMail) {
       return userMail.replace(/\.|@.*/g, '');
     }
     return body.originalDetectIntentRequest.payload.event &&
-      body.originalDetectIntentRequest.payload.event.user;
+      body.originalDetectIntentRequest.payload.event.user  || NO_USER;
 }
 
 /*function getValidDomain() {
