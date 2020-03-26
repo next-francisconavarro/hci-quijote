@@ -1,9 +1,9 @@
 const contextDao = require('../dao/context');
 const usersDao = require('../dao/users');
 const { isNight } = require('../utils/time');
-const { Card } = require('dialogflow-fulfillment', 'Image');
+const { Card, Image } = require('dialogflow-fulfillment');
 
-const imageUrl = 'http://www.commodoreabandonware.com/mod/upload/cmd_es/images/c3/34/ba/61/fe/74/aa/5c/21/72/b4/0b/ea/f5/bd/b1/don_quijote.png';
+const imageUrl = 'https://i.imgur.com/avb82TC.png';
 
 function recoverUserName(request) {
     return agent => {
@@ -19,6 +19,10 @@ function recoverUserName(request) {
             //   })
             // );
             agent.add(`Que memoria la tuya, tu nombre es ${user.userName}.`);
+            agent.add(
+              new Image(imageUrl)
+              )
+            agent.add(isNight(user) ? 'Hace una noche despejada.' : 'Hace un día estupendo.');
           }
         });
     }

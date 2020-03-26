@@ -68,3 +68,7 @@ functions/node_modules/
 .env
 
 coverage/
+
+test-report.html
+.DS_Store
+.vscode/

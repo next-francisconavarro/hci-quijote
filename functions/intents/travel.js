@@ -3,6 +3,9 @@ const placesDao = require('../dao/places');
 const usersDao = require('../dao/users');
 const arrayUtils = require('../utils/arrayUtils');
 const gameOperations = require('../business/gameOperations');
+const { Image } = require('dialogflow-fulfillment');
+
+const image = new Image('https://i.imgur.com/weTtlt5.png');
 
 function recoverCurrentPlaceStep(request) {
     return agent => {
@@ -45,6 +48,7 @@ function travel(agent, userId, user) {
               if(currentHungry > 0) {
                 Object.assign( user, { placesKnown: Object.assign(user.placesKnown, updatedPlaces), room: newPlace, hungry: currentHungry });
                 usersDao.updateUser(userId, user);
+                agent.add(image);
                 return agent.add(`${place.description}${distanceText}${withHungry}`);
               } else {
                 return gameOperations.reset(agent, userId, user.userName, 
