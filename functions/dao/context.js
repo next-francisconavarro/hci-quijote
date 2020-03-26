@@ -3,7 +3,6 @@ const NO_USER = 'nouser';
 function getUserId({ body = {} }) {
   const payload = body.originalDetectIntentRequest && body.originalDetectIntentRequest.payload;
 
-  console.log('getUserId -> request date: ', payload.event_time);
   console.log(`getUserId -> Request payload data: ${JSON.stringify(payload)}`);
 
   const userMail = body.originalDetectIntentRequest && payload &&
