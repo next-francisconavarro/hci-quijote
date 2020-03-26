@@ -7,7 +7,12 @@ function getUserId({ body = {} }) {
       body.originalDetectIntentRequest.payload.data &&
       body.originalDetectIntentRequest.payload.data.data &&
       body.originalDetectIntentRequest.payload.data.data.personEmail || NO_USER;
-    return userMail.replace(/\.|@.*/g, '');
+    
+    if (userMail) {
+      return userMail.replace(/\.|@.*/g, '');
+    }
+    return body.originalDetectIntentRequest.payload.event &&
+      body.originalDetectIntentRequest.payload.event.user;
 }
 
 /*function getValidDomain() {
