@@ -15,7 +15,8 @@ function getUserId({ body = {} }) {
     return userMail.replace(/\.|@.*/g, '');
   }
   
-  return payload.data.event &&
+  return payload.data && 
+    payload.data.event &&
     payload.data.event.user || NO_USER;
 }
 

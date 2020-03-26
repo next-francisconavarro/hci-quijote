@@ -1,9 +1,9 @@
 const contextDao = require('../dao/context');
 
-function welcomeResponse(request) {
+function welcomeResponse({ body = {}}) {
     return agent => {
       console.log('datos del agent: ', agent);
-      console.log('request user: ', contextDao.getUserId(request));
+      console.log('request user: ', contextDao.getUserId(body));
 
       // TODO: Conseguir que pida los permisos 
       // app.askForPermission('para localizarte', app.SupportedPermissions.DEVICE_PRECISE_LOCATION);
