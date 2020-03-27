@@ -25,7 +25,7 @@ function getObjectByObjectId(user, object) {
 
   let objectFound;
   if(user.objects && user.objects.length) {
-    objectFound = user.objects.find(element => element == object);
+    objectFound = user.objects.find(element => element.name == object.name);
   }
 
   return objectFound?Promise.resolve(object):Promise.reject('Object not found');
