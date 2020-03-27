@@ -270,3 +270,44 @@ test('Actions intent Forbidden action execution', () => {
       expect(response.body.join('')).toMatch('Eso no se puede hacer aqui');
     });
 })
+
+test('Actions intent with empty inventory', () => {
+  jest.spyOn(usersDao, 'getUserById')
+    .mockImplementation(() =>  Promise.resolve( 
+    { 
+      userName: 'victorman',
+      room: { 'biblioteca': { 'branch': 0, 'step': 0 } }
+    } ));
+
+  jest.spyOn(statesDao, 'addStatus')
+    .mockImplementation(() => Promise.resolve(true));
+
+  jest.spyOn(placesDao, 'getPlaceById')
+    .mockImplementation(() =>  Promise.resolve( 
+      { 
+        step: 0, 
+        branch: 0,
+        description: "Los libros polvorientos destacan en una estantería situada hacia la izquierda. De todos ellos hay un libro que te llama especialmente la atención",
+        actions: [
+          {   
+            action: "leer",
+            object: { name: "libro" },
+            successResponse: "Lees en voz alta para espantar el miedo que te recorre el cuerpo. Con cada palabra, todo a tu alrededor vibra cada vez más, hasta que aparece ante ti una ventana etérea, circular, a través de la cual se puede observar una habitación"
+          }
+        ]
+      }
+      ));
+
+  return handleRequest({
+      intent: 'Acciones',
+      payload: {
+        user: 'victorman',
+        action: 'leer',
+        object: ['libro']
+      }
+    })
+    .then(response => {
+      expect(response.status).toBe(200);
+      expect(response.body.join('')).toMatch('Lees en voz alta para espantar el miedo que te recorre el cuerpo. Con cada palabra, todo a tu alrededor vibra cada vez más, hasta que aparece ante ti una ventana etérea, circular, a través de la cual se puede observar una habitación');
+    });
+})

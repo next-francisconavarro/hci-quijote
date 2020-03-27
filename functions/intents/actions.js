@@ -46,8 +46,9 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
   let requirementsOk;
 
   if(allowedAction) {
-    console.log('contextActionsTreatment -> action allowed!')
-    requirementsOk = arrayUtils.isSubset(currentAction.requirementObject, user.objects.map(item => item.name)) &&
+    console.log('contextActionsTreatment -> action allowed!');
+    const objects = !user.objects?[]:user.objects;
+    requirementsOk = arrayUtils.isSubset(currentAction.requirementObject, objects.map(item => item.name)) &&
       arrayUtils.isSubset(currentAction.requirementStatus, user.states);
   }
 
@@ -69,11 +70,11 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
         .then(() => 
           statesDao.addStatus(userAccount, user, currentAction.action + '_' + currentAction.object.name));
       default:
-        console.log('statusTreatment -> Updating action state');
+        console.log('contextActionsTreatment -> Updating action state');
         return statesDao.addStatus(userAccount, user, currentAction.action + '_' + currentAction.object.name)
           .then(() => agent.add(currentAction.successResponse))
           .catch(e => {
-            console.log(`Error: ${e}`);
+            console.log(`Action error: ${e}`);
             agent.add(`Ya has hecho eso`);
           });
     }
