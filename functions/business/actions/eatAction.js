@@ -1,11 +1,11 @@
 const objectsDao = require('../../dao/objects');
 const usersDao = require('../../dao/users');
 
-function eat(agent, userAccount, user, object) {
+function eat(agent, userAccount, user, objectName) {
   console.log('eat -> Eat action execution');
-  return objectsDao.getObjectByObjectId(user, object).then(object => {
+  return objectsDao.getObjectByObjectId(user, objectName).then(object => {
     if(object.type == 'food') {
-      return objectsDao.deleteObjectByUser(userAccount, user, object).then(() => {
+      return objectsDao.deleteObjectByUser(userAccount, user, object.name).then(() => {
         console.log(`eat -> Comida borrada del inventario`);
         const newHungry = user.hungry + object.lifePoints;
         Object.assign( user, { hungry: newHungry });

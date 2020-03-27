@@ -87,12 +87,12 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
   }
 }
 
-function everyWhereActionsTreatment(agent, userAccount, user, action, object) {
+function everyWhereActionsTreatment(agent, userAccount, user, action, objectName) {
   switch(action) {
     case 'tirar': 
-      return leaveAction.leave(agent, userAccount, user, object);
+      return leaveAction.leave(agent, userAccount, user, objectName);
     case 'comer': 
-      return eatAction.eat(agent, userAccount, user, object);
+      return eatAction.eat(agent, userAccount, user, objectName);
     default:
       console.log('everyWhereActionsTreatment -> Action not supported');
       agent.add(genericFailResponse);
