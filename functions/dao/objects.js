@@ -41,7 +41,7 @@ function deleteObjectByUser(userId, user, object) {
   }
 
   return getObjectByObjectId(user, object).then(object => {
-    Object.assign( user, { objects: user.objects.filter(item => item !== object)});
+    Object.assign( user, { objects: user.objects.filter(item => item.name !== object)});
     return usersDao.updateUser(userId, user);
   });
 }
@@ -59,8 +59,9 @@ function addObject(userId, user, object) {
   let toTake = false;
   if(user.objects && user.objects.length) {
     objects = user.objects;
-    console.log(`addObject -> ${objects} includes ${object}? ${object.includes(object)}`);
-    if(!objects.includes(object)) {
+    const isIncluded = objects.map(item => item.name).includes(object.name);
+    console.log(`addObject -> ${objects} includes ${object}? ${isIncluded}`);
+    if(!isIncluded) {
       toTake = true;
       objects.push(object);
     }
@@ -79,4 +80,4 @@ function addObject(userId, user, object) {
   }
 }
 
-module.exports = { getObjectsByUserId, deleteObjectByUser, addObject };
+module.exports = { getObjectByObjectId, getObjectsByUserId, deleteObjectByUser, addObject };

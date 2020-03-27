@@ -10,7 +10,7 @@ test('Actions intent execution. Requirements not met', () => {
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
-      objects:['cosita'],
+      objects:[ { name: 'cosita', type: 'util' } ],
       room: { 'cocina': { 'branch': 0, 'step': 3 } }
     } ));
 
@@ -23,7 +23,7 @@ test('Actions intent execution. Requirements not met', () => {
           actions: [
             {   
               action: 'abrir',
-              object: 'alacena',
+              object: { name: 'alacena' },
               requirementStatus: ['poner_armadura'],
               successResponse: 'Una rata salta, te intenta morder, pero gracias a la armadura lo unico que consigue es romperse los dientes.',
               failResponse: 'La rata salta sobre tu hidalgo rostro perjudicando tus globos oculares, ya no estás en condiciones de continuar con un hidalga azaña',
@@ -54,7 +54,7 @@ test('Actions intent execution. Requirements are met', () => {
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
-      objects:['cosita'],
+      objects:[ { name: 'cosita', type: 'util' } ],
       states:['poner_armadura'],
       room: { 'cocina': { 'branch': 0, 'step': 3 } }
     } ));
@@ -71,7 +71,7 @@ test('Actions intent execution. Requirements are met', () => {
           actions: [
             {   
               action: 'abrir',
-              object: 'alacena',
+              object: { name: 'alacena'  },
               requirementStatus: ['poner_armadura'],
               successResponse: 'Una rata salta, te intenta morder, pero gracias a la armadura lo unico que consigue es romperse los dientes.',
               failResponse: 'La rata salta sobre tu hidalgo rostro perjudicando tus globos oculares, ya no estás en condiciones de continuar con un hidalga azaña'
@@ -101,7 +101,7 @@ test('Actions intent execution. Fail due to repeated action', () => {
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
-      objects:['cosita'],
+      objects:[ { name: 'cosita', type: 'util' } ],
       states:['poner_armadura'],
       room: { 'cocina': { 'branch': 0, 'step': 3 } }
     } ));
@@ -118,7 +118,7 @@ test('Actions intent execution. Fail due to repeated action', () => {
           actions: [
             {   
               action: 'abrir',
-              object: 'alacena',
+              object: { name: 'alacena' },
               requirementStatus: ['poner_armadura'],
               successResponse: 'Una rata salta, te intenta morder, pero gracias a la armadura lo unico que consigue es romperse los dientes.',
               failResponse: 'La rata salta sobre tu hidalgo rostro perjudicando tus globos aculares, ya no estas en condiciones que continuar con un hidalga azaña'

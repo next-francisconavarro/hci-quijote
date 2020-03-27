@@ -1,7 +1,6 @@
 const handleRequest = require('../utils/handleRequest');
 const usersDao = require('../../dao/users');
 const objectsDao = require('../../dao/objects');
-const placesDao = require('../../dao/places');
 
 /* LEAVE OBJECTS ACTION TESTS */
 test('Leave object that i do have', () => {
@@ -9,29 +8,12 @@ test('Leave object that i do have', () => {
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
-      objects:['cosita'],
-      room: { 'cocina': { 'branch': 0, 'step': 3 } }
+      objects:[ { name: 'cosita' } ],
+      room: { cocina: { branch: 0, 'step': 3 } }
     } ));
 
   jest.spyOn(objectsDao, 'deleteObjectByUser')
     .mockImplementation(() =>  Promise.resolve(true));
-
-    jest.spyOn(placesDao, 'getPlaceById')
-    .mockImplementation(() =>  Promise.resolve( 
-      {
-          step: 3, 
-          branch: 0,
-          description: 'En la antigua y acogedora cocina, desnuda de todo lo que pueda recordar olorosas comidas, queda una triste alacena y, al fondo, una despensa',
-          actions: [
-            {   
-              action: 'coger',
-              object: 'llave',
-              successResponse: 'Guardala bien, nunca se sabe'
-            }
-          ],
-          genericFailResponse: 'Eso no se puede hacer aqui'
-        }
-      ));
 
   return handleRequest({
       intent: 'Acciones',
