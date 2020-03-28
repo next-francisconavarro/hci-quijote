@@ -12,12 +12,12 @@ function getObjectsByUserId(userId) {
   });
 }
 
-function getObjectByObjectId(user, object) {
+function getObjectByObjectId(user, objectName) {
   if(!user) {
     throw new Error('Se requiere usuario');
   }
 
-  if(!object) {
+  if(!objectName) {
     throw new Error('Se requiere objeto a consultar');
   }
   
@@ -25,25 +25,23 @@ function getObjectByObjectId(user, object) {
 
   let objectFound;
   if(user.objects && user.objects.length) {
-    objectFound = user.objects.find(element => element == object);
+    objectFound = user.objects.find(element => element.name == objectName);
   }
 
-  return objectFound?Promise.resolve(object):Promise.reject('Object not found');
+  return objectFound?Promise.resolve(objectFound):Promise.reject('Object not found');
 }
 
-function deleteObjectByUser(userId, user, object) {
+function deleteObjectByUser(userId, user, objectName) {
   if(!userId) {
       throw new Error('Se requiere identificador de usuario');
   } else if(!user) {
       throw new Error('Se requiere usuario');
-  } else if(!object) {
+  } else if(!objectName) {
       throw new Error('Se requiere objeto a borrar');
   }
 
-  return getObjectByObjectId(user, object).then(object => {
-    Object.assign( user, { objects: user.objects.filter(item => item !== object)});
-    return usersDao.updateUser(userId, user);
-  });
+  Object.assign( user, { objects: user.objects.filter(item => item.name !== objectName)});
+  return usersDao.updateUser(userId, user);
 }
 
 function addObject(userId, user, object) {
@@ -59,8 +57,9 @@ function addObject(userId, user, object) {
   let toTake = false;
   if(user.objects && user.objects.length) {
     objects = user.objects;
-    console.log(`addObject -> ${objects} includes ${object}? ${object.includes(object)}`);
-    if(!objects.includes(object)) {
+    const isIncluded = objects.map(item => item.name).includes(object.name);
+    console.log(`addObject -> ${objects} includes ${object}? ${isIncluded}`);
+    if(!isIncluded) {
       toTake = true;
       objects.push(object);
     }
@@ -79,4 +78,4 @@ function addObject(userId, user, object) {
   }
 }
 
-module.exports = { getObjectsByUserId, deleteObjectByUser, addObject };
+module.exports = { getObjectByObjectId, getObjectsByUserId, deleteObjectByUser, addObject };

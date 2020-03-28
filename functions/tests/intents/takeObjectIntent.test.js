@@ -2,6 +2,7 @@ const handleRequest = require('../utils/handleRequest');
 const usersDao = require('../../dao/users');
 const objectsDao = require('../../dao/objects');
 const placesDao = require('../../dao/places');
+const statesDao = require('../../dao/states');
 
 /* TAKE OBJECTS ACTION TESTS */
 test('Actions take new object intent execution', () => {
@@ -9,11 +10,14 @@ test('Actions take new object intent execution', () => {
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
-      objects:['cosita'],
+      objects:[ { name: 'cosita', type: 'util' } ],
       room: { 'cocina': { 'branch': 0, 'step': 3 } }
     } ));
 
   jest.spyOn(objectsDao, 'addObject')
+    .mockImplementation(() => Promise.resolve());
+
+  jest.spyOn(statesDao, 'addStatus')
     .mockImplementation(() => Promise.resolve());
 
   jest.spyOn(placesDao, 'getPlaceById')
@@ -25,7 +29,7 @@ test('Actions take new object intent execution', () => {
           actions: [
             {   
               action: 'coger',
-              object: 'llave',
+              object: { name: 'llave', type: 'util' },
               successResponse: 'Guardala bien, nunca se sabe'
             }
           ],
@@ -52,12 +56,15 @@ test('Actions take same object intent execution', () => {
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
-      objects:['llave'],
+      objects:[ { name: 'llave', type: 'util' } ],
       room: { 'cocina': { 'branch': 0, 'step': 3 } }
     } ));
 
   jest.spyOn(objectsDao, 'addObject')
     .mockImplementation(() => Promise.reject('Object repeated'));
+
+  jest.spyOn(statesDao, 'addStatus')
+    .mockImplementation(() => Promise.resolve());
 
   jest.spyOn(placesDao, 'getPlaceById')
     .mockImplementation(() =>  Promise.resolve( 
@@ -68,7 +75,7 @@ test('Actions take same object intent execution', () => {
           actions: [
             {   
               action: 'coger',
-              object: 'llave',
+              object: { name: 'llave', type: 'util' },
               successResponse: 'Guardala bien, nunca se sabe'
             }
           ],
