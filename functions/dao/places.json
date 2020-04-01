@@ -4,7 +4,9 @@
           "branch": 0,
           "description": "Los libros polvorientos destacan en una estantería situada hacia la izquierda. De todos ellos hay un libro que te llama especialmente la atención",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/biblioteca.png"
+            ]
           },
           "actions": [
             {   
@@ -19,7 +21,9 @@
           "branch": 0,
           "description": "La habitación es austera como corresponde a la de un hidalgo manchego del siglo XVI. Una escalera conecta tu habitación con el piso inferior y si miras atrás, todavía puedes ver el portal a la biblioteca",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
+            ]
           },
           "actions": []
         },
@@ -28,7 +32,9 @@
           "branch": 0,
           "description": "Estas en el zaguán. Una amplia escalera te facilitará el acceso al piso superior y delante de ti, tienes las puertas que te llevan al comedor, la cocina y la puerta de salida",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
+            ]
           },
           "actions": []
         },
@@ -37,7 +43,9 @@
           "branch": 0,
           "description": "En la antigua y acogedora cocina, desnuda de todo lo que pueda recordar olorosas comidas, queda una triste alacena y, al fondo, una despensa",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/cocina.png"
+            ]
           },
           "actions": [
             {   
@@ -133,12 +141,14 @@
             }
           ]
         },
-        "argamasillla": { 
+        "argamasilla": { 
           "step": 4, 
           "branch": 0,
           "description": "Argamasilla de Alba, tu pueblo. Sus solitarias calles y piedras están mudas ante ti. A la izquierda alcanzas a ver el arco de salida del pueblo, a tu derecha las calles y frente a ti... ¿Que dirá ese bando que hay en el muro?",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/argamasilla.png"
+            ]
           },
           "actions": [
             { 
@@ -153,7 +163,9 @@
           "branch": 0,
           "description": "Ya llegas al arco. Una arboleda está ahí, hacia el este, esperándote siempre con su sombra acogedora y secreta",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/arco.png"
+            ]
           },
           "actions": []
         },
@@ -162,7 +174,9 @@
           "branch": 0,
           "description": "¿Arboleda?, ¿selva?, las mayores sorpresas pueden esperarte en estos lugares. Detrás de ti dejas el arco de entrada al pueblo mientras que más adelante en el camino ves emerger un árbol muy peculiar, ¿será posible que haya un manzano en estos parajes?",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/bosque.png"
+            ]
           },
           "actions": [
             {   
@@ -184,7 +198,9 @@
           "branch": 0,
           "description": "Algo insólito en estos parajes, ¡un manzano!, que frutos tan sabrosos, una lástima que no los tengas a tu alcance. Podrías intentar coger una manzana o continuar hacia ese pinar que divisas más adelante",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/manzano.png"
+            ]
           },
           "actions": [
             {   
@@ -206,7 +222,9 @@
           "branch": 0,
           "description": "Continúas caminando por la arboleda. Estás contento porque, de momento, tu aventura se te está antojando un agradable paseo. Grandes bosques y arboledas, olor a pinos, un sol gentil... y el suelo está lleno de flores",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/pinar.png"
+            ]
           },
           "actions": [
             { 
