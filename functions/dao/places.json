@@ -65,7 +65,7 @@
       },
       { 
         "action": "coger", 
-        "object": { "name": "llave" },
+        "object": { "name": "llave", "type": "util" },
         "successResponse": "Guardala bien, nunca se sabe"
       }
     ]
