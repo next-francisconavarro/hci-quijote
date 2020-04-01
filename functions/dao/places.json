@@ -6,8 +6,8 @@
     "media": {
       "images": [
         "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/biblioteca.png"
-            ]
-          },
+        ]
+      },
     "actions": [
       {   
         "action": "leer",
@@ -23,8 +23,8 @@
     "media": {
       "images": [
         "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
-            ]
-          },
+        ]
+      },
     "actions": []
   },
   "zaguán": { 
@@ -34,8 +34,8 @@
     "media": {
       "images": [
         "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
-            ]
-          },
+        ]
+      },
     "actions": []
   },
   "cocina": { 
@@ -45,8 +45,8 @@
     "media": {
       "images": [
         "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/cocina.png"
-            ]
-          },
+        ]
+      },
     "actions": [
       {   
         "action": "abrir",
@@ -148,8 +148,8 @@
     "media": {
       "images": [
         "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/argamasilla.png"
-            ]
-          },
+        ]
+      },
     "actions": [
       { 
         "action": "leer",
@@ -165,8 +165,8 @@
     "media": {
       "images": [
         "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/arco.png"
-            ]
-          },
+        ]
+      },
     "actions": []
   },
   "arboleda": { 
@@ -176,8 +176,8 @@
     "media": {
       "images": [
         "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/bosque.png"
-            ]
-          },
+        ]
+      },
     "actions": [
       {   
         "action": "examinar",
@@ -200,8 +200,8 @@
     "media": {
       "images": [
         "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/manzano.png"
-            ]
-          },
+        ]
+      },
     "actions": [
       {   
         "action": "golpear",
@@ -224,8 +224,8 @@
     "media": {
       "images": [
         "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/pinar.png"
-            ]
-          },
+        ]
+      },
     "actions": [
       { 
         "action": "examinar",
@@ -373,8 +373,10 @@
     "branch": 1,
     "description": "Bonito dormitorio este. Una cama que hasta parece limpia domina la habitacion. ¿pero qué es eso que hay debajo? ¿parece un martillo? ",
     "media": {
-      "images": []
-    },
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
+        ]
+      },
     "actions": [
       { 
         "action": "coger",
@@ -403,7 +405,9 @@
     "branch": 1,
     "description": "Ante ti se extienden los bellos campos de la mancha. Cómo me gusta ese olor a trigo que inunda el aire. Más adelante en el camino ves la puerta destartalada de una venta, pero un camino oscuro llama tu atención a la izquierda. En un cartel ya casi deshecho por el paso del tiempo adivinas a leer 'peligro de acantilado, no pasar'",
     "media": {
-      "images": []
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/pinar.png"
+      ]
     },
     "actions": []
   },
@@ -412,7 +416,9 @@
     "branch": 2,
     "description": "Un diminuto acantilado está frente ti. Quizás podrías cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo. Creo que sería mejor darse media vuelta",
     "media": {
-      "images": []
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/acantilado.png"
+      ]
     },
     "actions": [
       { 
@@ -436,6 +442,11 @@
     "requirementStatus": ["colocar_escalón"],
     "description": "Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daría media vuelta y me iría",
     "failResponse": "No puedes llegar al bosque, antes debes cruzar un acantilado que tiene pinta que no podrás cruzar de un salto",
+    "media": {
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/bosque.png"
+        ]
+      },
     "actions": [
       { 
         "action": "coger",
