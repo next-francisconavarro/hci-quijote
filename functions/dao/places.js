@@ -1,4 +1,3 @@
-const {admin} = require('../firebase.initializers');
 const placesList = require('./places.json');
 
 function getPlaces() {
@@ -10,7 +9,9 @@ function getPlaceById(placeId) {
     throw new Error('Se requiere identificador de lugar');
   }
 
-  return Promise.resolve(placesList[placeId]);
+  const place = placesList[placeId];
+
+  return place?Promise.resolve(place):Promise.reject('place not found');
 }
 
 module.exports = { getPlaces, getPlaceById };

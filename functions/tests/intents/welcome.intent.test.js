@@ -1,6 +1,10 @@
 const handleRequest = require('../utils/handleRequest');
+const contextDao = require('../../dao/context');
 
 test('Welcome intent assistant does not crash', () => {
+
+  jest.spyOn(contextDao, 'getUserId')
+    .mockImplementation(() =>  Promise.resolve('userTest'));
 
     return handleRequest({
         intent: 'Default Welcome Intent'

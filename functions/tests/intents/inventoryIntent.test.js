@@ -25,7 +25,11 @@ test('Inventory empty', () => {
 
 test('Inventory with objects', () => {
   
-  objectsDao.getObjectsByUserId.mockImplementation(() =>  Promise.resolve(['llave', 'patata']));
+  objectsDao.getObjectsByUserId.mockImplementation(() =>  
+    Promise.resolve([ 
+      { name: 'llave', type: 'util' }, 
+      { name: 'patata', type: 'food' }
+    ]));
 
   return handleRequest({
       intent: 'Inventario',

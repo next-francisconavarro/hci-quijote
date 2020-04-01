@@ -3,18 +3,21 @@ const NO_USER = 'nouser';
 function getUserId({ body = {} }) {
   const payload = body.originalDetectIntentRequest && body.originalDetectIntentRequest.payload;
 
-    console.log(`getUserId -> Request payload: ${JSON.stringify(payload)}`);
-    const userMail = body.originalDetectIntentRequest && payload &&
-      payload.data &&
-      payload.data.data &&
-      payload.data.data.personEmail;
-    
-    if (userMail) {
-      return userMail.replace(/\.|@.*/g, '');
-    }
-    
-    return payload.data.event &&
-      payload.data.event.user  || NO_USER;
+  console.log(`getUserId -> Request payload data: ${JSON.stringify(payload)}`);
+
+  const userMail = payload &&
+    payload.data &&
+    payload.data.data &&
+    payload.data.data.personEmail;
+  
+  if (userMail) {
+    return userMail.replace(/\.|@.*/g, '');
+  }
+  
+  return payload && 
+    payload.data && 
+    payload.data.event &&
+    payload.data.event.user || NO_USER;
 }
 
 /*function getValidDomain() {
