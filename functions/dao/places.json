@@ -3,6 +3,11 @@
     "step": 0, 
     "branch": 0,
     "description": "Los libros polvorientos destacan en una estantería situada hacia la izquierda. De todos ellos hay un libro que te llama especialmente la atención",
+    "media": {
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/biblioteca.png"
+        ]
+      },
     "actions": [
       {   
         "action": "leer",
@@ -15,18 +20,33 @@
     "step": 1, 
     "branch": 0,
     "description": "La habitación es austera como corresponde a la de un hidalgo manchego del siglo XVI. Una escalera conecta tu habitación con el piso inferior y si miras atrás, todavía puedes ver el portal a la biblioteca",
+    "media": {
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
+        ]
+      },
     "actions": []
   },
   "zaguán": { 
     "step": 2,
     "branch": 0,
     "description": "Estas en el zaguán. Una amplia escalera te facilitará el acceso al piso superior y delante de ti, tienes las puertas que te llevan al comedor, la cocina y la puerta de salida",
+    "media": {
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
+        ]
+      },
     "actions": []
   },
   "cocina": { 
     "step": 3, 
     "branch": 0,
     "description": "En la antigua y acogedora cocina, desnuda de todo lo que pueda recordar olorosas comidas, queda una triste alacena y, al fondo, una despensa",
+    "media": {
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/cocina.png"
+        ]
+      },
     "actions": [
       {   
         "action": "abrir",
@@ -54,6 +74,9 @@
     "step": 4,
     "branch": 0,
     "description": "La ténue luz que penetra por la puerta permite vislumbrar un baúl, cuya superficie cubierta por el polvo de los siglos encubre recuerdos de tus antepasados",
+    "media": {
+      "images": []
+    },
     "actions": [
       { 
         "action": "abrir",
@@ -80,6 +103,9 @@
     "step": 3, 
     "branch": 0,
     "description": "Te encuentras en el comedor de tu casa, rústico y sencillo, gobernado por una mesa de madera. Algo cuelga de la pared. También puedes observar que hay un currusco de pan sobre la mesa",
+    "media": {
+      "images": []
+    },
     "actions": [
       { 
         "action": "examinar",
@@ -102,6 +128,9 @@
     "step": 3, 
     "branch": 0,
     "description": "El portalón de tu casa, iluminado por la luz de un candelabro, te abrirá las puertas de tu nueva vida",
+    "media": {
+      "images": []
+    },
     "actions": [
       { 
         "action": "abrir",
@@ -116,6 +145,11 @@
     "step": 4, 
     "branch": 0,
     "description": "Argamasilla de Alba, tu pueblo. Sus solitarias calles y piedras están mudas ante ti. A la izquierda alcanzas a ver el arco de salida del pueblo, a tu derecha las calles y frente a ti... ¿Que dirá ese bando que hay en el muro?",
+    "media": {
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/argamasilla.png"
+        ]
+      },
     "actions": [
       { 
         "action": "leer",
@@ -128,12 +162,22 @@
     "step": 5, 
     "branch": 0,
     "description": "Ya llegas al arco. Una arboleda está ahí, hacia el este, esperándote siempre con su sombra acogedora y secreta",
+    "media": {
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/arco.png"
+        ]
+      },
     "actions": []
   },
   "arboleda": { 
     "step": 6, 
     "branch": 0,
     "description": "¿Arboleda?, ¿selva?, las mayores sorpresas pueden esperarte en estos lugares. Detrás de ti dejas el arco de entrada al pueblo mientras que más adelante en el camino ves emerger un árbol muy peculiar, ¿será posible que haya un manzano en estos parajes?",
+    "media": {
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/bosque.png"
+        ]
+      },
     "actions": [
       {   
         "action": "examinar",
@@ -153,6 +197,11 @@
     "step": 7, 
     "branch": 0,
     "description": "Algo insólito en estos parajes, ¡un manzano!, que frutos tan sabrosos, una lástima que no los tengas a tu alcance. Podrías intentar coger una manzana o continuar hacia ese pinar que divisas más adelante",
+    "media": {
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/manzano.png"
+        ]
+      },
     "actions": [
       {   
         "action": "golpear",
@@ -172,6 +221,11 @@
     "step": 8, 
     "branch": 0,
     "description": "Continúas caminando por la arboleda. Estás contento porque, de momento, tu aventura se te está antojando un agradable paseo. Grandes bosques y arboledas, olor a pinos, un sol gentil... y el suelo está lleno de flores",
+    "media": {
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/pinar.png"
+        ]
+      },
     "actions": [
       { 
         "action": "examinar",
@@ -189,6 +243,9 @@
     "step": 9, 
     "branch": 1,
     "description": "Estás en un camino bloqueado por un enorme muro de piedra",
+    "media": {
+      "images": []
+    },
     "actions": [
       { 
         "action": "colocar",
@@ -220,6 +277,9 @@
     "requirementStatus": ["escalar_muro"],
     "description": "Al cruzar el muro, el camino se acaba, solo puedes ver una botella en el suelo. Tu única opción es dar media vuelta",
     "failResponse": "Te pones de puntillas y apenas alcanzas a ver por encima del muro que bloquea tu paso",
+    "media": {
+      "images": []
+    },
     "actions": [
       { 
         "action": "coger",
@@ -232,6 +292,9 @@
     "step": 9, 
     "branch": 0,
     "description": "Te encuentras ante la imponente puerta de una suntuosa posada... mentira, la puerta se cae a cachos y la posada luce de dudosa categoría cuanto menos. Antes de disponerte a llamar a esta puerta, te percatas de que a tu izquierda hay un pequeño camino, casi oculto por la maleza, que parece conducir hasta uno de los muros limítrofes con la posada",
+    "media": {
+      "images": []
+    },
     "actions": [
       { 
         "action": "llamar",
@@ -244,12 +307,18 @@
     "step": 10, 
     "branch": 0,
     "description": "Estás en el recibidor de la posada. ¿Cuánta gente habrá pasado aqui la noche?, al fondo ves unas escaleras, tampoco hace falta ser un genio para deducir que subiendolas llegarías a las habitaciones",
+    "media": {
+      "images": []
+    },
     "actions": []
   },
   "escalera": { 
     "step": 11, 
     "branch": 0,
     "description": "Un candelabro en una de las paredes ilumina el descansillo de la escalera. Parece tan viejo como todo lo demás. Quizás sería mejor ir directamente al rellano que hay arriba",
+    "media": {
+      "images": []
+    },
     "actions": [
       { 
         "action": "examinar",
@@ -269,12 +338,18 @@
     "step": 12, 
     "branch": 0,
     "description": "Estás en el primer rellano. Dos puertas, a izquierda y derecha, visibles gracias a la luz de la antorcha, te abrirán el paso a la bodega y dormitorio respectivamente. ¿Una bodega dices?, sí, no se por qué te extraña",
+    "media": {
+      "images": []
+    },
     "actions": []
   },
   "bodega": { 
     "step": 13, 
     "branch": 0,
     "description": "La estancia esta llena de odres, Huele a vino rancio y a queso picado. ¿O era al revés?",
+    "media": {
+      "images": []
+    },
     "actions": [
       { 
         "action": "abrir",
@@ -297,6 +372,11 @@
     "step": 13, 
     "branch": 1,
     "description": "Bonito dormitorio este. Una cama que hasta parece limpia domina la habitacion. ¿pero qué es eso que hay debajo? ¿parece un martillo? ",
+    "media": {
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
+        ]
+      },
     "actions": [
       { 
         "action": "coger",
@@ -309,6 +389,9 @@
     "step": 5, 
     "branch": 1,
     "description": "Otra calle, calles y más calles. Alguien se ha dejado un rastrillo apoyado en la pared y, al fondo, puedes ver como termina el pueblo y se abren los maravillosos campos",
+    "media": {
+      "images": []
+    },
     "actions": [
       { 
         "action": "coger",
@@ -321,12 +404,22 @@
     "step": 6, 
     "branch": 1,
     "description": "Ante ti se extienden los bellos campos de la mancha. Cómo me gusta ese olor a trigo que inunda el aire. Más adelante en el camino ves la puerta destartalada de una venta, pero un camino oscuro llama tu atención a la izquierda. En un cartel ya casi deshecho por el paso del tiempo adivinas a leer 'peligro de acantilado, no pasar'",
+    "media": {
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/pinar.png"
+      ]
+    },
     "actions": []
   },
   "acantilado": { 
     "step": 6, 
     "branch": 2,
     "description": "Un diminuto acantilado está frente ti. Quizás podrías cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo. Creo que sería mejor darse media vuelta",
+    "media": {
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/acantilado.png"
+      ]
+    },
     "actions": [
       { 
         "action": "colocar",
@@ -349,6 +442,11 @@
     "requirementStatus": ["colocar_escalón"],
     "description": "Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo. Se escuchan lobos al rededor tuya. Yo me daría media vuelta y me iría",
     "failResponse": "No puedes llegar al bosque, antes debes cruzar un acantilado que tiene pinta que no podrás cruzar de un salto",
+    "media": {
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/bosque.png"
+        ]
+      },
     "actions": [
       { 
         "action": "coger",

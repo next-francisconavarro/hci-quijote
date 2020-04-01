@@ -5,8 +5,6 @@ const arrayUtils = require('../utils/arrayUtils');
 const gameOperations = require('../business/gameOperations');
 const { Image } = require('dialogflow-fulfillment');
 
-const image = new Image('https://i.imgur.com/weTtlt5.png');
-
 function recoverCurrentPlaceStep(request) {
     return agent => {
       console.log(`recoverCurrentPlaceStep -> ${JSON.stringify(agent.parameters)}`);
@@ -49,9 +47,14 @@ function travel(agent, userId, user) {
             
             if (checkPlaceRequirements(place.requirementStatus, user.states)) {
               if(currentHungry > 0) {
+                const images = place.media && place.media.images || []; 
                 Object.assign( user, { placesKnown: Object.assign(user.placesKnown, updatedPlaces), room: newPlace, hungry: currentHungry });
                 usersDao.updateUser(userId, user);
-                agent.add(image);
+
+                if (images.length) {
+                  // TODO: poner dia o noche
+                  agent.add(new Image(images[0]));
+                }
                 return agent.add(`${place.description}${distanceText}${withHungry}`);
               } else {
                 return gameOperations.reset(agent, userId, user.userName, 

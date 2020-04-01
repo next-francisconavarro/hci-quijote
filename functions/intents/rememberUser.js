@@ -1,7 +1,7 @@
 const contextDao = require('../dao/context');
 const usersDao = require('../dao/users');
 const { isNight } = require('../utils/time');
-const { Card, Image } = require('dialogflow-fulfillment');
+const { Image } = require('dialogflow-fulfillment');
 
 const imageUrl = 'https://i.imgur.com/avb82TC.png';
 
