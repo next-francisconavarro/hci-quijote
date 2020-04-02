@@ -459,6 +459,9 @@
     "step": 8, 
     "branch": 1,
     "description": "Te encuentras de bruces con la puerta de la venta que te llevará al recibidor. No es por criticar pero tiene aspecto de venirse abajo más pronto que tarde. A tu izquierda ves un pequeño camino que te lleva a los prados aledaños",
+    "media": {
+      "images": []
+    },
     "actions": []
   },
   "recibidor": { 
@@ -471,6 +474,9 @@
     "step": 10, 
     "branch": 1,
     "description": "Que salón tan solitario y vacío. Desde luego aqui no saben como darle un toque hogareño a una estancia. Solo hay una gran mesa vacía y un pequeño cesto en una esquina",
+    "media": {
+      "images": []
+    },
     "actions": [
       { 
         "action": "examinar",
@@ -504,6 +510,9 @@
     "step": 11, 
     "branch": 1,
     "description": "Un dormitorio sin más. Una cama, un suelo... poco más. Para descansar es suficiente supongo",
+    "media": {
+      "images": []
+    },
     "actions": [
       { 
         "action": "descansar",
@@ -517,6 +526,9 @@
     "requirementStatus": ["arreglar_cerradura"],
     "description": "Al traspasar la puerta, accedes a un sorprendentemente acogedor patio, de no ser por que está lleno de gallinas que alborotan a tu alrededor. En una esquina disponen de un indispensable poco decorado con una estatuilla. Un momento... todo buen caballero debe velar sus armas por lo menos una vez en su vida, y esa estatuilla es un testigo ideal",
     "failResponse": "Estaría bien poder visitar el patio, pero una puerta rota te lo impide",
+    "media": {
+      "images": []
+    },
     "actions": [
       { 
         "action": "velar",
@@ -531,6 +543,9 @@
     "step": 6, 
     "branch": 2,
     "description": "Unos extensos prados, que solo destacan por un nutrido rebaño de ovejas, que pastan apacibles pero bloquean el paso",
+    "media": {
+      "images": []
+    },
     "actions": [
       { 
         "action": "atacar",
