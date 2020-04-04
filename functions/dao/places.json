@@ -104,7 +104,9 @@
     "branch": 0,
     "description": "Te encuentras en el comedor de tu casa, rústico y sencillo, gobernado por una mesa de madera. Algo cuelga de la pared. También puedes observar que hay un currusco de pan sobre la mesa",
     "media": {
-      "images": []
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/comedor.png"
+      ]
     },
     "actions": [
       { 
@@ -244,7 +246,9 @@
     "branch": 1,
     "description": "Estás en un camino bloqueado por un enorme muro de piedra",
     "media": {
-      "images": []
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/muro.png"
+      ]
     },
     "actions": [
       { 
@@ -278,7 +282,9 @@
     "description": "Al cruzar el muro, el camino se acaba, solo puedes ver una botella en el suelo. Tu única opción es dar media vuelta",
     "failResponse": "Te pones de puntillas y apenas alcanzas a ver por encima del muro que bloquea tu paso",
     "media": {
-      "images": []
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/callejon.png"
+      ]
     },
     "actions": [
       { 
