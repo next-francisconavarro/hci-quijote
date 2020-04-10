@@ -316,7 +316,9 @@
     "media": {
       "images": []
     },
-    "actions": []
+    "actions": [
+      "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/posada_recepcion.png"
+    ]
   },
   "escalera": { 
     "step": 11, 
@@ -345,7 +347,9 @@
     "branch": 0,
     "description": "Estás en el primer rellano. Dos puertas, a izquierda y derecha, visibles gracias a la luz de la antorcha, te abrirán el paso a la bodega y dormitorio respectivamente. ¿Una bodega dices?, sí, no se por qué te extraña",
     "media": {
-      "images": []
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/posada_rellano.png"
+      ]
     },
     "actions": []
   },
