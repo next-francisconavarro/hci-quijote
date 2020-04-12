@@ -5,7 +5,7 @@ function showInventory(request) {
     return agent => {
         const userAccount = contextDao.getUserId(request);
         return objectsDao.getObjectsByUserId(userAccount).then(objects => {
-          const message = objects && objects.length?`Tienes en tu inventario los siguientes objetos: ${objects.join(', ')}`:'No tienes nada en tu inventario';
+          const message = objects && objects.length?`Tienes en tu inventario los siguientes objetos: ${objects.map(item => item.name).join(', ')}`:'No tienes nada en tu inventario';
           return agent.add(message);
       })
     }

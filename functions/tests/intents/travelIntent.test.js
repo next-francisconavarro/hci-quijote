@@ -170,3 +170,53 @@ test('Travel intent. Death by hungry', () => {
       expect(response.body.join('')).toMatch('Te encuentras muy débil para seguir caminando. Te detienes y te sientes como una pluma. Tu vista se nubla y caes desmayado en el suelo. Los cuervos, lobos y delincuentes harán el trabajo sucio. Limpiar tus restos');
     });
 })
+
+test('Travel intent. Place unknown (empty like intent behaviour)', () => {
+  jest.spyOn(usersDao, 'getUserById')
+    .mockImplementation(() =>  Promise.resolve( 
+    { 
+      userName: 'victorman',
+      hungry: 20,
+      room: { acantilado: { branch: 1, step: 2}},
+      states: ["colocar_escalón"],
+      placesKnown: ['acantilado', 'alcoba']
+    } ));
+
+  return handleRequest({
+      intent: 'Viajar',
+      payload: {
+        place: ''
+      }
+    })
+    .then(response => {
+      expect(response.status).toBe(200);
+      expect(response.body.join('')).toMatch('Nadie ha oido hablar de ese lugar nunca!');
+    });
+})
+
+test('Travel intent. Place unknown (place not available on places)', () => {
+
+  jest.spyOn(placesDao, 'getPlaceById')
+    .mockImplementation(() =>  Promise.reject('place not found'));
+
+  jest.spyOn(usersDao, 'getUserById')
+    .mockImplementation(() =>  Promise.resolve( 
+    { 
+      userName: 'victorman',
+      hungry: 20,
+      room: { acantilado: { branch: 1, step: 2}},
+      states: ["colocar_escalón"],
+      placesKnown: ['acantilado', 'alcoba']
+    } ));
+
+  return handleRequest({
+      intent: 'Viajar',
+      payload: {
+        place: 'guzigalpa'
+      }
+    })
+    .then(response => {
+      expect(response.status).toBe(200);
+      expect(response.body.join('')).toMatch('Nadie ha oido hablar de ese lugar nunca!');
+    });
+})
