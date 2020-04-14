@@ -3,6 +3,7 @@ const placesDao = require('../dao/places');
 const usersDao = require('../dao/users');
 const arrayUtils = require('../utils/arrayUtils');
 const gameOperations = require('../business/gameOperations');
+const { textByDifficulty } = require('../utils/difficultyUtils');
 const { Image } = require('dialogflow-fulfillment');
 
 function recoverCurrentPlaceStep(request) {
@@ -55,7 +56,7 @@ function travel(agent, userId, user) {
                   // TODO: poner dia o noche
                   agent.add(new Image(images[0]));
                 }
-                return agent.add(`${place.description}${distanceText}${withHungry}`);
+                return agent.add(`${textByDifficulty(place.description, user)}${distanceText}${withHungry}`);
               } else {
                 return gameOperations.reset(agent, userId, user.userName, 
                   'Te encuentras muy débil para seguir caminando. Te detienes y te sientes como una pluma. Tu vista se nubla y caes desmayado en el suelo. Los cuervos, lobos y delincuentes harán el trabajo sucio. Limpiar tus restos', 'hungry');
