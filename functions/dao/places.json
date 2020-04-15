@@ -394,6 +394,13 @@
               "requirementStatus": ["golpear_odre"],
               "successResponse": "¿En serio quieres ese vino?, bueno... no seré yo quien te lo discuta",
               "failResponse": "Para guardar el vino no basta con poner las dos manos. Necesitas dos cosas, primero abrir el odre, y segundo, algún recipiente donde guardarlo"
+            },
+            { 
+              "action": "beber",
+              "object": { "name":"vino", "type":"food", "lifePoints":20 },
+              "requirementStatus": ["golpear_odre"],
+              "successResponse": "Un hidalgo caballero bebiendo a morro, que vergüenza!!, en fin, por lo menos recuperas algo de fuerzas.",
+              "failResponse": "Y como piensa beber vino de unos odres cerrados oh mi hidalgo caballero?"
             }
           ]
         },
