@@ -19,7 +19,7 @@
         "habitación": { 
           "step": 1, 
           "branch": 0,
-          "description": "La habitación es austera como corresponde a la de un hidalgo manchego del siglo XVI. ¡Sí!, ahora eres un hidalgo caballero. O bueno, lo seras si consigues todo lo necesario para serlo. Asi que más vale que te pongas en marcha para conseguir todo lo necesario para ser el mejor caballero de todos los castellanos. Podrías empezar por bajar por la escalera que puedes ver al otro lado de la puerta de la habitación... En realidad no tienes elección, por que una vez cruzado el portal este se ha cerrado y solo puedes volver a casa convertido en caballero y con tu damisela de la mano... o muerto claro. Asi tambien vuelves pero peor de lo que entraste en mi humilde opinion. Asi que manos a la obra!",
+          "description": "La habitación es austera como corresponde a la de un hidalgo manchego del siglo XVI. ¡Sí!, ahora eres un hidalgo caballero. O bueno, lo seras si consigues todo lo necesario para serlo. Asi que más vale que te pongas en marcha para conseguir todo lo necesario para ser el mejor caballero de todos los castellanos. Podrias empezar por ir al zaguán de la casa, que se adivina tras bajar las escaleras... no te vas a quedar aquí para siempre y lo de volver va a estar dificil por que el portal se ha cerrado, solo puedes volver a casa convertido en caballero y con tu damisela de la mano... o muerto claro, que seria volver peor de lo que entraste en mi humilde opinion. Asi que manos a la obra!",
           "media": {
             "images": [
               "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
@@ -30,13 +30,27 @@
         "zaguán": { 
           "step": 2,
           "branch": 0,
-          "description": "Estas en el zaguán. La amplia escalera, que alguien deberia revisar por que cruje y chirria, te facilitará el acceso a la habitación. Por si no lo sabias, un zagüán es un recibidor, te sirve para salir de casa por el portalón o llegar al salon o la cocina. Poco más tenian estas casas en aquella época, y más siendo un hidalgo venido a menos.",
+          "description": "Bajas por la escalera, que siempre cruje a tu paso, y estas en el zaguán. Esta amplia escalera y ruidosa escalera te facilitará el acceso si quieres volver a la habitación. Por lo demás y para tu información, un zagüán es un recibidor, te sirve para salir de casa por el portalón, llegar al salon o a la cocina. Poco más tenian estas casas en aquella época, y más siendo un hidalgo venido a menos.",
           "media": {
             "images": [
               "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
             ]
           },
-          "actions": []
+          "actions": [            {   
+            "action": "revisar",
+            "object": { "name": "escalera" },
+            "requirementObject": ["vela"], 
+            "successResponse": "Parece que uno de los escalones esta un poco suelto, ya decia yo que crugia siempre que pasabamos por aqui. Muy agudo al haberte dado cuenta.",
+            "failResponse": "El zagüán es tan amplio como lugubre, no verias aqui ni a un elefante sin un poco de luz."          
+            },
+            {   
+            "action": "coger",
+            "object": { "name": "escalon", "type": "util" },
+            "requirementStatus": ["revisar_escalera"],
+            "successResponse": "Es inquietante lo facilmente que se desprende el escalón, pensar que por aqui pasamos todos los dias me hace sentirme mucho más seguro.",
+            "failResponse": "que quieres coger el que?, yo no veo nada que se pueda coger aqui, es mas, no veo nada de nada"
+            }
+          ]
         },
         "cocina": { 
           "step": 3, 
