@@ -19,7 +19,7 @@
         "habitación": { 
           "step": 1, 
           "branch": 0,
-          "description": "La habitación es austera como corresponde a la de un hidalgo manchego del siglo XVI. ¡Sí!, ahora eres un hidalgo caballero. O bueno, lo seras si consigues todo lo necesario para serlo. Asi que más vale que te pongas en marcha para conseguir todo lo necesario para ser el mejor caballero de todos los castellanos. Podrias empezar por ir al zaguán de la casa, que se adivina tras bajar las escaleras... no te vas a quedar aquí para siempre y lo de volver va a estar dificil por que el portal se ha cerrado, solo puedes volver a casa convertido en caballero y con tu damisela de la mano... o muerto claro, que seria volver peor de lo que entraste en mi humilde opinion. Asi que ya sabes, explora, rebusca y consigue todo lo necesario para se run caballero y nos podamos volver a casa, que este sitio no me gusta!",
+          "description": "La habitación es austera como corresponde a la de un hidalgo manchego del siglo XVI. ¡Sí!, ahora eres un hidalgo caballero. O bueno, lo seras si consigues todo lo necesario para serlo. Asi que más vale que te pongas en marcha para conseguir todo lo necesario para ser el mejor caballero de todos los castellanos. Podrias empezar por ir al zaguán de la casa, que se adivina tras bajar las escaleras... no te vas a quedar aquí para siempre y lo de volver va a estar dificil por que el portal se ha cerrado, solo puedes volver a casa convertido en caballero y con tu damisela de la mano... o muerto claro, que seria volver peor de lo que entraste en mi humilde opinion. Asi que ya sabes, explora, rebusca y consigue todo lo necesario para ser un caballero y nos podamos volver a casa, que este sitio no me gusta!",
           "media": {
             "images": [
               "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
@@ -309,7 +309,7 @@
         "posada": { 
           "step": 9, 
           "branch": 0,
-          "description": "Te encuentras ante la imponente puerta de una suntuosa posada... mentira, la posada luce de dudosa categoría cuanto menos y la puerta se cae a cachos, es de antigüas puertas ajenas que no se abren si no llamas. A la izquierda, cruzando un camino invadido por la maleza, se ve un muro limítrofe de la posada. Es un lugar discreto y apartado... ya me entiendes.",
+          "description": "Te encuentras ante la imponente puerta de una suntuosa posada... mentira, la posada luce de dudosa categoría cuanto menos y la puerta se cae a cachos, es de esas antigüas puertas ajenas que no se abren si no llamas. A la izquierda, cruzando un camino invadido por la maleza, se ve un muro limítrofe de la posada. Es un lugar discreto y apartado... ya me entiendes.",
           "media": {
             "images": []
             },
@@ -317,14 +317,14 @@
             { 
               "action": "llamar",
               "object": { "name": "puerta" },
-              "successResponse": "El posadero abre la puerta entre gruñidos. Se da media vuelta mientras se rasca el trasero. Dudas si entrar a lo que parece el recibidor"
+              "successResponse": "El posadero abre la puerta entre gruñidos. Se da media vuelta mientras se rasca el trasero. Dudas si entrar a lo que parece la recepción."
             }
           ]
         },
         "recepción": { 
           "step": 10, 
           "branch": 0,
-          "description": "Estás en el recibidor de la posada. ¿Cuánta gente habrá pasado aqui la noche?, al fondo ves unas escaleras, de esas que se han arreglado tantas veces que ya ni se parecen a lo que fueron un dia, si es que hubo algún día que tubiesen buen aspecto.",
+          "description": "Estás en la recepción de la posada. ¿Cuánta gente habrá pasado aqui la noche?, al fondo ves unas escaleras, de esas que se han arreglado tantas veces que ya ni se parecen a lo que fueron un dia, si es que hubo algún día que tubiesen buen aspecto.",
           "media": {
             "images": [
               "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/posada_recepcion.png"
