@@ -14,6 +14,7 @@ const travelIntent = require('./intents/travel');
 const inventoryIntent = require('./intents/inventory');
 const rememberVisitedIntent = require('./intents/rememberVisited');
 const actionsIntent = require('./intents/actions');
+const difficultyIntent = require('./intents/difficulty');
 
 require('./utils/sun');
 
@@ -62,6 +63,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   intentMap.set('Viajar', travelIntent.recoverCurrentPlaceStep(request));
   intentMap.set('Inventario', inventoryIntent.showInventory(request));
   intentMap.set('Recordar visitados', rememberVisitedIntent.rememberVisited(request));
-  intentMap.set('Acciones', actionsIntent.execute(request))
+  intentMap.set('Acciones', actionsIntent.execute(request));
+  intentMap.set('difficulty', difficultyIntent.difficulty(request))
   agent.handleRequest(intentMap);
 });

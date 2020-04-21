@@ -7,6 +7,7 @@ const gameOperations = require('../business/gameOperations');
 const takeAction = require('../business/actions/takeAction');
 const leaveAction = require('../business/actions/leaveAction');
 const eatAction = require('../business/actions/eatAction');
+const { textByDifficulty } = require('../utils/difficultyUtils');
 
 
 const everyWhereActions = ['tirar','comer'];
@@ -77,7 +78,7 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
       default:
         console.log('contextActionsTreatment -> Updating action state');
         return statesDao.addStatus(userAccount, user, currentAction.action + '_' + currentAction.object.name)
-          .then(() => agent.add(currentAction.successResponse))
+          .then(() => agent.add(textByDifficulty(currentAction.successResponse, user)))
           .catch(e => {
             console.log(`Action error: ${e}`);
             agent.add(`Ya has hecho eso`);
@@ -88,7 +89,7 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
   if(endReason) {
     return gameOperations.reset(agent, userAccount, user.userName, message, endReason);
   } else {
-    agent.add(message);
+    agent.add(textByDifficulty(message, user));
   }
 }
 
@@ -103,5 +104,6 @@ function everyWhereActionsTreatment(agent, userAccount, user, action, objectName
       agent.add(genericFailResponse);
   }
 }
+
 
 module.exports = { execute };
