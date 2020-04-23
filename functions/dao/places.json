@@ -14,18 +14,24 @@
         "object": { "name": "libro" },
         "successResponse": "Lees en voz alta para espantar el miedo que te recorre el cuerpo. Con cada palabra, todo a tu alrededor vibra cada vez más, hasta que aparece ante ti una ventana etérea, circular, a través de la cual se puede observar una habitación"
       }
+    ],
+    "connectedRooms": [
+      "habitación"
     ]
   },
   "habitación": { 
     "step": 1, 
     "branch": 0,
-    "description": "La habitación es austera como corresponde a la de un hidalgo manchego del siglo XVI. Una escalera conecta tu habitación con el piso inferior y si miras atrás, todavía puedes ver el portal a la biblioteca",
+    "description": "La habitación es austera como corresponde a la de un hidalgo manchego del siglo XVI. Unos escalones conectan tu habitación con el piso inferior y si miras atrás, todavía puedes ver el portal a la biblioteca",
     "media": {
       "images": [
         "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
         ]
       },
-    "actions": []
+    "actions": [],
+    "connectedRooms": [
+      "zaguán"
+    ]
   },
   "zaguán": { 
     "step": 2,
@@ -36,7 +42,10 @@
         "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
         ]
       },
-    "actions": []
+    "actions": [],
+    "connectedRooms": [
+      "comedor", "cocina", "portalón"
+    ]
   },
   "cocina": { 
     "step": 3, 
