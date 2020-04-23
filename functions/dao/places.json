@@ -133,6 +133,9 @@
         "object": { "name":"currusco", "type":"food", "lifePoints":40 },
         "successResponse": "Siempre es interesante tener algo de comer cuando tienes hambre, muy inteligente" 
       }
+    ],
+    "connectedRooms": [
+      "zaguán"
     ]
   },
   "portalón": { 
@@ -150,6 +153,9 @@
         "successResponse": "La puerta se abre con un estruendoso chirrido, se ve que nadie la ha usado en mucho tiempo. Más adelante ya divisas Argamasilla, ¡tu gran y amado pueblo!",
         "failResponse": "La puerta está cerrada a cal y canto, seguro que en alguna parte anda la llave"
       }
+    ],
+    "connectedRooms": [
+      "zaguán", "argamasilla"
     ]
   },
   "argamasilla": { 
@@ -167,6 +173,9 @@
         "object": { "name": "bando" },
         "successResponse": "Si caballero te quieres armar, las armas tendrás que velar, en una posada de este lugar, desde la cual la luna verás" 
       }
+    ],
+    "connectedRooms": [
+      "calles", "arco"
     ]
   },
   "arco": { 
@@ -178,7 +187,10 @@
         "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/arco.png"
         ]
       },
-    "actions": []
+    "actions": [],
+    "connectedRooms": [
+      "argamasilla", "arboleda"
+    ]
   },
   "arboleda": { 
     "step": 6, 
@@ -202,6 +214,9 @@
         "successResponse": "Perfecto, tener comida siempre te salva de algún que otro apuro",
         "failResponse": "¿Que quieres coger qué?"
       }
+    ],
+    "connectedRooms": [
+      "manzano", "arco"
     ]
   },
   "manzano": { 
@@ -226,6 +241,9 @@
         "successResponse": "¡Esto viene de maravilla cuando el hambre arrecia!",
         "failResponse": "No las alcanzas, deberías buscar una forma de hacer que caigan del árbol"
       }
+    ],
+    "connectedRooms": [
+      "arboleda", "pinar"
     ]
   },
   "pinar": { 
@@ -248,6 +266,9 @@
         "object": { "name":"amanita", "type":"food", "lifePoints":-100 },
         "successResponse": "¿Una flor? sí, ¿por qué no?. Tú eres el valiente hidalgo y también un hombre sensible" 
       }
+    ],
+    "connectedRooms": [
+      "posada", "arboleda"
     ]
   },
   "muro": { 
@@ -282,6 +303,9 @@
         "failResponse": "El muro es demasiado alto, pero tú como gallardo hidalgo que eres decides intentar escalarlo. Mala suerte que te resbalas y mueres al caer desde lo alto",
         "endReason":"death"
       }
+    ],
+    "connectedRooms": [
+      "posada"
     ]
   },
   "callejón": { 
@@ -316,6 +340,9 @@
         "object": { "name": "puerta" },
         "successResponse": "El posadero abre la puerta entre gruñidos. Se da media vuelta mientras se rasca el trasero. Dudas si entrar a lo que parece el recibidor"
       }
+    ],
+    "connectedRooms": [
+      "muro", "pinar"
     ]
   },
   "recepción": { 
@@ -327,6 +354,9 @@
     },
     "actions": [
       "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/posada_recepcion.png"
+    ],
+    "connectedRooms": [
+      "posada", "escalera"
     ]
   },
   "escalera": { 
@@ -349,6 +379,9 @@
         "successResponse": "Sí, mejor la guardamos, nunca se sabe cuando un poco de luz puede iluminar las ideas",
         "failResponse": "¿Qué vela?"
       }
+    ],
+    "connectedRooms": [
+      "recepción", "rellano"
     ]
   },
   "rellano": { 
@@ -360,7 +393,10 @@
         "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/posada_rellano.png"
       ]
     },
-    "actions": []
+    "actions": [],
+    "connectedRooms": [
+      "escalera", "bodega", "dormitorio"
+    ]
   },
   "bodega": { 
     "step": 13, 
@@ -385,6 +421,9 @@
         "successResponse": "¿En serio quieres ese vino?, bueno... no seré yo quien te lo discuta",
         "failResponse": "Para guardar el vino no basta con poner las dos manos. Necesitas dos cosas, primero abrir el odre, y segundo, algún recipiente donde guardarlo"
       }
+    ],
+    "connectedRooms": [
+      "rellano"
     ]
   },
   "dormitorio": { 
@@ -402,6 +441,9 @@
         "object": { "name":"martillo", "type":"food", "lifePoints":20 },
         "successResponse": "Nos vendrá bien guardarlo por si queremos hacer algo de bricomanía"
       }
+    ],
+    "connectedRooms": [
+      "rellano"
     ]
   },
   "calles": { 
@@ -417,6 +459,9 @@
         "object": { "name":"rastrillo", "type":"food", "lifePoints":20 },
         "successResponse": "¿Un rastrillo?, sí bueno, ¿por qué no?, si no sale bien lo de hidalgo siempre puedes ser granjero"
       }
+    ],
+    "connectedRooms": [
+      "argamasilla", "campos"
     ]
   },
   "campos": { 
@@ -428,7 +473,10 @@
         "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/pinar.png"
       ]
     },
-    "actions": []
+    "actions": [],
+    "connectedRooms": [
+      "calles", "venta", "acantilado"
+    ]
   },
   "acantilado": { 
     "step": 6, 
@@ -453,6 +501,9 @@
         "successResponse": "Demasiada fe tenías en tus habilidades. Por desgracia, no llegas al otro lado y ahora eres un hidalgo estrellado",
         "endReason":"death"
       }
+    ],
+    "connectedRooms": [
+      "campos", "bosque"
     ]
   },
   "bosque": { 
@@ -472,6 +523,9 @@
         "object": { "name":"pedrusco", "type":"util" },
         "successResponse": "Un pedrusco, sí, como no, llévatelo. Llevate todo lo que te encuentres en el suelo"
       }
+    ],
+    "connectedRooms": [
+      "acantilado"
     ]
   },
   "venta": { 
@@ -481,13 +535,19 @@
     "media": {
       "images": []
     },
-    "actions": []
+    "actions": [],
+    "connectedRooms": [
+      "recibidor", "prados"
+    ]
   },
   "recibidor": { 
     "step": 9, 
     "branch": 1,
     "description": "Ves dos puertas ante ti, una te lleva al salon y por la otra llegas a un pequeño distribuidor con dos puertas y una mesilla",
-    "actions": []
+    "actions": [],
+    "connectedRooms": [
+      "distribuidor", "salón"
+    ]
   },
   "salón": { 
     "step": 10, 
@@ -509,6 +569,9 @@
         "successResponse": "Nos vendrá bien guardarlo por si queremos hacer algo de bricomanía",
         "failResponse": "Deberías examinar el cesto para ver que hay antes de meter la mano a lo loco. Solo dios sabe lo que puedes sacar de ahí"
       }
+    ],
+    "connectedRooms": [
+      "recibidor", "distribuidor"
     ]
   },
   "distribuidor": { 
@@ -523,6 +586,9 @@
         "successResponse": "Gracias a tus habilidades como antiguo lazarillo, consigues arreglar la cerradura usando solo un alambre. Ahora puedes abrirla y acceder a un confortable patio",
         "failResponse": "¿Y con qué quieres arreglarla?, ¿con una mirada seductora?, deberías buscar algo que quepa por la cerradura para poder arreglarla"
       }
+    ],
+    "connectedRooms": [
+      "recibidor", "alcoba", "patio"
     ]
   },
   "alcoba": { 
@@ -537,6 +603,9 @@
         "action": "descansar",
         "successResponse": "Perfecto, ahora podrás seguir tu camino brioso"
       }
+    ],
+    "connectedRooms": [
+      "distribuidor"
     ]
   },
   "patio": { 
@@ -556,6 +625,9 @@
         "successResponse": "¡Perfecto!, ¡ahora ya sí que eres todo un caballero!, haces cosas raras de vez en cuando pero... un caballero al fin y al cabo",
         "failResponse": "¿Cómo vas a velar las armas si niquiera tienes una armadura?, eso es de primero de valeroso hidalgo"
       }
+    ],
+    "connectedRooms": [
+      "distribuidor"
     ]
   },
   "prados": { 
@@ -573,6 +645,9 @@
         "successResponse": "Se apartan a tu paso, permitiendo continuar tu camino a lo que parece ser una imponente cancela",
         "failResponse": "Por más aspavientos que hagas no servirá de nada, no impones tanto como para inquietarlas a no ser que tengas algo contundente que las asuste"
       }
+    ],
+    "connectedRooms": [
+      "venta"
     ]
   },
   "cancela": { 

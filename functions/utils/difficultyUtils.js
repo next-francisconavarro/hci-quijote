@@ -7,7 +7,7 @@ function textByDifficulty(text, user) {
     let boldText = text;
 
     placeNames.concat(items).forEach(place =>
-      boldText = boldText.replace(new RegExp(`(\\W)${place}(\\W|$)`, 'g'), `$1*${place}*$2`)
+      boldText = boldText.replace(new RegExp(`(\\W)${place}(\\W|$)`, 'g'), `$1*${place}*$2`).replace(/\*\*/g, '*')
     );
 
     return boldText;
