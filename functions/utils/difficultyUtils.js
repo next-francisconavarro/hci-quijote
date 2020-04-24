@@ -1,12 +1,14 @@
 const placesDao = require('../dao/places');
 const placeNames = placesDao.getPlaceNames();
 const items = placesDao.getItems();
+const replaces = onlyUnique(placeNames.concat(items));
 
 function textByDifficulty(text, user) {
   if (user.difficultyLevel === 'facil') {
     let boldText = text;
+    
 
-    placeNames.concat(items).forEach(place =>
+    replaces.forEach(place =>
       boldText = boldText.replace(new RegExp(`(\\W)${place}(\\W|$)`, 'g'), `$1*${place}*$2`).replace(/\*\*/g, '*')
     );
 
@@ -21,18 +23,20 @@ function getHelp(user) {
   const actionsDone = user.room.actions || [];
   const actions = placesDao.getPlaceActions(room);
   const connectedRooms = placesDao.getConnectedRooms(room);
-  let response = `Estás en ${room}. `;
+  let response = `📝Aquí tienes algo de ayuda: \n\n - Estás en ${room}. `;
 
   if (connectedRooms.length) {
-    response += 'Desde aquí puedes ir a '
+    response += '\n - Desde aquí puedes ir a '
     response += connectedRooms.map(room => `*${room}*`).join(' ') + '. ';
+    response = response.replace(/(.*)(\* \*)/, '$1* y *');
   }
 
   if (actionsDone.length < actions.length) {
-    response += 'Quizás puedas hacer algo con: ';
+    response += '\n - Quizás puedas hacer algo con: ';
     
     if (actions.length > 1) {
       response += onlyUnique(actions.map(el => el.object && `*${el.object.name}*`)).join(', ') + '...';
+      response = response.replace(/(.*)(\* \*)/, '$1* y *');
     } else {
       response += actions[0].object && actions[0].object.name;
     }

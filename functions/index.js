@@ -16,6 +16,7 @@ const rememberVisitedIntent = require('./intents/rememberVisited');
 const actionsIntent = require('./intents/actions');
 const difficultyIntent = require('./intents/difficulty');
 const helpIntent = require('./intents/help');
+const countIntents = require('./utils/countIntents');
 
 require('./utils/sun');
 
@@ -25,15 +26,23 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   const agent = new WebhookClient({ request, response });
 
   let intentMap = new Map();
-  intentMap.set('Default Welcome Intent', welcomeIntent.welcomeResponse(request));
-  intentMap.set('Default Fallback Intent', fallbackIntent.fallback);
-  intentMap.set('Recordar el nombre', rememberUserIntent.recoverUserName(request));
-  intentMap.set('Guardar mi nombre', beginIntent.beginAdventure(request));
-  intentMap.set('Viajar', travelIntent.recoverCurrentPlaceStep(request));
-  intentMap.set('Inventario', inventoryIntent.showInventory(request));
-  intentMap.set('Recordar visitados', rememberVisitedIntent.rememberVisited(request));
-  intentMap.set('Acciones', actionsIntent.execute(request));
-  intentMap.set('difficulty', difficultyIntent.difficulty(request))
-  intentMap.set('Ayuda', helpIntent.execute(request))
+
+  function addIntent(name, fn) {
+    intentMap.set(name, agent =>
+      fn(agent).then(countIntents.checkIfNeedHelp)
+    );
+  }
+
+  addIntent('Default Welcome Intent', welcomeIntent.welcomeResponse(request));
+  addIntent('Default Fallback Intent', fallbackIntent.fallback(request));
+  addIntent('Recordar el nombre', rememberUserIntent.recoverUserName(request));
+  addIntent('Guardar mi nombre', beginIntent.beginAdventure(request));
+  addIntent('Viajar', travelIntent.recoverCurrentPlaceStep(request));
+  addIntent('Inventario', inventoryIntent.showInventory(request));
+  addIntent('Recordar visitados', rememberVisitedIntent.rememberVisited(request));
+  addIntent('Acciones', actionsIntent.execute(request));
+  addIntent('difficulty', difficultyIntent.difficulty(request))
+  addIntent('Ayuda', helpIntent.execute(request))
   agent.handleRequest(intentMap);
 });
+

@@ -77,6 +77,9 @@
         "object": { "name": "llave", "type": "util" },
         "successResponse": "Guardala bien, nunca se sabe"
       }
+    ],
+    "connectedRooms": [
+      "zaguan"
     ]
   },
   "despensa": { 
@@ -106,6 +109,9 @@
         "successResponse": "Mejor llevarla puesta que cargar con ella en el zurrón, así pareces más hidalgo",
         "failResponse": "¿Intentas ponerte algo que nisiquiera tienes?, me temo lo peor de tu aventura..."
       }
+    ],
+    "connectedRooms": [
+      "cocina"
     ]
   },
   "comedor": { 
