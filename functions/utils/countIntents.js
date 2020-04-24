@@ -1,4 +1,6 @@
 const usersDao = require('../dao/users');
+const contextDao = require('../dao/context');
+const difficultyUtils = require('../utils/difficultyUtils');
 
 function count(userId) {  
   if (userId) {
@@ -14,7 +16,20 @@ function count(userId) {
   return Promise.resolve();
 }
 
-function checkIfNeedHelp() {
+async function checkIfNeedHelp(request, agent) {
+  const userAccount = contextDao.getUserId(request);
+  const user = await usersDao.getUserById(userAccount)
+
+  if (user) {
+    const intents = user.intents;
+    const difficultyLevel = user.difficultyLevel;
+
+    if (difficultyLevel !== 'dificil' && intents > 4) {
+      user.intents = 0;
+      agent.add(difficultyUtils.getHelp(user));
+      usersDao.updateUser(userAccount, user);
+    }
+  }
 
 }
 

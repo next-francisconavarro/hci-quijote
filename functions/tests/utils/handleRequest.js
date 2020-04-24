@@ -20,6 +20,7 @@ beforeEach(() => {
       once: jest.fn()
   }));
   jest.spyOn(countIntents, 'count').mockImplementation(() => {});
+  jest.spyOn(countIntents, 'checkIfNeedHelp').mockImplementation(() => {});
 });
 
 module.exports = payload => request(app)

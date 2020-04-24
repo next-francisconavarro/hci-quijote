@@ -27,20 +27,20 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
   let intentMap = new Map();
 
-  function addIntent(name, fn) {
+  function addIntent(name, fn, needsHelp) {
     intentMap.set(name, agent =>
-      fn(agent).then(countIntents.checkIfNeedHelp)
+      fn(agent).then(() => needsHelp && countIntents.checkIfNeedHelp(request, agent))
     );
   }
 
   addIntent('Default Welcome Intent', welcomeIntent.welcomeResponse(request));
-  addIntent('Default Fallback Intent', fallbackIntent.fallback(request));
+  addIntent('Default Fallback Intent', fallbackIntent.fallback(request), true);
   addIntent('Recordar el nombre', rememberUserIntent.recoverUserName(request));
   addIntent('Guardar mi nombre', beginIntent.beginAdventure(request));
-  addIntent('Viajar', travelIntent.recoverCurrentPlaceStep(request));
+  addIntent('Viajar', travelIntent.recoverCurrentPlaceStep(request), true);
   addIntent('Inventario', inventoryIntent.showInventory(request));
   addIntent('Recordar visitados', rememberVisitedIntent.rememberVisited(request));
-  addIntent('Acciones', actionsIntent.execute(request));
+  addIntent('Acciones', actionsIntent.execute(request), true);
   addIntent('difficulty', difficultyIntent.difficulty(request))
   addIntent('Ayuda', helpIntent.execute(request))
   agent.handleRequest(intentMap);
