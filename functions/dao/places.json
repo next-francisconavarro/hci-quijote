@@ -314,11 +314,9 @@
     "branch": 0,
     "description": "Estás en el recibidor de la posada. ¿Cuánta gente habrá pasado aqui la noche?, al fondo ves unas escaleras, tampoco hace falta ser un genio para deducir que subiendolas llegarías a las habitaciones",
     "media": {
-      "images": []
+      "images": ["https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/posada_recepcion.png"]
     },
-    "actions": [
-      "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/posada_recepcion.png"
-    ]
+    "actions": []
   },
   "escalera": { 
     "step": 11, 
@@ -358,7 +356,9 @@
     "branch": 0,
     "description": "La estancia esta llena de odres, Huele a vino rancio y a queso picado. ¿O era al revés?",
     "media": {
-      "images": []
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/bodega.png"
+      ]
     },
     "actions": [
       { 
@@ -478,6 +478,9 @@
     "step": 9, 
     "branch": 1,
     "description": "Ves dos puertas ante ti, una te lleva al salon y por la otra llegas a un pequeño distribuidor con dos puertas y una mesilla",
+    "media": {
+      "images": []
+    },
     "actions": []
   },
   "salón": { 
