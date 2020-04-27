@@ -358,7 +358,7 @@
     "media": {
       "images": ["https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/posada_recepcion.png"]
     },
-    actions: [],
+    "actions": [],
     "connectedRooms": [
       "posada", "escalera"
     ]
