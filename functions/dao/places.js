@@ -32,4 +32,17 @@ function getItems() {
   return Object.keys(items);
 }
 
-module.exports = { getPlaces, getPlaceById, getPlaceNames, getItems };
+function getPlaceActions(place) {
+  const actions = placesList[place].actions || [];
+  return onlyUnique(actions);
+}
+
+function getConnectedRooms(place) {
+  return placesList[place].connectedRooms || [];
+}
+
+function onlyUnique(values) { 
+  return Array.from(new Set(values));
+}
+
+module.exports = { getPlaces, getPlaceById, getPlaceNames, getItems, getPlaceActions, getConnectedRooms };

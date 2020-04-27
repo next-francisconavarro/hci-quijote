@@ -2,6 +2,7 @@ const contextDao = require('../dao/context');
 const usersDao = require('../dao/users');
 const placesDao = require('../dao/places');
 const { Image } = require('dialogflow-fulfillment');
+const { textByDifficulty } = require('../utils/difficultyUtils');
 
 function difficulty(request) {
     return async agent => {
@@ -15,7 +16,7 @@ function difficulty(request) {
         return placesDao.getPlaceById('biblioteca').then(place => {
           if(place) {
             agent.add(new Image(place.media.images[0]));
-            return agent.add(`${preMessage}${place.description}`);
+            return agent.add(`${preMessage}${textByDifficulty(place.description, { difficultyLevel })}`);
           }
         });
     }
