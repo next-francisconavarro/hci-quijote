@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
 const {admin} = require('../../firebase.initializers');
+const countIntents = require('../../utils/countIntents');
 
 
 const myFirebaseFunctions = require('../../index.js');
@@ -18,6 +19,8 @@ beforeEach(() => {
       set: jest.fn().mockImplementation(() => Promise.resolve()),
       once: jest.fn()
   }));
+  jest.spyOn(countIntents, 'count').mockImplementation(() => {});
+  jest.spyOn(countIntents, 'checkIfNeedHelp').mockImplementation(() => {});
 });
 
 module.exports = payload => request(app)

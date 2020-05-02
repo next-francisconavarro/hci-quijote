@@ -7,6 +7,8 @@ const gameOperations = require('../business/gameOperations');
 const takeAction = require('../business/actions/takeAction');
 const leaveAction = require('../business/actions/leaveAction');
 const eatAction = require('../business/actions/eatAction');
+const { textByDifficulty } = require('../utils/difficultyUtils');
+const countIntents = require('../utils/countIntents');
 
 
 const everyWhereActions = ['tirar','comer'];
@@ -58,6 +60,7 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
   if(!allowedAction) {
     console.log('contextActionsTreatment -> forbidden action!')
     message = genericFailResponse;
+    countIntents.count(userAccount);
   } else if(!requirementsOk) {
     console.log('contextActionsTreatment -> requirements not met')
     message = currentAction.failResponse;
@@ -77,7 +80,7 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
       default:
         console.log('contextActionsTreatment -> Updating action state');
         return statesDao.addStatus(userAccount, user, currentAction.action + '_' + currentAction.object.name)
-          .then(() => agent.add(currentAction.successResponse))
+          .then(() => agent.add(textByDifficulty(currentAction.successResponse, user)))
           .catch(e => {
             console.log(`Action error: ${e}`);
             agent.add(`Ya has hecho eso`);
@@ -88,7 +91,7 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
   if(endReason) {
     return gameOperations.reset(agent, userAccount, user.userName, message, endReason);
   } else {
-    agent.add(message);
+    agent.add(textByDifficulty(message, user));
   }
 }
 
@@ -101,7 +104,9 @@ function everyWhereActionsTreatment(agent, userAccount, user, action, objectName
     default:
       console.log('everyWhereActionsTreatment -> Action not supported');
       agent.add(genericFailResponse);
+      countIntents.count(userAccount);
   }
 }
+
 
 module.exports = { execute };
