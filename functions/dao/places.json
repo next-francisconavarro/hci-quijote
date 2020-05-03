@@ -39,7 +39,7 @@
           "description": "Bajas por la escalera, que siempre cruje a tu paso, y estas en el zaguán. Esta amplia y ruidosa escalera te facilitará el acceso si quieres volver a la habitación. Por lo demás y para tu información, un zagüán es un recibidor, te sirve para salir de casa por el portalón, llegar al comedor o a la cocina. Poco más tenian estas casas en aquella época, y más siendo un hidalgo venido a menos.",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/zaguan.png"
             ]
           },
           "actions": [            {   
@@ -218,7 +218,9 @@
           "branch": 0,
           "description": "¿Arboleda?, ¿selva?, las mayores sorpresas pueden esperarte en estos lugares, por lo menos el suelo es mullido y fertil. Detrás de ti dejas el arco de entrada al pueblo mientras que más adelante en el camino ves emerger el manzano, conocido en todo el pueblo.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/arboleda.png"
+              ]
             },
           "actions": [
             {   
@@ -243,9 +245,7 @@
           "branch": 0,
           "description": "Algo insólito en estos parajes, ¡un manzano!, quizas por su rareza sea tan famoso en el pueblo. ¡Y que manzanas tan sabrosas proporciona!, estaria bien hacerse con una, pero siempre puedes volver hacia la arboleda de camino al pueblo o continuar hacia el pinar que se encuentra más adelante, tu mismo.",
           "media": {
-            "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/manzano.png"
-              ]
+            "images": []
             },
           "actions": [
             {   
@@ -271,7 +271,7 @@
           "description": "Pasado el gran manzano llegas a este pinar. Estás contento porque, de momento, tu aventura se te está antojando un agradable paseo. Grandes bosques y arboledas, olor a pinos, un sol gentil... y el suelo está lleno de flores. Podrias quedarte aqui todo el dia pero más adelante te espera una posada que parece ser el destino de este camino.",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/pinar.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/bosque.png"
               ]
             },
           "actions": [
@@ -351,7 +351,9 @@
           "branch": 0,
           "description": "Te encuentras ante la imponente puerta de una suntuosa posada... mentira, la posada luce de dudosa categoría cuanto menos y la puerta se cae a cachos, es de esas antigüas puertas ajenas que no se abren si no llamas. A la izquierda, cruzando un camino invadido por la maleza, se ve un muro limítrofe de la posada. Es un lugar discreto y apartado... ya me entiendes.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/posada.png"
+              ]
             },
           "actions": [
             { 
@@ -369,9 +371,7 @@
           "branch": 0,
           "description": "Estás en la recepción de la posada. ¿Cuánta gente habrá pasado aqui la noche?, al fondo ves unas escaleras, de esas que se han arreglado tantas veces que ya ni se parecen a lo que fueron un dia, si es que hubo algún día que tubiesen buen aspecto.",
           "media": {
-            "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/posada_recepcion.png"
-              ]
+            "images": []
             },
           "actions": [],
           "connectedRooms": [
@@ -487,7 +487,9 @@
           "description": "Otra calle, calles y más calles, y las tienes que atravesarlas todas para llegar a los maravillosos campos de castilla, protagonistas de infinidad de poemas.",
           "placeObject": "Alguien se ha dejado un rastrillo apoyado en la pared, y eso en esta época significa que no durara mucho ahí.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/calles.png"
+              ]
             },
           "actions": [
             { 
@@ -505,7 +507,9 @@
           "branch": 1,
           "description": "Ya dejaste las calles atrás y ante ti se extienden los bellos campos de la mancha. Cómo me gusta ese olor a trigo que inunda el aire. Más adelante en el camino ves la puerta destartalada de una venta, pero un camino oscuro llama tu atención a la izquierda. En un cartel ya casi deshecho por el paso del tiempo adivinas a leer 'peligro de acantilado, no pasar'.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/campos.png"
+              ]
             },
           "actions": [],
           "connectedRooms": [
@@ -548,7 +552,7 @@
           "failResponse": "No puedes llegar al bosque, antes debes cruzar un acantilado que tiene pinta que no podrás cruzar de un salto",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/bosque.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/bosque_oscuro.png"
               ]
             },
           "actions": [
@@ -567,7 +571,9 @@
           "branch": 1,
           "description": "Te encuentras de bruces con la puerta de la venta, esta abierta asi que nada te impide ir al recibidor. Se que esta feo entrar sin preguntar pero oye, si esta abierto... si en lugar de entrar sigues el muro llegas los prados, llenitos de cultivos de trigo.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/venta.png"
+              ]
             },
           "actions": [],
           "connectedRooms": [
