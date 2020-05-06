@@ -131,7 +131,9 @@
     "branch": 0,
     "description": "El portalón de tu casa, iluminado por la luz de un candelabro, te abrirá las puertas de tu nueva vida",
     "media": {
-      "images": []
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/portalon.png"
+      ]
     },
     "actions": [
       { 
@@ -524,7 +526,9 @@
     "branch": 1,
     "description": "Un dormitorio sin más. Una cama, un suelo... poco más. Para descansar es suficiente supongo",
     "media": {
-      "images": []
+      "images": [
+        "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/venta_dormitorio.png"
+      ]
     },
     "actions": [
       { 
