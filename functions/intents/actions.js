@@ -8,6 +8,7 @@ const takeAction = require('../business/actions/takeAction');
 const leaveAction = require('../business/actions/leaveAction');
 const eatAction = require('../business/actions/eatAction');
 const { textByDifficulty } = require('../utils/difficultyUtils');
+const countIntents = require('../utils/countIntents');
 
 
 const everyWhereActions = ['tirar','comer'];
@@ -59,6 +60,7 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
   if(!allowedAction) {
     console.log('contextActionsTreatment -> forbidden action!')
     message = genericFailResponse;
+    countIntents.count(userAccount);
   } else if(!requirementsOk) {
     console.log('contextActionsTreatment -> requirements not met')
     message = currentAction.failResponse;
@@ -102,6 +104,7 @@ function everyWhereActionsTreatment(agent, userAccount, user, action, objectName
     default:
       console.log('everyWhereActionsTreatment -> Action not supported');
       agent.add(genericFailResponse);
+      countIntents.count(userAccount);
   }
 }
 
