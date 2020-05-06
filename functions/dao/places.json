@@ -164,7 +164,9 @@
           "branch": 0,
           "description": "El portalón de tu casa. ¿Sabes que en algún momento tendrás que salir por esa puerta si quieres convertirte en caballero verdad?, antes de que lo preguntes te lo pondré facil, antes de salir por una puerta hay que abrirla.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/portalon.png"
+            ]
             },
           "actions": [
             { 
@@ -642,7 +644,9 @@
           "branch": 1,
           "description": "Un dormitorio sin más. Una cama, un suelo... poco más. Para descansar es suficiente supongo",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/venta_dormitorio.png"
+            ]
             },
           "actions": [
             { 
