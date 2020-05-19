@@ -5,7 +5,7 @@
           "description": "Los libros polvorientos destacan en una estantería situada hacia la izquierda. De todos ellos hay un libro que te llama especialmente la atención",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/biblioteca.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/biblioteca.png"
             ]
           },
           "actions":[
@@ -25,7 +25,7 @@
           "description": "La habitación es austera como corresponde a la de un hidalgo manchego del siglo XVI. ¡Sí!, ahora eres un hidalgo caballero. O bueno, lo seras si consigues todo lo necesario para serlo. Asi que más vale que te pongas en marcha para conseguir todo lo necesario para ser el mejor caballero de todos los castellanos. Podrias empezar por ir al zaguán de la casa, que se adivina tras bajar las escaleras... no te vas a quedar aquí para siempre y lo de volver va a estar dificil por que el portal se ha cerrado, solo puedes volver a casa convertido en caballero y con tu damisela de la mano... o muerto claro, que seria volver peor de lo que entraste en mi humilde opinion. Asi que ya sabes, explora, rebusca y consigue todo lo necesario para ser un caballero y nos podamos volver a casa, que este sitio no me gusta!",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/habitacion.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/habitacion.png"
             ]
           },
           "actions": [],
@@ -39,7 +39,7 @@
           "description": "Bajas por la escalera, que siempre cruje a tu paso, y estas en el zaguán. Esta amplia y ruidosa escalera te facilitará el acceso si quieres volver a la habitación. Por lo demás y para tu información, un zagüán es un recibidor, te sirve para salir de casa por el portalón, llegar al comedor o a la cocina. Poco más tenian estas casas en aquella época, y más siendo un hidalgo venido a menos.",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/zaguan.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/zaguan.png"
             ]
           },
           "actions": [            {   
@@ -67,7 +67,7 @@
           "description": "La cocina esta estupensamente descuidada, si, pero es acogedora. Una solitaria alacena a un lado, al fondo la despensa y poco más. Yo no esperaria encontrar comida ahi... ¿oyes eso?, oh dios mio, ¿no serán ratas?",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/cocina.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/cocina.png"
               ]
             },
           "actions": [
@@ -135,7 +135,7 @@
           "description": "El comedor de tu casa. Rústico, sencillo... esta claro que tu familia pasó por mejores momentos. En la pared esta colgado el escudo de armas y en el suelo un currusco de pan que como te despistes sera pasto de las ratas. Y nada más.",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/comedor.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/comedor.png"
               ]
             },
           "actions": [
@@ -165,7 +165,7 @@
           "description": "El portalón de tu casa. ¿Sabes que en algún momento tendrás que salir por esa puerta si quieres convertirte en caballero verdad?, antes de que lo preguntes te lo pondré facil, antes de salir por una puerta hay que abrirla.",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/portalon.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/portalon.png"
             ]
             },
           "actions": [
@@ -187,7 +187,7 @@
           "description": "Argamasilla de Alba, tu pueblo. Sus solitarias calles y piedras están mudas ante ti. Tu calle te lleva por un lado al arco del pueblo, todo un orgullo de la localidad!, por el otro te adentras en las calles... y frente a ti el muro donde se cuelgan siempre los bandos. Suelen hablar de chismes y bulos, pero admite que te encantan. ¿Que novedades traera el bando de hoy?.",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/argamasilla.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/argamasilla.png"
               ]
             },
           "actions": [
@@ -207,7 +207,7 @@
           "description": "El arco no es gran cosa, para que lo vamos a negar. Aunque supongo que en un pueblo tan pequeño a cualquier cosa se le llama monumento. Más adelante, siguiendo por el camino, puedes llegar a la arboleda, siempre con su sombra acogedora y secreta",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/arco.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/arco.png"
               ]
             },
           "actions": [],
@@ -221,7 +221,7 @@
           "description": "¿Arboleda?, ¿selva?, las mayores sorpresas pueden esperarte en estos lugares, por lo menos el suelo es mullido y fertil. Detrás de ti dejas el arco de entrada al pueblo mientras que más adelante en el camino ves emerger el manzano, conocido en todo el pueblo.",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/arboleda.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/arboleda.png"
               ]
             },
           "actions": [
@@ -273,7 +273,7 @@
           "description": "Pasado el gran manzano llegas a este pinar. Estás contento porque, de momento, tu aventura se te está antojando un agradable paseo. Grandes bosques y arboledas, olor a pinos, un sol gentil... y el suelo está lleno de flores. Podrias quedarte aqui todo el dia pero más adelante te espera una posada que parece ser el destino de este camino.",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/bosque.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/bosque.png"
               ]
             },
           "actions": [
@@ -298,7 +298,7 @@
           "description": "Estás en un camino bloqueado por un enorme muro de piedra",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/muro.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/muro.png"
               ]
             },
           "actions": [
@@ -334,7 +334,7 @@
           "failResponse": "Te pones de puntillas y apenas alcanzas a ver por encima del muro que bloquea tu paso",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/callejon.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/callejon.png"
               ]
             },
           "actions": [
@@ -354,7 +354,7 @@
           "description": "Te encuentras ante la imponente puerta de una suntuosa posada... mentira, la posada luce de dudosa categoría cuanto menos y la puerta se cae a cachos, es de esas antigüas puertas ajenas que no se abren si no llamas. A la izquierda, cruzando un camino invadido por la maleza, se ve un muro limítrofe de la posada. Es un lugar discreto y apartado... ya me entiendes.",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/posada.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/posada.png"
               ]
             },
           "actions": [
@@ -411,7 +411,7 @@
           "description": "Estás en el primer rellano, el primero y el único para que engañarnos. Dos puertas, a izquierda y derecha, visibles gracias a la luz de la antorcha, te abrirán el paso a la bodega y dormitorio respectivamente. ¿Una bodega al lado de una habitación dices?, sí, no se por qué te extraña",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/posada_rellano.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/posada_rellano.png"
               ]
             },
           "actions": [],
@@ -425,7 +425,7 @@
           "description": "La estancia esta llena de odres, Huele a vino rancio y a queso picado. ¿O era al revés?",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/bodega.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/bodega.png"
               ]
             },
           "actions": [
@@ -469,7 +469,7 @@
           "description": "Bonito dormitorio este. Una cama que hasta parece limpia domina la habitacion y un martillo escondifo debajo. Si, un martillo...",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/posada_dormitorio.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/posada_dormitorio.png"
               ]
             },
           "actions": [
@@ -490,7 +490,7 @@
           "placeObject": "Alguien se ha dejado un rastrillo apoyado en la pared, y eso en esta época significa que no durara mucho ahí.",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/calles.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/calles.png"
               ]
             },
           "actions": [
@@ -510,7 +510,7 @@
           "description": "Ya dejaste las calles atrás y ante ti se extienden los bellos campos de la mancha. Cómo me gusta ese olor a trigo que inunda el aire. Más adelante en el camino ves la puerta destartalada de una venta, pero un camino oscuro llama tu atención a la izquierda. En un cartel ya casi deshecho por el paso del tiempo adivinas a leer 'peligro de acantilado, no pasar'.",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/campos.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/campos.png"
               ]
             },
           "actions": [],
@@ -524,7 +524,7 @@
           "description": "Un diminuto acantilado está frente ti. Quizás podrías cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo. Creo que sería mejor darse media vuelta",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/acantilado.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/acantilado.png"
               ]
             },
           "actions": [
@@ -554,7 +554,7 @@
           "failResponse": "No puedes llegar al bosque, antes debes cruzar un acantilado que tiene pinta que no podrás cruzar de un salto",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/bosque_oscuro.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/bosque_oscuro.png"
               ]
             },
           "actions": [
@@ -574,7 +574,7 @@
           "description": "Te encuentras de bruces con la puerta de la venta, esta abierta asi que nada te impide ir al recibidor. Se que esta feo entrar sin preguntar pero oye, si esta abierto... si en lugar de entrar sigues el muro llegas los prados, llenitos de cultivos de trigo.",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/venta.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/venta.png"
               ]
             },
           "actions": [],
@@ -645,7 +645,7 @@
           "description": "Un dormitorio sin más. Una cama, un suelo... poco más. Para descansar es suficiente supongo",
           "media": {
             "images": [
-              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/images/images/venta_dormitorio.png"
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/venta_dormitorio.png"
             ]
             },
           "actions": [

@@ -29,7 +29,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
   function addIntent(name, fn, needsHelp) {
     intentMap.set(name, agent =>
-      fn(agent).then(() => needsHelp && countIntents.checkIfNeedHelp(request, agent))
+      fn(agent).then(() => needsHelp && countIntents.checkIfNeedHelp(request, agent, name))
     );
   }
 

@@ -34,7 +34,7 @@ function travel(agent, userId, user) {
     countIntents.count(userId);
     return agent.add('¡Ya estás en este lugar!');
   } else {
-    return placesDao.getPlaceById(selectedPlace).then(place => {
+    return placesDao.getPlaceById(selectedPlace, user.room).then(place => {
         if(place) {
             console.log(`travel -> Selected place: ${JSON.stringify(place)}`)
             const distance = calculateTravelCoeficient(user.room[placeName], place);
