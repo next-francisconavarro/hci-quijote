@@ -599,7 +599,7 @@
           "branch": 1,
           "description": "Que salón tan solitario y vacío. Desde luego aqui no saben como darle un toque hogareño a una estancia. Solo hay una gran mesa vacía y un pequeño cesto en una esquina",
           "media": {
-            "images": []
+            "images": ["https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/salon-venta.png"]
             },
           "actions": [
             { 
@@ -665,7 +665,7 @@
           "description": "Al traspasar la puerta del distribuidor, accedes a un sorprendentemente acogedor patio, de no ser por que está lleno de gallinas que alborotan a tu alrededor. En una esquina disponen de un indispensable pozo decorado con una estatuilla de San jorge. Ya sabes, el santo de los caballeros, ¿que casualidad eh?",
           "failResponse": "Estaría bien poder visitar el patio, pero una puerta rota te lo impide",
           "media": {
-            "images": []
+            "images": ["https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/patio-venta.png"]
             },
           "actions": [
             { 
