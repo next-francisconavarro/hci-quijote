@@ -4,11 +4,11 @@ const mapUtils = require('../../utils/mapUtils');
 
 function leave(agent, userAccount, user, objectName, placeName) {
   console.log('leave -> Leave action execution');
+  let object = user.objects.filter(item => item.name == objectName);
 
   return objectsDao.deleteObjectByUser(userAccount, user, objectName).then(() => {
     console.log('leave -> Objeto borrado del inventario');
   }).then(() => {
-    let object = user.objects.filter(item => item.name == objectName);
     let objectsByPlace = mapUtils.addValueToKey(user.objectsByPlace, placeName, object);
     Object.assign( user, { objectsByPlace: objectsByPlace});
     usersDao.updateUser(userAccount, user);
