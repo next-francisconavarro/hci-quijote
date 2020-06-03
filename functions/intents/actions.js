@@ -27,7 +27,7 @@ function execute(request) {
       console.log(`execute -> current place name: ${placeName}`);
 
       if(everyWhereActions.includes(action)) {
-        return everyWhereActionsTreatment(agent, userAccount, user, action, objectName);
+        return everyWhereActionsTreatment(agent, userAccount, user, action, objectName, placeName);
       } else {
         return placesDao.getPlaceById(placeName).then(currentPlace => {
           console.log(`execute -> current place value: ${JSON.stringify(currentPlace)}`);
@@ -95,10 +95,10 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
   }
 }
 
-function everyWhereActionsTreatment(agent, userAccount, user, action, objectName) {
+function everyWhereActionsTreatment(agent, userAccount, user, action, objectName, placeName) {
   switch(action) {
     case 'tirar': 
-      return leaveAction.leave(agent, userAccount, user, objectName);
+      return leaveAction.leave(agent, userAccount, user, objectName, placeName);
     case 'comer': 
       return eatAction.eat(agent, userAccount, user, objectName);
     default:
