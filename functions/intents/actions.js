@@ -10,7 +10,7 @@ const eatAction = require('../business/actions/eatAction');
 const { textByDifficulty } = require('../utils/difficultyUtils');
 const countIntents = require('../utils/countIntents');
 
-
+const commonActions = ['coger'];
 const everyWhereActions = ['tirar','comer'];
 const genericFailResponse = 'Eso no se puede hacer aqui';
 
@@ -26,7 +26,9 @@ function execute(request) {
       const placeName = Object.keys(user.room)[0];
       console.log(`execute -> current place name: ${placeName}`);
 
-      if(everyWhereActions.includes(action)) {
+      let takeLeaved = checkTakeLeavedAction(user, placeName, objectName, action);
+
+      if(everyWhereActions.includes(action) || takeLeaved) {
         return everyWhereActionsTreatment(agent, userAccount, user, action, objectName, placeName);
       } else {
         return placesDao.getPlaceById(placeName).then(currentPlace => {
@@ -38,6 +40,14 @@ function execute(request) {
       }
     });
   }
+}
+
+function checkTakeLeavedAction(user, placeName, objectName, action) {
+  let object;
+  if (user.objectsByPlace) {
+    object = user.objectsByPlace[placeName] || [].filter(o => o.name == objectName)[0];
+  }
+  return commonActions.includes(action) && action == 'coger' && object;
 }
 
 function contextActionsTreatment(agent, userAccount, user, place, action, objectName) {
@@ -101,6 +111,8 @@ function everyWhereActionsTreatment(agent, userAccount, user, action, objectName
       return leaveAction.leave(agent, userAccount, user, objectName, placeName);
     case 'comer': 
       return eatAction.eat(agent, userAccount, user, objectName);
+    case 'coger': 
+      return takeAction.takeLeaved(agent, userAccount, user, objectName, placeName)
     default:
       console.log('everyWhereActionsTreatment -> Action not supported');
       agent.add(genericFailResponse);
