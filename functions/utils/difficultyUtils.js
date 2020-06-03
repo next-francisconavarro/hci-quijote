@@ -18,11 +18,22 @@ function textByDifficulty(text, user) {
   return text;
 }
 
-function getHelp(user) {
+function getHelp(user, intentName) {
+
+
+  if (intentName === 'Viajar' ) {
+    return travelHelp(user);
+  }
+  
+  return genericHelp(user);
+}
+
+function genericHelp(user) {
   const room = (Object.keys(user.room) || [])[0];
   const actionsDone = user.room.actions || [];
   const actions = placesDao.getPlaceActions(room);
   const connectedRooms = placesDao.getConnectedRooms(room);
+
   let response = `📝Aquí tienes algo de ayuda: \n\n - Estás en ${room}. `;
 
   if (connectedRooms.length) {
@@ -46,6 +57,18 @@ function getHelp(user) {
 
 
   return response;
+}
+
+function travelHelp(user) {
+  const places = user.placesKnown || [];
+  let response = 'Recuerda que has visitado ya estos sitios: \n    ';
+
+  if (places.length) {
+    response += places.join('\n    ');
+    return response;
+  } else {
+    return '';
+  }
 }
 
 function onlyUnique(values) { 
