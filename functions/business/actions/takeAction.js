@@ -11,17 +11,15 @@ function take(agent, userAccount, user, currentAction) {
 }
 
 function takeLeaved(agent, userAccount, user, objectName, placeName) {
-  console.log('take -> Take leaved object action execution');
-  let object;
-  if (user.objectsByPlace) {
-    object = user.objectsByPlace[placeName] || [].filter(o => o.name == objectName)[0];
-  }
+  console.log('takeLeaved -> Take leaved object action execution');
 
-  return objectsDao.addObject(userAccount, user, object)
-    .then(() => agent.add(`Recoges el objeto ${object.name} abandonado en el suelo`))
+  return objectsDao.addObjectFromFloor(userAccount, user, objectName, placeName)  
     .catch(e => {
       console.log(`Take error: ${e}`);
-      agent.add(`Ya tienes el objeto ${object.name} en tu inventario`);
+      if (e == 'Object repeated') 
+        agent.add(`Ya tienes el objeto ${objectName} en tu inventario`);
+      else if (e == 'Object not found')
+        agent.add(`No encuentras el objeto ${objectName} por ninguna parte`);
     });
 }
 
