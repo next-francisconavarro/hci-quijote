@@ -82,9 +82,9 @@ function addObjectFromFloor(userId, user, objectName, placeName) {
   if(!userId) {
     throw new Error('Se requiere identificador de usuario');
   } else if(!user) {
-      throw new Error('Se requiere usuario');
+    throw new Error('Se requiere usuario');
   } else if(!objectName) {
-      throw new Error('Se requiere objeto a borrar');
+    throw new Error('Se requiere objeto');
   } else if(!placeName) {
     throw new Error('Se requiere lugar del objeto borrar');
   }

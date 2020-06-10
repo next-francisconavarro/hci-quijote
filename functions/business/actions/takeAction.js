@@ -13,8 +13,9 @@ function take(agent, userAccount, user, currentAction) {
 function takeLeaved(agent, userAccount, user, objectName, placeName) {
   console.log('takeLeaved -> Take leaved object action execution');
 
-  return objectsDao.addObjectFromFloor(userAccount, user, objectName, placeName)  
-    .catch(e => {
+  return objectsDao.addObjectFromFloor(userAccount, user, objectName, placeName)
+  .then( () => agent.add(`Recoges el objeto ${objectName} que había quedado olvidado en el suelo de ${placeName}`))
+  .catch(e => {
       console.log(`Take error: ${e}`);
       if (e == 'Object repeated') 
         agent.add(`Ya tienes el objeto ${objectName} en tu inventario`);
