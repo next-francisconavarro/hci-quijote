@@ -1,5 +1,5 @@
 const usersDao = require('../dao/users');
-const { Image } = require('dialogflow-fulfillment');
+const { Image } = require('dialogflow-fulfillment');  
 
 // Reset de partida
 function reset(agent, userAccount, userName, endingMessage, reason) {
@@ -23,9 +23,9 @@ function end(agent, endingMessage, userAccount, userName) {
 function death(agent, endingMessage, userAccount) {
   agent.add(endingMessage);
 
-agent.add(new Image(images[0]));
-  agent.add('\nSi deseas iniciar una *nueva partida*, di *REINICIAR*');
-  console.log(userAccount);
+  agent.add(new Image('https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/blackDeath.jpg'));
+  agent.add('\n\nSi deseas iniciar una *nueva partida*, di *REINICIAR*');
+  return usersDao.removeUser(userAccount);
 }
 
 module.exports = { reset };

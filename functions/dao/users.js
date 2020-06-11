@@ -35,4 +35,10 @@ function addUser(userAccount, username, coordinates) {
   });
 }
 
-module.exports = { updateUser, addUser, getUsers, getUserById };
+function removeUser(userAccount) {
+  const account = admin.database().ref(`users/${userAccount}`);
+
+  account.remove();
+}
+
+module.exports = { updateUser, addUser, getUsers, getUserById, removeUser };
