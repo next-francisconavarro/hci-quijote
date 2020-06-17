@@ -58,7 +58,7 @@ function addObject(userId, user, object) {
   if(user.objects && user.objects.length) {
     objects = user.objects;
     const isIncluded = objects.map(item => item.name).includes(object.name);
-    console.log(`addObject -> ${objects} includes ${object}? ${isIncluded}`);
+    console.log(`addObject -> ${JSON.stringify(objects)} includes ${JSON.stringify(object)}? ${isIncluded}`);
     if(!isIncluded) {
       toTake = true;
       objects.push(object);
@@ -78,4 +78,52 @@ function addObject(userId, user, object) {
   }
 }
 
-module.exports = { getObjectByObjectId, getObjectsByUserId, deleteObjectByUser, addObject };
+function addObjectFromFloor(userId, user, objectName, placeName) {
+  if(!userId) {
+    throw new Error('Se requiere identificador de usuario');
+  } else if(!user) {
+    throw new Error('Se requiere usuario');
+  } else if(!objectName) {
+    throw new Error('Se requiere objeto');
+  } else if(!placeName) {
+    throw new Error('Se requiere lugar del objeto borrar');
+  }
+  
+  let object;
+  if (user.objectsByPlace) {
+    object = user.objectsByPlace[placeName] || [].find(element => element.name == objectName);
+    object = object[0];
+    console.log(`addObjectFromFloor -> ${userId} va a coger objeto ${JSON.stringify(object)} del suelo en ${placeName}`);
+
+    let objects;
+    let toTake = false;
+    if(user.objects && user.objects.length) {
+      objects = user.objects;
+      const isIncluded = objects.map(item => item.name).includes(object.name);
+      console.log(`addObjectFromFloor -> ${JSON.stringify(objects)} includes ${JSON.stringify(object)}? ${isIncluded}`);
+      if(!isIncluded) {
+        toTake = true;
+        objects.push(object);
+      }
+    } else {
+      toTake = true;
+      objects = [object];
+    }
+  
+    if(toTake) {
+      console.log('addObjectFromFloor -> Object accepted');
+      user.objectsByPlace[placeName] = user.objectsByPlace[placeName].filter(item => item.name !== objectName);
+      Object.assign( user, { objects: objects, objectsByPlace: user.objectsByPlace });
+      return usersDao.updateUser(userId, user);
+    } else {
+      console.log('addObjectFromFloor -> Object repeated');
+      return Promise.reject('Object repeated');
+    }
+  } else {
+    console.log('addObjectFromFloor -> Object not found');
+    return Promise.reject('Object not found');
+  }  
+
+}
+
+module.exports = { getObjectByObjectId, getObjectsByUserId, deleteObjectByUser, addObject, addObjectFromFloor };

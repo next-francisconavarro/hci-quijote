@@ -11,6 +11,8 @@ test('Leave object that i do have', () => {
       objects:[ { name: 'cosita' } ],
       room: { cocina: { branch: 0, 'step': 3 } }
     } ));
+  
+  jest.spyOn(usersDao, 'updateUser').mockImplementation(() => Promise.resolve({}));
 
   jest.spyOn(objectsDao, 'deleteObjectByUser')
     .mockImplementation(() =>  Promise.resolve(true));
