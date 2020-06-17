@@ -8,7 +8,7 @@ test('Should add bold to objects and places on easy level', () => {
 });
 
 test('Should not bold to objects and places on medium level', () => {
-  const user = { difficulty: { level: 'medio', maxCapacity: 100 }};
+  const user = { difficulty: { level: 'media', maxCapacity: 100 }};
   const text = 'Los libros polvorientos destacan en una estantería situada hacia la izquierda. De todos ellos hay un libro que te llama especialmente la atención';
 
   expect(difficultyUtils.textByDifficulty(text, user)).toMatch(' libro ');
