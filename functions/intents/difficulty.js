@@ -21,12 +21,14 @@ function difficulty(request) {
             break;
         }
 
-        await usersDao.updateUser(userId, Object.assign(userData, { difficulty: { level: difficultyLevel, maxCapacity: maxCapacity }}));
+        let difficulty = { difficulty: { level: difficultyLevel, maxCapacity: maxCapacity }};
+
+        await usersDao.updateUser(userId, Object.assign(userData, difficulty));
         // Comenzamos en la biblioteca
         return placesDao.getPlaceById('biblioteca').then(place => {
           if(place) {
             agent.add(new Image(place.media.images[0]));
-            return agent.add(`${preMessage}${textByDifficulty(place.description, { difficultyLevel })}`);
+            return agent.add(`${preMessage}${textByDifficulty(place.description, difficulty)}`);
           }
         });
     }
