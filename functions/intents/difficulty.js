@@ -15,7 +15,7 @@ function difficulty(request) {
         switch(difficultyLevel) {
           case 'facil': maxCapacity = 9999999;
             break;
-          case 'medio': maxCapacity = 100;
+          case 'media': maxCapacity = 100;
             break;
           case 'dificil': maxCapacity = 50;
             break;
