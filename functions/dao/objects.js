@@ -40,7 +40,11 @@ function deleteObjectByUser(userId, user, objectName) {
       throw new Error('Se requiere objeto a borrar');
   }
 
-  Object.assign( user, { objects: user.objects.filter(item => item.name !== objectName)});
+  let object = user.objects.find(item => item.name === objectName);
+  if (object) {
+    let difficulty = { level: user.difficulty.level, maxCapacity: user.difficulty.maxCapacity + object.weight };
+    Object.assign( user, { difficulty, objects: user.objects.filter(item => item.name !== objectName)});
+  }
   return usersDao.updateUser(userId, user);
 }
 
@@ -70,7 +74,8 @@ function addObject(userId, user, object) {
 
   if(toTake) {
     console.log('addObject -> Object accepted');
-    Object.assign( user, { objects: objects});
+    let difficulty = { level: user.difficulty.level, maxCapacity: user.difficulty.maxCapacity - object.weight };
+    Object.assign( user, { difficulty: difficulty, objects: objects });
     return usersDao.updateUser(userId, user);
   } else {
     console.log('addObject -> Object repeated');
@@ -113,7 +118,8 @@ function addObjectFromFloor(userId, user, objectName, placeName) {
     if(toTake) {
       console.log('addObjectFromFloor -> Object accepted');
       user.objectsByPlace[placeName] = user.objectsByPlace[placeName].filter(item => item.name !== objectName);
-      Object.assign( user, { objects: objects, objectsByPlace: user.objectsByPlace });
+      let difficulty = { level: user.difficulty.level, maxCapacity: user.difficulty.maxCapacity - object.weight };
+      Object.assign( user, { difficulty: difficulty, objects: objects, objectsByPlace: user.objectsByPlace });
       return usersDao.updateUser(userId, user);
     } else {
       console.log('addObjectFromFloor -> Object repeated');

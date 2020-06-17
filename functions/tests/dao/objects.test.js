@@ -9,7 +9,8 @@ test('Delete object in inventory', () => {
       'victormanuelpueblanext', 
       {
         userName: 'victorman', 
-        objects: ['espada', 'llave']
+        difficulty: { level: 'facil', maxCapacity: 99999 },
+        objects: [ { name: 'espada', type: 'util', weight: 15 }, { name: 'llave', type: 'util', weight: 2 }]
       }, 
       'espada'
       ).then(() => {
@@ -22,7 +23,8 @@ test('Delete non inventory object', () => {
     'victormanuelpueblanext', 
     {
       userName: 'victorman', 
-      objects: ['llave']
+      difficulty: { level: 'facil', maxCapacity: 99999 },
+      objects: [{ name: 'llave', type: 'util', weight: 2 }]
     }, 
     'espada'
     ).catch(e =>
