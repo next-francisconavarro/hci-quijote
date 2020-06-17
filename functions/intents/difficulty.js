@@ -11,7 +11,17 @@ function difficulty(request) {
         const userData = await usersDao.getUserById(userId);
         const preMessage = `Excelente, comenzarás la aventura con dificultad *${difficultyLevel}*.\n`;
 
-        await usersDao.updateUser(userId, Object.assign(userData, {difficultyLevel}));
+        let maxCapacity = 0;
+        switch(difficultyLevel) {
+          case 'facil': maxCapacity = 9999999;
+            break;
+          case 'medio': maxCapacity = 100;
+            break;
+          case 'dificil': maxCapacity = 50;
+            break;
+        }
+
+        await usersDao.updateUser(userId, Object.assign(userData, { difficulty: { level: difficultyLevel, maxCapacity: maxCapacity }}));
         // Comenzamos en la biblioteca
         return placesDao.getPlaceById('biblioteca').then(place => {
           if(place) {

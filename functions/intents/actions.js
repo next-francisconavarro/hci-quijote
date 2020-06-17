@@ -46,9 +46,8 @@ function checkTakeLeavedAction(user, placeName, objectName, action) {
   let object;
   if (user.objectsByPlace && user.objectsByPlace[placeName]) {
     object = (user.objectsByPlace[placeName] || []).find(o => o.name == objectName);
-    console.log(`checkTakeLeavedAction \n\t${action} ${objectName} \n\t${JSON.stringify(object)}` );
+    console.log(`checkTakeLeavedAction \n\t${action} ${objectName} \n\t${JSON.stringify(object)}`);
   }
-  // object = [{name: 'martillo', type: 'util'}]
   return commonActions.includes(action) && action == 'coger' && object;
 }
 
