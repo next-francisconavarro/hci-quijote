@@ -13,6 +13,9 @@ test('Actions intent execution. Requirements not met', () => {
       objects:[ { name: 'cosita', type: 'util' } ],
       room: { 'cocina': { 'branch': 0, 'step': 3 } }
     } ));
+  
+  jest.spyOn(usersDao, 'removeUser')
+    .mockImplementation(() =>  Promise.resolve({}));
 
   jest.spyOn(placesDao, 'getPlaceById')
     .mockImplementation(() =>  Promise.resolve( 
@@ -43,8 +46,8 @@ test('Actions intent execution. Requirements not met', () => {
       }
     })
     .then(response => {
-      expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('La rata salta sobre tu hidalgo rostro perjudicando tus globos oculares, ya no estás en condiciones de continuar con un hidalga azaña\n¡¡FIN DE LA PARTIDA!!');
+      expect(response.status).toBe(200); 
+      expect(response.body.join('')).toMatch('La rata salta sobre tu hidalgo rostro perjudicando tus globos oculares, ya no estás en condiciones de continuar con un hidalga azaña');
     });
 })
 
