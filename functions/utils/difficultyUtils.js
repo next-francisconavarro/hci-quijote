@@ -4,7 +4,7 @@ const items = placesDao.getItems();
 const replaces = onlyUnique(placeNames.concat(items));
 
 function textByDifficulty(text, user) {
-  if (user.difficultyLevel === 'facil') {
+  if (user.difficulty.level === 'facil') {
     let boldText = text;
     
 
@@ -19,8 +19,7 @@ function textByDifficulty(text, user) {
 }
 
 function getHelp(user, intentName) {
-
-
+  
   if (intentName === 'Viajar' ) {
     return travelHelp(user);
   }

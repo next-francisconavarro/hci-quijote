@@ -96,3 +96,49 @@ test('Actions take same object intent execution', () => {
       expect(response.body.join('')).toMatch('Ya tienes el objeto llave en tu inventario');
     });
 })
+
+test('Actions take overweighted object intent execution', () => {
+  jest.spyOn(usersDao, 'getUserById')
+    .mockImplementation(() =>  Promise.resolve( 
+    { 
+      userName: 'victorman',
+      difficulty: { level: 'media', maxCapacity: 7 },
+      objects:[],
+      room: { 'dormitorio': { 'branch': 1, 'step': 13 } }
+    } ));
+
+  jest.spyOn(objectsDao, 'addObject')
+    .mockImplementation(() => Promise.reject('Object not allowed'));
+
+  jest.spyOn(statesDao, 'addStatus')
+    .mockImplementation(() => Promise.resolve());
+
+  jest.spyOn(placesDao, 'getPlaceById')
+    .mockImplementation(() =>  Promise.resolve( 
+      {
+          step: 13, 
+          branch: 1,
+          description: 'Bonito dormitorio este. Una cama que hasta parece limpia domina la habitacion y un martillo escondifo debajo. Si, un martillo...',
+          actions: [
+            { 
+              action: "coger",
+              object: { name: "martillo", type: "util", weight: 8 },
+              successResponse: "Nos vendrá bien guardarlo por si queremos hacer algo de bricomanía, una vez vi una pelicula en el un asesino lo usaba como arma homicida, pero eso no lo hace un buen hidalgo."
+            }
+          ]
+        }
+      ));
+
+  return handleRequest({
+      intent: 'Acciones',
+      payload: {
+        user: 'victorman',
+        action: 'coger',
+        object: ['martillo']
+      }
+    })
+    .then(response => {
+      expect(response.status).toBe(200);
+      expect(response.body.join('')).toMatch('Llevas demasiada carga para coger martillo. Dejar ir, es dejar llegar...');
+    });
+})

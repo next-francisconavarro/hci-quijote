@@ -12,9 +12,9 @@ function execute(request) {
   return agent => {
     const userAccount = contextDao.getUserId(request);
     return usersDao.getUserById(userAccount).then(user => {
-      const difficultyLevel = user.difficultyLevel;
+      const difficultyLevel = user.difficulty.level;
       if (!difficultyLevel) {
-        throw new Error('User not found');
+        throw new Error('Dificulty not found');
       }
 
       if (difficultyLevel === 'facil') {
