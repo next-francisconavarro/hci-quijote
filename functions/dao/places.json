@@ -51,7 +51,7 @@
             },
             {   
             "action": "coger",
-            "object": { "name": "escalon", "type": "util" },
+            "object": { "name": "escalon", "type": "util", "weight": 5 },
             "requirementStatus": ["revisar_escalera"],
             "successResponse": "Es inquietante lo facilmente que se desprende el escalón, pensar que por aqui pasamos todos los dias me hace sentirme mucho más seguro.",
             "failResponse": "que quieres coger el que?, yo no veo nada que se pueda coger aqui, es mas, no veo nada de nada"
@@ -88,7 +88,7 @@
             },
             { 
               "action": "coger", 
-              "object": { "name": "llave", "type": "util" },
+              "object": { "name": "llave", "type": "util", "weight": 2  },
               "successResponse": "Guardala bien, nunca se sabe"
             }
           ],
@@ -112,7 +112,7 @@
             },
             { 
               "action": "coger",
-              "object": { "name":"armadura", "type":"util" },
+              "object": { "name":"armadura", "type":"util", "weight": 35 },
               "requirementStatus": ["abrir_baúl"], 
               "successResponse": "Claro que coges la armadura, ¿alguna vez viste un valiente hidalgo sin una?",
               "failResponse": "¡Vaya!, ¡además de hidalgo eres adivino!, ¡¡¡Ya sabes que hay algo en el baúl sin nisiquiera haberlo abierto!!!"
@@ -146,12 +146,12 @@
             },
             { 
               "action": "coger",
-              "object": { "name": "espada", "type": "util" },
+              "object": { "name": "espada", "type": "util", "weight": 15 },
               "successResponse": "¡¡valiente hidalgo serías sin tener una!!, una cosa menos." 
             },
             { 
               "action": "coger",
-              "object": { "name": "currusco",  "type":"food", "lifePoints":40 },
+              "object": { "name": "currusco",  "type":"food", "weight": 2, "lifePoints":40 },
               "successResponse": "Esta duro como una piedra, pero cuando el hambre arrecia seguro que lo agradeces." 
             }
           ],
@@ -232,7 +232,7 @@
             },
             {   
               "action": "coger",
-              "object": { "name":"níscalo", "type":"food", "lifePoints":30 },
+              "object": { "name":"níscalo", "type":"food", "weight": 2, "lifePoints":30 },
               "requirementStatus": ["examinar_suelo"],
               "successResponse": "Perfecto, tener comida siempre te salva de algún que otro apuro",
               "failResponse": "¿Que quieres coger qué?"
@@ -257,7 +257,7 @@
             },
             { 
               "action": "coger",
-              "object": { "name":"manzana", "type":"food", "lifePoints": 20 },
+              "object": { "name":"manzana", "type":"food", "weight": 2, "lifePoints": 20 },
               "requirementStatus": ["golpear_manzano"], 
               "successResponse": "¡Esto viene de maravilla cuando el hambre arrecia!",
               "failResponse": "No las alcanzas o valiente hidalgo, deberías buscar una forma de hacer que caigan del árbol"
@@ -284,7 +284,7 @@
             },
             { 
               "action": "coger",
-              "object": { "name":"amanita", "type":"food", "lifePoints": -100 },
+              "object": { "name":"amanita", "type":"food", "weight": 1, "lifePoints": -100 },
               "successResponse": "¿Una flor? sí, ¿por qué no?. Tú eres el valiente hidalgo y también un hombre sensible" 
             }
           ],
@@ -340,7 +340,7 @@
           "actions": [
             { 
               "action": "coger",
-              "object": { "name": "botella", "type": "util" },
+              "object": { "name": "botella", "type": "util", "weight": 5 },
               "successResponse": "¿Quieres recoger una botella?, vaya, un hidalgo valiente y ecológico, ¡lo tienes todo!"
             }
           ],
@@ -395,7 +395,7 @@
             },
             { 
               "action": "coger",
-              "object": { "name": "vela", "type": "util" },
+              "object": { "name": "vela", "type": "util", "weight": 3 },
               "requirementStatus": ["examinar_candelabro"], 
               "successResponse": "Sí, mejor la guardamos, nunca se sabe cuando un poco de luz puede iluminar las ideas",
               "failResponse": "¿Qué vela?"
@@ -445,7 +445,7 @@
             },
             { 
               "action": "coger",
-              "object": { "name":"vino", "type":"food", "lifePoints":20 },
+              "object": { "name":"vino", "type":"food", "weight": 6, "lifePoints":20 },
               "requirementObject": ["botella"],
               "requirementStatus": ["golpear_odre"],
               "successResponse": "¿En serio quieres ese vino?, bueno... no seré yo quien te lo discuta",
@@ -475,7 +475,7 @@
           "actions": [
             { 
               "action": "coger",
-              "object": { "name":"martillo", "type": "util" },
+              "object": { "name":"martillo", "type": "util", "weight": 8 },
               "successResponse": "Nos vendrá bien guardarlo por si queremos hacer algo de bricomanía, una vez vi una pelicula en el un asesino lo usaba como arma homicida, pero eso no lo hace un buen hidalgo."
             }
           ],
@@ -496,7 +496,7 @@
           "actions": [
             { 
               "action": "coger",
-              "object": { "name": "rastrillo" },
+              "object": { "name": "rastrillo", "weight": 15 },
               "successResponse": "¿Un rastrillo?, sí bueno, ¿por qué no?, si no sale bien lo de hidalgo siempre puedes ser granjero"
             }
           ],
@@ -560,7 +560,7 @@
           "actions": [
             { 
               "action": "coger",
-              "object": { "name": "pedrusco", "type": "util" },
+              "object": { "name": "pedrusco", "type": "util", "weight": 10 },
               "successResponse": "Un pedrusco, sí, como no, llévatelo. Llevate todo lo que te encuentres en el suelo"
             }
           ],
@@ -609,7 +609,7 @@
             },
             { 
               "action": "coger",
-              "object": { "name": "alambre", "type": "util" },
+              "object": { "name": "alambre", "type": "util", "weight": 5 },
               "requirementStatus": ["examinar_cesto"],
               "successResponse": "Nos vendrá bien guardarlo por si queremos hacer algo de bricomanía",
               "failResponse": "Deberías examinar el cesto para ver que hay antes de meter la mano a lo loco. Solo dios sabe lo que puedes sacar de ahí"

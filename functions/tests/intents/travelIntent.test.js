@@ -40,6 +40,7 @@ test('Travel intent without hungry advice', () => {
       .mockImplementation(() =>  Promise.resolve( 
       { 
         userName: 'victorman',
+        difficulty: { level: 'facil', maxCapacity: 99999 },
         hungry: 20,
         room: { acantilado: { branch: 1, step: 2}},
         states: ["colocar_escalón"],
@@ -54,7 +55,7 @@ test('Travel intent without hungry advice', () => {
       })
       .then(response => {
         expect(response.status).toBe(200);
-        expect(response.body.join('')).toMatch('Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta');
+        expect(response.body.join('')).toMatch('Un diminuto *acantilado* esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta');
       });
 })
 
@@ -63,6 +64,7 @@ test('Travel intent with hungry advice', () => {
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
+      difficulty: { level: 'facil', maxCapacity: 99999 },
       hungry: 5,
       room: {'acantilado': { branch: 1, step: 2}},
       states: ["colocar_escalón"],
@@ -77,7 +79,7 @@ test('Travel intent with hungry advice', () => {
     })
     .then(response => {
       expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.');
+      expect(response.body.join('')).toMatch('Un diminuto *acantilado* esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta y empiezas a estar hambriento, uno es un hidalgo pero aun asi necesita comer.');
     });
 })
 
@@ -86,6 +88,7 @@ test('Travel intent with long distance advice', () => {
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
+      difficulty: { level: 'facil', maxCapacity: 99999 },
       hungry: 20,
       room: {'acantilado': { branch: 3, step: 4}},
       states: ["colocar_escalón"],
@@ -100,7 +103,7 @@ test('Travel intent with long distance advice', () => {
     })
     .then(response => {
       expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('Un diminuto acantilado esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta. Ha sido un largo viaje');
+      expect(response.body.join('')).toMatch('Un diminuto *acantilado* esta frente ti, quizas podrias cruzarlo de un salto, pero parece mucha distancia incluso para un valiente hidalgo, creo que seria mejor darse media vuelta. Ha sido un largo viaje');
     });
 })
 

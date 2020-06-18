@@ -54,6 +54,7 @@ test('Actions intent execution. Requirements are met', () => {
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
+      difficulty: { level: 'facil', maxCapacity: 99999 },
       objects:[ { name: 'cosita', type: 'util' } ],
       states:['poner_armadura'],
       room: { 'cocina': { 'branch': 0, 'step': 3 } }
@@ -71,7 +72,7 @@ test('Actions intent execution. Requirements are met', () => {
           actions: [
             {   
               action: 'abrir',
-              object: { name: 'alacena'  },
+              object: { name: 'alacena' },
               requirementStatus: ['poner_armadura'],
               successResponse: 'Una rata salta, te intenta morder, pero gracias a la armadura lo unico que consigue es romperse los dientes.',
               failResponse: 'La rata salta sobre tu hidalgo rostro perjudicando tus globos oculares, ya no estás en condiciones de continuar con un hidalga azaña'
@@ -91,7 +92,7 @@ test('Actions intent execution. Requirements are met', () => {
     })
     .then(response => {
       expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('Una rata salta, te intenta morder, pero gracias a la armadura lo unico que consigue es romperse los dientes.');
+      expect(response.body.join('')).toMatch('Una rata salta, te intenta morder, pero gracias a la *armadura* lo unico que consigue es romperse los dientes.');
     });
 })
 
@@ -101,6 +102,7 @@ test('Actions intent execution. Fail due to repeated action', () => {
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
+      difficulty: { level: 'facil', maxCapacity: 99999 },
       objects:[ { name: 'cosita', type: 'util' } ],
       states:['poner_armadura'],
       room: { 'cocina': { 'branch': 0, 'step': 3 } }
@@ -147,6 +149,7 @@ test('Actions intent Forbidden action and object', () => {
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
+      difficulty: { level: 'facil', maxCapacity: 99999 },
       objects:['llave'],
       room: { 'cocina': { 'branch': 0, 'step': 3 } }
     } ));
@@ -190,6 +193,7 @@ test('Actions intent Forbidden object execution', () => {
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
+      difficulty: { level: 'facil', maxCapacity: 99999 },
       objects:['llave'],
       room: { 'cocina': { 'branch': 0, 'step': 3 } }
     } ));
@@ -233,6 +237,7 @@ test('Actions intent Forbidden action execution', () => {
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
+      difficulty: { level: 'facil', maxCapacity: 99999 },
       objects:['llave'],
       room: { 'cocina': { 'branch': 0, 'step': 3 } }
     } ));
@@ -276,6 +281,7 @@ test('Actions intent with empty inventory', () => {
     .mockImplementation(() =>  Promise.resolve( 
     { 
       userName: 'victorman',
+      difficulty: { level: 'facil', maxCapacity: 99999 },
       room: { 'biblioteca': { 'branch': 0, 'step': 0 } }
     } ));
 
@@ -308,6 +314,6 @@ test('Actions intent with empty inventory', () => {
     })
     .then(response => {
       expect(response.status).toBe(200);
-      expect(response.body.join('')).toMatch('Lees en voz alta para espantar el miedo que te recorre el cuerpo. Con cada palabra, todo a tu alrededor vibra cada vez más, hasta que aparece ante ti una ventana etérea, circular, a través de la cual se puede observar una habitación');
+      expect(response.body.join('')).toMatch('Lees en voz alta para espantar el miedo que te recorre el cuerpo. Con cada palabra, todo a tu alrededor vibra cada vez más, hasta que aparece ante ti una ventana etérea, circular, a través de la cual se puede observar una *habitación*');
     });
 })

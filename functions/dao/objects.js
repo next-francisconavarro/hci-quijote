@@ -40,7 +40,11 @@ function deleteObjectByUser(userId, user, objectName) {
       throw new Error('Se requiere objeto a borrar');
   }
 
-  Object.assign( user, { objects: user.objects.filter(item => item.name !== objectName)});
+  let object = user.objects.find(item => item.name === objectName);
+  if (object) {
+    let difficulty = { level: user.difficulty.level, maxCapacity: user.difficulty.maxCapacity + object.weight };
+    Object.assign( user, { difficulty, objects: user.objects.filter(item => item.name !== objectName)});
+  }
   return usersDao.updateUser(userId, user);
 }
 
@@ -55,26 +59,36 @@ function addObject(userId, user, object) {
 
   let objects;
   let toTake = false;
+  let nextWeight = user.difficulty.maxCapacity - object.weight;
+  let isIncluded = false;
+  let isOverweight = nextWeight < 0;
+
+  console.log(`addObject -> ${user.difficulty.maxCapacity} - ${object.weight} = ${nextWeight} => ¿isOverweight?${isOverweight}`);
+
   if(user.objects && user.objects.length) {
     objects = user.objects;
-    const isIncluded = objects.map(item => item.name).includes(object.name);
+    isIncluded = objects.map(item => item.name).includes(object.name);
     console.log(`addObject -> ${JSON.stringify(objects)} includes ${JSON.stringify(object)}? ${isIncluded}`);
-    if(!isIncluded) {
+    if(!isIncluded && !isOverweight) {
       toTake = true;
       objects.push(object);
     }
-  } else {
+  } else if (!isOverweight) {
     toTake = true;
     objects = [object];
   }
 
   if(toTake) {
     console.log('addObject -> Object accepted');
-    Object.assign( user, { objects: objects});
+    let difficulty = { level: user.difficulty.level, maxCapacity: user.difficulty.maxCapacity - object.weight };
+    Object.assign( user, { difficulty: difficulty, objects: objects });
     return usersDao.updateUser(userId, user);
-  } else {
+  } else if(isIncluded) {
     console.log('addObject -> Object repeated');
     return Promise.reject('Object repeated');
+  } else if(isOverweight) {
+    console.log('addObject -> Object take action generate overweight');
+    return Promise.reject('Object not allowed');
   }
 }
 
@@ -97,15 +111,21 @@ function addObjectFromFloor(userId, user, objectName, placeName) {
 
     let objects;
     let toTake = false;
+    let nextWeight = user.difficulty.maxCapacity - object.weight;
+    let isIncluded = false;
+    let isOverweight = nextWeight < 0;
+
+    console.log(`addObject -> ${user.difficulty.maxCapacity} - ${object.weight} = ${nextWeight} => ¿isOverweight?${isOverweight}`);
+
     if(user.objects && user.objects.length) {
       objects = user.objects;
-      const isIncluded = objects.map(item => item.name).includes(object.name);
+      isIncluded = objects.map(item => item.name).includes(object.name);
       console.log(`addObjectFromFloor -> ${JSON.stringify(objects)} includes ${JSON.stringify(object)}? ${isIncluded}`);
-      if(!isIncluded) {
+      if(!isIncluded && !isOverweight) {
         toTake = true;
         objects.push(object);
       }
-    } else {
+    } else if(!isOverweight) {
       toTake = true;
       objects = [object];
     }
@@ -113,11 +133,15 @@ function addObjectFromFloor(userId, user, objectName, placeName) {
     if(toTake) {
       console.log('addObjectFromFloor -> Object accepted');
       user.objectsByPlace[placeName] = user.objectsByPlace[placeName].filter(item => item.name !== objectName);
-      Object.assign( user, { objects: objects, objectsByPlace: user.objectsByPlace });
+      let difficulty = { level: user.difficulty.level, maxCapacity: nextWeight };
+      Object.assign( user, { difficulty: difficulty, objects: objects, objectsByPlace: user.objectsByPlace });
       return usersDao.updateUser(userId, user);
-    } else {
+    } else if(isIncluded) {
       console.log('addObjectFromFloor -> Object repeated');
       return Promise.reject('Object repeated');
+    } else if(isOverweight) {
+      console.log('addObjectFromFloor -> Object take action generate overweight');
+      return Promise.reject('Object not allowed');
     }
   } else {
     console.log('addObjectFromFloor -> Object not found');

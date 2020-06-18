@@ -46,9 +46,8 @@ function checkTakeLeavedAction(user, placeName, objectName, action) {
   let object;
   if (user.objectsByPlace && user.objectsByPlace[placeName]) {
     object = (user.objectsByPlace[placeName] || []).find(o => o.name == objectName);
-    console.log(`checkTakeLeavedAction \n\t${action} ${objectName} \n\t${JSON.stringify(object)}` );
+    console.log(`checkTakeLeavedAction \n\t${action} ${objectName} \n\t${JSON.stringify(object)}`);
   }
-  // object = [{name: 'martillo', type: 'util'}]
   return commonActions.includes(action) && action == 'coger' && object;
 }
 
@@ -81,13 +80,7 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
     console.log('contextActionsTreatment -> requirements are met')
     switch(action) {
       case 'coger': 
-        return statesDao.addStatus(userAccount, user, currentAction.action + '_' + currentAction.object.name)
-          .then(() => 
-            takeAction.take(agent, userAccount, user, currentAction))
-          .catch(e => {
-            console.log(`Action error: ${e}`);
-            agent.add(`Ya has hecho eso`);
-          });
+        return takeAction.take(agent, userAccount, user, currentAction);
           
       default:
         console.log('contextActionsTreatment -> Updating action state');
