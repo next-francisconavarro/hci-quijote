@@ -36,14 +36,14 @@
         "zaguán": { 
           "step": 2,
           "branch": 0,
-          "description": "Bajas por la escalera, que siempre cruje a tu paso, y estas en el zaguán. Esta amplia y ruidosa escalera te facilitará el acceso si quieres volver a la habitación. Por lo demás y para tu información, un zagüán es un recibidor, te sirve para salir de casa por el portalón, llegar al comedor o a la cocina. Poco más tenian estas casas en aquella época, y más siendo un hidalgo venido a menos.",
+          "description": "Bajas por la escalera, con cuidado de no tropezar con el escalón suelto que nunca arreglaste, y estas en el zaguán. Esta amplia y ruidosa escalera te facilitará el acceso si quieres volver a la habitación. Por lo demás y para tu información, un zagüán es un recibidor, te sirve para salir de casa por el portalón, llegar al comedor o a la cocina. Poco más tenian estas casas en aquella época, y más siendo un hidalgo venido a menos.",
           "media": {
             "images": [
               "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/zaguan.png"
             ]
           },
           "actions": [            {   
-            "action": "revisar",
+            "action": "examinar",
             "object": { "name": "escalera" },
             "requirementObject": ["vela"], 
             "successResponse": "Parece que uno de los escalones esta un poco suelto, ya decia yo que crugia siempre que pasabamos por aqui. Muy agudo al haberte dado cuenta.",
@@ -599,7 +599,7 @@
           "branch": 1,
           "description": "Que salón tan solitario y vacío. Desde luego aqui no saben como darle un toque hogareño a una estancia. Solo hay una gran mesa vacía y un pequeño cesto en una esquina",
           "media": {
-            "images": []
+            "images": ["https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/salon-venta.png"]
             },
           "actions": [
             { 
@@ -665,7 +665,7 @@
           "description": "Al traspasar la puerta del distribuidor, accedes a un sorprendentemente acogedor patio, de no ser por que está lleno de gallinas que alborotan a tu alrededor. En una esquina disponen de un indispensable pozo decorado con una estatuilla de San jorge. Ya sabes, el santo de los caballeros, ¿que casualidad eh?",
           "failResponse": "Estaría bien poder visitar el patio, pero una puerta rota te lo impide",
           "media": {
-            "images": []
+            "images": ["https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/patio-venta.png"]
             },
           "actions": [
             { 
