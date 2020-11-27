@@ -15,6 +15,9 @@ function readNode(parent) {
   const connectedRooms = place.connectedRooms || [];
   parent.children = [];
   parent.image = place.media.images[0];
+  parent.actions = place.actions.map(el => {
+    return el.action + ' ' + (el.object && el.object.name)
+  }).join(', ');
   
   connectedRooms.forEach(room => {
     if (!parents.includes(room) && places[room]) {
@@ -31,7 +34,10 @@ function readNode(parent) {
 
 function drawNode(node) {
   let string = `{
-    text: { name: "${node.name}" },
+    text: { 
+      name: "${node.name}",
+      actions: "${node.actions}",
+    },
     image: '${node.image}',
     children: [
       ${node.children.length ?
