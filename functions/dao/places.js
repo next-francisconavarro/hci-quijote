@@ -1,7 +1,6 @@
 const placesList = require('./places.json');
 
 const synonimMap = [
-  [ 'comedor', 'salon'],
   [ 'alcoba', 'habitación', 'dormitorio' ]
 ];
 const synonims = [];

@@ -93,7 +93,7 @@
             }
           ],
           "connectedRooms": [
-            "zaguan",
+            "zaguán",
             "despensa"
           ]
         },
@@ -102,7 +102,9 @@
           "branch": 0,
           "description": "La ténue luz que penetra por la puerta permite vislumbrar un baúl, cuya superficie cubierta por el polvo de los siglos encubre recuerdos de tus antepasados",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/despensa.png"
+            ]
             },
           "actions": [
             { 
@@ -247,7 +249,9 @@
           "branch": 0,
           "description": "Algo insólito en estos parajes, ¡un manzano!, quizas por su rareza sea tan famoso en el pueblo. ¡Y que manzanas tan sabrosas proporciona!, estaria bien hacerse con una, pero siempre puedes volver hacia la arboleda de camino al pueblo o continuar hacia el pinar que se encuentra más adelante, tu mismo.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/manzano.png"
+            ]
             },
           "actions": [
             {   
@@ -373,7 +377,9 @@
           "branch": 0,
           "description": "Estás en la recepción de la posada. ¿Cuánta gente habrá pasado aqui la noche?, al fondo ves unas escaleras, de esas que se han arreglado tantas veces que ya ni se parecen a lo que fueron un dia, si es que hubo algún día que tubiesen buen aspecto.",
           "media": {
-            "images": []
+            "images": [
+             
+            ]
             },
           "actions": [],
           "connectedRooms": [
@@ -385,7 +391,9 @@
           "branch": 0,
           "description": "Un candelabro en una de las paredes ilumina el descansillo de la escalera. Parece tan viejo como todo lo demás. Quizás sería mejor ir directamente al rellano que hay arriba antes de que se derrumben, o se quemen, o que se yo.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/escaleras.png"
+            ]
             },
           "actions": [
             { 
@@ -599,7 +607,7 @@
           "branch": 1,
           "description": "Que salón tan solitario y vacío. Desde luego aqui no saben como darle un toque hogareño a una estancia. Solo hay una gran mesa vacía y un pequeño cesto en una esquina",
           "media": {
-            "images": ["https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/salon-venta.png"]
+            "images": ["https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/Salon-venta.png"]
             },
           "actions": [
             { 
@@ -665,7 +673,7 @@
           "description": "Al traspasar la puerta del distribuidor, accedes a un sorprendentemente acogedor patio, de no ser por que está lleno de gallinas que alborotan a tu alrededor. En una esquina disponen de un indispensable pozo decorado con una estatuilla de San jorge. Ya sabes, el santo de los caballeros, ¿que casualidad eh?",
           "failResponse": "Estaría bien poder visitar el patio, pero una puerta rota te lo impide",
           "media": {
-            "images": ["https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/patio-venta.png"]
+            "images": ["https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/Patio-venta.png"]
             },
           "actions": [
             { 
@@ -685,7 +693,9 @@
           "branch": 2,
           "description": "Unos extensos prados, que solo destacan por un nutrido rebaño de ovejas, que pastan apacibles pero bloquean el maldito paso hacia la cancela que da acceso a los dominios de la reina.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/prados.png"
+            ]
             },
           "actions": [
             { 
