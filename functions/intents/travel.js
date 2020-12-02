@@ -6,6 +6,7 @@ const gameOperations = require('../business/gameOperations');
 const { textByDifficulty } = require('../utils/difficultyUtils');
 const countIntents = require('../utils/countIntents');
 const { Image } = require('dialogflow-fulfillment');
+const { isNight } = require('../utils/time');
 
 function recoverCurrentPlaceStep(request) {
     return agent => {
@@ -56,8 +57,11 @@ function travel(agent, userId, user) {
                 usersDao.updateUser(userId, user);
 
                 if (images.length) {
-                  // TODO: poner dia o noche
-                  agent.add(new Image(images[0]));
+                  if (isNight(user) && images.length>1) {
+                    agent.add(new Image(images[1]));
+                  } else {
+                    agent.add(new Image(images[0]));
+                  }
                 }
                 return agent.add(`${textByDifficulty(place.description, user)}${distanceText}${withHungry}`);
               } else {
