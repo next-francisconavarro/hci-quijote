@@ -19,6 +19,7 @@ function readNode(parent) {
     return el.action + ' ' + (el.object && el.object.name)
   }).join(', ');
   
+  
   connectedRooms.forEach(room => {
     if (!parents.includes(room) && places[room]) {
       parents.push(room);

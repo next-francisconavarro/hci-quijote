@@ -101,14 +101,14 @@
       name: "recibidor",
       actions: "",
     },
-    image: 'undefined',
+    image: 'https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/recibidor.png',
     children: [
       {
     text: { 
       name: "distribuidor",
       actions: "arreglar cerradura",
     },
-    image: 'undefined',
+    image: 'https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/distribuidor.png',
     children: [
       {
     text: { 
@@ -156,7 +156,7 @@
       name: "cancela",
       actions: "cruzar cancela",
     },
-    image: 'undefined',
+    image: 'https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/cancela.png',
     children: [
       
     ]
@@ -214,7 +214,7 @@
       name: "pinar",
       actions: "examinar suelo, coger amanita",
     },
-    image: 'https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/bosque.png',
+    image: 'https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/pinar.png',
     children: [
       {
     text: { 
@@ -238,7 +238,7 @@
       name: "recepción",
       actions: "",
     },
-    image: 'undefined',
+    image: 'https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/recepcion.png',
     children: [
       {
     text: { 
