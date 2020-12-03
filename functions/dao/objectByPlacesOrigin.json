@@ -1,7 +1,8 @@
 {
   "escalon" : {
-    "originPLace": "zaguan",
-    "currentPlace": "zaguan", 
+    "name": "escalon",
+    "originPLace": "zaguán",
+    "currentPlace": "zaguán",
     "type": "util",
     "jointToSuccess": false,
     "originDescription": "Un escalón cruje a tu paso mmientras bajas, si, ese escalón que nunca arreglaste.",
@@ -12,6 +13,7 @@
     "unFindResponse": "Que quieres coger que?"
   },
   "llave" : {
+    "name": "llave",
     "originPLace": "cocina",
     "currentPlace": "cocina", 
     "type": "util",
@@ -22,6 +24,7 @@
     "unFindResponse": "Que llave?, donde?"
   },
   "armadura": { 
+    "name": "armadura",
     "originPLace": "despensa",
     "currentPlace": "despensa", 
     "type":"util",
@@ -32,6 +35,7 @@
     "unFindResponse": "que armadura?, donde?"
   },
   "espada": { 
+    "name": "espada",
     "originPLace": "comedor",
     "currentPlace": "comedor", 
     "type": "util",
@@ -42,6 +46,7 @@
     "unFindResponse": "ejem... aqui no hay ninguna espada" 
   },
   "currusco": {
+    "name": "currusco",
     "originPLace": "comedor",
     "currentPlace": "comedor",
     "type":"food",
@@ -53,6 +58,7 @@
     "unFindResponse": "a veces ves curruscos que no existen?" 
   },
   "níscalo": {
+    "name": "níscalo",
     "originPLace": "arboleda",
     "currentPlace": "arboleda",
     "type":"food", 
@@ -64,6 +70,7 @@
     "unFindResponse": "yo no veo ningún níscalo por aqui, tu si??" 
   },
   "manzana": {
+    "name": "manzana",
     "originPLace": "manzano",
     "currentPlace": "manzano",
     "type":"food",
@@ -75,6 +82,7 @@
     "unFindResponse": "Aqui ya no hay ninguna manzana, si la hubo, ya se la llevaron" 
   },
   "amanita": {
+    "name": "amanita",
     "originPLace": "pinar",
     "currentPlace": "pinar",
     "type":"food",
@@ -86,6 +94,7 @@
     "unFindResponse": "Estaria genial que hubiese una amanita aqui, pero no."  
   }, 
   "botella": {
+    "name": "botella",
     "originPLace": "callejón",
     "currentPlace": "callejón",
     "type": "util",
@@ -96,6 +105,7 @@
     "unFindResponse": "Quizás en tu mundo sea normal encontrar botellas en cualquier parte, pero aqui no hay ninguna." 
   },
   "vela": {
+    "name": "vela",
     "originPLace": "escalera",
     "currentPlace": "escalera",
     "type": "util",
@@ -108,6 +118,7 @@
     "unFindResponse": "¿que vela?" 
   },
   "vino": {
+    "name": "vino",
     "originPLace": "bodega",
     "currentPlace": "bodega",
     "type":"food",
@@ -120,6 +131,7 @@
     "unFindResponse": "¿donde vés tu el vino aquí?" 
   },
   "martillo": { 
+    "name": "martillo",
     "originPLace": "dormitorio",
     "currentPlace": "dormitorio",
     "type": "util",
@@ -130,6 +142,7 @@
     "unFindResponse": "si claro, ¿como no? (dios mio, ahora ve martillos donde no los hay)" 
   },
   "rastrillo": {
+    "name": "rastrillo",
     "originPLace": "calles",
     "currentPlace": "calles",
     "type": "util",
@@ -140,6 +153,7 @@
     "unFindResponse": "¿Un rastrillo?, ¿en serio?, no, aqui no hay ningun rastrillo, ¿te puedes centrar por favor?" 
   },
   "pedrusco": {
+    "name": "pedrusco",
     "originPLace": "bosque",
     "currentPlace": "bosque",
     "type": "util",
@@ -150,6 +164,7 @@
     "unFindResponse": "no hay ningún pedrusco aquí, como mucho piedrecitas" 
   },
   "alambre": {
+    "name": "alambre",
     "originPLace": "salón",
     "currentPlace": "salón",
     "type": "util",

@@ -44,7 +44,7 @@ function deleteObjectByUser(userId, user, objectName) {
   return usersDao.updateUser(userId, user);
 }
 
-function addObject(userId, user, object) {
+function addObject(userId, user, objectName) {
   if(!userId) {
       throw new Error('Se requiere identificador de usuario');
   } else if(!user) {
@@ -56,25 +56,25 @@ function addObject(userId, user, object) {
   let errorLog = 'repeated';
   let toTake = false;
 
-  const objectAvailableOnCurrentPlace = user.objectsList[object.name].currentPlace == Object.keys(user.room);
+  const objectAvailableOnCurrentPlace = user.objectsList[objectName].currentPlace == Object.keys(user.room)[0];
 
   if (objectAvailableOnCurrentPlace) {
+    user.objectsList[objectName].currentPlace = 'none';
+    user.objectsList[objectName].jointToSuccess = true;
     if(user.objects && user.objects.length) {
       objects = user.objects;
-      const isIncluded = objects.map(item => item.name).includes(object.name);
-      console.log(`addObject -> ${objects} includes ${object}? ${isIncluded}`);
+      const isIncluded = objects.map(item => item.name).includes(objectName);
+      console.log(`addObject -> ${objects} includes ${objectName}? ${isIncluded}`);
       if(!isIncluded) {
         toTake = true;
-        objects.push(object);
+        objects.push(user.objectsList[objectName]);
       }
     } else {
       toTake = true;
-      objects = [object];
+      objects = [user.objectsList[objectName]];
     }
-    user.objectsList[object.name].currentPlace = 'none';
-    user.objectsList[object.name].jointToSuccess = true;
   } else {
-    errorLog = user.objectsList[object.name].unFindResponse;
+    errorLog = user.objectsList[objectName].unFindResponse;
   }
 
   if(toTake) {

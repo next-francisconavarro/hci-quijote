@@ -85,13 +85,7 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
 function everyWhereActionsTreatment(agent, userAccount, user, action, objectName) {
   switch(action) {
     case 'coger': 
-      return takeAction.take(agent, userAccount, user, currentAction)
-        .then(() => 
-          statesDao.addStatus(userAccount, user, currentAction.action + '_' + currentAction.object.name))
-        .catch(e => {
-          console.log(`Action error: ${e}`);
-          agent.add(`Ya has hecho eso`);
-        });
+      return takeAction.take(agent, userAccount, user, objectName)
     case 'tirar': 
       return leaveAction.leave(agent, userAccount, user, objectName);
     case 'comer': 

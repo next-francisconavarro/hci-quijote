@@ -61,6 +61,7 @@ function travel(agent, userId, user) {
                 }
                 let objectInPlaceDescription = '';
                 Object.values(user.objectsList).map( currentObject => {
+                  console.log('Objetc list: ',currentObject.currentPlace, selectedPlace);
                   return objectInPlaceDescription.concat(' ', currentObject.currentPlace == selectedPlace ? currentObject.jointToSuccess ? currentObject.ordinaryDescription : currentObject.originDescription : '');
                 });
                 return agent.add(`${textByDifficulty(place.description, user)} ${objectInPlaceDescription} ${distanceText}${withHungry}`);
