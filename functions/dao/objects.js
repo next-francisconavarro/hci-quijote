@@ -49,7 +49,7 @@ function addObject(userId, user, objectName) {
       throw new Error('Se requiere identificador de usuario');
   } else if(!user) {
       throw new Error('Se requiere usuario');
-  } else if(!object) {
+  } else if(!objectName) {
       throw new Error('Se requiere objeto a borrar');
   }
   let objects;

@@ -5,7 +5,7 @@
     "currentPlace": "zaguán",
     "type": "util",
     "jointToSuccess": false,
-    "originDescription": "Un escalón cruje a tu paso mmientras bajas, si, ese escalón que nunca arreglaste.",
+    "originDescription": "Un escalón cruje a tu paso mientras bajas, si, ese escalón que nunca arreglaste.",
     "ordinaryDescription": "El tablón que tan poco esfuerzo te costó desmontar de la escalera esta en el suelo.",
     "requirementStatus": ["revisar_escalera"],
     "successResponse": "Es inquietante lo facilmente que se desprende el escalón, pensar que por aqui pasamos todos los dias me hace sentirme mucho más seguro.",
