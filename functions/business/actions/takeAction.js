@@ -6,7 +6,11 @@ function take(agent, userAccount, user, currentAction) {
     .then(() => agent.add(currentAction.successResponse))
     .catch(e => {
       console.log(`Take error: ${e}`);
-      agent.add(`Ya tienes el objeto ${currentAction.object.name} en tu inventario`);
+      if (e === 'repeated') {
+        agent.add(`Ya tienes el objeto ${currentAction.object.name} en tu inventario`);
+      } else {
+        agent.add(e);
+      }
     });
 }
 

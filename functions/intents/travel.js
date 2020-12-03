@@ -59,7 +59,11 @@ function travel(agent, userId, user) {
                   // TODO: poner dia o noche
                   agent.add(new Image(images[0]));
                 }
-                return agent.add(`${textByDifficulty(place.description, user)}${distanceText}${withHungry}`);
+                let objectInPlaceDescription = '';
+                Object.values(user.objectsList).map( currentObject => {
+                  return objectInPlaceDescription.concat(' ', currentObject.currentPlace == selectedPlace ? currentObject.jointToSuccess ? currentObject.ordinaryDescription : currentObject.originDescription : '');
+                });
+                return agent.add(`${textByDifficulty(place.description, user)} ${objectInPlaceDescription} ${distanceText}${withHungry}`);
               } else {
                 return gameOperations.reset(agent, userId, user.userName, 
                   'Te encuentras muy débil para seguir caminando. Te detienes y te sientes como una pluma. Tu vista se nubla y caes desmayado en el suelo. Los cuervos, lobos y delincuentes harán el trabajo sucio. Limpiar tus restos', 'hungry');

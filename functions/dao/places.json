@@ -36,7 +36,7 @@
         "zaguán": { 
           "step": 2,
           "branch": 0,
-          "description": "Bajas por la escalera, con cuidado de no tropezar con el escalón suelto que nunca arreglaste, y estas en el zaguán. Esta amplia y ruidosa escalera te facilitará el acceso si quieres volver a la habitación. Por lo demás y para tu información, un zagüán es un recibidor, te sirve para salir de casa por el portalón, llegar al comedor o a la cocina. Poco más tenian estas casas en aquella época, y más siendo un hidalgo venido a menos.",
+          "description": "Bajas por la escalera, y estas en el zaguán. Esta amplia y ruidosa escalera te facilitará el acceso si quieres volver a la habitación. Por lo demás y para tu información, un zagüán es un recibidor, te sirve para salir de casa por el portalón, llegar al comedor o a la cocina. Poco más tenian estas casas en aquella época, y más siendo un hidalgo venido a menos.",
           "media": {
             "images": [
               "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/zaguan.png"
@@ -48,13 +48,6 @@
             "requirementObject": ["vela"], 
             "successResponse": "Parece que uno de los escalones esta un poco suelto, ya decia yo que crugia siempre que pasabamos por aqui. Muy agudo al haberte dado cuenta.",
             "failResponse": "El zagüán es tan amplio como lugubre, no verias aqui ni a un elefante sin un poco de luz."          
-            },
-            {   
-            "action": "coger",
-            "object": { "name": "escalon", "type": "util" },
-            "requirementStatus": ["revisar_escalera"],
-            "successResponse": "Es inquietante lo facilmente que se desprende el escalón, pensar que por aqui pasamos todos los dias me hace sentirme mucho más seguro.",
-            "failResponse": "que quieres coger el que?, yo no veo nada que se pueda coger aqui, es mas, no veo nada de nada"
             }
           ],
           "connectedRooms": [
@@ -85,11 +78,6 @@
               "requirementStatus": ["abrir_alacena"],
               "successResponse": "Sobre una de las repisas encuentras una llave que parece ser de utilidad",
               "failResponse": "Convendría abrirla para poder examinarla mejor"
-            },
-            { 
-              "action": "coger", 
-              "object": { "name": "llave", "type": "util" },
-              "successResponse": "Guardala bien, nunca se sabe"
             }
           ],
           "connectedRooms": [
@@ -102,20 +90,15 @@
           "branch": 0,
           "description": "La ténue luz que penetra por la puerta permite vislumbrar un baúl, cuya superficie cubierta por el polvo de los siglos encubre recuerdos de tus antepasados",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/despensa.png"
+            ]
             },
           "actions": [
             { 
               "action": "abrir",
               "object": { "name":"baúl" },
               "successResponse": "Entre las muchas antigüallas, destaca una armadura vieja y ajada"
-            },
-            { 
-              "action": "coger",
-              "object": { "name":"armadura", "type":"util" },
-              "requirementStatus": ["abrir_baúl"], 
-              "successResponse": "Claro que coges la armadura, ¿alguna vez viste un valiente hidalgo sin una?",
-              "failResponse": "¡Vaya!, ¡además de hidalgo eres adivino!, ¡¡¡Ya sabes que hay algo en el baúl sin nisiquiera haberlo abierto!!!"
             },
             { 
               "action": "poner",
@@ -132,7 +115,7 @@
         "comedor": { 
           "step": 3, 
           "branch": 0,
-          "description": "El comedor de tu casa. Rústico, sencillo... esta claro que tu familia pasó por mejores momentos. En la pared esta colgado el escudo de armas y en el suelo un currusco de pan que como te despistes sera pasto de las ratas. Y nada más.",
+          "description": "El comedor de tu casa. Rústico, sencillo... esta claro que tu familia pasó por mejores momentos. En la pared esta colgado el escudo de armas",
           "media": {
             "images": [
               "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/comedor.png"
@@ -143,16 +126,6 @@
               "action": "examinar",
               "object": { "name": "pared" },
               "successResponse": "Una espada y un escudo cuelgan de la pared. ¿Has oido?, una espada!" 
-            },
-            { 
-              "action": "coger",
-              "object": { "name": "espada", "type": "util" },
-              "successResponse": "¡¡valiente hidalgo serías sin tener una!!, una cosa menos." 
-            },
-            { 
-              "action": "coger",
-              "object": { "name": "currusco",  "type":"food", "lifePoints":40 },
-              "successResponse": "Esta duro como una piedra, pero cuando el hambre arrecia seguro que lo agradeces." 
             }
           ],
           "connectedRooms": [
@@ -218,7 +191,7 @@
         "arboleda": { 
           "step": 6, 
           "branch": 0,
-          "description": "¿Arboleda?, ¿selva?, las mayores sorpresas pueden esperarte en estos lugares, por lo menos el suelo es mullido y fertil. Detrás de ti dejas el arco de entrada al pueblo mientras que más adelante en el camino ves emerger el manzano, conocido en todo el pueblo.",
+          "description": "¿Arboleda?, ¿selva?, las mayores sorpresas pueden esperarte en estos lugares, por lo menos el suelo es mullido y fertil con plantas que parecen suculentas. Detrás de ti dejas el arco de entrada al pueblo mientras que más adelante en el camino ves emerger el manzano, conocido en todo el pueblo.",
           "media": {
             "images": [
               "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/arboleda.png"
@@ -229,13 +202,6 @@
               "action": "examinar",
               "object": { "name": "suelo"},
               "successResponse": "El suelo es fértil y plagado de níscalos con un aspecto suculento" 
-            },
-            {   
-              "action": "coger",
-              "object": { "name":"níscalo", "type":"food", "lifePoints":30 },
-              "requirementStatus": ["examinar_suelo"],
-              "successResponse": "Perfecto, tener comida siempre te salva de algún que otro apuro",
-              "failResponse": "¿Que quieres coger qué?"
             }
           ],
           "connectedRooms": [
@@ -247,20 +213,15 @@
           "branch": 0,
           "description": "Algo insólito en estos parajes, ¡un manzano!, quizas por su rareza sea tan famoso en el pueblo. ¡Y que manzanas tan sabrosas proporciona!, estaria bien hacerse con una, pero siempre puedes volver hacia la arboleda de camino al pueblo o continuar hacia el pinar que se encuentra más adelante, tu mismo.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/manzano.png"
+            ]
             },
           "actions": [
             {   
               "action": "golpear",
               "object": { "name": "manzano" },
               "successResponse": "Una manzana cae al suelo"
-            },
-            { 
-              "action": "coger",
-              "object": { "name":"manzana", "type":"food", "lifePoints": 20 },
-              "requirementStatus": ["golpear_manzano"], 
-              "successResponse": "¡Esto viene de maravilla cuando el hambre arrecia!",
-              "failResponse": "No las alcanzas o valiente hidalgo, deberías buscar una forma de hacer que caigan del árbol"
             }
           ],
           "connectedRooms": [
@@ -270,7 +231,7 @@
         "pinar": { 
           "step": 8, 
           "branch": 0,
-          "description": "Pasado el gran manzano llegas a este pinar. Estás contento porque, de momento, tu aventura se te está antojando un agradable paseo. Grandes bosques y arboledas, olor a pinos, un sol gentil... y el suelo está lleno de flores. Podrias quedarte aqui todo el dia pero más adelante te espera una posada que parece ser el destino de este camino.",
+          "description": "Pasado el gran manzano llegas a este pinar. Estás contento porque, de momento, tu aventura se te está antojando un agradable paseo. Grandes bosques y arboledas, olor a pinos, un sol gentil. Podrias quedarte aqui todo el dia pero más adelante te espera una posada que parece ser el destino de este camino.",
           "media": {
             "images": [
               "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/bosque.png"
@@ -281,11 +242,6 @@
               "action": "examinar",
               "object": { "name": "suelo" },
               "successResponse": "El suelo está cubierto de hermosas flores, ¿amanitas Phalloides quizás?" 
-            },
-            { 
-              "action": "coger",
-              "object": { "name":"amanita", "type":"food", "lifePoints": -100 },
-              "successResponse": "¿Una flor? sí, ¿por qué no?. Tú eres el valiente hidalgo y también un hombre sensible" 
             }
           ],
           "connectedRooms": [
@@ -330,20 +286,14 @@
           "step": 10, 
           "branch": 1,
           "requirementStatus": ["escalar_muro"],
-          "description": "Al cruzar el muro, el camino se acaba, solo puedes ver una botella en el suelo. Tu única opción es dar media vuelta",
+          "description": "Al cruzar el muro, el camino se acaba. Tu única opción es dar media vuelta",
           "failResponse": "Te pones de puntillas y apenas alcanzas a ver por encima del muro que bloquea tu paso",
           "media": {
             "images": [
               "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/callejon.png"
               ]
             },
-          "actions": [
-            { 
-              "action": "coger",
-              "object": { "name": "botella", "type": "util" },
-              "successResponse": "¿Quieres recoger una botella?, vaya, un hidalgo valiente y ecológico, ¡lo tienes todo!"
-            }
-          ],
+          "actions": [],
           "connectedRooms": [
             "posada"
           ]
@@ -373,7 +323,9 @@
           "branch": 0,
           "description": "Estás en la recepción de la posada. ¿Cuánta gente habrá pasado aqui la noche?, al fondo ves unas escaleras, de esas que se han arreglado tantas veces que ya ni se parecen a lo que fueron un dia, si es que hubo algún día que tubiesen buen aspecto.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/recepcion.png"
+            ]
             },
           "actions": [],
           "connectedRooms": [
@@ -383,22 +335,17 @@
         "escalera": { 
           "step": 11, 
           "branch": 0,
-          "description": "Un candelabro en una de las paredes ilumina el descansillo de la escalera. Parece tan viejo como todo lo demás. Quizás sería mejor ir directamente al rellano que hay arriba antes de que se derrumben, o se quemen, o que se yo.",
+          "description": "El descansillo de la escalera cruje que da miedo. Quizás sería mejor ir directamente al rellano que hay arriba antes de que se derrumben, o se quemen, o que se yo.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/escalera.png"
+            ]
             },
           "actions": [
             { 
               "action": "examinar",
               "object": { "name": "candelabro" },
               "successResponse": "Una de las velas parece suelta"
-            },
-            { 
-              "action": "coger",
-              "object": { "name": "vela", "type": "util" },
-              "requirementStatus": ["examinar_candelabro"], 
-              "successResponse": "Sí, mejor la guardamos, nunca se sabe cuando un poco de luz puede iluminar las ideas",
-              "failResponse": "¿Qué vela?"
             }
           ],
           "connectedRooms": [
@@ -444,14 +391,6 @@
               "failResponse": "No tienes nada que se pueda considerar contundente, y no, una espada no se considera contundente, quieres abrir un agujero, no matarlo."
             },
             { 
-              "action": "coger",
-              "object": { "name":"vino", "type":"food", "lifePoints":20 },
-              "requirementObject": ["botella"],
-              "requirementStatus": ["golpear_odre"],
-              "successResponse": "¿En serio quieres ese vino?, bueno... no seré yo quien te lo discuta",
-              "failResponse": "Para guardar el vino no basta con poner las dos manos. Necesitas dos cosas, primero abrir el odre, y segundo, algún recipiente donde guardarlo"
-            },
-            { 
               "action": "beber",
               "object": { "name":"vino", "type":"food", "lifePoints":20 },
               "requirementStatus": ["golpear_odre"],
@@ -466,19 +405,13 @@
         "dormitorio": { 
           "step": 13, 
           "branch": 1,
-          "description": "Bonito dormitorio este. Una cama que hasta parece limpia domina la habitacion y un martillo escondifo debajo. Si, un martillo...",
+          "description": "Bonito dormitorio este. Una cama que hasta parece limpia domina la habitacion.",
           "media": {
             "images": [
               "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/posada_dormitorio.png"
               ]
             },
-          "actions": [
-            { 
-              "action": "coger",
-              "object": { "name":"martillo", "type": "util" },
-              "successResponse": "Nos vendrá bien guardarlo por si queremos hacer algo de bricomanía, una vez vi una pelicula en el un asesino lo usaba como arma homicida, pero eso no lo hace un buen hidalgo."
-            }
-          ],
+          "actions": [],
           "connectedRooms": [
             "rellano"
           ]
@@ -487,19 +420,12 @@
           "step": 5, 
           "branch": 1,
           "description": "Otra calle, calles y más calles, y las tienes que atravesarlas todas para llegar a los maravillosos campos de castilla, protagonistas de infinidad de poemas.",
-          "placeObject": "Alguien se ha dejado un rastrillo apoyado en la pared, y eso en esta época significa que no durara mucho ahí.",
           "media": {
             "images": [
               "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/calles.png"
               ]
             },
-          "actions": [
-            { 
-              "action": "coger",
-              "object": { "name": "rastrillo" },
-              "successResponse": "¿Un rastrillo?, sí bueno, ¿por qué no?, si no sale bien lo de hidalgo siempre puedes ser granjero"
-            }
-          ],
+          "actions": [],
           "connectedRooms": [
             "argamasilla", "campos"
           ]
@@ -550,20 +476,14 @@
           "step": 6, 
           "branch": 2,
           "requirementStatus": ["colocar_escalón"],
-          "description": "Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que un pedrusco en el suelo y el acantilado que acabas de cruzar. Se escuchan lobos al rededor tuya. Yo me daría media vuelta y me iría",
+          "description": "Un oscuro bosque, tan oscuro que apenas alcanzas a ver poco más que el acantilado que acabas de cruzar. Se escuchan lobos al rededor tuya. Yo me daría media vuelta y me iría",
           "failResponse": "No puedes llegar al bosque, antes debes cruzar un acantilado que tiene pinta que no podrás cruzar de un salto",
           "media": {
             "images": [
               "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/bosque_oscuro.png"
               ]
             },
-          "actions": [
-            { 
-              "action": "coger",
-              "object": { "name": "pedrusco", "type": "util" },
-              "successResponse": "Un pedrusco, sí, como no, llévatelo. Llevate todo lo que te encuentres en el suelo"
-            }
-          ],
+          "actions": [],
           "connectedRooms": [
             "acantilado"
           ]
@@ -587,7 +507,9 @@
           "branch": 1,
           "description": "Ves dos puertas ante ti, una te lleva al salon y por la otra llegas a un pequeño distribuidor con dos puertas más. Puertas, puertas y más puertas si.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/recibidor.png"
+            ]
             },
           "actions": [],
           "connectedRooms": [
@@ -605,14 +527,7 @@
             { 
               "action": "examinar",
               "object": { "name": "cesto" },
-              "successResponse": "Dentro del cesto solo hay chatarra. Un alambre y poco más"
-            },
-            { 
-              "action": "coger",
-              "object": { "name": "alambre", "type": "util" },
-              "requirementStatus": ["examinar_cesto"],
-              "successResponse": "Nos vendrá bien guardarlo por si queremos hacer algo de bricomanía",
-              "failResponse": "Deberías examinar el cesto para ver que hay antes de meter la mano a lo loco. Solo dios sabe lo que puedes sacar de ahí"
+              "successResponse": "Dentro del cesto solo hay chatarra."
             }
           ],
           "connectedRooms": [
@@ -624,7 +539,9 @@
           "branch": 1,
           "description": "Este distrubidor te permite acceder a dos estancias, a la izquierda una alcoba, y a la derecha una puerta con una cerradura que esta hecha un cisco, parece como si la hubiesen intentado abrir a mordiscos... es broma... no, no es broma.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/distribuidor.png"
+            ]
             },
           "actions": [
             { 
@@ -685,7 +602,9 @@
           "branch": 2,
           "description": "Unos extensos prados, que solo destacan por un nutrido rebaño de ovejas, que pastan apacibles pero bloquean el maldito paso hacia la cancela que da acceso a los dominios de la reina.",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/prados.png"
+            ]
             },
           "actions": [
             { 
@@ -705,7 +624,9 @@
           "branch": 2,
           "description": "Una gran cancela custodiada por dos soldados. Más allá se extienden los dominios del gran reino de castilla, donde valientes hidalgos ponen a prueba su destreza y conocen a sus amadas doncellas. Yo intentaría cruzarla",
           "media": {
-            "images": []
+            "images": [
+              "https://raw.githubusercontent.com/next-francisconavarro/hci-quijote/develop/images/cancela.png"
+            ]
             },
           "actions": [
             { 

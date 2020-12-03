@@ -11,7 +11,7 @@ const { textByDifficulty } = require('../utils/difficultyUtils');
 const countIntents = require('../utils/countIntents');
 
 
-const everyWhereActions = ['tirar','comer'];
+const everyWhereActions = ['tirar','comer','coger'];
 const genericFailResponse = 'Eso no se puede hacer aqui';
 
 function execute(request) {
@@ -67,25 +67,12 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
     endReason = currentAction.endReason;
   } else {
     console.log('contextActionsTreatment -> requirements are met')
-    switch(action) {
-      case 'coger': 
-        return takeAction.take(agent, userAccount, user, currentAction)
-          .then(() => 
-            statesDao.addStatus(userAccount, user, currentAction.action + '_' + currentAction.object.name))
-          .catch(e => {
-            console.log(`Action error: ${e}`);
-            agent.add(`Ya has hecho eso`);
-          });
-          
-      default:
-        console.log('contextActionsTreatment -> Updating action state');
-        return statesDao.addStatus(userAccount, user, currentAction.action + '_' + currentAction.object.name)
-          .then(() => agent.add(textByDifficulty(currentAction.successResponse, user)))
-          .catch(e => {
-            console.log(`Action error: ${e}`);
-            agent.add(`Ya has hecho eso`);
-          });
-    }
+    return statesDao.addStatus(userAccount, user, currentAction.action + '_' + currentAction.object.name)
+      .then(() => agent.add(textByDifficulty(currentAction.successResponse, user)))
+      .catch(e => {
+        console.log(`Action error: ${e}`);
+        agent.add(`Ya has hecho eso`);
+      });
   }
   
   if(endReason) {
@@ -97,6 +84,14 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
 
 function everyWhereActionsTreatment(agent, userAccount, user, action, objectName) {
   switch(action) {
+    case 'coger': 
+      return takeAction.take(agent, userAccount, user, currentAction)
+        .then(() => 
+          statesDao.addStatus(userAccount, user, currentAction.action + '_' + currentAction.object.name))
+        .catch(e => {
+          console.log(`Action error: ${e}`);
+          agent.add(`Ya has hecho eso`);
+        });
     case 'tirar': 
       return leaveAction.leave(agent, userAccount, user, objectName);
     case 'comer': 

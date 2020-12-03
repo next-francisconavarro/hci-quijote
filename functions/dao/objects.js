@@ -52,20 +52,29 @@ function addObject(userId, user, object) {
   } else if(!object) {
       throw new Error('Se requiere objeto a borrar');
   }
-
   let objects;
+  let errorLog = 'repeated';
   let toTake = false;
-  if(user.objects && user.objects.length) {
-    objects = user.objects;
-    const isIncluded = objects.map(item => item.name).includes(object.name);
-    console.log(`addObject -> ${objects} includes ${object}? ${isIncluded}`);
-    if(!isIncluded) {
+
+  const objectAvailableOnCurrentPlace = user.objectsList[object.name].currentPlace == Object.keys(user.room);
+
+  if (objectAvailableOnCurrentPlace) {
+    if(user.objects && user.objects.length) {
+      objects = user.objects;
+      const isIncluded = objects.map(item => item.name).includes(object.name);
+      console.log(`addObject -> ${objects} includes ${object}? ${isIncluded}`);
+      if(!isIncluded) {
+        toTake = true;
+        objects.push(object);
+      }
+    } else {
       toTake = true;
-      objects.push(object);
+      objects = [object];
     }
+    user.objectsList[object.name].currentPlace = 'none';
+    user.objectsList[object.name].jointToSuccess = true;
   } else {
-    toTake = true;
-    objects = [object];
+    errorLog = user.objectsList[object.name].unFindResponse;
   }
 
   if(toTake) {
@@ -74,7 +83,7 @@ function addObject(userId, user, object) {
     return usersDao.updateUser(userId, user);
   } else {
     console.log('addObject -> Object repeated');
-    return Promise.reject('Object repeated');
+    return Promise.reject(errorLog);
   }
 }
 

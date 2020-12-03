@@ -1,4 +1,5 @@
 const {admin} = require('../firebase.initializers');
+const objectOriginLocation = require('../dao/objectByPlacesOrigin.json');
 
 function updateUser(userId, newData) {
   return admin.database().ref(`users/${userId}`).update(newData);
@@ -30,6 +31,7 @@ function addUser(userAccount, username, coordinates) {
         objects: [], // Inicialmente no tiene objetos en el inventario
         states: [], // Inicialmente no tiene estados realizados
         hungry: 100,
+        objectsList: objectOriginLocation,
         userName: username,
         coordinates
   });
