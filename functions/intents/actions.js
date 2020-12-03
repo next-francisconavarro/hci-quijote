@@ -26,7 +26,7 @@ function execute(request) {
       const placeName = Object.keys(user.room)[0];
       console.log(`execute -> current place name: ${placeName}`);
 
-      if(everyWhereActions.includes(action) || takeLeaved) {
+      if(everyWhereActions.includes(action)) {
         return everyWhereActionsTreatment(agent, userAccount, user, action, objectName, placeName);
       } else {
         return placesDao.getPlaceById(placeName).then(currentPlace => {

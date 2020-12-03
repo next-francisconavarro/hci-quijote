@@ -86,7 +86,7 @@ function addObject(userId, user, objectName) {
 
   if(toTake) {
     console.log('addObject -> Object accepted');
-    let difficulty = { level: user.difficulty.level, maxCapacity: user.difficulty.maxCapacity - object.weight };
+    let difficulty = { level: user.difficulty.level, maxCapacity: user.difficulty.maxCapacity - user.objectsList[objectName].weight };
     Object.assign( user, { difficulty: difficulty, objects: objects });
     return usersDao.updateUser(userId, user);
   } else if(isIncluded) {
