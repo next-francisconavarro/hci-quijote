@@ -26,8 +26,6 @@ function execute(request) {
       const placeName = Object.keys(user.room)[0];
       console.log(`execute -> current place name: ${placeName}`);
 
-      let takeLeaved = checkTakeLeavedAction(user, placeName, objectName, action);
-
       if(everyWhereActions.includes(action) || takeLeaved) {
         return everyWhereActionsTreatment(agent, userAccount, user, action, objectName, placeName);
       } else {
