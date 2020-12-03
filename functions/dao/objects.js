@@ -40,7 +40,11 @@ function deleteObjectByUser(userId, user, objectName) {
       throw new Error('Se requiere objeto a borrar');
   }
 
-  Object.assign( user, { objects: user.objects.filter(item => item.name !== objectName)});
+  let object = user.objects.find(item => item.name === objectName);
+  if (object) {
+    let difficulty = { level: user.difficulty.level, maxCapacity: user.difficulty.maxCapacity + object.weight };
+    Object.assign( user, { difficulty, objects: user.objects.filter(item => item.name !== objectName)});
+  }
   return usersDao.updateUser(userId, user);
 }
 
@@ -55,6 +59,9 @@ function addObject(userId, user, objectName) {
   let objects;
   let errorLog = 'repeated';
   let toTake = false;
+  let nextWeight = user.difficulty.maxCapacity - user.objectsList[objectName].weight;
+  let isIncluded = false;
+  let isOverweight = nextWeight < 0;
 
   const objectAvailableOnCurrentPlace = user.objectsList[objectName].currentPlace == Object.keys(user.room)[0];
 
@@ -79,12 +86,14 @@ function addObject(userId, user, objectName) {
 
   if(toTake) {
     console.log('addObject -> Object accepted');
-    Object.assign( user, { objects: objects});
+    let difficulty = { level: user.difficulty.level, maxCapacity: user.difficulty.maxCapacity - object.weight };
+    Object.assign( user, { difficulty: difficulty, objects: objects });
     return usersDao.updateUser(userId, user);
-  } else {
+  } else if(isIncluded) {
     console.log('addObject -> Object repeated');
     return Promise.reject(errorLog);
   }
+
 }
 
-module.exports = { getObjectByObjectId, getObjectsByUserId, deleteObjectByUser, addObject };
+module.exports = { getObjectByObjectId, getObjectsByUserId, deleteObjectByUser, addObject, addObjectFromFloor };

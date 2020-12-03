@@ -22,7 +22,7 @@ async function checkIfNeedHelp(request, agent, intentName) {
 
   if (user) {
     const intents = user.intents;
-    const difficultyLevel = user.difficultyLevel;
+    const difficultyLevel = user.difficulty.level;
 
     if (difficultyLevel !== 'dificil' && intents > 4) {
       user.intents = 0;

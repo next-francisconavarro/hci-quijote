@@ -10,8 +10,13 @@ const eatAction = require('../business/actions/eatAction');
 const { textByDifficulty } = require('../utils/difficultyUtils');
 const countIntents = require('../utils/countIntents');
 
+<<<<<<< HEAD
 
 const everyWhereActions = ['tirar','comer','coger'];
+=======
+const commonActions = ['coger'];
+const everyWhereActions = ['tirar','comer'];
+>>>>>>> develop
 const genericFailResponse = 'Eso no se puede hacer aqui';
 
 function execute(request) {
@@ -26,8 +31,10 @@ function execute(request) {
       const placeName = Object.keys(user.room)[0];
       console.log(`execute -> current place name: ${placeName}`);
 
-      if(everyWhereActions.includes(action)) {
-        return everyWhereActionsTreatment(agent, userAccount, user, action, objectName);
+      let takeLeaved = checkTakeLeavedAction(user, placeName, objectName, action);
+
+      if(everyWhereActions.includes(action) || takeLeaved) {
+        return everyWhereActionsTreatment(agent, userAccount, user, action, objectName, placeName);
       } else {
         return placesDao.getPlaceById(placeName).then(currentPlace => {
           console.log(`execute -> current place value: ${JSON.stringify(currentPlace)}`);
@@ -38,6 +45,15 @@ function execute(request) {
       }
     });
   }
+}
+
+function checkTakeLeavedAction(user, placeName, objectName, action) {
+  let object;
+  if (user.objectsByPlace && user.objectsByPlace[placeName]) {
+    object = (user.objectsByPlace[placeName] || []).find(o => o.name == objectName);
+    console.log(`checkTakeLeavedAction \n\t${action} ${objectName} \n\t${JSON.stringify(object)}`);
+  }
+  return commonActions.includes(action) && action == 'coger' && object;
 }
 
 function contextActionsTreatment(agent, userAccount, user, place, action, objectName) {
@@ -82,14 +98,16 @@ function contextActionsTreatment(agent, userAccount, user, place, action, object
   }
 }
 
-function everyWhereActionsTreatment(agent, userAccount, user, action, objectName) {
+function everyWhereActionsTreatment(agent, userAccount, user, action, objectName, placeName) {
   switch(action) {
     case 'coger': 
       return takeAction.take(agent, userAccount, user, objectName)
     case 'tirar': 
-      return leaveAction.leave(agent, userAccount, user, objectName);
+      return leaveAction.leave(agent, userAccount, user, objectName, placeName);
     case 'comer': 
       return eatAction.eat(agent, userAccount, user, objectName);
+    case 'coger': 
+      return takeAction.takeLeaved(agent, userAccount, user, objectName, placeName)
     default:
       console.log('everyWhereActionsTreatment -> Action not supported');
       agent.add(genericFailResponse);
