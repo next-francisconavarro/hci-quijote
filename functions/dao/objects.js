@@ -96,4 +96,4 @@ function addObject(userId, user, objectName) {
 
 }
 
-module.exports = { getObjectByObjectId, getObjectsByUserId, deleteObjectByUser, addObject, addObjectFromFloor };
+module.exports = { getObjectByObjectId, getObjectsByUserId, deleteObjectByUser, addObject };

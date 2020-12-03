@@ -46,7 +46,7 @@
     "weight": 15,
     "type": "util",
     "jointToSuccess": false,
-    "requirementStatus": ["examinar_pared"],,
+    "requirementStatus": ["examinar_pared"],
     "originDescription": "",
     "ordinaryDescription": "Dejaste esta espada tirada en el suelo.",
     "successResponse": "¡¡valiente hidalgo serías sin tener una!!, una cosa menos.",
