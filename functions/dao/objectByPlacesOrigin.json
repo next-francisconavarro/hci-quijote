@@ -11,7 +11,8 @@
     "requirementStatus": ["revisar_escalera"],
     "successResponse": "Es inquietante lo facilmente que se desprende el escalón, pensar que por aqui pasamos todos los dias me hace sentirme mucho más seguro.",
     "failResponse": "que quieres coger el que?, yo no veo nada que se pueda coger aqui, es mas, no veo nada de nada",
-    "unFindResponse": "Que quieres coger que?"
+    "unFindResponse": "Que quieres coger que?",
+    "objectTakenYet": "Ya tienes un tablón, ¿para que quieres otro?"
   },
   "llave" : {
     "name": "llave",
@@ -23,7 +24,9 @@
     "requirementStatus": ["abrir_alacena"],
     "ordinaryDescription": "Dejaste la llave de la puerta de tu casa tirada en el suelo.",
     "successResponse": "Guardala bien, nunca se sabe.",
-    "unFindResponse": "Que llave?, donde?"
+    "unFindResponse": "Que llave?, donde?",
+    "objectTakenYet": "Ya tienes una llave de tu casa, ¿para que quieres otra?",
+    "failResponse": "coger algo de una alacena cerrada se me antoja complicado, ¿no crees?"
   },
   "armadura": { 
     "name": "armadura",
@@ -37,7 +40,8 @@
     "ordinaryDescription": "Dejaste esta armadura tirada en el suelo.", 
     "successResponse": "Claro que coges la armadura, ¿alguna vez viste un valiente hidalgo sin una?",
     "failResponse": "¡Vaya!, ¡además de hidalgo eres adivino!, ¡¡¡Ya sabes que hay algo en el baúl sin nisiquiera haberlo abierto!!!",
-    "unFindResponse": "que armadura?, donde?"
+    "unFindResponse": "que armadura?, donde?",
+    "objectTakenYet": "Ya tienes una armadura, ¿para que querrias ponerte otra?"
   },
   "espada": { 
     "name": "espada",
@@ -50,7 +54,9 @@
     "originDescription": "",
     "ordinaryDescription": "Dejaste esta espada tirada en el suelo.",
     "successResponse": "¡¡valiente hidalgo serías sin tener una!!, una cosa menos.",
-    "unFindResponse": "ejem... aqui no hay ninguna espada" 
+    "unFindResponse": "ejem... aqui no hay ninguna espada",
+    "objectTakenYet": "¿No sabes usar la espada que tienes y quieres otra?, mejor no.",
+    "failResponse": "¿Donde has visto una espada?, ¿donde?"
   },
   "currusco": {
     "name": "currusco",
@@ -63,7 +69,8 @@
     "originDescription": "En el suelo hay un currusco de pan que como te despistes sera pasto de las ratas.",
     "ordinaryDescription": "Dejaste un currusco tirado en el suelo, es una pena tirar asi la comida", 
     "successResponse": "Esta duro como una piedra, pero cuando el hambre arrecia seguro que lo agradeces.",
-    "unFindResponse": "a veces ves curruscos que no existen?" 
+    "unFindResponse": "a veces ves curruscos que no existen?",
+    "objectTakenYet": "Ya cogiste uno, ¿crees que los curruscos reaparecen de la nada?"
   },
   "níscalo": {
     "name": "níscalo",
@@ -77,8 +84,9 @@
     "ordinaryDescription": "",
     "requirementStatus": ["examinar_suelo"],
     "successResponse": "Perfecto, tener comida siempre te salva de algún que otro apuro",
-    "failResponse": "¿Que quieres coger qué?",
-    "unFindResponse": "yo no veo ningún níscalo por aqui, tu si??" 
+    "failResponse": "¿Un níscalo?,¿donde lo has visto?",
+    "unFindResponse": "yo no veo ningún níscalo por aqui, tu si??",
+    "objectTakenYet": "Ya tienes un níscalo, ¿es que quieres acabar con toda la flora del lugar?"
   },
   "manzana": {
     "name": "manzana",
@@ -93,7 +101,8 @@
     "requirementStatus": ["golpear_manzano"], 
     "successResponse": "¡Esto viene de maravilla cuando el hambre arrecia!",
     "failResponse": "No las alcanzas o valiente hidalgo, deberías buscar una forma de hacer que caigan del árbol",
-    "unFindResponse": "Aqui ya no hay ninguna manzana, si la hubo, ya se la llevaron" 
+    "unFindResponse": "Aqui ya no hay ninguna manzana, si la hubo, ya se la llevaron",
+    "objectTakenYet": "Ya tienes una manzana, ¿cuantas más quieres?"
   },
   "amanita": {
     "name": "amanita",
@@ -106,7 +115,8 @@
     "originDescription": " El suelo está lleno de flores.",
     "ordinaryDescription": "Hay un níscalo en el suelo, no pinta nada en este lugar asi que supongo que lo debiste tirar tu.",
     "successResponse": "¿Una flor? sí, ¿por qué no?. Tú eres el valiente hidalgo y también un hombre sensible",
-    "unFindResponse": "Estaria genial que hubiese una amanita aqui, pero no."  
+    "unFindResponse": "Estaria genial que hubiese una amanita aqui, pero no.",
+    "objectTakenYet": "Con la amanita que ya tienes es suficiente, ¿no crees?, " 
   }, 
   "botella": {
     "name": "botella",
@@ -118,7 +128,8 @@
     "originDescription": " Solo puedes ver una botella en el suelo.",
     "ordinaryDescription": " Hay una botella en el suelo, y la dejaste tu, muy feo eso de tirar vidrio.",
     "successResponse": "¿Quieres recoger una botella?, vaya, un hidalgo valiente y ecológico, ¡lo tienes todo!",
-    "unFindResponse": "Quizás en tu mundo sea normal encontrar botellas en cualquier parte, pero aqui no hay ninguna." 
+    "unFindResponse": "Quizás en tu mundo sea normal encontrar botellas en cualquier parte, pero aqui no hay ninguna.",
+    "objectTakenYet": "tubiste suerte de encontrar una botella en el suelo, otra seria demasiado" 
   },
   "vela": {
     "name": "vela",
@@ -132,7 +143,8 @@
     "ordinaryDescription": " Hay una vela en el suelo, ¿te parece bonito haber dejado algo asi tirado?.",
     "successResponse": "Sí, mejor la guardamos, nunca se sabe cuando un poco de luz puede iluminar las ideas",
     "failResponse": "¿Qué vela?",
-    "unFindResponse": "¿que vela?" 
+    "unFindResponse": "¿que vela?",
+    "objectTakenYet": "Ya tienes una vela, ¿para que quieres otra?"
   },
   "vino": {
     "name": "vino",
@@ -148,7 +160,8 @@
     "requirementStatus": ["golpear_odre"],
     "successResponse": "¿En serio quieres ese vino?, bueno... no seré yo quien te lo discuta",
     "failResponse": "Para guardar el vino no basta con poner las dos manos. Necesitas dos cosas, primero abrir el odre, y segundo, algún recipiente donde guardarlo",
-    "unFindResponse": "¿donde vés tu el vino aquí?" 
+    "unFindResponse": "¿donde vés tu el vino aquí?",
+    "objectTakenYet": "Ya tienes vino, ¿quieres convertirte en un borrachin?"
   },
   "martillo": { 
     "name": "martillo",
@@ -160,7 +173,8 @@
     "originDescription": "  Debajo de la cama hay un martillo escondido. Si, un martillo...",
     "ordinaryDescription": " Hay un martillo en el suelo, ¿quien lo habra dejado ahí?.",
     "successResponse": "Nos vendrá bien guardarlo por si queremos hacer algo de bricomanía, una vez vi una pelicula en el un asesino lo usaba como arma homicida, pero eso no lo hace un buen hidalgo.",
-    "unFindResponse": "si claro, ¿como no? (dios mio, ahora ve martillos donde no los hay)" 
+    "unFindResponse": "si claro, ¿como no? (dios mio, ahora ve martillos donde no los hay)",
+    "objectTakenYet": "Ya tienes un martillo, ¿quieres más para ocnvertirte en carpintero o que?" 
   },
   "rastrillo": {
     "name": "rastrillo",
@@ -172,7 +186,8 @@
     "originDescription": " Alguien se ha dejado un rastrillo apoyado en la pared, y eso en esta época significa que no durara mucho ahí.",
     "ordinaryDescription": " Hay un rastrillo en el suelo que puede ser peligroso para algún despistado que lo pise sin querer...",
     "successResponse": "¿Un rastrillo?, sí bueno, ¿por qué no?, si no sale bien lo de hidalgo siempre puedes ser granjero",
-    "unFindResponse": "¿Un rastrillo?, ¿en serio?, no, aqui no hay ningun rastrillo, ¿te puedes centrar por favor?" 
+    "unFindResponse": "¿Un rastrillo?, ¿en serio?, no, aqui no hay ningun rastrillo, ¿te puedes centrar por favor?",
+    "objectTakenYet": "No se ni para que quieres el que ya tienes, ¿y quieres tener más?, no."
   },
   "pedrusco": {
     "name": "pedrusco",
@@ -184,7 +199,8 @@
     "originDescription": " Pero cuidado no vayas muy deprisa, que tienes un pedrusco en el suelo.",
     "ordinaryDescription": " Hay un pedrusco un el suelo, tiene una forma de  escalón ideal.",
     "successResponse": "Un pedrusco, sí, como no, llévatelo. Llevate todo lo que te encuentres en el suelo",
-    "unFindResponse": "no hay ningún pedrusco aquí, como mucho piedrecitas" 
+    "unFindResponse": "no hay ningún pedrusco aquí, como mucho piedrecitas",
+    "objectTakenYet": "Ya tienes un pedrusco, ¿quieres tenerlos todos?, no."
   },
   "alambre": {
     "name": "alambre",
@@ -198,6 +214,7 @@
     "ordinaryDescription": " Hay un alambre en el suelo, hay que prestar atención, por que casi no se ve.",
     "successResponse": "Nos vendrá bien guardarlo por si queremos hacer algo de bricomanía",
     "failResponse": "Deberías examinar el cesto para ver que hay antes de meter la mano a lo loco. Solo dios sabe lo que puedes sacar de ahí",
-    "unFindResponse": "¿un alambre aqui?, pues va a ser que no" 
+    "unFindResponse": "¿un alambre aqui?, pues va a ser que no",
+    "objectTakenYet": "Ya tienes un alambre, ¿eres chatarrero?, no."
   }
 }

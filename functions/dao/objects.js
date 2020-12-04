@@ -1,5 +1,45 @@
 const usersDao = require('../dao/users');
 
+function checkRequirementStatusAllowed(user, objectName) {
+  let statusOk = true;
+  let objectNeededOk = true;
+  const objectHasRequiredStatus = user.objectsList[objectName] && user.objectsList[objectName].requirementStatus;
+  const objectHasRequirementObject = user.objectsList[objectName] && user.objectsList[objectName].requirementObject;
+  console.log('requirements: ', objectHasRequiredStatus, user.objectsList[objectName].requirementStatus, objectHasRequirementObject, user.objectsList[objectName].requirementObject);
+  if (objectHasRequiredStatus) {
+    if(user.states) {
+      let requirementStatusCont = 0;
+      user.states.map(status => {
+        //some objects has more than 1 status required to success
+        if (user.objectsList[objectName].requirementStatus.includes(status)) {
+          requirementStatusCont += 1;
+        };
+      });
+      statusOk = requirementStatusCont >= user.objectsList[objectName].requirementStatus.length
+      console.log('status needed ok: ', requirementStatusCont, statusOk);
+    } else {
+      statusOk = false;
+    }
+  }
+  if (objectHasRequirementObject) {
+    if(user.objects) {
+      let requirementObjectsCont = 0;
+      user.objects.map(currentObject => {
+         //some objects has more than 1 object required to success
+         if (user.objectsList[objectName].requirementObject.includes(currentObject)) {
+          requirementObjectsCont += 1;
+         };
+      });
+      objectNeededOk = requirementObjectsCont >= user.objectsList[objectName].requirementObject;
+      console.log('objects needed ok: ', requirementObjectsCont, objectNeededOk);
+    } else {
+      objectNeededOk = false;
+    }
+  }
+  console.log('status result: ', statusOk, objectNeededOk);
+  return statusOk && objectNeededOk;
+}
+
 function getObjectsByUserId(userId) {
   if(!userId) {
     throw new Error('Se requiere usuario a consultar');
@@ -56,41 +96,45 @@ function addObject(userId, user, objectName) {
   } else if(!objectName) {
       throw new Error('Se requiere objeto a borrar');
   }
-  let objects;
+
+  let objectsTaken = user.objects;
   let errorLog = 'repeated';
   let toTake = false;
-  let nextWeight = user.difficulty.maxCapacity - user.objectsList[objectName].weight;
-  let isIncluded = false;
-  let isOverweight = nextWeight < 0;
-
+  const allowedState = checkRequirementStatusAllowed(user, objectName);
+  const isOverweight = (user.difficulty.maxCapacity - user.objectsList[objectName].weight) < 0;
   const objectAvailableOnCurrentPlace = user.objectsList[objectName].currentPlace == Object.keys(user.room)[0];
+  const isIncluded = objectsTaken ? objectsTaken.map(item => item.name).includes(objectName) : false;
 
-  if (objectAvailableOnCurrentPlace) {
-    user.objectsList[objectName].currentPlace = 'none';
-    user.objectsList[objectName].jointToSuccess = true;
-    if(user.objects && user.objects.length) {
-      objects = user.objects;
-      const isIncluded = objects.map(item => item.name).includes(objectName);
-      console.log(`addObject -> ${objects} includes ${objectName}? ${isIncluded}`);
-      if(!isIncluded) {
-        toTake = true;
-        objects.push(user.objectsList[objectName]);
+  if (allowedState) {
+    if (!isOverweight) {
+      if (objectAvailableOnCurrentPlace) {
+        if(!isIncluded) {
+          toTake = true;
+          user.objectsList[objectName].currentPlace = 'none';
+          user.objectsList[objectName].jointToSuccess = true;
+          if(objectsTaken && objectsTaken.length) {
+            objectsTaken.push(user.objectsList[objectName]);
+          } else {
+            objectsTaken = [user.objectsList[objectName]];
+          }
+        } else {
+          errorLog = user.objectsList[objectName].objectTakenYet;
+        }
+      } else {
+        errorLog = user.objectsList[objectName].unFindResponse;
       }
     } else {
-      toTake = true;
-      objects = [user.objectsList[objectName]];
+      errorLog = 'Llevas demasiadas cosas, te gusta pensar que eres tan fuerte que puedes cargar con todo, pero no. Si quieres coger más cosas tendras que deshacerte de algo.'
     }
   } else {
-    errorLog = user.objectsList[objectName].unFindResponse;
+    errorLog = user.objectsList[objectName].failResponse;
   }
 
   if(toTake) {
-    console.log('addObject -> Object accepted');
     let difficulty = { level: user.difficulty.level, maxCapacity: user.difficulty.maxCapacity - user.objectsList[objectName].weight };
-    Object.assign( user, { difficulty: difficulty, objects: objects });
+    Object.assign( user, { difficulty: difficulty, objects: objectsTaken });
     return usersDao.updateUser(userId, user);
-  } else if(isIncluded) {
-    console.log('addObject -> Object repeated');
+  } else {
     return Promise.reject(errorLog);
   }
 
