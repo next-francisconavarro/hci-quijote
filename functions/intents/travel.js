@@ -58,9 +58,9 @@ function travel(agent, userId, user) {
 
                 if (images.length) {
                   if (isNight(user) && images.length>1) {
-                    agent.add(new Image(images[1]));
+                    agent.add(`<img src="${images[1]}">`);
                   } else {
-                    agent.add(new Image(images[0]));
+                    agent.add(`<img src="${images[0]}">`);
                   }
                 }
                 let objectInPlaceDescription = '';

@@ -27,7 +27,7 @@ function difficulty(request) {
         // Comenzamos en la biblioteca
         return placesDao.getPlaceById('biblioteca').then(place => {
           if(place) {
-            agent.add(new Image(place.media.images[0]));
+            agent.add(`<img src="${place.media.images[0]}">`);
             return agent.add(`${preMessage}${textByDifficulty(place.description, difficulty)}`);
           }
         });
