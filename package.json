@@ -11,7 +11,7 @@
     "create-map": "node createMap.js"
   },
   "engines": {
-    "node": "8"
+    "node": "10"
   },
   "dependencies": {
     "actions-on-google": "^2.2.0",

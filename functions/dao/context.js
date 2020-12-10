@@ -2,8 +2,9 @@ const NO_USER = 'nouser';
 
 function getUserId({ body = {} }) {
   const payload = body.originalDetectIntentRequest && body.originalDetectIntentRequest.payload;
-
-  console.log(`getUserId -> Request payload data: ${JSON.stringify(payload)}`);
+  const sesId = body.session && body.session.replace(/.*\//, '');
+  console.trace(`body -> ${JSON.stringify(body)}`);
+  console.trace(`getUserId -> Request originalDetectIntentRequest: ${JSON.stringify(body.originalDetectIntentRequest)}`);
 
   const userMail = payload &&
     payload.data &&
@@ -17,7 +18,7 @@ function getUserId({ body = {} }) {
   return payload && 
     payload.data && 
     payload.data.event &&
-    payload.data.event.user || NO_USER;
+    payload.data.event.user || sesId || NO_USER;
 }
 
 /*function getValidDomain() {
