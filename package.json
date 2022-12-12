@@ -19,7 +19,7 @@
     "dialogflow": "^4.0.3",
     "dialogflow-fulfillment": "^0.5.0",
     "eslint": "^6.8.0",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "firebase-admin": "^8.6.0",
     "firebase-functions": "^3.3.0",
     "jest": "^25.1.0",
